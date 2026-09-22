@@ -1,0 +1,31 @@
+{
+  "name": "public-report",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "validate:data": "node scripts/validate.mjs",
+    "bright:collect": "node scripts/collect.mjs",
+    "bright:download": "node scripts/download.mjs",
+    "bright:normalize": "node scripts/normalize.mjs",
+    "bright:test-tiktok": "node scripts/test-tiktok.mjs",
+    "report:classify": "node scripts/classify-report.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "next": "^14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.5",
+    "typescript": "^5.5.3"
+  }
+}
