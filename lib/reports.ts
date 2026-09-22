@@ -19,7 +19,7 @@ export function getReportSlugs() {
 export function getAllReports() {
   return getReportSlugs()
     .map(getReportBySlug)
-    .sort((left, right) => right.collectedAt.localeCompare(left.collectedAt));
+    .sort((left, right) => (right.collectedAt ?? "").localeCompare(left.collectedAt ?? ""));
 }
 
 export function getReportBySlug(slug: string): Report {
