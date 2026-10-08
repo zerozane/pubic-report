@@ -1,0 +1,1159 @@
+{
+  "slug": "laglace-tiktok-comments-2026-sep-oct",
+  "title": "La Glace TikTok Comments Sep-Oct 2026",
+  "status": "draft",
+  "author": "Natth",
+  "period": {
+    "from": "2026-09-01",
+    "to": "2026-10-05",
+    "timezone": "Asia/Bangkok"
+  },
+  "collectedAt": "2026-10-07T08:12:14.296Z",
+  "summary": "รายงานนี้กรองเฉพาะคอมเมนต์ TikTok ที่อยู่ในช่วง 2026-09-01 ถึง 2026-10-05 จากชุดข้อมูลที่กวาดมาแล้ว พบ 35 คอมเมนต์ จาก 2 วิดีโอ โดยเป็นข้อมูล TikTok-only และยังเป็นชุด URL sample ไม่ใช่การค้นหาทั้ง TikTok",
+  "methodology": {
+    "source": "Bright Data TikTok comments scraper from selected TikTok video URLs",
+    "selection": "กรองเฉพาะคอมเมนต์ที่มี date_created/publishedAt ระหว่าง 2026-09-01 ถึง 2026-10-05 จาก raw TikTok comments snapshot เดิม",
+    "sentimentMethod": "Classify sentiment from the meaning of the scraped text, not from likes/views/shares/comments. Positive = praise, liking, purchase intent, or good experience. Neutral = question, factual/general message, short reaction, or no clear positive/negative tone. Negative = complaint, dissatisfaction, concern, or mention of a problem.",
+    "limitations": [
+      "เป็นข้อมูลที่กรองจาก URL sample ที่เคยกวาดไว้ ยังไม่ใช่ keyword search ทั้ง TikTok",
+      "ช่วงวันที่นี้อิงจากวันที่ของคอมเมนต์ ไม่ใช่วันที่กวาดข้อมูล",
+      "ถ้าต้องการ coverage ที่กว้างกว่านี้ ต้องมี TikTok keyword/profile scraper ที่ค้นหาโพสต์ในช่วงวันที่ดังกล่าวได้"
+    ]
+  },
+  "insights": [],
+  "evidence": [
+    {
+      "id": "tiktok-7693120992055280436",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7693120992055280436",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7693120992055280436",
+      "publishedAt": "2026-10-05T09:58:43.000Z",
+      "text": "Already got one! 🫶🏻",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690933566859526932",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690933566859526932",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7690933566859526932",
+      "publishedAt": "2026-09-29T12:30:28.000Z",
+      "text": "อยากมีต้าอู๋ออฟโร้ดเป็นของตัวเอง",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 7,
+        "replies": 1,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 8,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690926011081327381",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690926011081327381",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7690926011081327381",
+      "publishedAt": "2026-09-29T12:01:11.000Z",
+      "text": "Song credit: At the sta$ion - Lomo,iTMR",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690971984726131463",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690971984726131463",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7690971984726131463",
+      "publishedAt": "2026-09-29T14:59:30.000Z",
+      "text": "อยากด้ายยย",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690942039181460245",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690942039181460245",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7690942039181460245",
+      "publishedAt": "2026-09-29T13:03:18.000Z",
+      "text": "สวยอ่าาาา",
+      "sentiment": "positive",
+      "topics": [
+        "คำชม/ความชอบสินค้า"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690949006046118663",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690949006046118663",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7690949006046118663",
+      "publishedAt": "2026-09-29T13:30:17.000Z",
+      "text": "แพ็คเกจน่าเก็บมากกกก",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 1,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 1,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690946611552256775",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690946611552256775",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7690946611552256775",
+      "publishedAt": "2026-09-29T13:21:01.000Z",
+      "text": "กล่องสวยมากค้าบบ ต้องไปตามเก็บแล้วว",
+      "sentiment": "positive",
+      "topics": [
+        "คำชม/ความชอบสินค้า"
+      ],
+      "metrics": {
+        "likes": 1,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 1,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7691199325526901522",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7691199325526901522",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7691199325526901522",
+      "publishedAt": "2026-09-30T05:41:39.000Z",
+      "text": "อยากได้ดด",
+      "sentiment": "positive",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690980044143461121",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690980044143461121",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7690980044143461121",
+      "publishedAt": "2026-09-29T15:30:45.000Z",
+      "text": "กี้ดดดดเเเเเ",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690947975388791570",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690947975388791570",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7690947975388791570",
+      "publishedAt": "2026-09-29T13:26:23.000Z",
+      "text": "มากๆ",
+      "sentiment": "neutral",
+      "topics": [
+        "ข้อความสั้น/รีแอคชัน"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690931528952611585",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690931528952611585",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7690931528952611585",
+      "publishedAt": "2026-09-29T12:22:32.000Z",
+      "text": "โอ้ยยยย ของต้องมีละ",
+      "sentiment": "positive",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690927022516224820",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690927022516224820",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7690927022516224820",
+      "publishedAt": "2026-09-29T12:05:16.000Z",
+      "text": "น่าเก็บมากๆ",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690945426213585684",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690945426213585684",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7690945426213585684",
+      "publishedAt": "2026-09-29T13:16:29.000Z",
+      "text": "ของที่ต้องมี",
+      "sentiment": "positive",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690946202070188852",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690946202070188852",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7690946202070188852",
+      "publishedAt": "2026-09-29T13:19:25.000Z",
+      "text": "กี้ดดดดด สวยมากเลยค่า",
+      "sentiment": "positive",
+      "topics": [
+        "คำชม/ความชอบสินค้า"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690971748531503873",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690971748531503873",
+      "parentPostId": "7690925926615403828",
+      "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7690925926615403828?comment_id=7690971748531503873",
+      "publishedAt": "2026-09-29T14:58:29.000Z",
+      "text": "[Starry hearts][Starry hearts][Starry hearts][Starry hearts]",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@laglace_official",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689466772244775687",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689466772244775687",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689466772244775687",
+      "publishedAt": "2026-09-25T13:38:29.000Z",
+      "text": "เขียนลื่น",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7690086989554762517",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7690086989554762517",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7690086989554762517",
+      "publishedAt": "2026-09-27T05:45:17.000Z",
+      "text": "เขียนง่ายย",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689879644786754324",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689879644786754324",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689879644786754324",
+      "publishedAt": "2026-09-26T16:20:42.000Z",
+      "text": "ใช้ดีมากกก",
+      "sentiment": "positive",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689747953926849288",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689747953926849288",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689747953926849288",
+      "publishedAt": "2026-09-26T07:49:49.000Z",
+      "text": "น่าลอง",
+      "sentiment": "neutral",
+      "topics": [
+        "ข้อความสั้น/รีแอคชัน"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689501746481808136",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689501746481808136",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689501746481808136",
+      "publishedAt": "2026-09-25T15:54:13.000Z",
+      "text": "น่าสน",
+      "sentiment": "neutral",
+      "topics": [
+        "ข้อความสั้น/รีแอคชัน"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689629584112239380",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689629584112239380",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689629584112239380",
+      "publishedAt": "2026-09-26T00:10:53.000Z",
+      "text": "แนะนำเลย",
+      "sentiment": "neutral",
+      "topics": [
+        "ข้อความสั้น/รีแอคชัน"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689475356654469906",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689475356654469906",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689475356654469906",
+      "publishedAt": "2026-09-25T14:11:44.000Z",
+      "text": "สวยย",
+      "sentiment": "positive",
+      "topics": [
+        "คำชม/ความชอบสินค้า"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689458520715838226",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689458520715838226",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689458520715838226",
+      "publishedAt": "2026-09-25T13:06:28.000Z",
+      "text": "เขียนง่าย",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689551436611142408",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689551436611142408",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689551436611142408",
+      "publishedAt": "2026-09-25T19:07:03.000Z",
+      "text": "เขียนดี",
+      "sentiment": "neutral",
+      "topics": [
+        "ข้อความสั้น/รีแอคชัน"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689389704441856769",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689389704441856769",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689389704441856769",
+      "publishedAt": "2026-09-25T08:39:39.000Z",
+      "text": "น่าลองมากค่า✨",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689479579086111540",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689479579086111540",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689479579086111540",
+      "publishedAt": "2026-09-25T14:28:15.000Z",
+      "text": "น่าใช้มากกก",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689463655985316628",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689463655985316628",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689463655985316628",
+      "publishedAt": "2026-09-25T13:26:20.000Z",
+      "text": "เขียนง่าย เขียนลื่นมาก",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689468086038790930",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689468086038790930",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689468086038790930",
+      "publishedAt": "2026-09-25T13:43:34.000Z",
+      "text": "ดีอา ตาละมุนมาก♥️",
+      "sentiment": "positive",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689528172643549959",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689528172643549959",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689528172643549959",
+      "publishedAt": "2026-09-25T17:36:45.000Z",
+      "text": "เขียนลื่นน",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689509635955262214",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689509635955262214",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689509635955262214",
+      "publishedAt": "2026-09-25T16:24:52.000Z",
+      "text": "เขียนลื่น",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689734084952294164",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689734084952294164",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689734084952294164",
+      "publishedAt": "2026-09-26T06:55:54.000Z",
+      "text": "เขียนออกมาสวยมากก[อบอุ่นใจ]",
+      "sentiment": "positive",
+      "topics": [
+        "คำชม/ความชอบสินค้า"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689856825961579265",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689856825961579265",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689856825961579265",
+      "publishedAt": "2026-09-26T14:52:15.000Z",
+      "text": "นัวววว",
+      "sentiment": "positive",
+      "topics": [
+        "คำชม/ความชอบสินค้า"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689492909574046482",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689492909574046482",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689492909574046482",
+      "publishedAt": "2026-09-25T15:19:56.000Z",
+      "text": "ใช้ง่ายมากกก",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689386842512720648",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689386842512720648",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689386842512720648",
+      "publishedAt": "2026-09-25T08:28:20.000Z",
+      "text": "เขียนลื่นมาก",
+      "sentiment": "neutral",
+      "topics": [
+        "บทสนทนาอื่นๆ"
+      ],
+      "metrics": {
+        "likes": 1,
+        "replies": 1,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 2,
+      "isIssue": false
+    },
+    {
+      "id": "tiktok-7689391041665188629",
+      "platform": "TikTok",
+      "recordType": "comment",
+      "sourceId": "7689391041665188629",
+      "parentPostId": "7689384377268096274",
+      "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689391041665188629",
+      "publishedAt": "2026-09-25T08:44:38.000Z",
+      "text": "ใช้ดีค่ะ",
+      "sentiment": "positive",
+      "topics": [
+        "ข้อความสั้น/รีแอคชัน"
+      ],
+      "metrics": {
+        "likes": 0,
+        "replies": 0,
+        "shares": null,
+        "views": null,
+        "comments": null
+      },
+      "isDemo": false,
+      "user": "@ibunniechu",
+      "authorName": null,
+      "matchedKeywords": [],
+      "engagement": 0,
+      "isIssue": false
+    }
+  ],
+  "dashboard": {
+    "eyebrow": "TikTok-only filtered sample",
+    "headline": "La Glace TikTok Comments Sep-Oct 2026",
+    "description": "ชุดข้อมูลนี้กรองเฉพาะคอมเมนต์ TikTok ที่อยู่ในช่วง 2026-09-01 ถึง 2026-10-05 จากข้อมูลที่กวาดมาแล้ว เพื่อดูบทสนทนาในช่วงวันที่ต้องการ",
+    "brandMark": "TT",
+    "brandName": "LA GLACE",
+    "badge": "TikTok Comments Scrape",
+    "kpis": [
+      {
+        "label": "คอมเมนต์ในช่วงวันที่",
+        "value": "35",
+        "caption": "2026-09-01 ถึง 2026-10-05",
+        "badge": "Filtered",
+        "tone": "pink"
+      },
+      {
+        "label": "วิดีโอต้นทาง",
+        "value": "2",
+        "caption": "Selected TikTok URLs",
+        "badge": "TikTok only",
+        "tone": "mint"
+      },
+      {
+        "label": "สัดส่วนเชิงบวก",
+        "value": "0%",
+        "caption": "0 positive / 35 comments",
+        "badge": "Neu 0%",
+        "tone": "mint"
+      },
+      {
+        "label": "ช่วงข้อมูล",
+        "value": "35 วัน",
+        "caption": "Comment date range",
+        "badge": "Sep-Oct",
+        "tone": "slate"
+      }
+    ],
+    "ingestion": {
+      "statusText": "Filtered (35 TikTok comments)",
+      "window": "2026-09-01 - 2026-10-05",
+      "pipelineSpeed": "Bright Data snapshot ready",
+      "dataFreshness": "Filtered on 7 ต.ค. 2569 15:12",
+      "monitoredKeywords": [
+        "TikTok comments",
+        "La Glace",
+        "laglace",
+        "ลากลาส",
+        "ลิป",
+        "บรัช",
+        "โทนเนอร์แพด",
+        "URL sample"
+      ],
+      "connectedSources": [
+        {
+          "name": "TikTok Comments API",
+          "type": "Filtered selected video comments",
+          "status": "Connected",
+          "ping": "snapshot",
+          "count": "35 (100%)",
+          "platform": "TikTok"
+        }
+      ],
+      "topKeywords": [
+        {
+          "tag": "บทสนทนาอื่นๆ",
+          "count": 23,
+          "percentage": 66,
+          "color": "#FB6F92"
+        },
+        {
+          "tag": "คำชม/ความชอบสินค้า",
+          "count": 6,
+          "percentage": 17,
+          "color": "#2abfa3"
+        },
+        {
+          "tag": "ข้อความสั้น/รีแอคชัน",
+          "count": 6,
+          "percentage": 17,
+          "color": "#9b7cf6"
+        }
+      ]
+    },
+    "timeline": {
+      "labels": [
+        "25 ก.ย.",
+        "26 ก.ย.",
+        "27 ก.ย.",
+        "29 ก.ย.",
+        "30 ก.ย.",
+        "5 ต.ค."
+      ],
+      "total": [
+        14,
+        5,
+        1,
+        13,
+        1,
+        1
+      ],
+      "positive": [
+        1,
+        3,
+        0,
+        3,
+        1,
+        0
+      ],
+      "negative": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "events": [
+        {
+          "index": 0,
+          "label": "25 ก.ย.: วันที่คอมเมนต์มากสุด",
+          "description": "14 คอมเมนต์ในชุดข้อมูลที่กรอง",
+          "color": "#FB6F92"
+        },
+        {
+          "index": 5,
+          "label": "5 ต.ค.: วันล่าสุดในช่วงที่เลือก",
+          "description": "จุดล่าสุดของคอมเมนต์ในช่วงวันที่นี้",
+          "color": "#2abfa3"
+        }
+      ]
+    },
+    "pillars": [
+      {
+        "title": "บทสนทนาทั่วไปเกี่ยวกับโพสต์",
+        "sourceTopic": "บทสนทนาอื่นๆ",
+        "share": 66,
+        "positive": 9,
+        "description": "กลุ่มนี้คือคอมเมนต์ที่พูดคุยหรือรีแอคกับโพสต์โดยรวม ยังไม่ได้เจาะจงคำถามสินค้า ราคา หรือเฉดสีชัด ๆ",
+        "keywords": [
+          "รีแอคชัน",
+          "พูดถึงโพสต์",
+          "แพ็กเกจ",
+          "อยากได้"
+        ],
+        "exampleIds": [
+          "tiktok-7693120992055280436",
+          "tiktok-7690949006046118663"
+        ],
+        "takeaway": "ใช้เป็นสัญญาณภาพรวมว่าคนตอบรับคอนเทนต์/แพ็กเกจอย่างไร แต่ควรอ่านแยกทีละคอมเมนต์ก่อนสรุปเชิงธุรกิจ"
+      },
+      {
+        "title": "คำชมและความชอบสินค้า",
+        "sourceTopic": "คำชม/ความชอบสินค้า",
+        "share": 17,
+        "positive": 100,
+        "description": "กลุ่มนี้รวมคอมเมนต์ที่ชมว่าสวย น่าเก็บ หรือชอบภาพลักษณ์ของสินค้าและคอนเทนต์",
+        "keywords": [
+          "สวย",
+          "กล่องสวย",
+          "น่าเก็บ",
+          "เขียนสวย"
+        ],
+        "exampleIds": [
+          "tiktok-7690942039181460245",
+          "tiktok-7690946611552256775"
+        ],
+        "takeaway": "หยิบคำชมจริงไปใช้เป็น social proof หรือทำ creative hook ต่อได้"
+      },
+      {
+        "title": "ข้อความสั้นและรีแอคชันเร็ว",
+        "sourceTopic": "ข้อความสั้น/รีแอคชัน",
+        "share": 17,
+        "positive": 50,
+        "description": "กลุ่มนี้คือคอมเมนต์สั้น ๆ เช่น น่าลอง น่าสน แนะนำเลย หรือคำตอบรับสั้นที่บอก mood ของคนดู",
+        "keywords": [
+          "น่าลอง",
+          "น่าสน",
+          "แนะนำเลย",
+          "เขียนดี"
+        ],
+        "exampleIds": [
+          "tiktok-7689747953926849288",
+          "tiktok-7689629584112239380"
+        ],
+        "takeaway": "ใช้เป็น signal เบื้องต้นว่าคอนเทนต์กระตุ้นความสนใจได้ แต่ยังต้องกวาดเพิ่มเพื่ออ่าน intent ลึกขึ้น"
+      }
+    ]
+  }
+}

@@ -1,4 +1,4 @@
-import fs from "node:fs";
+﻿import fs from "node:fs";
 import path from "node:path";
 import { parseArgs, printUsage } from "./args.mjs";
 
@@ -7,14 +7,14 @@ const args = parseArgs(process.argv.slice(2));
 if (args.help || !args.input || !args.platform) {
   printUsage("Normalize Bright Data raw JSON into reviewed evidence draft", [
     "npm run bright:normalize -- --platform TikTok --input work/raw/file.json --output work/reviewed/tiktok-draft.json",
-    "npm run bright:normalize -- --platform Instagram --input work/raw/file.json --output work/reviewed/instagram-draft.json"
+    "npm run bright:normalize -- --platform X --input work/raw/file.json --output work/reviewed/x-draft.json"
   ]);
   process.exit(args.help ? 0 : 1);
 }
 
 const platform = String(args.platform);
-if (!["TikTok", "Instagram"].includes(platform)) {
-  throw new Error("--platform must be TikTok or Instagram");
+if (!["TikTok", "Instagram", "X", "Facebook", "YouTube"].includes(platform)) {
+  throw new Error("--platform must be TikTok, Instagram, X, Facebook, or YouTube");
 }
 
 const inputPath = path.resolve(process.cwd(), String(args.input));
@@ -33,11 +33,11 @@ console.log(`normalized: ${evidence.length}`);
 console.log(`saved: ${path.relative(process.cwd(), outputPath)}`);
 
 function normalizeItem(item, platformName, index) {
-  const sourceUrl = pickString(item, ["comment_url", "url", "post_url", "video_url", "shortcode_url", "source_url", "input_url"]);
-  const text = pickString(item, ["comment", "comment_text", "text", "caption", "description", "title", "commenter_user_name"]);
-  const sourceId = pickString(item, ["id", "comment_id", "post_id", "video_id", "shortcode"]);
-  const parentPostId = pickString(item, ["post_id", "video_id", "parent_post_id"]);
-  const publishedAt = pickString(item, ["date_created", "date", "datetime", "timestamp", "created_at", "published_at"]) ?? new Date().toISOString();
+  const sourceUrl = pickString(item, ["comment_url", "url", "post_url", "tweet_url", "x_url", "video_url", "shortcode_url", "source_url", "input_url"]);
+  const text = pickString(item, ["comment", "comment_text", "text", "caption", "description", "full_text", "tweet_text", "title", "commenter_user_name"]);
+  const sourceId = pickString(item, ["id", "comment_id", "post_id", "tweet_id", "x_id", "video_id", "shortcode"]);
+  const parentPostId = pickString(item, ["post_id", "tweet_id", "conversation_id", "video_id", "parent_post_id"]);
+  const publishedAt = pickString(item, ["date_created", "date", "datetime", "timestamp", "created_at", "published_at", "posted_at"]) ?? new Date().toISOString();
 
   return {
     id: `${platformName.toLowerCase()}-${sourceId ?? index + 1}`,
@@ -53,11 +53,16 @@ function normalizeItem(item, platformName, index) {
     metrics: {
       likes: pickNumber(item, ["num_likes", "likes", "like_count", "digg_count"]),
       replies: pickNumber(item, ["num_replies", "replies", "reply_count"]),
-      shares: pickNumber(item, ["shares", "share_count"]),
+      shares: pickNumber(item, ["shares", "share_count", "retweets", "reposts", "retweet_count", "repost_count"]),
       views: pickNumber(item, ["views", "view_count", "play_count"]),
       comments: pickNumber(item, ["comments", "comment_count"])
     },
-    isDemo: false
+    isDemo: false,
+    user: pickString(item, ["user", "username", "user_name", "handle", "author", "author_name"]),
+    authorName: pickString(item, ["name", "display_name", "authorName", "author_name", "user_full_name"]),
+    matchedKeywords: [],
+    engagement: pickNumber(item, ["engagement", "likes", "like_count", "views", "view_count"]),
+    isIssue: false
   };
 }
 

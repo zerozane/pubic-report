@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-const featuredReportSlug = "iphone-18-selected-tiktok";
+const featuredReportSlug = "laglace-clean-social-report";
 
 export default function HomePage() {
   redirect(`/reports/${featuredReportSlug}`);

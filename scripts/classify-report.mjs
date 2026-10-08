@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { classifyModernSentiment } from "./sentiment-rules.mjs";
 
 const args = parseArgs(process.argv.slice(2));
 const reportPath = args.input || "data/reports/iphone-18-selected-tiktok.json";
@@ -56,11 +57,11 @@ report.summary = buildSummary({
 report.methodology = {
   ...report.methodology,
   sentimentMethod:
-    "จัดประเภทเบื้องต้นด้วยกฎคำสำคัญไทย/อังกฤษ แล้วควรตรวจทานตัวอย่างก่อนเผยแพร่",
+    "Classify sentiment from the meaning of the scraped text, not from likes/views/shares/comments. Positive = praise, liking, purchase intent, or good experience. Neutral = question, factual/general message, short reaction, or no clear positive/negative tone. Negative = complaint, dissatisfaction, concern, or mention of a problem.",
   limitations: [
-    "ชุดข้อมูลมาจาก TikTok เฉพาะโพสต์ที่เลือก ไม่ใช่บทสนทนาทั้งหมดบนโซเชียล",
-    "การจัดประเภทเป็น rule-based จึงอาจตีความมุก ประชด หรือบริบทเฉพาะผิดได้",
-    "จำนวนข้อความไม่เท่ากับจำนวนผู้ซื้อหรือขนาดตลาด",
+    "The dataset is a selected sample of scraped public records, not the full social conversation.",
+    "Sentiment classification is text-based and should be reviewed for sarcasm, slang, or brand-specific context before final publishing.",
+    "Engagement metrics are used to understand impact, not to decide whether a message is positive, neutral, or negative.",
   ],
 };
 report.insights = buildInsights(evidence, topicCounts, sentimentCounts, totalComments);
@@ -178,6 +179,9 @@ function sentimentForText(text, topics) {
   if (isProductCriticism(text)) return "negative";
   if (isDeviceProblemRequest(text)) return "neutral";
   if (isUncertainOrPracticalEvaluation(text)) return "neutral";
+
+  const modernSentiment = classifyModernSentiment(text);
+  if (modernSentiment) return modernSentiment;
 
   const negativeHits = countMatches(text, [
     "แพง",

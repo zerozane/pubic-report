@@ -11,8 +11,17 @@
     "bright:collect": "node scripts/collect.mjs",
     "bright:download": "node scripts/download.mjs",
     "bright:normalize": "node scripts/normalize.mjs",
+    "bright:prepare-inputs": "node scripts/create-social-inputs.mjs",
+    "bright:prepare-comment-test": "node scripts/create-4platform-comment-test-inputs.mjs",
+    "bright:collect-comment-test": "node scripts/collect-4platform-comment-test.mjs",
     "bright:test-tiktok": "node scripts/test-tiktok.mjs",
-    "report:classify": "node scripts/classify-report.mjs"
+    "jev:prepare": "node scripts/prepare-jev-dataset.mjs",
+    "report:classify": "node scripts/classify-report.mjs",
+    "apify:x": "node scripts/run-apify-x.mjs",
+    "apify:x:import": "node scripts/import-apify-x.mjs",
+    "apify:x:collect": "node scripts/collect-apify-x.mjs",
+    "apify:x:search": "node scripts/search-apify-x.mjs",
+    "apify:x:pipeline": "node scripts/search-apify-x.mjs --input work/inputs/apify-x-search.json --replies-input work/inputs/apify-x-replies-from-search.json && node scripts/collect-apify-x.mjs --input work/inputs/apify-x-replies-from-search.json"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

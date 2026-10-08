@@ -1,7 +1,7 @@
-import fs from "node:fs";
+﻿import fs from "node:fs";
 import path from "node:path";
 import { parseArgs, printUsage } from "./args.mjs";
-import { getDatasetId, loadEnv, requireEnv } from "./env.mjs";
+import { getDatasetId, getDefaultLimitPerInput, loadEnv, requireEnv } from "./env.mjs";
 
 loadEnv();
 
@@ -10,14 +10,15 @@ const args = parseArgs(process.argv.slice(2));
 if (args.help || !args.dataset || !args.input) {
   printUsage("Start a Bright Data collection", [
     "npm run bright:collect -- --dataset tiktok-search --input work/inputs/tiktok-search.json",
-    "npm run bright:collect -- --dataset instagram-hashtag --input work/inputs/instagram-hashtag.json",
-    "datasets: tiktok-search, tiktok-comments, instagram-hashtag, instagram-comments"
+    "npm run bright:collect -- --dataset x-posts --input work/inputs/x-posts.json",
+    "datasets: tiktok-search, tiktok-comments, x-posts, twitter-posts, x-comments, twitter-comments, instagram-hashtag, instagram-comments, facebook-comments"
   ]);
   process.exit(args.help ? 0 : 1);
 }
 
 const apiKey = requireEnv("BRIGHT_DATA_API_KEY");
 const datasetId = getDatasetId(args.dataset);
+const limitPerInput = args["limit-per-input"] ? Number(args["limit-per-input"]) : getDefaultLimitPerInput(String(args.dataset));
 const inputPath = path.resolve(process.cwd(), String(args.input));
 const payload = JSON.parse(fs.readFileSync(inputPath, "utf8"));
 
@@ -36,7 +37,7 @@ if (endpoint === "trigger") {
 }
 if (args.type) url.searchParams.set("type", String(args.type));
 if (args["discover-by"]) url.searchParams.set("discover_by", String(args["discover-by"]));
-if (args["limit-per-input"]) url.searchParams.set("limit_per_input", String(args["limit-per-input"]));
+if (limitPerInput) url.searchParams.set("limit_per_input", String(limitPerInput));
 if (args["limit-total"]) url.searchParams.set("limit_multiple_results", String(args["limit-total"]));
 if (args["include-errors"]) url.searchParams.set("include_errors", String(args["include-errors"]));
 
@@ -45,7 +46,7 @@ const body =
   endpoint === "scrape"
     ? {
         input: scrapeInput,
-        limit_per_input: args["limit-per-input"] ? Number(args["limit-per-input"]) : null
+        limit_per_input: limitPerInput
       }
     : payload;
 
@@ -77,6 +78,7 @@ const job = {
   datasetId,
   snapshotId,
   inputPath,
+  limitPerInput,
   createdAt: new Date().toISOString(),
   response: data
 };

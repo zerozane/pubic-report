@@ -1,4 +1,4 @@
-import fs from "node:fs";
+﻿import fs from "node:fs";
 import path from "node:path";
 
 const reportsDirectory = path.join(process.cwd(), "data", "reports");
@@ -21,7 +21,7 @@ for (const file of files) {
     requireString(item.id, `${prefix} evidence.id`);
     if (ids.has(item.id)) fail(`${prefix} duplicate evidence id "${item.id}"`);
     ids.add(item.id);
-    if (!["TikTok", "Instagram"].includes(item.platform)) fail(`${prefix} invalid platform "${item.platform}"`);
+    if (!["TikTok", "Instagram", "X", "Facebook", "YouTube"].includes(item.platform)) fail(`${prefix} invalid platform "${item.platform}"`);
     if (!["post", "comment"].includes(item.recordType)) fail(`${prefix} invalid recordType "${item.recordType}"`);
     if (item.sentiment !== null && !["positive", "neutral", "negative"].includes(item.sentiment)) {
       fail(`${prefix} invalid sentiment "${item.sentiment}"`);

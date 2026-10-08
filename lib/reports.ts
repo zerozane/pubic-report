@@ -40,7 +40,7 @@ export function getPlatformSummary(report: Report): ReportSummary {
     ? Math.round((positiveCount / classifiedComments.length) * 100)
     : null;
 
-  const platformNames: Platform[] = ["TikTok"];
+  const platformNames = Array.from(new Set(report.evidence.map((item) => item.platform))).filter(Boolean) as Platform[];
   const platforms = platformNames.map((platform) => {
     const records = report.evidence.filter((item) => item.platform === platform);
     return {
