@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 import {
   ArrowRight,
@@ -16,6 +16,7 @@ import PrintButton from "./PrintButton";
 
 export default function SocialDashboard({ report }: { report: Report }) {
   const dashboard = report.dashboard || buildFallbackDashboard(report);
+  const timelineHighlights = buildTimelineHighlights(dashboard);
   const stats = buildStats(report);
   const platformRows = buildPlatformRows(report, stats.totalRecords);
   const topicRows = buildTopicRows(report);
@@ -118,7 +119,7 @@ export default function SocialDashboard({ report }: { report: Report }) {
           </div>
           <div className="lg-metric-grid">
             <MetricCard label="เกี่ยวกับ La Glace รอบนี้" value={formatNumber(stats.totalRecords)} caption="โพสต์ บทความ และความคิดเห็นที่เชื่อมกับแบรนด์" />
-            <MetricCard label="โพสต์และบทความต้นทาง" value={formatNumber(stats.posts)} caption="ต้นทางของบทสนทนาในข้อมูลทั้งหมด" />
+            <MetricCard label="ต้นทางที่ตรวจสอบได้" value={formatNumber(stats.sources)} caption="โพสต์ วิดีโอ และบทความต้นทางที่ไม่ซ้ำกัน" />
             <MetricCard label="ความคิดเห็น" value={formatNumber(stats.comments)} caption="เสียงผู้ชมที่นำมาวิเคราะห์ sentiment และหัวข้อ" />
             <MetricCard label="เสียงตอบรับที่วัดได้" value={formatNumber(stats.classified)} caption="ข้อความที่นำมาจัดกลุ่มเชิงบวก กลาง และลบ" />
           </div>
@@ -145,31 +146,26 @@ export default function SocialDashboard({ report }: { report: Report }) {
         <section className="lg-section lg-timeline-section">
           <div className="lg-section-head lg-editorial-head">
             <div>
-              <span>ความเคลื่อนไหวของบทสนทนา</span>
-              <h2>บทสนทนาพุ่งตามจังหวะรีวิวและประเด็นสินค้า</h2>
+              <span>Timeline ของข้อความที่เก็บได้</span>
+              <h2>วันไหนมีคนพูดถึง La Glace มากที่สุด</h2>
             </div>
           </div>
           <div className="lg-timeline-layout">
             <article className="lg-chart-card lg-editorial-card">
               <div className="lg-chart-title">
-                <h3>ปริมาณบทสนทนารายวัน</h3>
-                <p>ใช้ข้อมูล timeline ที่มีในรายงาน La Glace</p>
+                <h3>จำนวนข้อความรายวัน</h3>
+                <p>แต่ละแท่งคือจำนวนข้อความที่พบในวันนั้น แบ่งสีตาม sentiment ที่ระบบจัดกลุ่มได้</p>
               </div>
               <TimelineBars dashboard={dashboard} />
             </article>
             <aside className="lg-period-list">
-              <h3>อ่านตามช่วงเวลา</h3>
-              {dashboard.timeline.events.length ? dashboard.timeline.events.map((event) => (
-                <article key={event.label}>
-                  <b>{event.label}</b>
-                  <p>{event.description}</p>
+              <h3>วันที่ข้อความพุ่ง</h3>
+              {timelineHighlights.map((item) => (
+                <article key={item.label}>
+                  <b>{item.label}</b>
+                  <p>{item.description}</p>
                 </article>
-              )) : (
-                <article>
-                  <b>{formatDateRange(report)}</b>
-                  <p>ข้อมูลชุดนี้ครอบคลุมช่วงเวลาที่ระบุในรายงาน</p>
-                </article>
-              )}
+              ))}
             </aside>
           </div>
         </section>
@@ -300,33 +296,64 @@ function SentimentStack({ positive, neutral, negative }: { positive: number; neu
   );
 }
 
+function buildTimelineHighlights(dashboard: DashboardConfig) {
+  const rows = dashboard.timeline.total
+    .map((value, index) => ({
+      label: dashboard.timeline.labels[index] || `Day ${index + 1}`,
+      value,
+      positive: dashboard.timeline.positive[index] ?? 0,
+      negative: dashboard.timeline.negative[index] ?? 0
+    }))
+    .sort((a, b) => b.value - a.value)
+    .slice(0, 3);
+
+  return rows.map((row, index) => {
+    const neutral = Math.max(row.value - row.positive - row.negative, 0);
+    return {
+      label: `${index + 1}. ${row.label}`,
+      description: `${formatNumber(row.value)} ข้อความทั้งหมด · Positive ${formatNumber(row.positive)} · Neutral ${formatNumber(neutral)} · Negative ${formatNumber(row.negative)}`
+    };
+  });
+}
 function TimelineBars({ dashboard }: { dashboard: DashboardConfig }) {
   const max = Math.max(...dashboard.timeline.total, 1);
-  const eventIndexes = new Set(dashboard.timeline.events.map((event) => event.index));
+  const total = dashboard.timeline.total.reduce((sum, value) => sum + value, 0);
+  const peakIndexes = new Set(dashboard.timeline.total.map((value, index) => value === max ? index : -1).filter((index) => index >= 0));
   return (
-    <div className="lg-editorial-bars">
-      {dashboard.timeline.total.map((value, index) => {
-        const positive = dashboard.timeline.positive[index] || Math.round(value * 0.7);
-        const negative = dashboard.timeline.negative[index] || 0;
-        const neutral = Math.max(value - positive - negative, 0);
-        return (
-          <div className={eventIndexes.has(index) ? "peak" : ""} key={`${dashboard.timeline.labels[index]}-${index}`}>
-            {eventIndexes.has(index) ? <b>{value}</b> : null}
-            <span style={{ height: `${Math.max((value / max) * 100, 4)}%` } as CSSProperties}>
-              <i className="pos" style={{ height: `${(positive / Math.max(value, 1)) * 100}%` }} />
-              <i className="neu" style={{ height: `${(neutral / Math.max(value, 1)) * 100}%` }} />
-              <i className="neg" style={{ height: `${(negative / Math.max(value, 1)) * 100}%` }} />
-            </span>
-            <em>{dashboard.timeline.labels[index]}</em>
-          </div>
-        );
-      })}
+    <div className="lg-timeline-chart">
+      <div className="lg-timeline-summary">
+        <span><b>{formatNumber(total)}</b> ข้อความใน timeline นี้</span>
+        <span>สูงสุด <b>{formatNumber(max)}</b> ข้อความ/วัน</span>
+      </div>
+      <div className="lg-sentiment-legend" aria-label="Sentiment legend">
+        <span><i className="pos" />Positive</span>
+        <span><i className="neu" />Neutral</span>
+        <span><i className="neg" />Negative</span>
+      </div>
+      <div className="lg-editorial-bars">
+        {dashboard.timeline.total.map((value, index) => {
+          const positive = dashboard.timeline.positive[index] ?? Math.round(value * 0.7);
+          const negative = dashboard.timeline.negative[index] ?? 0;
+          const neutral = Math.max(value - positive - negative, 0);
+          return (
+            <div className={peakIndexes.has(index) ? "peak" : ""} key={`${dashboard.timeline.labels[index]}-${index}`} title={`${dashboard.timeline.labels[index]}: ${formatNumber(value)} records`}>
+              {peakIndexes.has(index) ? <b>{formatNumber(value)}</b> : null}
+              <span style={{ height: `${Math.max((value / max) * 100, 4)}%` } as CSSProperties}>
+                <i className="pos" style={{ height: `${(positive / Math.max(value, 1)) * 100}%` }} />
+                <i className="neu" style={{ height: `${(neutral / Math.max(value, 1)) * 100}%` }} />
+                <i className="neg" style={{ height: `${(negative / Math.max(value, 1)) * 100}%` }} />
+              </span>
+              <em>{dashboard.timeline.labels[index]}</em>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
 
 function buildStats(report: Report) {
-  const posts = report.evidence.filter((item) => item.recordType === "post");
+  const sources = countAuditableSources(report.evidence);
   const comments = report.evidence.filter((item) => item.recordType === "comment");
   const positive = report.evidence.filter((item) => item.sentiment === "positive").length;
   const neutral = report.evidence.filter((item) => item.sentiment === "neutral").length;
@@ -337,7 +364,7 @@ function buildStats(report: Report) {
 
   return {
     totalRecords: report.evidence.length,
-    posts: posts.length,
+    sources,
     comments: comments.length,
     positive,
     neutral,
@@ -350,6 +377,28 @@ function buildStats(report: Report) {
   };
 }
 
+function countAuditableSources(records: ReportEvidence[]) {
+  const sourceKeys = records.map(sourceKey).filter((value): value is string => Boolean(value));
+  return new Set(sourceKeys).size;
+}
+
+function sourceKey(item: ReportEvidence) {
+  if (item.parentPostId) return `${item.platform}:${item.parentPostId}`;
+  if (item.recordType === "post" && item.sourceId) return `${item.platform}:${item.sourceId}`;
+  if (item.sourceUrl) return `${item.platform}:${normalizeSourceUrl(item.sourceUrl)}`;
+  return null;
+}
+
+function normalizeSourceUrl(value: string) {
+  try {
+    const url = new URL(value);
+    url.search = "";
+    url.hash = "";
+    return url.toString().replace(/\/$/, "");
+  } catch {
+    return value.split("?")[0].replace(/\/$/, "");
+  }
+}
 function buildPlatformRows(report: Report, totalRecords: number) {
   const roles: Record<string, string> = {
     TikTok: "พื้นที่สนทนาหลักของรอบนี้",

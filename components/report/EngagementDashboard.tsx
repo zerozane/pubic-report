@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import { BarChart3, Eye, Heart, MessageCircle, MousePointer2, Share2 } from "lucide-react";
@@ -148,7 +148,7 @@ export default function EngagementDashboard({ report }: EngagementDashboardProps
             <ChartCard title="Daily Engagement Type by Date" subtitle={metric === "all" ? "Share, Comment, Reaction, Views" : metricLabels[metric]}>
               <LineChart labels={data.days} series={data.typeSeries} />
             </ChartCard>
-            <ChartCard title="Engagement Type Share" subtitle="Period over period comparison">
+            <ChartCard title="Engagement Type Share" subtitle="Current vs previous mix">
               <DonutPair current={typeSlices(data.current, metric)} previous={typeSlices(data.previous, metric)} totalCurrent={data.current.total} totalPrevious={data.previous.total} />
             </ChartCard>
           </section>
@@ -212,18 +212,27 @@ function LineChart({ labels, series }: { labels: string[]; series: Array<{ name:
   const width = 900;
   const height = 330;
   const max = Math.max(...series.flatMap((s) => s.values), 1);
+  const chartLeft = 64;
+  const chartRight = width - 56;
+  const chartTop = 34;
+  const chartBottom = height - 54;
+  const yTicks = [1, 0.75, 0.5, 0.25, 0];
   if (!series.length) return <div className="lg-chart-empty">ไม่มี series สำหรับเงื่อนไขนี้</div>;
   return (
     <div className="lg-line-panel">
       <div className="lg-chart-legend">{series.map((s) => <span key={s.name}><i style={{ background: s.color }} />{s.name}</span>)}</div>
       <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Engagement line chart">
-        {[0, 1, 2, 3, 4].map((n) => <line key={n} x1="42" x2={width - 18} y1={36 + n * 54} y2={36 + n * 54} />)}
-        {series.map((s) => {
-          const pts = s.values.map((v, i) => ({ x: 42 + (i / Math.max(labels.length - 1, 1)) * (width - 72), y: height - 46 - (v / max) * (height - 86) }));
-          const d = pts.map((p, i) => `${i ? "L" : "M"} ${p.x} ${p.y}`).join(" ");
-          return <g key={s.name}><path d={d} style={{ stroke: s.color }} />{pts.map((p, i) => <circle key={i} cx={p.x} cy={p.y} r="3" style={{ fill: s.color }} />)}</g>;
+        {yTicks.map((tick) => {
+          const y = chartTop + (1 - tick) * (chartBottom - chartTop);
+          return <g key={tick}><line x1={chartLeft} x2={chartRight} y1={y} y2={y} /><text className="lg-axis-label" x="12" y={y + 4}>{formatCompact(max * tick)}</text></g>;
         })}
-        {labels.map((label, i) => <text key={`${label}-${i}`} x={42 + (i / Math.max(labels.length - 1, 1)) * (width - 72)} y={height - 14}>{label}</text>)}
+        {series.map((s) => {
+          const pts = s.values.map((v, i) => ({ x: chartLeft + (i / Math.max(labels.length - 1, 1)) * (chartRight - chartLeft), y: chartBottom - (v / max) * (chartBottom - chartTop), value: v }));
+          const d = pts.map((p, i) => `${i ? "L" : "M"} ${p.x} ${p.y}`).join(" ");
+          const lastPoint = pts[pts.length - 1];
+          return <g key={s.name}><path d={d} style={{ stroke: s.color }} />{pts.map((p, i) => <circle key={i} cx={p.x} cy={p.y} r="3.5" style={{ fill: s.color }} />)}{lastPoint ? <text className="lg-series-value" x={Math.min(lastPoint.x + 8, width - 48)} y={Math.max(lastPoint.y - 8, 18)} style={{ fill: s.color }}>{formatCompact(lastPoint.value)}</text> : null}</g>;
+        })}
+        {labels.map((label, i) => <text key={`${label}-${i}`} x={chartLeft + (i / Math.max(labels.length - 1, 1)) * (chartRight - chartLeft)} y={height - 16}>{label}</text>)}
       </svg>
     </div>
   );
@@ -242,16 +251,16 @@ function Donut({ slices, total, label }: { slices: Slice[]; total: number; label
     cursor = end;
     return `${s.color} ${start}% ${end}%`;
   }).join(", ");
-  return <div className="lg-donut-wrap"><div className="lg-engagement-donut" style={{ background: `conic-gradient(${stops || "#f4e7ef 0 100%"})` }}><strong>{formatCompact(total)}</strong></div><small>{label}</small></div>;
+  return <div className="lg-donut-wrap"><div className="lg-engagement-donut" style={{ background: `conic-gradient(${stops || "#f4e7ef 0 100%"})` }}><strong>{formatCompact(total)}</strong></div><small>{label}</small><ul className="lg-donut-legend">{visibleSlices.map((s) => <li key={s.label}><i style={{ background: s.color }} /><span>{s.label}</span><b>{formatCompact(s.value)}</b><em>{formatPercent(s.value, total)}</em></li>)}</ul></div>;
 }
 
 function Bars({ labels, previous, current, color, soft }: { labels: string[]; previous: number[]; current: number[]; color: string; soft: string }) {
   const max = Math.max(...previous, ...current, 1);
-  return <div className="lg-group-bars">{labels.map((label, i) => <div key={label}><span><i style={{ height: `${(previous[i] / max) * 100}%`, background: color }} /><i style={{ height: `${(current[i] / max) * 100}%`, background: soft }} /></span><small>{label}</small></div>)}</div>;
+  return <div><div className="lg-period-legend"><span><i style={{ background: color }} />Previous</span><span><i style={{ background: soft }} />Current</span></div><div className="lg-group-bars">{labels.map((label, i) => <div key={label}><span><i title={`Previous: ${formatCompact(previous[i])}`} style={{ height: `${(previous[i] / max) * 100}%`, background: color }} data-value={formatCompact(previous[i])} /><i title={`Current: ${formatCompact(current[i])}`} style={{ height: `${(current[i] / max) * 100}%`, background: soft }} data-value={formatCompact(current[i])} /></span><small>{label}</small></div>)}</div></div>;
 }
 
 function DeltaTable({ labels, rows }: { labels: string[]; rows: Array<{ label: string; values: number[] }> }) {
-  return <div className="lg-delta-table">{rows.map((row) => <div key={row.label}><b>{row.label}</b>{labels.map((label, i) => <span key={label}>{formatDelta(row.values[i])}</span>)}</div>)}</div>;
+  return <div className="lg-delta-table"><div className="lg-delta-head"><b>Metric</b>{labels.map((label) => <span key={label}>{label}</span>)}</div>{rows.map((row) => <div key={row.label}><b>{row.label}</b>{labels.map((label, i) => <span key={label} className={row.values[i] >= 0 ? "up" : "down"}>{formatDelta(row.values[i])}</span>)}</div>)}</div>;
 }
 
 function Metric({ label, value, delta, icon, active }: { label: string; value: string; delta: number; icon: ReactNode; active: boolean }) {
@@ -341,6 +350,7 @@ function sentimentLabel(value: Sentiment) {
 }
 
 function formatDelta(v: number) { return `${v > 0 ? "+" : ""}${v.toFixed(2)}%`; }
+function formatPercent(value: number, total: number) { return `${((value / Math.max(total, 1)) * 100).toFixed(1)}%`; }
 function formatNumber(v: number) { return Math.round(v).toLocaleString("th-TH"); }
 function formatCompact(v: number) { if (v >= 1000000) return `${(v / 1000000).toFixed(3)}M`; if (v >= 1000) return `${(v / 1000).toFixed(1)}K`; return formatNumber(v); }
 function formatShortDate(v: string) { return new Intl.DateTimeFormat("th-TH", { day: "2-digit", month: "2-digit", year: "numeric", timeZone: "Asia/Bangkok" }).format(new Date(v)); }
