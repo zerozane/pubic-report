@@ -31,7 +31,7 @@ export default function EngagementPage({ params }: { params: { slug: string } })
           </Link>
           <nav className="lg-report-tabs" aria-label="Report sections">
             <Link href={`/reports/${report.slug}`}>ภาพรวม</Link>
-            <Link href={`/reports/${report.slug}#product-quality`}>คุณภาพสินค้า</Link>
+            <Link href={`/reports/${report.slug}/quality`}>คุณภาพสินค้า</Link>
             <Link href={`/reports/${report.slug}#stream`}>เสียงผู้ชม</Link>
             <Link href={`/reports/${report.slug}/evidence`}>หลักฐาน</Link>
             <Link href={`/reports/${report.slug}/engagement`} className="active">Engagement</Link>

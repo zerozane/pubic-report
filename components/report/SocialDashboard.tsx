@@ -41,7 +41,7 @@ export default function SocialDashboard({ report }: { report: Report }) {
 
           <nav className="lg-report-tabs" aria-label="Report sections">
             <a href="#overview" className="active">ภาพรวม</a>
-            <a href="#product-quality">คุณภาพสินค้า</a>
+            <Link href={`/reports/${report.slug}/quality`}>คุณภาพสินค้า</Link>
             <a href="#stream">เสียงผู้ชม</a>
             <Link href={`/reports/${report.slug}/evidence`}>หลักฐาน</Link>
             <Link href={`/reports/${report.slug}/engagement`}>Engagement</Link>
