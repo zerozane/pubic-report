@@ -55,7 +55,7 @@ export default function SummaryPage({ params, searchParams }: { params: { slug: 
           </Link>
           <nav className="lg-report-tabs" aria-label="Report sections">
             <Link href={"/reports/" + report.slug}>{copy.overview}</Link>
-            <Link href={"/reports/" + report.slug + "#product-quality"}>คุณภาพสินค้า</Link>
+            <Link href={"/reports/" + report.slug + "/quality"}>คุณภาพสินค้า</Link>
             <Link href={"/reports/" + report.slug + "#stream"}>{copy.voices}</Link>
             <Link href={"/reports/" + report.slug + "/evidence"}>{copy.evidence}</Link>
             <Link href={"/reports/" + report.slug + "/engagement"}>Engagement</Link>
