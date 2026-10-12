@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
@@ -33,8 +33,8 @@ export default function EvidencePage({ params }: { params: { slug: string } }) {
           </Link>
           <nav className="lg-report-tabs" aria-label="Report sections">
             <Link href={`/reports/${report.slug}`}>ภาพรวม</Link>
+            <Link href={`/reports/${report.slug}#product-quality`}>คุณภาพสินค้า</Link>
             <Link href={`/reports/${report.slug}#stream`}>เสียงผู้ชม</Link>
-            <Link href={`/reports/${report.slug}#channels`}>ช่องทาง</Link>
             <Link href={`/reports/${report.slug}/engagement`}>Engagement</Link>
             <Link href={`/reports/${report.slug}/evidence`} className="active">หลักฐาน</Link>
           </nav>
@@ -48,8 +48,8 @@ export default function EvidencePage({ params }: { params: { slug: string } }) {
       <main className="lg-container lg-main lg-evidence-main" id="main">
         <header className="lg-evidence-hero">
           <p className="lg-kicker">Evidence Library</p>
-          <h1>หลักฐานและเสียงผู้ชมของ {report.dashboard?.brandName || report.title}</h1>
-          <p>ค้นหา กรอง และตรวจสอบข้อความจริงที่ใช้ประกอบรายงาน โดยยังคงลิงก์และบริบทของข้อมูลต้นทางเท่าที่ dataset มีให้</p>
+          <h1>หลักฐานเสียงผู้บริโภคของ {report.dashboard?.brandName || report.title}</h1>
+          <p>ค้นหาและตรวจสอบข้อความต้นฉบับที่ใช้สรุปคุณภาพสินค้า พร้อมบริบท แพลตฟอร์ม และลิงก์ต้นทาง</p>
           {report.status !== "published" ? <span>{report.status === "demo" ? "ข้อมูลตัวอย่าง" : "ฉบับร่าง - อยู่ระหว่างตรวจทาน"}</span> : null}
         </header>
 

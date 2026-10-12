@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import EngagementDashboard from "@/components/report/EngagementDashboard";
@@ -31,10 +31,10 @@ export default function EngagementPage({ params }: { params: { slug: string } })
           </Link>
           <nav className="lg-report-tabs" aria-label="Report sections">
             <Link href={`/reports/${report.slug}`}>ภาพรวม</Link>
+            <Link href={`/reports/${report.slug}#product-quality`}>คุณภาพสินค้า</Link>
             <Link href={`/reports/${report.slug}#stream`}>เสียงผู้ชม</Link>
-            <Link href={`/reports/${report.slug}#channels`}>ช่องทาง</Link>
-            <Link href={`/reports/${report.slug}/engagement`} className="active">Engagement</Link>
             <Link href={`/reports/${report.slug}/evidence`}>หลักฐาน</Link>
+            <Link href={`/reports/${report.slug}/engagement`} className="active">Engagement</Link>
           </nav>
           <div className="lg-top-actions lg-report-actions">
             <Link className="lg-back-link" href={`/reports/${report.slug}`}><ArrowLeft size={16} />กลับภาพรวม</Link>

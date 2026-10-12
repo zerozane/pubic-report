@@ -7225,6 +7225,21 @@ textarea,
   background: rgba(251, 111, 146, 0.08);
 }
 
+/* Keep long Thai headings from expanding editorial grid items. */
+.lg-editorial-page .lg-two-columns > article,
+.lg-editorial-page .lg-quote-section,
+.lg-editorial-page .lg-quote-grid {
+  min-width: 0;
+}
+
+.lg-editorial-page .lg-two-columns h2,
+.lg-editorial-page .lg-two-columns p,
+.lg-editorial-page .lg-quote-section h2,
+.lg-editorial-page .lg-quote-section p,
+.lg-editorial-page .lg-brief-list b,
+.lg-editorial-page .lg-brief-list p {
+  overflow-wrap: anywhere;
+}
 /* 14. Responsive Rules */
 @media (max-width: 1100px) {
   .lg-editorial-page .lg-editorial-hero {

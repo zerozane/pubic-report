@@ -41,10 +41,10 @@ export default function SocialDashboard({ report }: { report: Report }) {
 
           <nav className="lg-report-tabs" aria-label="Report sections">
             <a href="#overview" className="active">ภาพรวม</a>
-            <a href="#evidence-search">เสียงผู้ชม</a>
-            <a href="#channels">ช่องทาง</a>
+            <a href="#product-quality">คุณภาพสินค้า</a>
+            <a href="#stream">เสียงผู้ชม</a>
+            <Link href={`/reports/${report.slug}/evidence`}>หลักฐาน</Link>
             <Link href={`/reports/${report.slug}/engagement`}>Engagement</Link>
-            <a href="#stream">หลักฐาน</a>
           </nav>
 
           <div className="lg-top-actions lg-report-actions">
@@ -58,9 +58,9 @@ export default function SocialDashboard({ report }: { report: Report }) {
         <section className="lg-editorial-hero" id="overview">
           <div className="lg-hero-copy">
             <p className="lg-kicker">รายงานเสียงผู้บริโภคจากบทสนทนาสาธารณะ</p>
-            <h1>เสียงตอบรับต่อ<br />LA GLACE เป็นบวกอย่างชัดเจน</h1>
+            <h1>คุณภาพสินค้า LA GLACE<br />ผ่านเสียงผู้บริโภค</h1>
             <p className="lg-hero-lede">
-              ข้อมูลที่กวาดมาแสดงให้เห็นว่าแบรนด์ถูกพูดถึงในมุมดีไซน์สินค้า คุณภาพ การรีวิวจริง และความต้องการซื้อ พร้อมประเด็นที่ควรเฝ้าระวังเรื่องของขาด สินค้าปลอม และฟีดแบ็กบรรจุภัณฑ์
+              ภาพรวมนี้จัดข้อมูลตามสินค้า ประเด็นคุณภาพ และเสียงตอบรับ เพื่อให้เห็นว่าผู้บริโภคชอบอะไร พบปัญหาตรงไหน และควรตรวจสอบเรื่องใดต่อ
             </p>
             <div className="lg-hero-meta">
               <div>
@@ -94,7 +94,7 @@ export default function SocialDashboard({ report }: { report: Report }) {
               <span><i className="neu" />กลาง <b>{formatNumber(stats.neutral)}</b></span>
               <span><i className="neg" />ลบ <b>{formatNumber(stats.negative)}</b></span>
             </div>
-            <a className="lg-primary-link" href="#stream">เปิดเสียงตอบรับทั้งหมด <ArrowRight size={16} /></a>
+            <a className="lg-primary-link" href="#stream">ดูเสียงผู้ชมทั้งหมด <ArrowRight size={16} /></a>
           </aside>
         </section>
 
@@ -196,11 +196,11 @@ export default function SocialDashboard({ report }: { report: Report }) {
           <div className="lg-section-head lg-editorial-head">
             <div>
               <span>หัวข้อที่ผู้ชมพูดถึงมาก</span>
-              <h2>คำชมภาพรวมมาแรง แต่ประเด็นสินค้าและความพร้อมขายควรอ่านต่อ</h2>
-              <p>กดดูหลักฐานด้านล่างเพื่อเปิดข้อความจริงที่เกี่ยวข้องกับแต่ละประเด็น</p>
+              <h2>ประเด็นที่ผู้บริโภคพูดถึงเกี่ยวกับสินค้า</h2>
+              <p>ดูหลักฐานของแต่ละประเด็นเพื่ออ่านข้อความจริงและบริบทต้นทาง</p>
             </div>
           </div>
-          <div className="lg-topic-ranking">
+          <div className="lg-topic-ranking" id="product-quality">
             {topicRows.slice(0, 6).map((topic, index) => (
               <article key={topic.name}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
@@ -215,23 +215,23 @@ export default function SocialDashboard({ report }: { report: Report }) {
 
         <section className="lg-section lg-two-columns">
           <article>
-            <span>ข้อกังวลสำคัญที่พบ</span>
-            <h2>คำติมีน้อย แต่เรื่องเฉพาะเจาะจงไม่ควรถูกกลบ</h2>
-            <p>ข้อความเชิงลบ {formatNumber(stats.negative)} ข้อความ ({stats.negativeRate}% ของเสียงตอบรับ) กระจายเป็นประเด็นที่ควรตรวจสอบ</p>
+            <span>ประเด็นที่ควรตรวจสอบ</span>
+            <h2>มีประเด็นอะไรที่ควรตรวจสอบ</h2>
+            <p>รวมข้อความเชิงลบหรือข้อกังวลที่อาจกระทบประสบการณ์และความน่าเชื่อถือของสินค้า</p>
             <div className="lg-brief-list">
               {concernRows.map((item) => (
                 <div key={item.title}>
                   <b>{item.title}</b>
-                  <span>{formatNumber(item.count)} รายการที่ควรทบทวน</span>
+                  <span>{formatNumber(item.count)} ข้อความที่พบ</span>
                   <p>{item.description}</p>
                 </div>
               ))}
             </div>
           </article>
           <article>
-            <span>สิ่งที่ผู้ชมอยากเห็นต่อ</span>
-            <h2>มีคนอยากชมและซื้อ La Glace ต่อ แต่ต้องยืนยันก่อนวางแผน</h2>
-            <p>โอกาสเชิงคอนเทนต์และการขายมาจากคำถามเรื่องพิกัด รีวิว สต็อก และหลักฐานคุณภาพสินค้า</p>
+            <span>โอกาสจากเสียงผู้บริโภค</span>
+            <h2>มีอะไรที่ผู้บริโภคสนใจและนำไปต่อยอดได้</h2>
+            <p>รวมสิ่งที่ผู้บริโภคชื่นชอบ สนใจ หรือถามถึง ซึ่งนำไปต่อยอดด้านสินค้า คอนเทนต์ และการขายได้</p>
             <div className="lg-brief-list">
               {opportunityRows.map((item) => (
                 <div key={item.title}>
@@ -246,9 +246,9 @@ export default function SocialDashboard({ report }: { report: Report }) {
 
         <section className="lg-section lg-quote-section">
           <div>
-            <span>เข้าถึงหลักฐานได้ทันที</span>
-            <h2>ผู้คนกำลังพูดอะไร และอะไรที่กระตุ้นปฏิกิริยาแรงที่สุด</h2>
-            <p>ตัวอย่างเสียงที่เรียบเรียงจากข้อความจริงในคลังหลักฐาน</p>
+            <span>ตัวอย่างเสียงจริงจากผู้บริโภค</span>
+            <h2>ข้อความจริงที่ช่วยยืนยันประเด็นคุณภาพสินค้า</h2>
+            <p>ตัวอย่างข้อความจริงที่ช่วยยืนยันประเด็นด้านคุณภาพสินค้าและความรู้สึกของผู้บริโภค</p>
           </div>
           <div className="lg-quote-grid">
             {topQuotes.map((item) => (

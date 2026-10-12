@@ -94,9 +94,9 @@ export default function MentionsExplorer({ evidence }: { evidence: ReportEvidenc
         <div>
           <h2>
             <FileText size={20} />
-            Mentions Explorer
+            เสียงผู้บริโภค
           </h2>
-          <p>Search and review every scraped post or comment with platform, keyword, sentiment, engagement, and source links.</p>
+          <p>ค้นหาและตรวจสอบโพสต์หรือคอมเมนต์จริง โดยดูสินค้า ประเด็นคุณภาพ sentiment แพลตฟอร์ม และลิงก์ต้นทางได้ในจุดเดียว</p>
         </div>
         <span className="lg-result-count">
           Showing {filtered.length.toLocaleString("th-TH")} of {records.length.toLocaleString("th-TH")} records
@@ -110,12 +110,12 @@ export default function MentionsExplorer({ evidence }: { evidence: ReportEvidenc
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search text, author, topic, keyword..."
+              placeholder="ค้นหาข้อความ สินค้า ประเด็น หรือ keyword..."
             />
           </label>
 
           <select value={keyword} onChange={(event) => setKeyword(event.target.value)}>
-            <option value="all">All keywords/topics</option>
+            <option value="all">ทุกประเด็น / keyword</option>
             {keywords.map((value) => (
               <option key={value} value={value}>
                 {value}
