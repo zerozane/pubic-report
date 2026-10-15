@@ -15,12 +15,14 @@ export default function ProductQualityExplorer({ reviews }: { reviews: ProductQu
   const [verifiedOnly, setVerifiedOnly] = useState(false);
   const [sort, setSort] = useState<Sort>("recent");
   const [page, setPage] = useState(1);
+  const [targetReviewId, setTargetReviewId] = useState<string | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const requestedSignal = params.get("signal");
     const requestedRating = params.get("rating");
     const requestedTopic = params.get("topic");
+    const requestedReviewId = params.get("reviewId");
 
     if (requestedSignal && ["all", "positive", "neutral", "watch", "human", "negative"].includes(requestedSignal)) {
       setSignal(requestedSignal as Signal);
@@ -30,6 +32,7 @@ export default function ProductQualityExplorer({ reviews }: { reviews: ProductQu
     }
     if (requestedTopic) setTopic(requestedTopic);
     if (params.get("verified") === "1") setVerifiedOnly(true);
+    if (requestedReviewId) setTargetReviewId(requestedReviewId);
   }, []);
 
   const products = useMemo(() => {
@@ -70,10 +73,25 @@ export default function ProductQualityExplorer({ reviews }: { reviews: ProductQu
 
   const pageSize = 50;
   const pageCount = Math.max(1, Math.ceil(filteredReviews.length / pageSize));
+  const targetIndex = targetReviewId ? filteredReviews.findIndex((review) => review.id === targetReviewId) : -1;
   const currentPage = Math.min(page, pageCount);
   const visibleReviews = filteredReviews.slice((currentPage - 1) * pageSize, currentPage * pageSize);
   const firstResult = filteredReviews.length ? (currentPage - 1) * pageSize + 1 : 0;
   const lastResult = Math.min(currentPage * pageSize, filteredReviews.length);
+
+  useEffect(() => {
+    if (targetIndex < 0) return;
+    const targetPage = Math.floor(targetIndex / pageSize) + 1;
+    setPage((current) => current === targetPage ? current : targetPage);
+  }, [targetIndex]);
+
+  useEffect(() => {
+    if (!targetReviewId || targetIndex < 0) return;
+    const timer = window.setTimeout(() => {
+      document.getElementById(`quality-review-${targetReviewId}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 80);
+    return () => window.clearTimeout(timer);
+  }, [targetReviewId, targetIndex, currentPage]);
 
   return (
     <section id="quality-explorer" className="lg-quality-section lg-quality-explorer">
@@ -122,7 +140,7 @@ export default function ProductQualityExplorer({ reviews }: { reviews: ProductQu
       </div>
 
       <div className="lg-quality-explorer-results">
-        {visibleReviews.length ? visibleReviews.map((review) => <ReviewRow key={review.id} review={review} />) : (
+        {visibleReviews.length ? visibleReviews.map((review) => <ReviewRow key={review.id} review={review} isTarget={review.id === targetReviewId} />) : (
           <div className="lg-quality-empty"><strong>ไม่พบรีวิวตามตัวกรอง</strong><p>ลองเปลี่ยนคำค้นหาหรือเลือกตัวกรองอื่น</p></div>
         )}
       </div>
@@ -136,10 +154,10 @@ export default function ProductQualityExplorer({ reviews }: { reviews: ProductQu
   );
 }
 
-function ReviewRow({ review }: { review: ProductQualityReview }) {
+function ReviewRow({ review, isTarget = false }: { review: ProductQualityReview; isTarget?: boolean }) {
   const sentimentLabel = review.sentiment === "positive" ? "เชิงบวก" : review.sentiment === "neutral" ? "เป็นกลาง" : "เชิงลบ";
   return (
-    <article className="lg-quality-review-row">
+    <article id={`quality-review-${review.id}`} className={`lg-quality-review-row${isTarget ? " is-target" : ""}`}>
       <div className="lg-quality-review-top">
         <div className="lg-quality-review-product"><strong>{review.sourceName}</strong><span>{review.productLabel} · {review.productCategory}</span></div>
         <div className="lg-quality-review-rating" aria-label={`${review.rating ?? "ไม่ระบุ"} ดาว`}>{review.rating ? `${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)}` : "ไม่ระบุคะแนน"}</div>

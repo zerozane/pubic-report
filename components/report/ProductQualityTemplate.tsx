@@ -18,6 +18,12 @@ export default function ProductQualityTemplate({
 
   const { totals } = quality;
   const topTopic = quality.topics[0];
+  const lowRatingReview = reviews.find((review) => review.rating !== null && review.rating <= 2) ?? null;
+  const issueReview = reviews.find((review) => review.isIssue) ?? null;
+  const humanReview = reviews.find((review) => review.needsHumanReview) ?? null;
+  const verifiedReview = reviews.find((review) => review.verifiedPurchase) ?? null;
+  const fiveStarReview = reviews.find((review) => review.rating === 5) ?? null;
+  const topTopicReview = topTopic ? reviews.find((review) => review.qualityTopics.includes(topTopic.name)) ?? null : null;
 
   return (
     <div className="lg-page lg-editorial-page lg-quality-page">
@@ -79,17 +85,17 @@ export default function ProductQualityTemplate({
           <article className="lg-quality-panel issue">
             <SectionHeading eyebrow="03 / WATCHLIST" title="ประเด็นที่ต้องตรวจสอบ" description="ใช้เป็นคิวสำหรับอ่านซ้ำ ไม่ใช่การสรุปว่าทุกรายการเป็นปัญหา" />
             <div className="lg-quality-list">
-              <QualityListItem href={`/reports/${report.slug}/quality?rating=low#quality-explorer`} icon={<CircleAlert size={17} />} title="รีวิวคะแนนต่ำ 1–2 ดาว" value={totals.lowRatingReviews} detail={`${formatPercent(totals.lowRatingReviews, totals.reviews)} ของรีวิว · กรองจาก rating 1–2 ดาว`} />
-              <QualityListItem href={`/reports/${report.slug}/quality?signal=watch#quality-explorer`} icon={<CircleAlert size={17} />} title="รีวิวที่มีคำสัญญาณปัญหา" value={totals.issueReviews} detail={`${formatPercent(totals.issueReviews, totals.reviews)} ของรีวิว · พบคำหรือวลีปัญหาในข้อความจริง`} />
-              <QualityListItem href={`/reports/${report.slug}/quality?signal=human#quality-explorer`} icon={<CircleAlert size={17} />} title="ข้อความที่ควรให้คนตรวจ" value={totals.humanReview} detail={`${formatPercent(totals.humanReview, totals.reviews)} ของรีวิว · ข้อความสั้นหรือจับหัวข้อไม่ได้`} />
+              <QualityListItem href={`/reports/${report.slug}/quality?rating=low#quality-explorer`} icon={<CircleAlert size={17} />} title="รีวิวคะแนนต่ำ 1–2 ดาว" value={totals.lowRatingReviews} detail={`${formatPercent(totals.lowRatingReviews, totals.reviews)} ของรีวิว · กรองจาก rating 1–2 ดาว`} preview={lowRatingReview} />
+              <QualityListItem href={`/reports/${report.slug}/quality?signal=watch#quality-explorer`} icon={<CircleAlert size={17} />} title="รีวิวที่มีคำสัญญาณปัญหา" value={totals.issueReviews} detail={`${formatPercent(totals.issueReviews, totals.reviews)} ของรีวิว · พบคำหรือวลีปัญหาในข้อความจริง`} preview={issueReview} />
+              <QualityListItem href={`/reports/${report.slug}/quality?signal=human#quality-explorer`} icon={<CircleAlert size={17} />} title="ข้อความที่ควรให้คนตรวจ" value={totals.humanReview} detail={`${formatPercent(totals.humanReview, totals.reviews)} ของรีวิว · ข้อความสั้นหรือจับหัวข้อไม่ได้`} preview={humanReview} />
             </div>
           </article>
           <article className="lg-quality-panel opportunity">
             <SectionHeading eyebrow="04 / OPPORTUNITIES" title="เสียงที่ใช้ต่อยอดได้" description="หัวข้อที่มีข้อมูลมากเหมาะสำหรับทำ product proof, FAQ และคอนเทนต์รีวิว" />
             <div className="lg-quality-list">
-              <QualityListItem href={`/reports/${report.slug}/quality?verified=1#quality-explorer`} icon={<CheckCircle2 size={17} />} title="รีวิวที่ยืนยันการซื้อ" value={totals.verifiedPurchases} detail={`${formatPercent(totals.verifiedPurchases, totals.reviews)} ของรีวิว · หลักฐานจากผู้ซื้อจริง`} />
-              <QualityListItem href={`/reports/${report.slug}/quality?rating=5#quality-explorer`} icon={<Star size={17} />} title="รีวิว 5 ดาว" value={totals.fiveStarReviews} detail={`${formatPercent(totals.fiveStarReviews, totals.reviews)} ของรีวิว · ใช้คัดข้อความชมและจุดเด่นสินค้า`} />
-              <QualityListItem href={topTopic ? `/reports/${report.slug}/quality?topic=${encodeURIComponent(topTopic.name)}#quality-explorer` : undefined} icon={<FileText size={17} />} title="หัวข้อเด่นที่สุด" value={topTopic?.count || 0} detail={topTopic ? `${topTopic.name} · กดเพื่อดูรีวิวต้นทาง` : "ยังไม่มีหัวข้อ"} />
+              <QualityListItem href={`/reports/${report.slug}/quality?verified=1#quality-explorer`} icon={<CheckCircle2 size={17} />} title="รีวิวที่ยืนยันการซื้อ" value={totals.verifiedPurchases} detail={`${formatPercent(totals.verifiedPurchases, totals.reviews)} ของรีวิว · หลักฐานจากผู้ซื้อจริง`} preview={verifiedReview} />
+              <QualityListItem href={`/reports/${report.slug}/quality?rating=5#quality-explorer`} icon={<Star size={17} />} title="รีวิว 5 ดาว" value={totals.fiveStarReviews} detail={`${formatPercent(totals.fiveStarReviews, totals.reviews)} ของรีวิว · ใช้คัดข้อความชมและจุดเด่นสินค้า`} preview={fiveStarReview} />
+              <QualityListItem href={topTopic ? `/reports/${report.slug}/quality?topic=${encodeURIComponent(topTopic.name)}#quality-explorer` : undefined} icon={<FileText size={17} />} title="หัวข้อเด่นที่สุด" value={topTopic?.count || 0} detail={topTopic ? `${topTopic.name} · กดเพื่อดูรีวิวต้นทาง` : "ยังไม่มีหัวข้อ"} preview={topTopicReview} />
             </div>
           </article>
         </section>
@@ -155,9 +161,23 @@ function QualityKpi({ label, value, detail, tone = "neutral" }: { label: string;
   return <article className={`lg-quality-kpi ${tone}`}><span>{label}</span><strong>{value}</strong><small>{detail}</small></article>;
 }
 
-function QualityListItem({ href, icon, title, value, detail }: { href?: string; icon: React.ReactNode; title: string; value: number; detail: string }) {
-  const content = <><span>{icon}</span><div><strong>{title}</strong><small>{detail}</small></div><b>{formatNumber(value)}</b></>;
-  return href ? <Link className="lg-quality-list-item" href={href} title="เปิดรายการรีวิวที่เกี่ยวข้อง">{content}</Link> : <div className="lg-quality-list-item">{content}</div>;
+function QualityListItem({ href, icon, title, value, detail, preview }: { href?: string; icon: React.ReactNode; title: string; value: number; detail: string; preview?: ProductQualityReview | null }) {
+  const targetHref = reviewHref(href, preview?.id);
+  const content = <><span>{icon}</span><div><strong>{title}</strong><small>{detail}</small>{preview && <div className="lg-quality-list-preview"><strong>{preview.sourceName}</strong><span>{preview.rating ? `${preview.rating} ดาว` : "ไม่ระบุคะแนน"} · “{truncate(preview.reviewText, 120)}”</span><em>คลิกเพื่อเปิดรีวิวนี้ในรายการ</em></div>}</div><b>{formatNumber(value)}</b></>;
+  const className = `lg-quality-list-item${preview ? " has-preview" : ""}`;
+  return targetHref ? <Link className={className} href={targetHref} title={preview ? `เปิดรีวิวของ ${preview.sourceName}` : "เปิดรายการรีวิวที่เกี่ยวข้อง"}>{content}</Link> : <div className={className}>{content}</div>;
+}
+
+function reviewHref(href: string | undefined, reviewId: string | undefined) {
+  if (!href || !reviewId) return href;
+  const [path, hash] = href.split("#");
+  const separator = path.includes("?") ? "&" : "?";
+  return `${path}${separator}reviewId=${encodeURIComponent(reviewId)}${hash ? `#${hash}` : ""}`;
+}
+
+function truncate(value: string, maxLength: number) {
+  const normalized = value.replace(/\s+/g, " ").trim();
+  return normalized.length > maxLength ? `${normalized.slice(0, maxLength - 1)}…` : normalized;
 }
 
 function EmptyState({ title, description }: { title: string; description: string }) {

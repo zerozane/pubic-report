@@ -3,7 +3,7 @@
 import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import { BarChart3, Eye, Heart, MessageCircle, MousePointer2, Share2 } from "lucide-react";
 import type { Platform, Report, ReportEvidence, Sentiment } from "@/lib/types";
-import type { ProductQualityProduct, ProductQualityReport, ProductQualityReview } from "@/lib/productQuality";
+import type { ProductQualityProduct, ProductQualityReport } from "@/lib/productQuality";
 
 const platformColors: Record<string, string> = {
   TikTok: "#00c7df",
@@ -49,12 +49,18 @@ type Bucket = { total: number; shares: number; comments: number; reactions: numb
 type Slice = { label: string; value: number; color: string };
 
 type EngagementDashboardProps = {
-  report: Report;
+  report?: Report;
   quality?: ProductQualityReport | null;
-  qualityReviews?: ProductQualityReview[];
 };
 
-export default function EngagementDashboard({ report, quality, qualityReviews = [] }: EngagementDashboardProps) {
+const emptyReport = {
+  title: "",
+  evidence: [],
+  period: { from: "1970-01-01T00:00:00.000Z", to: "1970-01-01T00:00:00.000Z", timezone: "UTC" },
+} as unknown as Report;
+
+export default function EngagementDashboard({ report: sourceReport, quality }: EngagementDashboardProps) {
+  const report = sourceReport || emptyReport;
   const platforms = useMemo(() => {
     const from = Date.parse(report.period.from);
     const to = Date.parse(report.period.to);
@@ -192,7 +198,7 @@ export default function EngagementDashboard({ report, quality, qualityReviews = 
         </section>
       ))}
       </>}
-      {quality ? <ProductQualityEngagement quality={quality} reviews={qualityReviews} /> : (
+      {quality ? <ProductQualityEngagement quality={quality} /> : (
         <section className="lg-engagement-card lg-empty-engagement">
           <h2>ไม่พบชุดข้อมูลคุณภาพสินค้า</h2>
           <p>หน้านี้แสดงเฉพาะสรุปคุณภาพสินค้าจากรีวิวที่เชื่อมโยงกับรายงาน</p>
@@ -202,7 +208,7 @@ export default function EngagementDashboard({ report, quality, qualityReviews = 
   );
 }
 
-function ProductQualityEngagement({ quality, reviews }: { quality: ProductQualityReport; reviews: ProductQualityReview[] }) {
+function ProductQualityEngagement({ quality }: { quality: ProductQualityReport }) {
   const products = [...quality.products].sort((a, b) => b.count - a.count || (b.averageRating || 0) - (a.averageRating || 0));
   const topics = quality.topics.slice(0, 6);
   const maxReviewCount = Math.max(...products.map((product) => product.count), 1);
@@ -217,9 +223,9 @@ function ProductQualityEngagement({ quality, reviews }: { quality: ProductQualit
     <section className="lg-quality-engagement" aria-labelledby="quality-engagement-title">
       <div className="lg-quality-engagement-header">
         <div>
-          <span className="lg-quality-engagement-eyebrow">PRODUCT QUALITY × ENGAGEMENT</span>
-          <h2 id="quality-engagement-title">Engagement ที่สะท้อนคุณภาพสินค้า</h2>
-          <p>อ่านว่าผู้บริโภคมีส่วนร่วมกับสินค้าแต่ละตัวมากแค่ไหน และเสียงที่เกิดขึ้นมีสัญญาณคุณภาพแบบใด</p>
+          <span className="lg-quality-engagement-eyebrow">PRODUCT QUALITY SUMMARY</span>
+          <h2 id="quality-engagement-title">สรุปคุณภาพสินค้าจากเสียงผู้บริโภค</h2>
+          <p>ใช้คะแนนรีวิวและเกณฑ์ sentiment ชุดเดียวกับหน้าคุณภาพสินค้า เพื่อให้ตัวเลขและการตีความตรงกัน</p>
         </div>
         <div className="lg-quality-engagement-source">
           <strong>{formatNumber(quality.totals.reviews)} รีวิว</strong>
@@ -235,10 +241,10 @@ function ProductQualityEngagement({ quality, reviews }: { quality: ProductQualit
       </div>
 
       <div className="lg-quality-visual-grid">
-        <ChartCard title="Quality & Sentiment รายสินค้า" subtitle="ดูชื่อสินค้า คะแนนดาว และความรู้สึกจากคะแนนดาวแยกกันชัดเจน">
-          <ProductQualityChart products={products} reviews={reviews} />
-        </ChartCard>
-        <ChartCard title="Quality Mix" subtitle="สัดส่วน sentiment ตามเกณฑ์คะแนนดาว">
+          <ChartCard title="สรุปคุณภาพแยกตามสินค้า" subtitle="ใช้คะแนนเฉลี่ยและสัดส่วนรีวิวจากชุดข้อมูลเดียวกับหน้าคุณภาพสินค้า">
+          <ProductQualityChart products={products} />
+          </ChartCard>
+        <ChartCard title="สัดส่วนคุณภาพทั้งหมด" subtitle="1–2 ดาว เชิงลบ · 3–4 ดาว เชิงกลาง · 5 ดาว เชิงบวก">
           <div className="lg-donut-pair">
             <Donut
               slices={sentimentMix}
@@ -315,20 +321,21 @@ function QualitySignalBar({ product }: { product: ProductQualityProduct }) {
   );
 }
 
-function ProductQualityChart({ products, reviews }: { products: ProductQualityProduct[]; reviews: ProductQualityReview[] }) {
-  const sentimentByProduct = new Map<string, { positive: number; neutral: number; negative: number }>();
-  reviews.forEach((review) => {
-    const current = sentimentByProduct.get(review.productId) || { positive: 0, neutral: 0, negative: 0 };
-    current[review.sentiment] += 1;
-    sentimentByProduct.set(review.productId, current);
-  });
-
+function ProductQualityChart({ products }: { products: ProductQualityProduct[] }) {
   return (
     <div className="lg-product-quality-chart" role="img" aria-label="กราฟคุณภาพและ sentiment แยกตามสินค้า">
       <div className="lg-product-quality-legend"><span><i className="positive" />เชิงบวก</span><span><i className="neutral" />เป็นกลาง</span><span><i className="negative" />เชิงลบ</span></div>
       {products.map((product) => {
-        const sentiment = sentimentByProduct.get(product.id) || { positive: 0, neutral: 0, negative: 0 };
-        const total = Math.max(sentiment.positive + sentiment.neutral + sentiment.negative, product.count, 1);
+        const sentiment = product.ratingDistribution.reduce(
+          (summary, item) => {
+            if (item.rating <= 2) summary.negative += item.count;
+            else if (item.rating <= 4) summary.neutral += item.count;
+            else summary.positive += item.count;
+            return summary;
+          },
+          { positive: 0, neutral: 0, negative: 0 }
+        );
+        const total = Math.max(product.count, 1);
         return (
           <div className="lg-product-quality-row" key={product.id}>
             <div className="lg-product-quality-row-head">

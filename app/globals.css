@@ -7874,6 +7874,11 @@ textarea,
 .lg-quality-quote-source-link { display: inline-block; margin: -8px 0 14px; color: #2563eb; font-size: 12px; font-weight: 800; text-decoration: none; }.lg-quality-quote-source-link:hover { text-decoration: underline; }
 .lg-quality-list-item { color: inherit; text-decoration: none; }
 .lg-quality-list-item small { line-height: 1.45; }
+.lg-quality-list-item.has-preview { align-items: start; }
+.lg-quality-list-preview { display: grid; gap: 2px; margin-top: 9px; padding: 9px 10px; border-left: 3px solid #c7f3de; border-radius: 8px; background: #f5fffa; }
+.lg-quality-list-preview strong { color: #047857; font-size: 12px; }
+.lg-quality-list-preview span { color: #475569; font-size: 12px; line-height: 1.5; }
+.lg-quality-list-preview em { color: #0f766e; font-size: 11px; font-style: normal; font-weight: 800; }
 .lg-quality-list-item[href]:hover { background: #fff8fb; }
 .lg-quality-list-item[href] b { color: #e8557a; }
 .lg-quality-explorer { padding: 26px; border: 1px solid #e2e8f0; border-radius: 20px; background: #f8fafc; }
@@ -7886,6 +7891,7 @@ textarea,
 .lg-quality-explorer-check input { accent-color: #e8557a; }
 .lg-quality-explorer-results { display: grid; gap: 9px; margin-top: 12px; }
 .lg-quality-review-row { padding: 17px 18px; border: 1px solid #e2e8f0; border-radius: 14px; background: #fff; }
+.lg-quality-review-row.is-target { scroll-margin-top: 90px; border-color: #e8557a; box-shadow: 0 0 0 3px rgba(232,85,122,.14), 0 8px 24px rgba(232,85,122,.1); }
 .lg-quality-review-top { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 14px; align-items: start; }
 .lg-quality-review-product strong, .lg-quality-review-product span { display: block; }.lg-quality-review-product strong { color: #0f172a; font-size: 14px; }.lg-quality-review-product span { margin-top: 4px; color: #94a3b8; font-size: 11px; }
 .lg-quality-review-rating { color: #d97706; font-size: 14px; letter-spacing: 1px; white-space: nowrap; }

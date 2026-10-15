@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import EngagementDashboard from "@/components/report/EngagementDashboard";
 import PrintButton from "@/components/report/PrintButton";
 import { getReportBySlug, getReportSlugs } from "@/lib/reports";
-import { getProductQualityBySlug, getProductQualityReviewsBySlug } from "@/lib/productQuality";
+import { getProductQualityBySlug } from "@/lib/productQuality";
 
 export function generateStaticParams() {
   return getReportSlugs().map((slug) => ({ slug }));
@@ -19,7 +19,6 @@ export default function EngagementPage({ params }: { params: { slug: string } })
   if (!getReportSlugs().includes(params.slug)) notFound();
   const report = getReportBySlug(params.slug);
   const quality = getProductQualityBySlug(params.slug);
-  const qualityReviews = getProductQualityReviewsBySlug(params.slug);
 
   return (
     <div className="lg-page lg-editorial-page lg-engagement-page">
@@ -44,7 +43,7 @@ export default function EngagementPage({ params }: { params: { slug: string } })
         </div>
       </header>
 
-      <EngagementDashboard report={report} quality={quality} qualityReviews={qualityReviews} />
+      <EngagementDashboard quality={quality} />
     </div>
   );
 }
