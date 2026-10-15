@@ -3,6 +3,7 @@
 import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import { BarChart3, Eye, Heart, MessageCircle, MousePointer2, Share2 } from "lucide-react";
 import type { Platform, Report, ReportEvidence, Sentiment } from "@/lib/types";
+import type { ProductQualityProduct, ProductQualityReport, ProductQualityReview } from "@/lib/productQuality";
 
 const platformColors: Record<string, string> = {
   TikTok: "#00c7df",
@@ -26,11 +27,17 @@ const sentimentColors = {
   unclassified: "#d6c5ce",
 };
 
+const sentimentBarColors = [
+  { previous: "#15803d", current: "#86efac" },
+  { previous: "#d97706", current: "#fcd34d" },
+  { previous: "#dc2626", current: "#fca5a5" },
+];
+
 const metricLabels = {
   all: "ทั้งหมด",
   shares: "Share",
-  comments: "Comment",
-  reactions: "Reaction",
+  comments: "Replies",
+  reactions: "Comment Likes",
   views: "Views",
 };
 
@@ -43,15 +50,21 @@ type Slice = { label: string; value: number; color: string };
 
 type EngagementDashboardProps = {
   report: Report;
+  quality?: ProductQualityReport | null;
+  qualityReviews?: ProductQualityReview[];
 };
 
-export default function EngagementDashboard({ report }: EngagementDashboardProps) {
+export default function EngagementDashboard({ report, quality, qualityReviews = [] }: EngagementDashboardProps) {
   const platforms = useMemo(() => {
-    const values = [
-      ...report.evidence.map((item) => item.platform),
-      ...(report.dashboard?.ingestion.connectedSources.map((source) => source.platform) || []),
-    ];
-    return Array.from(new Set(values)).filter((value) => value !== "YouTube");
+    const from = Date.parse(report.period.from);
+    const to = Date.parse(report.period.to);
+    const values = report.evidence
+      .filter((item) => {
+        const publishedAt = Date.parse(item.publishedAt);
+        return publishedAt >= from && publishedAt <= to;
+      })
+      .map((item) => item.platform);
+    return Array.from(new Set(values));
   }, [report]);
   const [platform, setPlatform] = useState<PlatformFilter>("all");
   const [sentiment, setSentiment] = useState<SentimentFilter>("all");
@@ -72,6 +85,7 @@ export default function EngagementDashboard({ report }: EngagementDashboardProps
 
   return (
     <main className="lg-container lg-main lg-engagement-main">
+      {false && <>
       <section className="lg-engagement-controls">
         <div>
           <h1>Engagement Dashboard</h1>
@@ -91,7 +105,7 @@ export default function EngagementDashboard({ report }: EngagementDashboardProps
         <div className="lg-filter-simple-head">
           <div>
             <h2>Filter</h2>
-            <p>{formatNumber(data.filteredCount)} จาก {formatNumber(report.evidence.length)} รายการ</p>
+          <p>{formatNumber(data.filteredCount)} จาก {formatNumber(report.evidence.length)} รายการ · ใช้เฉพาะข้อมูลในช่วงรายงาน</p>
           </div>
           <button type="button" onClick={() => { setPlatform("all"); setSentiment("all"); setRecordType("all"); setMetric("all"); }}>
             รีเซ็ต
@@ -99,7 +113,10 @@ export default function EngagementDashboard({ report }: EngagementDashboardProps
         </div>
 
         <div className="lg-filter-simple-body">
-          <div className="lg-platform-strip" aria-label="Platform filter">
+          <div className="lg-filter-top-grid">
+          <div className="lg-filter-row lg-filter-platform-row">
+            <div className="lg-filter-row-label"><strong>ช่องทาง</strong><span>เลือกแพลตฟอร์ม</span></div>
+            <div className="lg-platform-strip" aria-label="Platform filter">
             <FilterChip active={platform === "all"} onClick={() => setPlatform("all")}>ALL</FilterChip>
             {platforms.map((value) => (
               <FilterChip
@@ -111,6 +128,12 @@ export default function EngagementDashboard({ report }: EngagementDashboardProps
                 {value}
               </FilterChip>
             ))}
+            </div>
+          </div>
+
+          <div className="lg-filter-control-summary">
+            <div className="lg-filter-row-label"><strong>ตัวกรอง</strong><span>ปรับมุมมองข้อมูล</span></div>
+          </div>
           </div>
 
           <div className="lg-compact-filters">
@@ -133,54 +156,203 @@ export default function EngagementDashboard({ report }: EngagementDashboardProps
         </div>
       </section>
 
-      {data.filteredCount ? (
+      {false && (data.filteredCount ? (
         <>
-          <section className="lg-engagement-grid two-one">
-            <ChartCard title="Daily Engagement by Date" subtitle="Platforms">
-              <LineChart labels={data.days} series={data.platformSeries} />
-            </ChartCard>
-            <ChartCard title="Engagement Share" subtitle="Platform share">
-              <DonutPair current={data.currentPlatformShare} previous={data.previousPlatformShare} totalCurrent={data.current.total} totalPrevious={data.previous.total} />
-            </ChartCard>
-          </section>
-
-          <section className="lg-engagement-grid two-one">
-            <ChartCard title="Daily Engagement Type by Date" subtitle={metric === "all" ? "Share, Comment, Reaction, Views" : metricLabels[metric]}>
-              <LineChart labels={data.days} series={data.typeSeries} />
-            </ChartCard>
-            <ChartCard title="Engagement Type Share" subtitle="Current vs previous mix">
-              <DonutPair current={typeSlices(data.current, metric)} previous={typeSlices(data.previous, metric)} totalCurrent={data.current.total} totalPrevious={data.previous.total} />
-            </ChartCard>
-          </section>
-
           <section className="lg-total-engagement">
-            <Metric label="Total Engagement" value={formatCompact(data.current.total)} delta={pct(data.current.total, data.previous.total)} icon={<MousePointer2 size={18} />} active={metric === "all"} />
+            <Metric label="Total Interactions" value={formatCompact(data.current.total)} delta={pct(data.current.total, data.previous.total)} icon={<MousePointer2 size={18} />} active={metric === "all"} />
             <Metric label="Share" value={formatNumber(data.current.shares)} delta={pct(data.current.shares, data.previous.shares)} icon={<Share2 size={18} />} active={metric === "shares"} />
-            <Metric label="Comment" value={formatNumber(data.current.comments)} delta={pct(data.current.comments, data.previous.comments)} icon={<MessageCircle size={18} />} active={metric === "comments"} />
-            <Metric label="Reaction" value={formatNumber(data.current.reactions)} delta={pct(data.current.reactions, data.previous.reactions)} icon={<Heart size={18} />} active={metric === "reactions"} />
+            <Metric label="Replies" value={formatNumber(data.current.comments)} delta={pct(data.current.comments, data.previous.comments)} icon={<MessageCircle size={18} />} active={metric === "comments"} />
+            <Metric label="Comment Likes" value={formatNumber(data.current.reactions)} delta={pct(data.current.reactions, data.previous.reactions)} icon={<Heart size={18} />} active={metric === "reactions"} />
             <Metric label="Views" value={formatCompact(data.current.views)} delta={pct(data.current.views, data.previous.views)} icon={<Eye size={18} />} active={metric === "views"} />
           </section>
 
-          <section className="lg-engagement-grid halves">
-            <ChartCard title="Engagement by Sentiment" subtitle="Current vs previous period">
-              <Bars labels={data.sentimentBars.map((x) => x.label)} previous={data.sentimentBars.map((x) => x.previous)} current={data.sentimentBars.map((x) => x.current)} color="#e8557a" soft="#ffb8c9" />
-              <DeltaTable labels={data.sentimentBars.map((x) => x.label)} rows={data.sentimentRows} />
+          <section className="lg-engagement-grid two-one">
+            <ChartCard title="Daily Engagement Type by Date" subtitle={metric === "all" ? "Shares, Replies, Comment Likes, Views" : metricLabels[metric]}>
+              <DailyBarChart labels={data.days} series={data.typeSeries} />
             </ChartCard>
-            <ChartCard title="Engagement by Platform" subtitle="Current vs previous period">
-              <Bars labels={data.platformBars.map((x) => x.label)} previous={data.platformBars.map((x) => x.previous)} current={data.platformBars.map((x) => x.current)} color="#c13584" soft="#f6a8c2" />
-              <DeltaTable labels={data.platformBars.map((x) => x.label)} rows={data.platformRows} />
+            <ChartCard title="สัดส่วนกิจกรรมที่บันทึกได้" subtitle="รวม Views · Total interactions ไม่รวม Views">
+              <DonutPair current={typeSlices(data.current, metric)} previous={typeSlices(data.previous, metric)} totalCurrent={sliceTotal(typeSlices(data.current, metric))} totalPrevious={sliceTotal(typeSlices(data.previous, metric))} />
             </ChartCard>
           </section>
+
+          <section className="lg-engagement-grid sentiment-breakdown">
+            <ChartCard title="Engagement by Sentiment" subtitle={`Interaction total by sentiment (ไม่รวม Views) · Current ${formatNumber(data.filteredCount)} รายการ vs Previous ${formatNumber(data.previousFilteredCount)} รายการ`}>
+              <Bars labels={data.sentimentBars.map((x) => x.label)} previous={data.sentimentBars.map((x) => x.previous)} current={data.sentimentBars.map((x) => x.current)} colors={sentimentBarColors} />
+            </ChartCard>
+            <ChartCard title="Metric" subtitle="เปอร์เซ็นต์การเปลี่ยนแปลงเทียบช่วงก่อนหน้า">
+              <DeltaTable labels={data.sentimentBars.map((x) => x.label)} rows={data.sentimentRows} colors={sentimentBarColors} />
+            </ChartCard>
+          </section>
+
         </>
       ) : (
         <section className="lg-engagement-card lg-empty-engagement">
           <h2>ไม่มีข้อมูลในตัวกรองนี้</h2>
           <p>ลองเลือกแพลตฟอร์ม sentiment หรือประเภท record อื่นเพื่อดูกราฟจากข้อมูลที่กวาดมา</p>
         </section>
+      ))}
+      </>}
+      {quality ? <ProductQualityEngagement quality={quality} reviews={qualityReviews} /> : (
+        <section className="lg-engagement-card lg-empty-engagement">
+          <h2>ไม่พบชุดข้อมูลคุณภาพสินค้า</h2>
+          <p>หน้านี้แสดงเฉพาะสรุปคุณภาพสินค้าจากรีวิวที่เชื่อมโยงกับรายงาน</p>
+        </section>
       )}
     </main>
   );
 }
+
+function ProductQualityEngagement({ quality, reviews }: { quality: ProductQualityReport; reviews: ProductQualityReview[] }) {
+  const products = [...quality.products].sort((a, b) => b.count - a.count || (b.averageRating || 0) - (a.averageRating || 0));
+  const topics = quality.topics.slice(0, 6);
+  const maxReviewCount = Math.max(...products.map((product) => product.count), 1);
+  const maxTopicCount = Math.max(...topics.map((topic) => topic.count), 1);
+  const sentimentMix = [
+    { label: "เชิงลบ (1–2 ดาว)", value: products.reduce((sum, product) => sum + product.ratingDistribution.filter((item) => item.rating <= 2).reduce((ratingSum, item) => ratingSum + item.count, 0), 0), color: "#e8557a" },
+    { label: "เป็นกลาง (3–4 ดาว)", value: products.reduce((sum, product) => sum + product.ratingDistribution.filter((item) => item.rating === 3 || item.rating === 4).reduce((ratingSum, item) => ratingSum + item.count, 0), 0), color: "#fbbf24" },
+    { label: "เชิงบวก (5 ดาว)", value: products.reduce((sum, product) => sum + (product.ratingDistribution.find((item) => item.rating === 5)?.count || 0), 0), color: "#10b981" },
+  ];
+
+  return (
+    <section className="lg-quality-engagement" aria-labelledby="quality-engagement-title">
+      <div className="lg-quality-engagement-header">
+        <div>
+          <span className="lg-quality-engagement-eyebrow">PRODUCT QUALITY × ENGAGEMENT</span>
+          <h2 id="quality-engagement-title">Engagement ที่สะท้อนคุณภาพสินค้า</h2>
+          <p>อ่านว่าผู้บริโภคมีส่วนร่วมกับสินค้าแต่ละตัวมากแค่ไหน และเสียงที่เกิดขึ้นมีสัญญาณคุณภาพแบบใด</p>
+        </div>
+        <div className="lg-quality-engagement-source">
+          <strong>{formatNumber(quality.totals.reviews)} รีวิว</strong>
+          <span>จำนวนรีวิวในชุดวิเคราะห์นี้</span>
+        </div>
+      </div>
+
+      <div className="lg-quality-engagement-kpis">
+        <QualityEngagementMetric label="รีวิวทั้งหมด" value={formatNumber(quality.totals.reviews)} detail="เสียงจากผู้ซื้อ" />
+        <QualityEngagementMetric label="คะแนนเฉลี่ย" value={`${quality.totals.averageRating ?? "—"} / 5`} detail="คุณภาพที่ผู้ซื้อให้คะแนน" tone="positive" />
+        <QualityEngagementMetric label="รีวิว 5 ดาว" value={formatPercent(quality.totals.fiveStarReviews, quality.totals.reviews)} detail={`${formatNumber(quality.totals.fiveStarReviews)} รายการ`} tone="positive" />
+        <QualityEngagementMetric label="รีวิว 1–2 ดาว" value={formatPercent(quality.totals.lowRatingReviews, quality.totals.reviews)} detail={`${formatNumber(quality.totals.lowRatingReviews)} รายการที่ควรตรวจ`} tone="warning" />
+      </div>
+
+      <div className="lg-quality-visual-grid">
+        <ChartCard title="Quality & Sentiment รายสินค้า" subtitle="ดูชื่อสินค้า คะแนนดาว และความรู้สึกจากคะแนนดาวแยกกันชัดเจน">
+          <ProductQualityChart products={products} reviews={reviews} />
+        </ChartCard>
+        <ChartCard title="Quality Mix" subtitle="สัดส่วน sentiment ตามเกณฑ์คะแนนดาว">
+          <div className="lg-donut-pair">
+            <Donut
+              slices={sentimentMix}
+              total={quality.totals.reviews}
+              label="สัดส่วนความรู้สึก"
+            />
+            <Donut
+              slices={[
+                { label: "มีประเด็น", value: quality.totals.issueReviews, color: "#f59e0b" },
+                { label: "ไม่มีประเด็น", value: Math.max(quality.totals.reviews - quality.totals.issueReviews, 0), color: "#10b981" },
+              ]}
+              total={quality.totals.reviews}
+              label="หัวข้อจากข้อความรีวิว"
+            />
+          </div>
+        </ChartCard>
+      </div>
+
+      {false && <div className="lg-quality-engagement-grid">
+        <article className="lg-quality-engagement-card">
+          <div className="lg-quality-engagement-card-heading">
+            <div><h3>ปริมาณเสียงรีวิวแยกตามสินค้า</h3><p>ยิ่งแถบยาว ยิ่งมีรีวิวในชุดข้อมูลมาก</p></div>
+            <BarChart3 size={18} />
+          </div>
+          <div className="lg-quality-product-bars">
+            {products.map((product) => (
+              <div className="lg-quality-product-bar" key={product.id}>
+                <div className="lg-quality-product-bar-label"><strong title={product.sourceName}>{product.sourceName}</strong><span>{formatNumber(product.count)} รีวิว · {formatPercent(product.count, quality.totals.reviews)}</span></div>
+                <div className="lg-quality-product-bar-track"><i style={{ width: `${(product.count / maxReviewCount) * 100}%` }} /></div>
+              </div>
+            ))}
+          </div>
+          <small className="lg-quality-engagement-note">หมายเหตุ: นี่คือจำนวนรีวิวที่เก็บได้ ไม่ใช่ยอดขาย ยอดเข้าถึง หรือความนิยมทั้งหมดของสินค้า</small>
+        </article>
+
+        <article className="lg-quality-engagement-card">
+          <div className="lg-quality-engagement-card-heading">
+            <div><h3>สัญญาณคุณภาพต่อสินค้า</h3><p>คะแนนสูงและรีวิวลบน้อย สื่อถึงประสบการณ์ที่ดีกว่า</p></div>
+            <span className="lg-quality-mini-legend"><i className="rating" />คะแนนเฉลี่ย</span>
+          </div>
+          <div className="lg-quality-signal-bars">
+            {products.map((product) => <QualitySignalBar key={product.id} product={product} />)}
+          </div>
+          <small className="lg-quality-engagement-note">แถบสีชมพูคือคะแนนเฉลี่ยจาก 5 คะแนน ตัวเลขด้านขวาคือสัดส่วนรีวิว 1–2 ดาว</small>
+        </article>
+      </div>}
+
+      <article className="lg-quality-engagement-card lg-quality-topic-engagement">
+        <div className="lg-quality-engagement-card-heading">
+          <div><h3>หัวข้อคุณภาพที่มีการพูดถึงมากที่สุด</h3><p>ใช้ดูว่าผู้บริโภคกำลังพูดถึงประเด็นใด และประเด็นไหนมีสัญญาณลบปะปน</p></div>
+          <span className="lg-quality-mini-legend"><i className="topic" />จำนวนรีวิวที่พบหัวข้อ</span>
+        </div>
+        <div className="lg-quality-topic-bars">
+          {topics.map((topic) => (
+            <div className="lg-quality-topic-bar" key={topic.name}>
+              <div className="lg-quality-topic-bar-label"><strong>{topic.name}</strong><span>{formatNumber(topic.count)} รีวิว · {formatPercent(topic.count, quality.totals.reviews)} ของรีวิว · ลบ {formatPercent(topic.negative, topic.count)}</span></div>
+              <div className="lg-quality-topic-bar-track"><i style={{ width: `${(topic.count / maxTopicCount) * 100}%` }} /></div>
+            </div>
+          ))}
+        </div>
+      </article>
+    </section>
+  );
+}
+
+function QualitySignalBar({ product }: { product: ProductQualityProduct }) {
+  const ratingPercent = ((product.averageRating || 0) / 5) * 100;
+  return (
+    <div className="lg-quality-signal-bar">
+      <div className="lg-quality-signal-bar-label"><strong title={product.sourceName}>{product.sourceName}</strong><span>{product.averageRating ?? "—"} / 5</span></div>
+      <div className="lg-quality-signal-bar-track"><i style={{ width: `${ratingPercent}%` }} /></div>
+      <div className="lg-quality-signal-bar-meta"><span>5 ดาว {product.fiveStarPercent}%</span><b>1–2 ดาว {product.lowRatingPercent}%</b></div>
+    </div>
+  );
+}
+
+function ProductQualityChart({ products, reviews }: { products: ProductQualityProduct[]; reviews: ProductQualityReview[] }) {
+  const sentimentByProduct = new Map<string, { positive: number; neutral: number; negative: number }>();
+  reviews.forEach((review) => {
+    const current = sentimentByProduct.get(review.productId) || { positive: 0, neutral: 0, negative: 0 };
+    current[review.sentiment] += 1;
+    sentimentByProduct.set(review.productId, current);
+  });
+
+  return (
+    <div className="lg-product-quality-chart" role="img" aria-label="กราฟคุณภาพและ sentiment แยกตามสินค้า">
+      <div className="lg-product-quality-legend"><span><i className="positive" />เชิงบวก</span><span><i className="neutral" />เป็นกลาง</span><span><i className="negative" />เชิงลบ</span></div>
+      {products.map((product) => {
+        const sentiment = sentimentByProduct.get(product.id) || { positive: 0, neutral: 0, negative: 0 };
+        const total = Math.max(sentiment.positive + sentiment.neutral + sentiment.negative, product.count, 1);
+        return (
+          <div className="lg-product-quality-row" key={product.id}>
+            <div className="lg-product-quality-row-head">
+              <strong title={product.sourceName}>{product.sourceName}</strong>
+              <span className="lg-product-quality-rating">★ {product.averageRating ?? "—"} / 5</span>
+            </div>
+            <div className="lg-product-quality-track">
+              <i className="positive" style={{ width: `${(sentiment.positive / total) * 100}%` }} title={`เชิงบวก ${formatPercent(sentiment.positive, total)}`} />
+              <i className="neutral" style={{ width: `${(sentiment.neutral / total) * 100}%` }} title={`เป็นกลาง ${formatPercent(sentiment.neutral, total)}`} />
+              <i className="negative" style={{ width: `${(sentiment.negative / total) * 100}%` }} title={`เชิงลบ ${formatPercent(sentiment.negative, total)}`} />
+            </div>
+            <div className="lg-product-quality-row-meta"><span>เชิงบวก {formatPercent(sentiment.positive, total)}</span><span>เป็นกลาง {formatPercent(sentiment.neutral, total)}</span><b>เชิงลบ {formatPercent(sentiment.negative, total)}</b></div>
+          </div>
+        );
+      })}
+      <small className="lg-quality-engagement-note">แต่ละแถวคือ 1 สินค้า แถบสีคือสัดส่วน sentiment จากรีวิวของสินค้านั้น และคะแนนดาวคือค่าเฉลี่ยของสินค้า</small>
+    </div>
+  );
+}
+
+function QualityEngagementMetric({ label, value, detail, tone = "neutral" }: { label: string; value: string; detail: string; tone?: "neutral" | "positive" | "warning" }) {
+  return <article className={`lg-quality-engagement-metric ${tone}`}><span>{label}</span><strong>{value}</strong><small>{detail}</small></article>;
+}
+
 
 function Field({ label, value }: { label: string; value: string }) {
   return <div className="lg-field"><small>{label}</small><span>{value}</span></div>;
@@ -205,37 +377,24 @@ function FilterChip({ active, color, onClick, children }: { active: boolean; col
 }
 
 function ChartCard({ title, subtitle, children }: { title: string; subtitle: string; children: ReactNode }) {
-  return <article className="lg-engagement-card"><div className="lg-card-heading"><div><h2>{title}</h2><p>{subtitle}</p></div><BarChart3 size={18} /></div>{children}<small className="lg-chart-note">Calculated from scraped records in this report. Not official platform analytics.</small></article>;
+  return <article className="lg-engagement-card"><div className="lg-card-heading"><div><h2>{title}</h2><p>{subtitle}</p></div><BarChart3 size={18} /></div>{children}<small className="lg-chart-note">Calculated from scraped records. Comment Likes = likes on scraped comments; Replies = replies to those comments. Views and shares use provider-reported fields.</small></article>;
 }
 
-function LineChart({ labels, series }: { labels: string[]; series: Array<{ name: string; color: string; values: number[] }> }) {
+function DailyBarChart({ labels, series }: { labels: string[]; series: Array<{ name: string; color: string; values: number[] }> }) {
   const width = 900;
   const height = 330;
-  const max = Math.max(...series.flatMap((s) => s.values), 1);
   const chartLeft = 64;
-  const chartRight = width - 56;
+  const chartRight = width - 30;
   const chartTop = 34;
   const chartBottom = height - 54;
+  const totals = labels.map((_, index) => series.reduce((total, item) => total + (item.values[index] || 0), 0));
+  const max = Math.max(...totals, 1);
+  const slot = (chartRight - chartLeft) / Math.max(labels.length, 1);
+  const barWidth = Math.max(4, Math.min(22, slot * 0.62));
+  const labelStep = Math.max(1, Math.ceil(labels.length / 7));
   const yTicks = [1, 0.75, 0.5, 0.25, 0];
-  if (!series.length) return <div className="lg-chart-empty">ไม่มี series สำหรับเงื่อนไขนี้</div>;
-  return (
-    <div className="lg-line-panel">
-      <div className="lg-chart-legend">{series.map((s) => <span key={s.name}><i style={{ background: s.color }} />{s.name}</span>)}</div>
-      <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Engagement line chart">
-        {yTicks.map((tick) => {
-          const y = chartTop + (1 - tick) * (chartBottom - chartTop);
-          return <g key={tick}><line x1={chartLeft} x2={chartRight} y1={y} y2={y} /><text className="lg-axis-label" x="12" y={y + 4}>{formatCompact(max * tick)}</text></g>;
-        })}
-        {series.map((s) => {
-          const pts = s.values.map((v, i) => ({ x: chartLeft + (i / Math.max(labels.length - 1, 1)) * (chartRight - chartLeft), y: chartBottom - (v / max) * (chartBottom - chartTop), value: v }));
-          const d = pts.map((p, i) => `${i ? "L" : "M"} ${p.x} ${p.y}`).join(" ");
-          const lastPoint = pts[pts.length - 1];
-          return <g key={s.name}><path d={d} style={{ stroke: s.color }} />{pts.map((p, i) => <circle key={i} cx={p.x} cy={p.y} r="3.5" style={{ fill: s.color }} />)}{lastPoint ? <text className="lg-series-value" x={Math.min(lastPoint.x + 8, width - 48)} y={Math.max(lastPoint.y - 8, 18)} style={{ fill: s.color }}>{formatCompact(lastPoint.value)}</text> : null}</g>;
-        })}
-        {labels.map((label, i) => <text key={`${label}-${i}`} x={chartLeft + (i / Math.max(labels.length - 1, 1)) * (chartRight - chartLeft)} y={height - 16}>{label}</text>)}
-      </svg>
-    </div>
-  );
+  if (!series.length) return <div className="lg-chart-empty">ไม่มีแพลตฟอร์มสำหรับเงื่อนไขนี้</div>;
+  return <div className="lg-daily-bar-panel"><div className="lg-chart-legend">{series.map((item) => <span key={item.name}><i style={{ background: item.color }} />{item.name}</span>)}</div><svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Daily engagement bar chart">{yTicks.map((tick) => { const y = chartTop + (1 - tick) * (chartBottom - chartTop); return <g key={tick}><line x1={chartLeft} x2={chartRight} y1={y} y2={y} /><text className="lg-axis-label" x="12" y={y + 4}>{formatCompact(max * tick)}</text></g>; })}{labels.map((label, index) => { let cursor = chartBottom; const x = chartLeft + index * slot + (slot - barWidth) / 2; return <g key={`${label}-${index}`}>{series.map((item) => { const value = item.values[index] || 0; const barHeight = (value / max) * (chartBottom - chartTop); cursor -= barHeight; return value > 0 ? <rect key={item.name} x={x} y={cursor} width={barWidth} height={Math.max(barHeight, 1)} rx="3" style={{ fill: item.color }}><title>{`${label} · ${item.name} · ${formatCompact(value)}`}</title></rect> : null; })}{(index === 0 || index === labels.length - 1 || index % labelStep === 0) ? <text className="lg-daily-date" x={x + barWidth / 2} y={height - 16}>{label}</text> : null}</g>; })}</svg></div>;
 }
 
 function DonutPair({ current, previous, totalCurrent, totalPrevious }: { current: Slice[]; previous: Slice[]; totalCurrent: number; totalPrevious: number }) {
@@ -243,34 +402,42 @@ function DonutPair({ current, previous, totalCurrent, totalPrevious }: { current
 }
 
 function Donut({ slices, total, label }: { slices: Slice[]; total: number; label: string }) {
+  const displaySlices = slices.map((slice) => ({ ...slice, label: normalizeQualitySignalLabel(slice.label) }));
   let cursor = 0;
-  const visibleSlices = slices.filter((s) => s.value > 0);
+  const visibleSlices = displaySlices.filter((s) => s.value > 0);
+  const leadingSlice = [...visibleSlices].sort((a, b) => b.value - a.value)[0];
   const stops = visibleSlices.map((s) => {
     const start = cursor;
     const end = cursor + (s.value / Math.max(total, 1)) * 100;
     cursor = end;
     return `${s.color} ${start}% ${end}%`;
   }).join(", ");
-  return <div className="lg-donut-wrap"><div className="lg-engagement-donut" style={{ background: `conic-gradient(${stops || "#f4e7ef 0 100%"})` }}><strong>{formatCompact(total)}</strong></div><small>{label}</small><ul className="lg-donut-legend">{visibleSlices.map((s) => <li key={s.label}><i style={{ background: s.color }} /><span>{s.label}</span><b>{formatCompact(s.value)}</b><em>{formatPercent(s.value, total)}</em></li>)}</ul></div>;
+  return <div className="lg-donut-wrap"><div className="lg-engagement-donut" style={{ background: `conic-gradient(${stops || "#f4e7ef 0 100%"})` }} aria-label={`${label}: ${formatCompact(total)}`}><strong>{formatCompact(total)}</strong></div><div className="lg-donut-caption"><small>{label}</small>{leadingSlice ? <span>สูงสุด: {leadingSlice.label} · {formatPercent(leadingSlice.value, total)}</span> : null}</div><ul className="lg-donut-legend">{visibleSlices.map((s) => <li key={s.label}><i style={{ background: s.color }} /><span>{s.label}</span><b>{formatCompact(s.value)}</b><em>{formatPercent(s.value, total)}</em></li>)}</ul></div>;
 }
 
-function Bars({ labels, previous, current, color, soft }: { labels: string[]; previous: number[]; current: number[]; color: string; soft: string }) {
+function normalizeQualitySignalLabel(label: string) {
+  if (label.includes("ประเด็น")) return label.includes("ไม่มี") ? "ไม่พบหัวข้อเพิ่มเติม (จากข้อความรีวิว)" : "พบหัวข้อให้ดูต่อ (จากข้อความรีวิว)";
+  return label;
+}
+
+function Bars({ labels, previous, current, colors }: { labels: string[]; previous: number[]; current: number[]; colors: Array<{ previous: string; current: string }> }) {
   const max = Math.max(...previous, ...current, 1);
-  return <div><div className="lg-period-legend"><span><i style={{ background: color }} />Previous</span><span><i style={{ background: soft }} />Current</span></div><div className="lg-group-bars">{labels.map((label, i) => <div key={label}><span><i title={`Previous: ${formatCompact(previous[i])}`} style={{ height: `${(previous[i] / max) * 100}%`, background: color }} data-value={formatCompact(previous[i])} /><i title={`Current: ${formatCompact(current[i])}`} style={{ height: `${(current[i] / max) * 100}%`, background: soft }} data-value={formatCompact(current[i])} /></span><small>{label}</small></div>)}</div></div>;
+  return <div><div className="lg-period-legend"><span><i style={{ background: "#6b7280" }} />Previous</span><span><i style={{ background: "#d1d5db" }} />Current</span></div><div className="lg-group-bars">{labels.map((label, i) => <div key={label}><span><i title={`Previous: ${formatCompact(previous[i])}`} style={{ height: `${(previous[i] / max) * 100}%`, background: colors[i]?.previous || "#6b7280" }} data-value={formatCompact(previous[i])} /><i title={`Current: ${formatCompact(current[i])}`} style={{ height: `${(current[i] / max) * 100}%`, background: colors[i]?.current || "#d1d5db" }} data-value={formatCompact(current[i])} /></span><small style={{ color: colors[i]?.previous }}>{label}</small></div>)}</div></div>;
 }
 
-function DeltaTable({ labels, rows }: { labels: string[]; rows: Array<{ label: string; values: number[] }> }) {
-  return <div className="lg-delta-table"><div className="lg-delta-head"><b>Metric</b>{labels.map((label) => <span key={label}>{label}</span>)}</div>{rows.map((row) => <div key={row.label}><b>{row.label}</b>{labels.map((label, i) => <span key={label} className={row.values[i] >= 0 ? "up" : "down"}>{formatDelta(row.values[i])}</span>)}</div>)}</div>;
+function DeltaTable({ labels, rows, colors }: { labels: string[]; rows: Array<{ label: string; values: Array<number | null> }>; colors: Array<{ previous: string; current: string }> }) {
+  return <div className="lg-delta-table"><div className="lg-delta-head"><b>Metric</b>{labels.map((label, i) => <span key={label} style={{ color: colors[i]?.previous }}>{label}</span>)}</div>{rows.map((row) => <div key={row.label}><b>{row.label}</b>{labels.map((label, i) => <span key={label} className={row.values[i] === null ? "no-base" : row.values[i] >= 0 ? "up" : "down"} style={{ color: row.values[i] === null ? undefined : colors[i]?.previous }}>{formatDelta(row.values[i])}</span>)}</div>)}</div>;
 }
 
-function Metric({ label, value, delta, icon, active }: { label: string; value: string; delta: number; icon: ReactNode; active: boolean }) {
-  return <article className={active ? "active" : ""}><div>{icon}<span>{label}</span></div><strong>{value}</strong><em className={delta >= 0 ? "up" : "down"}>{delta >= 0 ? "^" : "v"} {Math.abs(delta).toFixed(2)}%</em></article>;
+function Metric({ label, value, delta, icon, active }: { label: string; value: string; delta: number | null; icon: ReactNode; active: boolean }) {
+  return <article className={active ? "active" : ""}><div>{icon}<span>{label}</span></div><strong>{value}</strong><em className={delta === null || delta >= 0 ? "up" : "down"}>{delta === null ? "ไม่มีฐานเดิม" : `${delta >= 0 ? "^" : "v"} ${Math.abs(delta).toFixed(2)}%`}</em></article>;
 }
 
 function buildData(report: Report, filters: { platform: PlatformFilter; sentiment: SentimentFilter; recordType: RecordFilter; metric: MetricFilter }) {
-  const allRows = [...report.evidence].sort((a, b) => Date.parse(a.publishedAt) - Date.parse(b.publishedAt));
-  const dayKeys = Array.from(new Set(allRows.map((x) => x.publishedAt.slice(0, 10))));
-  const filteredRows = allRows.filter((item) => {
+  const periodFrom = Date.parse(report.period.from);
+  const periodTo = Date.parse(report.period.to);
+  const allRows = report.evidence.slice().sort((a, b) => Date.parse(a.publishedAt) - Date.parse(b.publishedAt));
+  const matchesFilters = (item: ReportEvidence) => {
     if (filters.platform !== "all" && item.platform !== filters.platform) return false;
     if (filters.recordType !== "all" && item.recordType !== filters.recordType) return false;
     if (filters.sentiment !== "all") {
@@ -278,12 +445,19 @@ function buildData(report: Report, filters: { platform: PlatformFilter; sentimen
       if (filters.sentiment !== "unclassified" && item.sentiment !== filters.sentiment) return false;
     }
     return true;
+  };
+  const currentRows = allRows.filter((item) => {
+    const publishedAt = Date.parse(item.publishedAt);
+    return publishedAt >= periodFrom && publishedAt <= periodTo && matchesFilters(item);
   });
-  const mid = Math.max(Math.floor(dayKeys.length / 2), 1);
-  const prevDays = new Set(dayKeys.slice(0, mid));
-  const currDays = new Set(dayKeys.slice(mid).length ? dayKeys.slice(mid) : dayKeys.slice(0, mid));
-  const previousRows = filteredRows.filter((x) => prevDays.has(x.publishedAt.slice(0, 10)));
-  const currentRows = filteredRows.filter((x) => currDays.has(x.publishedAt.slice(0, 10)));
+  const previousTo = periodFrom - 1;
+  const previousFrom = previousTo - (periodTo - periodFrom);
+  const previousRows = allRows.filter((item) => {
+    const publishedAt = Date.parse(item.publishedAt);
+    return publishedAt >= previousFrom && publishedAt <= previousTo && matchesFilters(item);
+  });
+  const filteredRows = currentRows;
+  const dayKeys = Array.from(new Set(currentRows.map((x) => reportDateKey(x.publishedAt, report.period.timezone))));
   const visiblePlatforms = filters.platform === "all" ? Array.from(new Set(filteredRows.map((x) => x.platform))) : [filters.platform];
   const sentiments: Sentiment[] = ["positive", "neutral", "negative"];
   const previous = focusBucket(sum(previousRows), filters.metric);
@@ -291,23 +465,21 @@ function buildData(report: Report, filters: { platform: PlatformFilter; sentimen
   const platformSeries = visiblePlatforms.map((p) => ({
     name: p,
     color: platformColors[p] || "#fb6f92",
-    values: dayKeys.map((d) => focusBucket(sum(filteredRows.filter((x) => x.platform === p && x.publishedAt.startsWith(d))), filters.metric).total),
+    values: dayKeys.map((d) => focusBucket(sum(filteredRows.filter((x) => x.platform === p && reportDateKey(x.publishedAt, report.period.timezone) === d)), filters.metric).total),
   }));
   const typeKeys = (filters.metric === "all" ? ["shares", "comments", "reactions", "views"] : [filters.metric]) as Array<keyof typeof typeColors>;
-
   return {
-    days: dayKeys.map(formatDay),
+    days: dayKeys.map((day) => formatDay(day, new Set(dayKeys.map((value) => value.slice(0, 4))).size > 1)),
     filteredCount: filteredRows.length,
+    previousFilteredCount: previousRows.length,
     previous,
     current,
     platformSeries,
-    typeSeries: typeKeys.map((k) => ({ name: metricLabels[k], color: typeColors[k], values: dayKeys.map((d) => sum(filteredRows.filter((x) => x.publishedAt.startsWith(d)))[k]) })),
+    typeSeries: typeKeys.map((k) => ({ name: metricLabels[k], color: typeColors[k], values: dayKeys.map((d) => sum(filteredRows.filter((x) => reportDateKey(x.publishedAt, report.period.timezone) === d))[k]) })),
     currentPlatformShare: visiblePlatforms.map((p) => ({ label: p, value: focusBucket(sum(currentRows.filter((x) => x.platform === p)), filters.metric).total, color: platformColors[p] || "#fb6f92" })),
     previousPlatformShare: visiblePlatforms.map((p) => ({ label: p, value: focusBucket(sum(previousRows.filter((x) => x.platform === p)), filters.metric).total, color: platformColors[p] || "#fb6f92" })),
     sentimentBars: sentiments.map((s) => ({ label: sentimentLabel(s), previous: focusBucket(sum(previousRows.filter((x) => x.sentiment === s)), filters.metric).total, current: focusBucket(sum(currentRows.filter((x) => x.sentiment === s)), filters.metric).total })),
-    platformBars: visiblePlatforms.map((p) => ({ label: p, previous: focusBucket(sum(previousRows.filter((x) => x.platform === p)), filters.metric).total, current: focusBucket(sum(currentRows.filter((x) => x.platform === p)), filters.metric).total })),
     sentimentRows: deltaRows(sentiments.map((s) => ({ previous: sum(previousRows.filter((x) => x.sentiment === s)), current: sum(currentRows.filter((x) => x.sentiment === s)) })), filters.metric),
-    platformRows: deltaRows(visiblePlatforms.map((p) => ({ previous: sum(previousRows.filter((x) => x.platform === p)), current: sum(currentRows.filter((x) => x.platform === p)) })), filters.metric),
   };
 }
 
@@ -315,11 +487,11 @@ function sum(records: ReportEvidence[]): Bucket {
   const b = records.reduce((acc, x) => {
     acc.shares += x.metrics.shares || 0;
     acc.comments += x.metrics.comments || x.metrics.replies || 0;
-    acc.reactions += x.metrics.likes || x.engagement || 0;
+    acc.reactions += x.metrics.likes || 0;
     acc.views += x.metrics.views || 0;
     return acc;
   }, { shares: 0, comments: 0, reactions: 0, views: 0 });
-  return { ...b, total: b.shares + b.comments + b.reactions + b.views };
+  return { ...b, total: b.shares + b.comments + b.reactions };
 }
 
 function focusBucket(bucket: Bucket, metric: MetricFilter): Bucket {
@@ -332,13 +504,17 @@ function typeSlices(bucket: Bucket, metric: MetricFilter): Slice[] {
   return keys.map((key) => ({ label: metricLabels[key], value: bucket[key], color: typeColors[key] }));
 }
 
+function sliceTotal(slices: Slice[]) {
+  return slices.reduce((total, slice) => total + slice.value, 0);
+}
+
 function deltaRows(items: Array<{ previous: Bucket; current: Bucket }>, metric: MetricFilter) {
   const keys = (metric === "all" ? ["shares", "comments", "reactions", "views"] : [metric]) as Array<keyof typeof typeColors>;
   return keys.map((key) => ({ label: metricLabels[key].toUpperCase(), values: items.map((x) => pct(x.current[key], x.previous[key])) }));
 }
 
-function pct(current: number, previous: number) {
-  if (!previous && current) return 100;
+function pct(current: number, previous: number): number | null {
+  if (!previous && current) return null;
   if (!previous) return 0;
   return ((current - previous) / previous) * 100;
 }
@@ -349,9 +525,14 @@ function sentimentLabel(value: Sentiment) {
   return "กลาง";
 }
 
-function formatDelta(v: number) { return `${v > 0 ? "+" : ""}${v.toFixed(2)}%`; }
+function formatDelta(v: number | null) { return v === null ? "ไม่มีฐานเดิม" : `${v > 0 ? "+" : ""}${v.toFixed(2)}%`; }
 function formatPercent(value: number, total: number) { return `${((value / Math.max(total, 1)) * 100).toFixed(1)}%`; }
 function formatNumber(v: number) { return Math.round(v).toLocaleString("th-TH"); }
 function formatCompact(v: number) { if (v >= 1000000) return `${(v / 1000000).toFixed(3)}M`; if (v >= 1000) return `${(v / 1000).toFixed(1)}K`; return formatNumber(v); }
 function formatShortDate(v: string) { return new Intl.DateTimeFormat("th-TH", { day: "2-digit", month: "2-digit", year: "numeric", timeZone: "Asia/Bangkok" }).format(new Date(v)); }
-function formatDay(v: string) { return new Intl.DateTimeFormat("th-TH", { day: "2-digit", month: "2-digit", timeZone: "Asia/Bangkok" }).format(new Date(v)); }
+function formatDay(v: string, includeYear = false) { return new Intl.DateTimeFormat("th-TH", { day: "2-digit", month: "2-digit", ...(includeYear ? { year: "numeric" } : {}), timeZone: "Asia/Bangkok" }).format(new Date(v)); }
+function reportDateKey(value: string, timeZone: string) {
+  const parts = new Intl.DateTimeFormat("en-CA", { timeZone, year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(new Date(value));
+  const part = (type: string) => parts.find((entry) => entry.type === type)?.value || "00";
+  return `${part("year")}-${part("month")}-${part("day")}`;
+}

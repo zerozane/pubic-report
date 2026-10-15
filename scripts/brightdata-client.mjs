@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { getDatasetId, requireEnv } from "./env.mjs";
+import { assertCollectionBudget, getDatasetId, getSafeLimitPerInput, prepareDatasetInput, requireEnv } from "./env.mjs";
 
 export function readJson(filePath) {
   return JSON.parse(fs.readFileSync(path.resolve(process.cwd(), filePath), "utf8"));
@@ -13,27 +13,37 @@ export function writeJson(filePath, data) {
   return outputPath;
 }
 
-export async function startScrape({ dataset, input, limitPerInput = null, type, discoverBy, includeErrors = true }) {
+export async function startScrape({ dataset, input, limitPerInput = null, type, discoverBy, includeErrors = true, endpoint = "trigger", timeoutMs = 90000 }) {
   const apiKey = requireEnv("BRIGHT_DATA_API_KEY");
   const datasetId = getDatasetId(dataset);
-  const url = new URL("https://api.brightdata.com/datasets/v3/scrape");
+  const boundedInput = prepareDatasetInput(dataset, input);
+  const boundedLimit = getSafeLimitPerInput(dataset, limitPerInput);
+  assertCollectionBudget(dataset, boundedInput.length, boundedLimit);
+  const url = new URL(`https://api.brightdata.com/datasets/v3/${endpoint}`);
   url.searchParams.set("dataset_id", datasetId);
-  url.searchParams.set("notify", "false");
+  if (endpoint === "trigger") {
+    url.searchParams.set("format", "json");
+    url.searchParams.set("uncompressed_webhook", "true");
+  } else {
+    url.searchParams.set("notify", "false");
+  }
+  if (boundedLimit) url.searchParams.set("limit_per_input", String(boundedLimit));
   if (includeErrors) url.searchParams.set("include_errors", "true");
   if (type) url.searchParams.set("type", type);
   if (discoverBy) url.searchParams.set("discover_by", discoverBy);
 
-  const response = await fetch(url, {
+  const body = endpoint === "scrape"
+    ? { input: boundedInput, limit_per_input: boundedLimit }
+    : boundedInput;
+
+  const response = await fetchWithTimeout(url, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      input,
-      limit_per_input: limitPerInput
-    })
-  });
+    body: JSON.stringify(body)
+  }, timeoutMs);
 
   const text = await response.text();
   const data = text ? safeJson(text) : {};
@@ -111,12 +121,20 @@ export function normalizeEvidence(rows, platformName) {
     .filter((item) => item.text || item.sourceUrl);
 }
 
-export function pickCommentInputFromPosts(posts, { postLimit = 5, requireThai = false } = {}) {
+export function pickCommentInputFromPosts(posts, { postLimit = 5, requireThai = false, periodFrom = null, periodTo = null } = {}) {
+  const from = periodFrom ? parseDateValue(periodFrom) : null;
+  const to = periodTo ? parseDateValue(periodTo) : null;
   const picked = [];
   const seen = new Set();
   const sorted = posts
     .slice()
     .filter((post) => Number(post.comment_count ?? post.metrics?.comments ?? 0) > 0)
+    .filter((post) => {
+      if (from === null && to === null) return true;
+      const postDate = pickString(post, ["create_time", "createTime", "date_posted", "post_date", "date", "published_at"]);
+      const timestamp = parseDateValue(postDate);
+      return timestamp !== null && (from === null || timestamp >= from) && (to === null || timestamp <= to);
+    })
     .sort((left, right) => Number(right.comment_count ?? right.metrics?.comments ?? 0) - Number(left.comment_count ?? left.metrics?.comments ?? 0));
 
   for (const post of sorted) {
@@ -137,7 +155,7 @@ function normalizeItem(item, platformName, index) {
   const text = pickString(item, ["comment", "comment_text", "text", "caption", "description", "title", "commenter_user_name"]);
   const sourceId = pickString(item, ["id", "comment_id", "post_id", "video_id", "shortcode"]);
   const parentPostId = pickString(item, ["post_id", "video_id", "parent_post_id"]);
-  const publishedAt = pickString(item, ["date_created", "date", "datetime", "timestamp", "created_at", "published_at"]) ?? new Date().toISOString();
+  const publishedAt = pickString(item, ["date_created", "comment_date", "create_time", "createTime", "date_posted", "post_date", "date", "datetime", "timestamp", "created_at", "published_at"]) ?? new Date().toISOString();
 
   return {
     id: `${platformName.toLowerCase()}-${sourceId ?? index + 1}`,
@@ -184,8 +202,21 @@ function looksLikeComment(item) {
 }
 
 function normalizeDate(value) {
+  const timestamp = parseDateValue(value);
+  const date = timestamp === null ? new Date() : new Date(timestamp);
+  return date.toISOString();
+}
+
+function parseDateValue(value) {
+  if (value === null || value === undefined || value === "") return null;
+  const numeric = Number(value);
+  if (Number.isFinite(numeric) && numeric > 0) {
+    const milliseconds = numeric < 1_000_000_000_000 ? numeric * 1000 : numeric;
+    return milliseconds;
+  }
   const date = new Date(value);
-  return Number.isNaN(date.valueOf()) ? new Date().toISOString() : date.toISOString();
+  if (Number.isNaN(date.valueOf())) return null;
+  return date.valueOf();
 }
 
 async function fetchWithTimeout(url, options, timeout) {

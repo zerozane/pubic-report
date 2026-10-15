@@ -8,37 +8,36 @@ export const sentimentStandard: Array<{
 }> = [
   {
     value: "positive",
-    label: "Positive",
-    definition: "\u0e0a\u0e21 \u0e0a\u0e2d\u0e1a \u0e2a\u0e19\u0e43\u0e08\u0e0b\u0e37\u0e49\u0e2d \u0e2d\u0e22\u0e32\u0e01\u0e44\u0e14\u0e49 \u0e2b\u0e23\u0e37\u0e2d\u0e1b\u0e23\u0e30\u0e2a\u0e1a\u0e01\u0e32\u0e23\u0e13\u0e4c\u0e14\u0e35",
-    examples: ["\u0e2a\u0e35\u0e2a\u0e27\u0e22\u0e21\u0e32\u0e01", "\u0e2d\u0e22\u0e32\u0e01\u0e44\u0e14\u0e49", "\u0e43\u0e0a\u0e49\u0e14\u0e35", "\u0e41\u0e1e\u0e47\u0e01\u0e40\u0e01\u0e08\u0e19\u0e48\u0e32\u0e23\u0e31\u0e01"],
+    label: "เชิงบวก",
+    definition: "คำชม ความสนใจซื้อ หรือประสบการณ์ที่ดี",
+    examples: ["สีสวยมาก", "อยากได้", "ใช้ดี", "แพ็กเกจน่ารัก"],
   },
   {
     value: "neutral",
-    label: "Neutral",
-    definition: "\u0e04\u0e33\u0e16\u0e32\u0e21 \u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e17\u0e31\u0e48\u0e27\u0e44\u0e1b \u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48\u0e1a\u0e27\u0e01/\u0e25\u0e1a\u0e0a\u0e31\u0e14\u0e40\u0e08\u0e19",
-    examples: ["\u0e23\u0e32\u0e04\u0e32\u0e40\u0e17\u0e48\u0e32\u0e44\u0e2b\u0e23\u0e48", "\u0e0b\u0e37\u0e49\u0e2d\u0e17\u0e35\u0e48\u0e44\u0e2b\u0e19", "\u0e2a\u0e35\u0e2d\u0e30\u0e44\u0e23", "\u0e21\u0e35\u0e02\u0e32\u0e22\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e44\u0e2b\u0e23\u0e48"],
+    label: "เป็นกลาง",
+    definition: "คำถาม ข้อมูลทั่วไป ข้อความสั้น อีโมจิ หรือข้อความที่ยังไม่มีทิศทางชัดเจน",
+    examples: ["ราคาเท่าไหร่", "ซื้อที่ไหน", "สีอะไร", "มีขายไหม"],
   },
   {
     value: "negative",
-    label: "Negative",
-    definition: "\u0e15\u0e33\u0e2b\u0e19\u0e34 \u0e44\u0e21\u0e48\u0e1e\u0e2d\u0e43\u0e08 \u0e01\u0e31\u0e07\u0e27\u0e25 \u0e2b\u0e23\u0e37\u0e2d\u0e1e\u0e39\u0e14\u0e16\u0e36\u0e07\u0e1b\u0e31\u0e0d\u0e2b\u0e32",
-    examples: ["\u0e41\u0e1e\u0e07\u0e44\u0e1b", "\u0e02\u0e2d\u0e07\u0e2b\u0e21\u0e14\u0e15\u0e25\u0e2d\u0e14", "\u0e43\u0e0a\u0e49\u0e41\u0e25\u0e49\u0e27\u0e44\u0e21\u0e48\u0e23\u0e2d\u0e14", "\u0e01\u0e25\u0e31\u0e27\u0e02\u0e2d\u0e07\u0e1b\u0e25\u0e2d\u0e21"],
+    label: "เชิงลบ",
+    definition: "คำร้องเรียน ความไม่พอใจ การปฏิเสธสินค้า หรือปัญหาจากการใช้งานที่ระบุชัดเจน",
+    examples: ["แพงเกินไป", "ของหมด", "ใช้แล้วไม่รอด", "แพ้และระคายเคือง"],
   },
 ];
 
 export const sentimentLexicon = {
-  positive: ["????", "???", "?????", "??????", "?????????", "???????", "????????", "\u0e08\u0e36\u0e49\u0e07", "\u0e1b\u0e31\u0e07", "\u0e40\u0e23\u0e34\u0e48\u0e14", "\u0e2a\u0e27\u0e22", "\u0e19\u0e48\u0e32\u0e23\u0e31\u0e01", "\u0e25\u0e30\u0e21\u0e38\u0e19", "\u0e0a\u0e2d\u0e1a", "\u0e2d\u0e22\u0e32\u0e01\u0e44\u0e14\u0e49", "\u0e15\u0e49\u0e2d\u0e07\u0e21\u0e35", "\u0e1b\u0e49\u0e32\u0e22\u0e22\u0e32", "\u0e27\u0e49\u0e32\u0e27", "\u0e43\u0e0a\u0e49\u0e14\u0e35", "\u0e15\u0e34\u0e14\u0e17\u0e19"],
-  neutral: ["\u0e40\u0e09\u0e22\u0e46", "\u0e01\u0e47\u0e44\u0e14\u0e49\u0e2d\u0e22\u0e39\u0e48", "\u0e1c\u0e48\u0e32\u0e19", "\u0e19\u0e48\u0e32\u0e25\u0e2d\u0e07", "\u0e23\u0e32\u0e04\u0e32\u0e40\u0e17\u0e48\u0e32\u0e44\u0e2b\u0e23\u0e48", "\u0e0b\u0e37\u0e49\u0e2d\u0e17\u0e35\u0e48\u0e44\u0e2b\u0e19", "\u0e2a\u0e35\u0e2d\u0e30\u0e44\u0e23", "\u0e21\u0e35\u0e02\u0e32\u0e22\u0e44\u0e2b\u0e21", "\u0e1e\u0e34\u0e01\u0e31\u0e14"],
-  negative: ["\u0e1a\u0e49\u0e07", "\u0e15\u0e38\u0e49\u0e1a", "\u0e44\u0e21\u0e48\u0e44\u0e2b\u0e27", "\u0e1e\u0e31\u0e07", "\u0e08\u0e01\u0e15\u0e32", "\u0e42\u0e1b\u0e4a\u0e30", "\u0e40\u0e1f\u0e25", "\u0e41\u0e1e\u0e07\u0e44\u0e1b", "\u0e02\u0e2d\u0e07\u0e2b\u0e21\u0e14", "\u0e44\u0e21\u0e48\u0e23\u0e2d\u0e14", "\u0e44\u0e21\u0e48\u0e0a\u0e2d\u0e1a", "\u0e1c\u0e34\u0e14\u0e2b\u0e27\u0e31\u0e07", "\u0e2b\u0e48\u0e27\u0e22", "\u0e41\u0e22\u0e48", "\u0e1b\u0e25\u0e2d\u0e21", "\u0e2a\u0e48\u0e07\u0e0a\u0e49\u0e32", "\u0e41\u0e15\u0e01", "\u0e23\u0e31\u0e48\u0e27", "\u0e23\u0e30\u0e04\u0e32\u0e22\u0e40\u0e04\u0e37\u0e2d\u0e07"],
-  ambiguous: ["\u0e41\u0e23\u0e07", "\u0e15\u0e32\u0e22", "\u0e09\u0e48\u0e33"],
+  positive: ["ดี", "ดีมาก", "สวย", "น่ารัก", "ชอบ", "อยากได้", "ต้องมี", "จึ้ง", "ปัง", "เริ่ด", "ใช้ดี", "ติดทน"],
+  neutral: ["เฉยๆ", "น่าลอง", "ราคาเท่าไหร่", "ซื้อที่ไหน", "สีอะไร", "มีขายไหม", "พิกัด"],
+  negative: ["ไม่ชอบ", "ไม่ดี", "ไม่คุ้ม", "ไม่รอด", "ผิดหวัง", "แพงเกิน", "พัง", "แพ้", "แสบ", "ระคายเคือง", "เป็นคราบ", "ปลอม", "ส่งช้า"],
+  ambiguous: ["แรง", "ตาย", "ฉ่ำ", "ไม่ไหว"],
 } as const;
 
 export const sentimentContextRules = [
-  { term: "\u0e44\u0e21\u0e48\u0e44\u0e2b\u0e27", positiveWhen: ["\u0e23\u0e2d", "\u0e2d\u0e14\u0e43\u0e08"], negativeWhen: ["\u0e43\u0e0a\u0e49", "\u0e41\u0e1e\u0e49", "\u0e41\u0e2a\u0e1a", "\u0e23\u0e30\u0e04\u0e32\u0e22"] },
-  { term: "\u0e41\u0e23\u0e07", positiveWhen: ["\u0e2a\u0e35", "\u0e40\u0e21\u0e47\u0e14\u0e2a\u0e35", "\u0e0a\u0e31\u0e14", "\u0e2a\u0e27\u0e22", "\u0e08\u0e36\u0e49\u0e07", "\u0e1b\u0e31\u0e07"], negativeWhen: ["\u0e23\u0e32\u0e04\u0e32", "\u0e41\u0e1e\u0e07", "\u0e01\u0e25\u0e34\u0e48\u0e19", "\u0e23\u0e30\u0e04\u0e32\u0e22", "\u0e41\u0e2a\u0e1a"] },
-  { term: "\u0e15\u0e32\u0e22", positiveWhen: ["\u0e2a\u0e27\u0e22", "\u0e19\u0e48\u0e32\u0e23\u0e31\u0e01", "\u0e08\u0e36\u0e49\u0e07", "\u0e1b\u0e31\u0e07", "\u0e0a\u0e2d\u0e1a"], negativeWhen: ["\u0e1e\u0e31\u0e07", "\u0e41\u0e1e\u0e49", "\u0e23\u0e30\u0e04\u0e32\u0e22", "\u0e41\u0e2a\u0e1a"] },
-  { term: "\u0e09\u0e48\u0e33", positiveWhen: ["\u0e1c\u0e34\u0e27", "\u0e1b\u0e32\u0e01", "\u0e2a\u0e35", "\u0e2a\u0e27\u0e22", "\u0e27\u0e32\u0e27"], negativeWhen: ["\u0e40\u0e2b\u0e19\u0e35\u0e22\u0e27", "\u0e40\u0e22\u0e34\u0e49\u0e21"] },
+  { term: "ไม่ไหว", positiveWhen: ["รอ", "สวย", "ชอบ", "เริ่ด", "จึ้ง", "ปัง"], negativeWhen: ["ใช้", "แพ้", "แสบ", "ระคาย"] },
+  { term: "แรง", positiveWhen: ["สี", "เม็ดสี", "ชัด", "สวย", "จึ้ง", "ปัง"], negativeWhen: ["ราคา", "แพง", "กลิ่น", "ระคาย", "แสบ"] },
+  { term: "ฉ่ำ", positiveWhen: ["ผิว", "ปาก", "สี", "สวย", "วาว"], negativeWhen: ["เหนียว", "เยิ้ม"] },
 ] as const;
 
 export const sentimentStandardMethod =
-  "Classify sentiment from the meaning of the scraped text, not from likes/views/shares/comments. Positive = praise, liking, purchase intent, or good experience. Neutral = question, factual/general message, short reaction, or no clear positive/negative tone. Negative = complaint, dissatisfaction, concern, or mention of a problem. Modern slang is interpreted with the project lexicon and context rules; ambiguous terms are decided by nearby words.";
+  "จัด sentiment จากความหมายของข้อความเท่านั้น ไม่ใช้ likes/views/shares เป็นตัวตัดสิน: เชิงบวก = คำชม ความสนใจซื้อ หรือประสบการณ์ดี; เป็นกลาง = คำถาม ข้อมูลทั่วไป ข้อความสั้น อีโมจิ หรือข้อความที่ยังไม่มีทิศทางชัดเจน; เชิงลบ = คำร้องเรียน ความไม่พอใจ การปฏิเสธสินค้า หรือปัญหาจากการใช้งานที่ระบุชัดเจน";

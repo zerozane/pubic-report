@@ -13,15 +13,19 @@ const common = {
   start_date: optionalEnv("SOCIAL_PERIOD_FROM"),
   end_date: optionalEnv("SOCIAL_PERIOD_TO")
 };
+const tiktokCountry = optionalEnv("SOCIAL_COUNTRY", "TH").trim().toUpperCase() || "TH";
 const includeContextFields = envEnabled("SOCIAL_INCLUDE_CONTEXT_FIELDS", false);
 const includeInputType = envEnabled("SOCIAL_INCLUDE_INPUT_TYPE", false);
 
-const tiktokInput = envEnabled("SOCIAL_TIKTOK_ENABLED")
+const tiktokSearchInput = envEnabled("SOCIAL_TIKTOK_ENABLED")
   ? [
       ...itemsFromList("SOCIAL_TIKTOK_KEYWORDS", optionalEnv("BRIGHT_DATA_TIKTOK_SEARCH_INPUT_FIELD", "keyword"), "keyword"),
-      ...itemsFromList("SOCIAL_TIKTOK_HASHTAGS", optionalEnv("BRIGHT_DATA_TIKTOK_HASHTAG_INPUT_FIELD", "hashtag"), "hashtag"),
-      ...itemsFromList("SOCIAL_TIKTOK_URLS", optionalEnv("BRIGHT_DATA_TIKTOK_URL_INPUT_FIELD", "url"), "url")
-    ]
+      ...itemsFromList("SOCIAL_TIKTOK_HASHTAGS", optionalEnv("BRIGHT_DATA_TIKTOK_HASHTAG_INPUT_FIELD", "keyword"), "hashtag")
+    ].map((item) => ({ ...item, country: tiktokCountry }))
+  : [];
+
+const tiktokCommentsInput = envEnabled("SOCIAL_TIKTOK_ENABLED")
+  ? itemsFromList("SOCIAL_TIKTOK_URLS", optionalEnv("BRIGHT_DATA_TIKTOK_URL_INPUT_FIELD", "url"), "url")
   : [];
 
 const xInput = envEnabled("SOCIAL_X_ENABLED", false)
@@ -32,7 +36,8 @@ const xInput = envEnabled("SOCIAL_X_ENABLED", false)
   : [];
 
 const outputs = [
-  writeInput("tiktok-search.json", tiktokInput),
+  writeInput("tiktok-search.json", tiktokSearchInput),
+  writeInput("tiktok-comments.json", tiktokCommentsInput),
   writeInput("x-posts.json", xInput)
 ];
 

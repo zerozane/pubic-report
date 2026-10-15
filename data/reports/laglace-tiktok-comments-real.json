@@ -13,7 +13,7 @@
   "methodology": {
     "source": "Bright Data TikTok comments scraper from selected TikTok video URLs",
     "selection": "กวาด comments จาก TikTok URL ที่เลือกไว้เกี่ยวกับ La Glace และรีวิวสินค้า โดยจำกัด 20 comments ต่อ URL สำหรับรอบทดสอบแรก",
-    "sentimentMethod": "Classify sentiment from the meaning of the scraped text, not from likes/views/shares/comments. Positive = praise, liking, purchase intent, or good experience. Neutral = question, factual/general message, short reaction, or no clear positive/negative tone. Negative = complaint, dissatisfaction, concern, or mention of a problem.",
+    "sentimentMethod": "จัด sentiment จากความหมายของข้อความเท่านั้น ไม่ใช้ likes/views/shares เป็นตัวตัดสิน: เชิงบวก = คำชม ความสนใจซื้อ หรือประสบการณ์ดี; เป็นกลาง = คำถาม ข้อมูลทั่วไป ข้อความสั้น อีโมจิ หรือข้อความที่ยังไม่มีทิศทางชัดเจน; เชิงลบ = คำร้องเรียน ความไม่พอใจ การปฏิเสธสินค้า หรือปัญหาจากการใช้งานที่ระบุชัดเจน",
     "limitations": [
       "เป็นชุดทดสอบจาก URL ที่เลือก ไม่ใช่ภาพรวมทั้งหมดของ TikTok",
       "ยังไม่ได้ทำ keyword discovery ด้วยบัญชีใหม่ เพราะ dataset ID ปัจจุบันต้องการ URL ไม่ใช่ keyword search",
@@ -112,7 +112,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7624472128103992594?comment_id=7624894476100535048",
       "publishedAt": "2026-04-04T13:24:59.000Z",
       "text": "คุณน้าาา นัวมากก คอนเท้นนี้ถูกต้องงงง❤️❤️",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "คำชม/ความชอบสินค้า"
       ],
@@ -224,7 +224,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7624472128103992594?comment_id=7640031002739507976",
       "publishedAt": "2026-05-15T08:22:25.000Z",
       "text": "กรี๊ดดดดดดชากลาสทำถึงง",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "คำชม/ความชอบสินค้า"
       ],
@@ -251,7 +251,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7624472128103992594?comment_id=7624496254873060117",
       "publishedAt": "2026-04-03T11:39:40.000Z",
       "text": "ลิปทินต์04 คู่กับครีมบรัชเบอร์ไรดีคะะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "ลิป/สีปาก",
         "บลัช/แก้ม",
@@ -283,7 +283,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7624472128103992594?comment_id=7624701039007040264",
       "publishedAt": "2026-04-04T00:54:36.000Z",
       "text": "บรัชสีไหนนัวที่สุดดทุกคนน",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "คำชม/ความชอบสินค้า",
         "บลัช/แก้ม",
@@ -540,7 +540,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7624472128103992594?comment_id=7624532944711598869",
       "publishedAt": "2026-04-03T14:02:07.000Z",
       "text": "คือต้องให้จิงๆ ทั้งคอนเทนต์ครีเอทีฟสุดๆ we love laglace💗",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "บทสนทนาอื่นๆ"
       ],
@@ -596,7 +596,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7624472128103992594?comment_id=7625232831845204754",
       "publishedAt": "2026-04-05T11:17:54.000Z",
       "text": "ลิป05 คือ สีที่ถูกต้องมาก",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "คำชม/ความชอบสินค้า",
         "ลิป/สีปาก"
@@ -1031,7 +1031,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689466772244775687",
       "publishedAt": "2026-09-25T13:38:29.000Z",
       "text": "เขียนลื่น",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "บทสนทนาอื่นๆ"
       ],
@@ -1058,7 +1058,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7690086989554762517",
       "publishedAt": "2026-09-27T05:45:17.000Z",
       "text": "เขียนง่ายย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "บทสนทนาอื่นๆ"
       ],
@@ -1166,7 +1166,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689629584112239380",
       "publishedAt": "2026-09-26T00:10:53.000Z",
       "text": "แนะนำเลย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "ข้อความสั้น/รีแอคชัน"
       ],
@@ -1220,7 +1220,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689458520715838226",
       "publishedAt": "2026-09-25T13:06:28.000Z",
       "text": "เขียนง่าย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "บทสนทนาอื่นๆ"
       ],
@@ -1247,7 +1247,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689551436611142408",
       "publishedAt": "2026-09-25T19:07:03.000Z",
       "text": "เขียนดี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "ข้อความสั้น/รีแอคชัน"
       ],
@@ -1328,7 +1328,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689463655985316628",
       "publishedAt": "2026-09-25T13:26:20.000Z",
       "text": "เขียนง่าย เขียนลื่นมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "บทสนทนาอื่นๆ"
       ],
@@ -1382,7 +1382,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689528172643549959",
       "publishedAt": "2026-09-25T17:36:45.000Z",
       "text": "เขียนลื่นน",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "บทสนทนาอื่นๆ"
       ],
@@ -1409,7 +1409,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689509635955262214",
       "publishedAt": "2026-09-25T16:24:52.000Z",
       "text": "เขียนลื่น",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "บทสนทนาอื่นๆ"
       ],
@@ -1463,7 +1463,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689856825961579265",
       "publishedAt": "2026-09-26T14:52:15.000Z",
       "text": "นัวววว",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "คำชม/ความชอบสินค้า"
       ],
@@ -1517,7 +1517,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689386842512720648",
       "publishedAt": "2026-09-25T08:28:20.000Z",
       "text": "เขียนลื่นมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "บทสนทนาอื่นๆ"
       ],
@@ -2033,7 +2033,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7339911031759572225?comment_id=7340300816022864642",
       "publishedAt": "2024-02-27T15:16:20.000Z",
       "text": "รอตำค้า",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "ราคา/ความต้องการซื้อ"
       ],
@@ -2171,7 +2171,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7306110579519900933?comment_id=7306127383651828485",
       "publishedAt": "2023-11-27T13:06:00.000Z",
       "text": "ควรค่าทุกสี💖",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "บทสนทนาอื่นๆ"
       ],
@@ -2252,7 +2252,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7306110579519900933?comment_id=7307566638785299205",
       "publishedAt": "2023-12-01T10:11:04.000Z",
       "text": "ชีได้มงทุกสี😻",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "บทสนทนาอื่นๆ"
       ],
@@ -2279,7 +2279,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7306110579519900933?comment_id=7306138056640545541",
       "publishedAt": "2023-11-27T13:47:19.000Z",
       "text": "รอไม่ไหวแล้ววว 💕",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "ข้อกังวล/ปัญหา"
       ],
@@ -2306,7 +2306,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7306110579519900933?comment_id=7306176412653486853",
       "publishedAt": "2023-11-27T16:16:13.000Z",
       "text": "อดใจรอไม่ไหวแย้ววววว",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "ข้อกังวล/ปัญหา"
       ],
@@ -2576,7 +2576,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7306110579519900933?comment_id=7327275297657078533",
       "publishedAt": "2024-01-23T12:50:44.000Z",
       "text": "ผิวสองสีจะใช้เบอร์ไหนดีอ่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "สกินแคร์/โทนเนอร์แพด",
         "คำถามสินค้า/เฉดสี"

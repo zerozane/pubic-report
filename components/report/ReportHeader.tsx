@@ -44,7 +44,7 @@ export default function ReportHeader({ report }: { report: Report }) {
           <span>กลาง {summary.neutralCount.toLocaleString("th-TH")}</span>
           <span>ลบ {summary.negativeCount.toLocaleString("th-TH")}</span>
         </div>
-        <Link href={`/reports/${report.slug}/evidence?sentiment=negative`}>
+        <Link href={`/reports/${report.slug}#stream`}>
           เปิดเสียงเชิงลบ <ArrowDownRight size={18} aria-hidden="true" />
         </Link>
       </div>

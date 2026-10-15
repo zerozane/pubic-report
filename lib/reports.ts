@@ -5,6 +5,51 @@ export { getSentimentLabel } from "./format";
 
 const reportsDirectory = path.join(process.cwd(), "data", "reports");
 
+const laglaceSignalPattern = /\blaglace\b|@laglace|ลากลาส|ลากลาซ/i;
+const laglacePhrasePattern = /\bla\s+glace\b/i;
+const officialLaglaceXSourcePattern = /\/LaglaceTH_(?:\/|$)|\/laglace_official(?:\/|$)/i;
+const competingBrandPattern = /canmake|browit|4u2|hince|mude|mizumi|kage|odbo|clio|lilybyred|dasique|lifeford|heart\s*percent|j\s*m\s*c\s*y|jmcy|melinda|in2it|เมอลินดา|เมลินดา/i;
+
+function hasLaGlaceSignal(item: Report["evidence"][number]) {
+  const text = [
+    item.text,
+    ...(item.matchedKeywords ?? []),
+    item.sourceUrl ?? ""
+  ].join(" ");
+  const hasBrandPhrase = laglacePhrasePattern.test(text) && /official|product|beauty|lip|blush|toner|ลิป|บลัช|โทนเนอร์/i.test(text);
+  return laglaceSignalPattern.test(text) || hasBrandPhrase;
+}
+
+function isLaGlaceEvidence(item: Report["evidence"][number]) {
+  const text = [item.text, ...(item.matchedKeywords ?? [])].join(" ");
+  const hasCompetingBrand = competingBrandPattern.test(text);
+  const hasBrandSignal = hasLaGlaceSignal({ ...item, sourceUrl: null });
+
+  if (item.platform === "X") {
+    return (hasBrandSignal || officialLaglaceXSourcePattern.test(item.sourceUrl ?? "")) && !hasCompetingBrand;
+  }
+
+  return !hasCompetingBrand || hasBrandSignal;
+}
+
+function applyReportQualityFilters(report: Report, slug: string) {
+  if (slug !== "laglace-clean-social-report") {
+    return report;
+  }
+
+  const evidence = report.evidence.filter(isLaGlaceEvidence);
+  const retainedEvidenceIds = new Set(evidence.map((item) => item.id));
+
+  return {
+    ...report,
+    evidence,
+    insights: report.insights.map((insight) => ({
+      ...insight,
+      evidenceIds: insight.evidenceIds.filter((id) => retainedEvidenceIds.has(id))
+    }))
+  };
+}
+
 export function getReportSlugs() {
   if (!fs.existsSync(reportsDirectory)) {
     return [];
@@ -12,7 +57,7 @@ export function getReportSlugs() {
 
   return fs
     .readdirSync(reportsDirectory)
-    .filter((file) => file.endsWith(".json"))
+    .filter((file) => file.endsWith(".json") && file !== "laglace-product-quality.json")
     .map((file) => file.replace(/\.json$/, ""));
 }
 
@@ -25,7 +70,7 @@ export function getAllReports() {
 export function getReportBySlug(slug: string): Report {
   const filePath = path.join(reportsDirectory, `${slug}.json`);
   const raw = fs.readFileSync(filePath, "utf8");
-  return JSON.parse(raw) as Report;
+  return applyReportQualityFilters(JSON.parse(raw) as Report, slug);
 }
 
 export function getPlatformSummary(report: Report): ReportSummary {

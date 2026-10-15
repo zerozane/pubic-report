@@ -92,3 +92,53 @@ export function getDefaultLimitPerInput(dataset) {
   const envKey = map[dataset];
   return envKey ? optionalNumberEnv(envKey) : null;
 }
+
+export function getSafeLimitPerInput(dataset, requested = null) {
+  const max = optionalNumberEnv("BRIGHT_DATA_MAX_LIMIT_PER_INPUT", 10);
+  const configured = requested ?? getDefaultLimitPerInput(dataset) ?? optionalNumberEnv("BRIGHT_DATA_DEFAULT_LIMIT_PER_INPUT", 5);
+  const value = Number(configured);
+
+  if (!Number.isInteger(value) || value < 1) {
+    throw new Error(`Invalid limit_per_input for ${dataset}: ${configured}. Use a positive integer.`);
+  }
+  if (!Number.isInteger(max) || max < 1) {
+    throw new Error(`Invalid BRIGHT_DATA_MAX_LIMIT_PER_INPUT: ${max}. Use a positive integer.`);
+  }
+
+  return Math.min(value, max);
+}
+
+export function assertCollectionBudget(dataset, inputCount, limitPerInput) {
+  const maxTotal = optionalNumberEnv("BRIGHT_DATA_MAX_TOTAL_RECORDS", 100);
+  if (!Number.isInteger(maxTotal) || maxTotal < 1) {
+    throw new Error(`Invalid BRIGHT_DATA_MAX_TOTAL_RECORDS: ${maxTotal}. Use a positive integer.`);
+  }
+  const estimatedTotal = inputCount * limitPerInput;
+  if (estimatedTotal > maxTotal) {
+    throw new Error(
+      `Refusing ${dataset} collection: ${inputCount} inputs x ${limitPerInput} records = ${estimatedTotal}. Maximum is ${maxTotal}. Split the job or lower the limit.`
+    );
+  }
+}
+
+export function prepareDatasetInput(dataset, input) {
+  if (!Array.isArray(input)) {
+    throw new Error("Bright Data input must be a JSON array.");
+  }
+
+  const maxInputs = optionalNumberEnv("BRIGHT_DATA_MAX_INPUTS", 20);
+  if (!Number.isInteger(maxInputs) || maxInputs < 1) {
+    throw new Error(`Invalid BRIGHT_DATA_MAX_INPUTS: ${maxInputs}. Use a positive integer.`);
+  }
+  if (input.length > maxInputs) {
+    throw new Error(`Refusing to submit ${input.length} inputs. Maximum is ${maxInputs}. Split the collection into smaller jobs.`);
+  }
+
+  if (dataset !== "tiktok-search") return input;
+
+  const country = optionalEnv("SOCIAL_COUNTRY", "TH").trim().toUpperCase() || "TH";
+  return input.map((item) => {
+    const itemCountry = typeof item?.country === "string" ? item.country.trim().toUpperCase() : "";
+    return { ...item, country: itemCountry || country };
+  });
+}

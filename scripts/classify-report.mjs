@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { classifyModernSentiment } from "./sentiment-rules.mjs";
+import { classifySocialSentiment } from "./sentiment-rules.mjs";
 
 const args = parseArgs(process.argv.slice(2));
 const reportPath = args.input || "data/reports/iphone-18-selected-tiktok.json";
@@ -169,6 +169,8 @@ function topicsForText(value) {
 }
 
 function sentimentForText(text, topics) {
+  return classifySocialSentiment(text, { domain: "iphone" });
+
   if (isShortNegativeText(text)) return "negative";
   if (isLowSignalText(text)) {
     return "neutral";
@@ -180,7 +182,7 @@ function sentimentForText(text, topics) {
   if (isDeviceProblemRequest(text)) return "neutral";
   if (isUncertainOrPracticalEvaluation(text)) return "neutral";
 
-  const modernSentiment = classifyModernSentiment(text);
+  const modernSentiment = classifySocialSentiment(text, { domain: "iphone" });
   if (modernSentiment) return modernSentiment;
 
   const negativeHits = countMatches(text, [

@@ -1,7 +1,7 @@
 ﻿import fs from "node:fs";
 import path from "node:path";
 import { parseArgs, printUsage } from "./args.mjs";
-import { getDatasetId, getDefaultLimitPerInput, loadEnv, requireEnv } from "./env.mjs";
+import { assertCollectionBudget, getDatasetId, getSafeLimitPerInput, loadEnv, prepareDatasetInput, requireEnv } from "./env.mjs";
 
 loadEnv();
 
@@ -18,13 +18,15 @@ if (args.help || !args.dataset || !args.input) {
 
 const apiKey = requireEnv("BRIGHT_DATA_API_KEY");
 const datasetId = getDatasetId(args.dataset);
-const limitPerInput = args["limit-per-input"] ? Number(args["limit-per-input"]) : getDefaultLimitPerInput(String(args.dataset));
+const requestedLimit = args["limit-per-input"] ? Number(args["limit-per-input"]) : null;
+const limitPerInput = getSafeLimitPerInput(String(args.dataset), requestedLimit);
 const inputPath = path.resolve(process.cwd(), String(args.input));
-const payload = JSON.parse(fs.readFileSync(inputPath, "utf8"));
+const payload = prepareDatasetInput(String(args.dataset), JSON.parse(fs.readFileSync(inputPath, "utf8")));
 
 if (!Array.isArray(payload)) {
   throw new Error("Input file must be a JSON array matching the selected Bright Data scraper schema.");
 }
+assertCollectionBudget(String(args.dataset), payload.length, limitPerInput);
 
 const endpoint = String(args.endpoint ?? "trigger");
 const url = new URL(`https://api.brightdata.com/datasets/v3/${endpoint}`);

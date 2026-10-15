@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import EngagementDashboard from "@/components/report/EngagementDashboard";
 import PrintButton from "@/components/report/PrintButton";
 import { getReportBySlug, getReportSlugs } from "@/lib/reports";
+import { getProductQualityBySlug, getProductQualityReviewsBySlug } from "@/lib/productQuality";
 
 export function generateStaticParams() {
   return getReportSlugs().map((slug) => ({ slug }));
@@ -17,6 +18,8 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
 export default function EngagementPage({ params }: { params: { slug: string } }) {
   if (!getReportSlugs().includes(params.slug)) notFound();
   const report = getReportBySlug(params.slug);
+  const quality = getProductQualityBySlug(params.slug);
+  const qualityReviews = getProductQualityReviewsBySlug(params.slug);
 
   return (
     <div className="lg-page lg-editorial-page lg-engagement-page">
@@ -32,8 +35,6 @@ export default function EngagementPage({ params }: { params: { slug: string } })
           <nav className="lg-report-tabs" aria-label="Report sections">
             <Link href={`/reports/${report.slug}`}>ภาพรวม</Link>
             <Link href={`/reports/${report.slug}/quality`}>คุณภาพสินค้า</Link>
-            <Link href={`/reports/${report.slug}#stream`}>เสียงผู้ชม</Link>
-            <Link href={`/reports/${report.slug}/evidence`}>หลักฐาน</Link>
             <Link href={`/reports/${report.slug}/engagement`} className="active">Engagement</Link>
           </nav>
           <div className="lg-top-actions lg-report-actions">
@@ -43,7 +44,7 @@ export default function EngagementPage({ params }: { params: { slug: string } })
         </div>
       </header>
 
-      <EngagementDashboard report={report} />
+      <EngagementDashboard report={report} quality={quality} qualityReviews={qualityReviews} />
     </div>
   );
 }

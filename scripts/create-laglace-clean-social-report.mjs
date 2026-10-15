@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { classifyModernSentiment } from "./sentiment-rules.mjs";
+import { classifyLaGlaceSentiment, sentimentStandardMethod } from "./sentiment-rules.mjs";
 
 const outPath = "data/reports/laglace-clean-social-report.json";
 const palette = ["#FB6F92", "#62D6A3", "#9B7CFF", "#F6C85F", "#73B7FF", "#F28C8C", "#7ED6D1", "#B8A1FF"];
@@ -37,6 +37,15 @@ for (const source of sources) {
   }
 }
 
+if (!evidence.length && fs.existsSync(outPath)) {
+  const existingReport = JSON.parse(fs.readFileSync(outPath, "utf8"));
+  for (const item of existingReport.evidence || []) {
+    if (!item.text && !item.sourceUrl) continue;
+    const sentiment = classifyLaGlaceSentiment(item.text);
+    evidence.push({ ...item, sentiment, isIssue: sentiment === "negative" });
+  }
+}
+
 evidence.sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
 const counts = countBy(evidence, (item) => item.platform);
 const sentimentCounts = countBy(evidence, (item) => item.sentiment || "unclassified");
@@ -55,7 +64,8 @@ const report = {
   methodology: {
     source: "Bright Data TikTok official video comments, Instagram comments, Facebook comments, YouTube comments, and Apify X replies. TikTok excludes unrelated 14k mixed scrape records and keeps only @laglace_official/keyword-matched sources.",
     selection: "Includes only records with auditable source URLs or source IDs from the collected clean files. The TikTok bulk scrape was filtered at source-video level to official La Glace videos before inclusion.",
-    sentimentMethod: "Rule-based Thai/English text classification from the scraped text only. Positive = praise, liking, purchase intent, or good experience. Neutral = question/factual/general reaction. Negative = complaint, dissatisfaction, concern, or problem mention.",
+    sentimentMethod: "จัด sentiment จากความหมายข้อความเท่านั้น ไม่ใช้ likes/views เป็นตัวตัดสิน: เชิงบวก = คำชม ประสบการณ์ดี ความต้องการซื้อ หรือการแนะนำ; เป็นกลาง = คำถาม ขอสี/ราคา/พิกัด ข้อความสั้น อีโมจิ หรือข้อความนอกประเด็น; เชิงลบ = ร้องเรียน ไม่พอใจ หรือปัญหาจากการใช้สินค้าที่ระบุชัดเจน",
+    sentimentMethod: sentimentStandardMethod,
     limitations: [
       "TikTok has much larger coverage than other platforms because official TikTok source videos produced the highest available comment volume.",
       "Facebook and YouTube remain limited samples because discovered source posts/videos had low visible comment volume.",
@@ -113,7 +123,7 @@ function toEvidence(row, platform, index) {
   const sourceId = String(pick(row, idKeys(platform)) || `${platform.toLowerCase()}-${index + 1}`);
   const sourceUrl = normalizeUrl(pick(row, urlKeys(platform)), row, platform);
   const publishedAt = normalizeDate(pick(row, dateKeys(platform)) || row.timestamp || new Date().toISOString());
-  const sentiment = classifyModernSentiment(text) || fallbackSentiment(text);
+  const sentiment = classifyLaGlaceSentiment(text);
   const topics = classifyTopics(text, row, platform);
   const metrics = metricsFor(row, platform);
   return {

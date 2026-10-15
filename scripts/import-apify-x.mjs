@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { classifyModernSentiment } from "./sentiment-rules.mjs";
+import { classifySocialSentiment } from "./sentiment-rules.mjs";
 
 const inputPath = process.argv[2];
 const reportPath = process.argv[3] || "data/reports/laglace-social-report.json";
@@ -92,7 +92,7 @@ function toEvidence(item, index) {
     if (parentHandle && screenName.toLowerCase() === parentHandle.toLowerCase()) return null;
   }
 
-  const sentiment = classifyModernSentiment(text) || "neutral";
+  const sentiment = classifySocialSentiment(text);
   const metrics = {
     likes: numberLike(pickAny(item, ["favorites", "likes", "likeCount", "favorite_count", "favoriteCount", "legacy.favorite_count"])),
     replies: numberLike(pickAny(item, ["replies", "replyCount", "conversationCount", "legacy.reply_count"])),

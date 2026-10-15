@@ -1,6 +1,6 @@
 ﻿import fs from 'node:fs';
 import path from 'node:path';
-import { classifyModernSentiment } from './sentiment-rules.mjs';
+import { classifySocialSentiment } from './sentiment-rules.mjs';
 
 const files = process.argv.slice(2);
 if (!files.length) {
@@ -14,8 +14,8 @@ for (const input of files) {
   let changed = 0;
   for (const item of report.evidence || []) {
     if (item.recordType !== 'comment') continue;
-    const next = classifyModernSentiment(item.text);
-    if (!next || next === item.sentiment) continue;
+    const next = classifySocialSentiment(item.text);
+    if (next === item.sentiment) continue;
     item.sentiment = next;
     changed += 1;
   }

@@ -1,19 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
-  AlertTriangle,
   ExternalLink,
   FileText,
-  Layers,
-  MessageSquare,
   Search,
-  Video,
 } from "lucide-react";
 import type { Platform, ReportEvidence } from "@/lib/types";
 
-type PlatformFilter = "all" | "issues" | Platform;
-type RecordFilter = "all" | "post" | "comment";
+type PlatformFilter = "all" | Platform;
 
 const platformLabels: Record<string, string> = {
   TikTok: "TikTok",
@@ -24,20 +19,26 @@ const platformLabels: Record<string, string> = {
 };
 
 const sentimentLabels: Record<string, string> = {
-  positive: "Positive",
-  neutral: "Neutral",
-  negative: "Negative"
+  positive: "เชิงบวก",
+  neutral: "เชิงกลาง",
+  negative: "เชิงลบ"
 };
 
 export default function MentionsExplorer({ evidence }: { evidence: ReportEvidence[] }) {
   const [platform, setPlatform] = useState<PlatformFilter>("all");
-  const [recordType, setRecordType] = useState<RecordFilter>("all");
-  const [keyword, setKeyword] = useState("all");
+  const [sentiment, setSentiment] = useState("all");
   const [query, setQuery] = useState("");
+  const [selectedIds, setSelectedIds] = useState<Set<string> | null>(null);
+  const [page, setPage] = useState(1);
+  const pageSize = 10;
+
+  useEffect(() => {
+    const ids = new URLSearchParams(window.location.search).get("ids");
+    setSelectedIds(ids ? new Set(ids.split(",").filter(Boolean)) : null);
+  }, []);
 
   const records = useMemo(() => evidence, [evidence]);
   const posts = useMemo(() => records.filter((item) => item.recordType === "post"), [records]);
-  const comments = useMemo(() => records.filter((item) => item.recordType === "comment"), [records]);
 
   const postLookup = useMemo(() => {
     const lookup = new Map<string, ReportEvidence>();
@@ -48,11 +49,6 @@ export default function MentionsExplorer({ evidence }: { evidence: ReportEvidenc
     return lookup;
   }, [posts]);
 
-  const keywords = useMemo(
-    () => Array.from(new Set(records.flatMap((item) => item.matchedKeywords || item.topics || []))).sort((a, b) => a.localeCompare(b, "th")),
-    [records]
-  );
-
   const platforms = useMemo(
     () => Array.from(new Set(records.map((item) => item.platform))),
     [records]
@@ -62,14 +58,12 @@ export default function MentionsExplorer({ evidence }: { evidence: ReportEvidenc
     const needle = query.trim().toLocaleLowerCase("th");
 
     return records.filter((item) => {
-      if (platform === "issues" && !item.isIssue) return false;
-      if (platform !== "all" && platform !== "issues" && item.platform !== platform) return false;
-      if (recordType !== "all" && item.recordType !== recordType) return false;
+      if (selectedIds && !selectedIds.has(item.id)) return false;
+      if (platform !== "all" && item.platform !== platform) return false;
+
+      if (sentiment !== "all" && item.sentiment !== sentiment) return false;
 
       const itemKeywords = item.matchedKeywords || item.topics || [];
-      if (keyword !== "all" && !itemKeywords.some((value) => value.toLocaleLowerCase("th").includes(keyword.toLocaleLowerCase("th")))) {
-        return false;
-      }
 
       if (!needle) return true;
       return [
@@ -86,7 +80,17 @@ export default function MentionsExplorer({ evidence }: { evidence: ReportEvidenc
         .toLocaleLowerCase("th")
         .includes(needle);
     });
-  }, [records, platform, recordType, keyword, query]);
+  }, [records, selectedIds, platform, sentiment, query]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [selectedIds, platform, sentiment, query]);
+
+  const totalPages = Math.max(Math.ceil(filtered.length / pageSize), 1);
+  const currentPage = Math.min(page, totalPages);
+  const pageStart = (currentPage - 1) * pageSize;
+  const pageRecords = filtered.slice(pageStart, pageStart + pageSize);
+  const pageEnd = Math.min(pageStart + pageRecords.length, filtered.length);
 
   return (
     <section className="lg-section" id="stream">
@@ -114,30 +118,12 @@ export default function MentionsExplorer({ evidence }: { evidence: ReportEvidenc
             />
           </label>
 
-          <select value={keyword} onChange={(event) => setKeyword(event.target.value)}>
-            <option value="all">ทุกประเด็น / keyword</option>
-            {keywords.map((value) => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
+          <select value={sentiment} onChange={(event) => setSentiment(event.target.value)}>
+            <option value="all">ทุกความรู้สึก</option>
+            <option value="positive">เชิงบวก</option>
+            <option value="neutral">เชิงกลาง</option>
+            <option value="negative">เชิงลบ</option>
           </select>
-        </div>
-
-        <div className="lg-platform-filters">
-          <span>Record type:</span>
-          <button className={recordType === "all" ? "active" : ""} onClick={() => setRecordType("all")} type="button">
-            <Layers size={14} />
-            All
-          </button>
-          <button className={recordType === "post" ? "active" : ""} onClick={() => setRecordType("post")} type="button">
-            <Video size={14} />
-            Posts {posts.length.toLocaleString("th-TH")}
-          </button>
-          <button className={recordType === "comment" ? "active" : ""} onClick={() => setRecordType("comment")} type="button">
-            <MessageSquare size={14} />
-            Comments {comments.length.toLocaleString("th-TH")}
-          </button>
         </div>
 
         <div className="lg-platform-filters">
@@ -155,12 +141,8 @@ export default function MentionsExplorer({ evidence }: { evidence: ReportEvidenc
               {platformLabels[value] || value}
             </button>
           ))}
-          <button className={platform === "issues" ? "active" : ""} onClick={() => setPlatform("issues")} type="button">
-            <AlertTriangle size={14} />
-            Flagged
-          </button>
         </div>
-      </div>
+        </div>
 
       <div className="lg-table-wrap">
         <table className="lg-data-table">
@@ -176,10 +158,10 @@ export default function MentionsExplorer({ evidence }: { evidence: ReportEvidenc
             </tr>
           </thead>
           <tbody>
-            {filtered.map((item) => {
+            {pageRecords.map((item) => {
               const source = getPostSource(item, postLookup);
               return (
-                <tr key={item.id}>
+                <tr id={`evidence-${item.id}`} key={item.id}>
                   <td>
                     <span className={`lg-badge lg-platform lg-platform-${platformClass(item.platform)}`}>
                       {platformLabels[item.platform] || item.platform}
@@ -229,6 +211,14 @@ export default function MentionsExplorer({ evidence }: { evidence: ReportEvidenc
           </tbody>
         </table>
       </div>
+      <nav className="lg-mentions-pagination" aria-label="Pagination">
+        <span>{filtered.length ? `แสดง ${pageStart + 1}-${pageEnd} จาก ${filtered.length.toLocaleString("th-TH")} รายการ` : "ไม่พบรายการ"}</span>
+        <div>
+          <button type="button" onClick={() => setPage((value) => Math.max(value - 1, 1))} disabled={currentPage === 1}>ก่อนหน้า</button>
+          <strong>หน้า {currentPage} / {totalPages}</strong>
+          <button type="button" onClick={() => setPage((value) => Math.min(value + 1, totalPages))} disabled={currentPage === totalPages}>ถัดไป</button>
+        </div>
+      </nav>
     </section>
   );
 }

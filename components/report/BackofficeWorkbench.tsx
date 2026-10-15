@@ -8,7 +8,7 @@ const storageKey = "laglace-backoffice-draft-v1";
 
 const defaultDraft = {
   campaignName: "LA GLACE",
-  reportSlug: "laglace-social-report",
+  reportSlug: "laglace-clean-social-report",
   dateFrom: "2026-09-01",
   dateTo: "2026-09-30",
   platforms: ["TikTok", "Facebook", "Instagram", "X"],
@@ -105,7 +105,7 @@ export default function BackofficeWorkbench() {
     <div className="lg-page lg-editorial-page bo-page">
       <header className="lg-topbar lg-report-topbar">
         <div className="lg-container lg-topbar-inner">
-          <Link className="lg-brand lg-report-brand" href="/reports/laglace-social-report">
+          <Link className="lg-brand lg-report-brand" href="/reports/laglace-clean-social-report">
             <span>LG</span>
             <div>
               <strong>LA GLACE</strong>
@@ -113,9 +113,9 @@ export default function BackofficeWorkbench() {
             </div>
           </Link>
           <nav className="lg-report-tabs" aria-label="เมนูหลัก">
-            <Link href="/reports/laglace-social-report">รายงาน</Link>
-            <Link href="/reports/laglace-social-report/engagement">Engagement</Link>
-            <Link href="/reports/laglace-social-report/evidence">หลักฐาน</Link>
+            <Link href="/reports/laglace-clean-social-report">รายงาน</Link>
+            <Link href="/reports/laglace-clean-social-report/engagement">Engagement</Link>
+            <Link href="/reports/laglace-clean-social-report#stream">เสียงผู้บริโภค</Link>
             <Link href="/backoffice" className="active">Backoffice</Link>
           </nav>
           <div className="lg-top-actions lg-report-actions">

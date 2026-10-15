@@ -1,11 +1,11 @@
 import type { ReportSummary } from "@/lib/types";
 
-export default function SummaryCards({ summary: s }: { summary: ReportSummary }) {
+export default function SummaryCards({ summary }: { summary: ReportSummary }) {
   const cards = [
-    ["โพสต์ต้นทาง", s.postCount.toLocaleString("th-TH"), "โพสต์ TikTok ที่เลือกเพื่อดึงคอมเมนต์เชิงลึก"],
-    ["ความคิดเห็น", s.commentCount.toLocaleString("th-TH"), "คอมเมนต์ทั้งหมดหลัง normalize และตัดซ้ำ"],
-    ["เชิงลบ", s.negativeCount.toLocaleString("th-TH"), "เสียงราคาแพง เลี่ยงซื้อ หรือประชดเรื่องความคุ้มค่า"],
-    ["เชิงบวก", s.positiveCount.toLocaleString("th-TH"), "ข้อความอยากได้หรือรอซื้อที่อ่านว่าเป็น intent จริง"],
+    ["โพสต์ต้นทาง", summary.postCount.toLocaleString("th-TH"), "โพสต์ที่ใช้เป็นต้นทางของชุดข้อมูล"],
+    ["ความคิดเห็น", summary.commentCount.toLocaleString("th-TH"), "ความคิดเห็นหลัง normalize และตัดข้อมูลซ้ำ"],
+    ["เชิงลบ", summary.negativeCount.toLocaleString("th-TH"), "คำร้องเรียน การปฏิเสธสินค้า หรือปัญหาที่ระบุชัดเจน"],
+    ["เชิงบวก", summary.positiveCount.toLocaleString("th-TH"), "คำชม ความสนใจซื้อ หรือประสบการณ์ที่ดี"],
   ];
 
   return (

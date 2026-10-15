@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-export default function ReportNavigation({ slug, evidencePage = false }: { slug: string; evidencePage?: boolean }) {
+export default function ReportNavigation({ slug }: { slug: string }) {
   const base = `/reports/${slug}`;
   const items = [
     ["overview", "ภาพรวม"],
@@ -25,14 +25,6 @@ export default function ReportNavigation({ slug, evidencePage = false }: { slug:
             {label}
           </Link>
         ))}
-        <Link
-          href={`${base}/evidence`}
-          className={evidencePage ? "active" : ""}
-          aria-current={evidencePage ? "page" : undefined}
-        >
-          <span>06</span>
-          หลักฐานทั้งหมด
-        </Link>
       </nav>
       <div className="sidefoot">
         <span className="live-dot" />

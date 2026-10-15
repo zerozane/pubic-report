@@ -57,7 +57,7 @@ export default function TopicBreakdown({ report }: { report: Report }) {
           {topics.map(([topic, count]) => (
             <Link
               className="card topic-row"
-              href={`/reports/${report.slug}/evidence?${new URLSearchParams({ topic })}`}
+              href={`/reports/${report.slug}#stream`}
               key={topic}
             >
               <strong>{topicLabels[topic] ?? topic}</strong>

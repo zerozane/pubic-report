@@ -1,0 +1,1512 @@
+{
+  "version": 1,
+  "brand": "LA GLACE",
+  "source": {
+    "platform": "TikTok Shop",
+    "region": "TH",
+    "inputFile": "laglace-all-product-reviews.json",
+    "collectedAt": "2026-10-14T09:46:22.429Z"
+  },
+  "totals": {
+    "reviews": 9000,
+    "averageRating": 4.96,
+    "fiveStarReviews": 8685,
+    "lowRatingReviews": 9,
+    "verifiedPurchases": 9000,
+    "thaiReviews": 8691,
+    "issueReviews": 538,
+    "humanReview": 308
+  },
+  "products": [
+    {
+      "id": "1729588326432082832",
+      "name": "บลัชดำ",
+      "sourceName": "LA GLACE BAEBIE VIBES CREAM BLUSH",
+      "label": "Baebie Vibes Cream Blush",
+      "category": "บลัช",
+      "count": 1000,
+      "averageRating": 4.96,
+      "fiveStarPercent": 96.2,
+      "lowRatingPercent": 0.1,
+      "verifiedPercent": 100,
+      "ratingDistribution": [
+        {
+          "rating": 5,
+          "count": 962
+        },
+        {
+          "rating": 4,
+          "count": 32
+        },
+        {
+          "rating": 3,
+          "count": 5
+        },
+        {
+          "rating": 2,
+          "count": 1
+        },
+        {
+          "rating": 1,
+          "count": 0
+        }
+      ],
+      "issueCount": 47,
+      "topics": [
+        {
+          "name": "สีและเฉดสี",
+          "count": 676,
+          "percent": 68
+        },
+        {
+          "name": "การจัดส่งและร้านค้า",
+          "count": 280,
+          "percent": 28
+        },
+        {
+          "name": "ราคาและความคุ้มค่า",
+          "count": 194,
+          "percent": 19
+        },
+        {
+          "name": "กลิ่น",
+          "count": 181,
+          "percent": 18
+        },
+        {
+          "name": "ติดทนและกันน้ำ",
+          "count": 136,
+          "percent": 14
+        },
+        {
+          "name": "แพ็กเกจและการใช้งาน",
+          "count": 130,
+          "percent": 13
+        }
+      ]
+    },
+    {
+      "id": "1730014506458516368",
+      "name": "ลิปไอติม",
+      "sourceName": "LA GLACE MELTED SUNDAE LIP CLICK",
+      "label": "Melted Sundae Lip Click",
+      "category": "ลิป",
+      "count": 1000,
+      "averageRating": 4.95,
+      "fiveStarPercent": 95.7,
+      "lowRatingPercent": 0.2,
+      "verifiedPercent": 100,
+      "ratingDistribution": [
+        {
+          "rating": 5,
+          "count": 957
+        },
+        {
+          "rating": 4,
+          "count": 40
+        },
+        {
+          "rating": 3,
+          "count": 1
+        },
+        {
+          "rating": 2,
+          "count": 2
+        },
+        {
+          "rating": 1,
+          "count": 0
+        }
+      ],
+      "issueCount": 81,
+      "topics": [
+        {
+          "name": "สีและเฉดสี",
+          "count": 791,
+          "percent": 79
+        },
+        {
+          "name": "ราคาและความคุ้มค่า",
+          "count": 299,
+          "percent": 30
+        },
+        {
+          "name": "เนื้อสัมผัสและการเกลี่ย",
+          "count": 254,
+          "percent": 25
+        },
+        {
+          "name": "การจัดส่งและร้านค้า",
+          "count": 221,
+          "percent": 22
+        },
+        {
+          "name": "ติดทนและกันน้ำ",
+          "count": 130,
+          "percent": 13
+        },
+        {
+          "name": "กลิ่น",
+          "count": 96,
+          "percent": 10
+        }
+      ]
+    },
+    {
+      "id": "1731510000560081808",
+      "name": "โทนเนอร์แพด",
+      "sourceName": "LA GLACE DAILY TONER PADS",
+      "label": "Daily Toner Pads",
+      "category": "โทนเนอร์แพด",
+      "count": 1000,
+      "averageRating": 4.92,
+      "fiveStarPercent": 93.5,
+      "lowRatingPercent": 0.3,
+      "verifiedPercent": 100,
+      "ratingDistribution": [
+        {
+          "rating": 5,
+          "count": 935
+        },
+        {
+          "rating": 4,
+          "count": 54
+        },
+        {
+          "rating": 3,
+          "count": 8
+        },
+        {
+          "rating": 2,
+          "count": 2
+        },
+        {
+          "rating": 1,
+          "count": 1
+        }
+      ],
+      "issueCount": 81,
+      "topics": [
+        {
+          "name": "ราคาและความคุ้มค่า",
+          "count": 311,
+          "percent": 31
+        },
+        {
+          "name": "การจัดส่งและร้านค้า",
+          "count": 271,
+          "percent": 27
+        },
+        {
+          "name": "ผลลัพธ์การใช้งาน",
+          "count": 206,
+          "percent": 21
+        },
+        {
+          "name": "แพ็กเกจและการใช้งาน",
+          "count": 143,
+          "percent": 14
+        },
+        {
+          "name": "ติดทนและกันน้ำ",
+          "count": 129,
+          "percent": 13
+        },
+        {
+          "name": "สีและเฉดสี",
+          "count": 121,
+          "percent": 12
+        }
+      ]
+    },
+    {
+      "id": "1729432254714448784",
+      "name": "คอนซีลเลอร์",
+      "sourceName": "LA GLACE AIRY SKIN CONCEALER 6 g.",
+      "label": "Airy Skin Concealer",
+      "category": "คอนซีลเลอร์",
+      "count": 1000,
+      "averageRating": 4.96,
+      "fiveStarPercent": 97.3,
+      "lowRatingPercent": 0.1,
+      "verifiedPercent": 100,
+      "ratingDistribution": [
+        {
+          "rating": 5,
+          "count": 973
+        },
+        {
+          "rating": 4,
+          "count": 21
+        },
+        {
+          "rating": 3,
+          "count": 5
+        },
+        {
+          "rating": 2,
+          "count": 0
+        },
+        {
+          "rating": 1,
+          "count": 1
+        }
+      ],
+      "issueCount": 68,
+      "topics": [
+        {
+          "name": "แพ็กเกจและการใช้งาน",
+          "count": 258,
+          "percent": 26
+        },
+        {
+          "name": "สีและเฉดสี",
+          "count": 254,
+          "percent": 25
+        },
+        {
+          "name": "การจัดส่งและร้านค้า",
+          "count": 234,
+          "percent": 23
+        },
+        {
+          "name": "ผลลัพธ์การใช้งาน",
+          "count": 232,
+          "percent": 23
+        },
+        {
+          "name": "ราคาและความคุ้มค่า",
+          "count": 220,
+          "percent": 22
+        },
+        {
+          "name": "เนื้อสัมผัสและการเกลี่ย",
+          "count": 187,
+          "percent": 19
+        }
+      ]
+    },
+    {
+      "id": "1729605074994695056",
+      "name": "อายไลเนอร์",
+      "sourceName": "LA GLACE 2 IN 1 EYELINER & REMOVER STICK",
+      "label": "2 in 1 Eyeliner & Remover Stick",
+      "category": "อายไลเนอร์",
+      "count": 1000,
+      "averageRating": 4.99,
+      "fiveStarPercent": 99.3,
+      "lowRatingPercent": 0,
+      "verifiedPercent": 100,
+      "ratingDistribution": [
+        {
+          "rating": 5,
+          "count": 993
+        },
+        {
+          "rating": 4,
+          "count": 7
+        },
+        {
+          "rating": 3,
+          "count": 0
+        },
+        {
+          "rating": 2,
+          "count": 0
+        },
+        {
+          "rating": 1,
+          "count": 0
+        }
+      ],
+      "issueCount": 60,
+      "topics": [
+        {
+          "name": "สีและเฉดสี",
+          "count": 337,
+          "percent": 34
+        },
+        {
+          "name": "ติดทนและกันน้ำ",
+          "count": 275,
+          "percent": 28
+        },
+        {
+          "name": "การจัดส่งและร้านค้า",
+          "count": 178,
+          "percent": 18
+        },
+        {
+          "name": "ราคาและความคุ้มค่า",
+          "count": 100,
+          "percent": 10
+        },
+        {
+          "name": "แพ็กเกจและการใช้งาน",
+          "count": 66,
+          "percent": 7
+        },
+        {
+          "name": "เนื้อสัมผัสและการเกลี่ย",
+          "count": 19,
+          "percent": 2
+        }
+      ]
+    },
+    {
+      "id": "1729605073949133712",
+      "name": "ดอลลี่อาย",
+      "sourceName": "LA GLACE FIERY BABY-DOLLY EYE STICK",
+      "label": "Fiery Baby-Dolly Eye Stick",
+      "category": "ดอลลี่อาย",
+      "count": 1000,
+      "averageRating": 4.95,
+      "fiveStarPercent": 95.1,
+      "lowRatingPercent": 0.1,
+      "verifiedPercent": 100,
+      "ratingDistribution": [
+        {
+          "rating": 5,
+          "count": 951
+        },
+        {
+          "rating": 4,
+          "count": 44
+        },
+        {
+          "rating": 3,
+          "count": 4
+        },
+        {
+          "rating": 2,
+          "count": 1
+        },
+        {
+          "rating": 1,
+          "count": 0
+        }
+      ],
+      "issueCount": 72,
+      "topics": [
+        {
+          "name": "สีและเฉดสี",
+          "count": 536,
+          "percent": 54
+        },
+        {
+          "name": "ติดทนและกันน้ำ",
+          "count": 328,
+          "percent": 33
+        },
+        {
+          "name": "การจัดส่งและร้านค้า",
+          "count": 205,
+          "percent": 21
+        },
+        {
+          "name": "เนื้อสัมผัสและการเกลี่ย",
+          "count": 120,
+          "percent": 12
+        },
+        {
+          "name": "ราคาและความคุ้มค่า",
+          "count": 103,
+          "percent": 10
+        },
+        {
+          "name": "แพ็กเกจและการใช้งาน",
+          "count": 54,
+          "percent": 5
+        }
+      ]
+    },
+    {
+      "id": "1735378019447768976",
+      "name": "เจลลี่เซรั่มสเปรย์",
+      "sourceName": "LA GLACE FIRST SERUM IN MIST JELLY BURST",
+      "label": "First Serum in Mist Jelly Burst",
+      "category": "สกินแคร์",
+      "count": 500,
+      "averageRating": 4.91,
+      "fiveStarPercent": 92.8,
+      "lowRatingPercent": 0.2,
+      "verifiedPercent": 100,
+      "ratingDistribution": [
+        {
+          "rating": 5,
+          "count": 464
+        },
+        {
+          "rating": 4,
+          "count": 29
+        },
+        {
+          "rating": 3,
+          "count": 6
+        },
+        {
+          "rating": 2,
+          "count": 1
+        },
+        {
+          "rating": 1,
+          "count": 0
+        }
+      ],
+      "issueCount": 15,
+      "topics": [
+        {
+          "name": "การจัดส่งและร้านค้า",
+          "count": 62,
+          "percent": 12
+        },
+        {
+          "name": "เนื้อสัมผัสและการเกลี่ย",
+          "count": 47,
+          "percent": 9
+        },
+        {
+          "name": "ผลลัพธ์การใช้งาน",
+          "count": 41,
+          "percent": 8
+        },
+        {
+          "name": "ราคาและความคุ้มค่า",
+          "count": 33,
+          "percent": 7
+        },
+        {
+          "name": "ติดทนและกันน้ำ",
+          "count": 28,
+          "percent": 6
+        },
+        {
+          "name": "สีและเฉดสี",
+          "count": 26,
+          "percent": 5
+        }
+      ]
+    },
+    {
+      "id": "1731970787293235088",
+      "name": "มาสคาร่าคิ้ว",
+      "sourceName": "LA GLACE TRAILBLAZER BROW MASCARA",
+      "label": "Trailblazer Brow Mascara",
+      "category": "คิ้ว",
+      "count": 500,
+      "averageRating": 4.98,
+      "fiveStarPercent": 98.4,
+      "lowRatingPercent": 0,
+      "verifiedPercent": 100,
+      "ratingDistribution": [
+        {
+          "rating": 5,
+          "count": 492
+        },
+        {
+          "rating": 4,
+          "count": 8
+        },
+        {
+          "rating": 3,
+          "count": 0
+        },
+        {
+          "rating": 2,
+          "count": 0
+        },
+        {
+          "rating": 1,
+          "count": 0
+        }
+      ],
+      "issueCount": 14,
+      "topics": [
+        {
+          "name": "สีและเฉดสี",
+          "count": 335,
+          "percent": 67
+        },
+        {
+          "name": "ติดทนและกันน้ำ",
+          "count": 97,
+          "percent": 19
+        },
+        {
+          "name": "การจัดส่งและร้านค้า",
+          "count": 84,
+          "percent": 17
+        },
+        {
+          "name": "ราคาและความคุ้มค่า",
+          "count": 46,
+          "percent": 9
+        },
+        {
+          "name": "แพ็กเกจและการใช้งาน",
+          "count": 28,
+          "percent": 6
+        },
+        {
+          "name": "เนื้อสัมผัสและการเกลี่ย",
+          "count": 22,
+          "percent": 4
+        }
+      ]
+    },
+    {
+      "id": "1731525575167608720",
+      "name": "คอเรคเตอร์",
+      "sourceName": "LA GLACE CORRECTOR",
+      "label": "Corrector",
+      "category": "เมคอัพงานผิว",
+      "count": 500,
+      "averageRating": 4.99,
+      "fiveStarPercent": 98.6,
+      "lowRatingPercent": 0,
+      "verifiedPercent": 100,
+      "ratingDistribution": [
+        {
+          "rating": 5,
+          "count": 493
+        },
+        {
+          "rating": 4,
+          "count": 7
+        },
+        {
+          "rating": 3,
+          "count": 0
+        },
+        {
+          "rating": 2,
+          "count": 0
+        },
+        {
+          "rating": 1,
+          "count": 0
+        }
+      ],
+      "issueCount": 20,
+      "topics": [
+        {
+          "name": "แพ็กเกจและการใช้งาน",
+          "count": 187,
+          "percent": 37
+        },
+        {
+          "name": "ผลลัพธ์การใช้งาน",
+          "count": 172,
+          "percent": 34
+        },
+        {
+          "name": "สีและเฉดสี",
+          "count": 165,
+          "percent": 33
+        },
+        {
+          "name": "การจัดส่งและร้านค้า",
+          "count": 86,
+          "percent": 17
+        },
+        {
+          "name": "เนื้อสัมผัสและการเกลี่ย",
+          "count": 80,
+          "percent": 16
+        },
+        {
+          "name": "ราคาและความคุ้มค่า",
+          "count": 54,
+          "percent": 11
+        }
+      ]
+    },
+    {
+      "id": "1731191277169969040",
+      "name": "ลิปแมท",
+      "sourceName": "LA GLACE ULTIMATE BADDIE LIP MATTE",
+      "label": "Ultimate Baddie Lip Matte",
+      "category": "ลิป",
+      "count": 500,
+      "averageRating": 4.95,
+      "fiveStarPercent": 95.4,
+      "lowRatingPercent": 0,
+      "verifiedPercent": 100,
+      "ratingDistribution": [
+        {
+          "rating": 5,
+          "count": 477
+        },
+        {
+          "rating": 4,
+          "count": 21
+        },
+        {
+          "rating": 3,
+          "count": 2
+        },
+        {
+          "rating": 2,
+          "count": 0
+        },
+        {
+          "rating": 1,
+          "count": 0
+        }
+      ],
+      "issueCount": 36,
+      "topics": [
+        {
+          "name": "สีและเฉดสี",
+          "count": 404,
+          "percent": 81
+        },
+        {
+          "name": "เนื้อสัมผัสและการเกลี่ย",
+          "count": 156,
+          "percent": 31
+        },
+        {
+          "name": "ติดทนและกันน้ำ",
+          "count": 124,
+          "percent": 25
+        },
+        {
+          "name": "การจัดส่งและร้านค้า",
+          "count": 94,
+          "percent": 19
+        },
+        {
+          "name": "ราคาและความคุ้มค่า",
+          "count": 42,
+          "percent": 8
+        },
+        {
+          "name": "แพ็กเกจและการใช้งาน",
+          "count": 29,
+          "percent": 6
+        }
+      ]
+    },
+    {
+      "id": "1732072766553361296",
+      "name": "บลัชฝุ่นทูโทน",
+      "sourceName": "LA GLACE BRATTITUDE TWO TONE POWDER BLUSH",
+      "label": "Brattitude Two Tone Powder Blush",
+      "category": "บลัช",
+      "count": 500,
+      "averageRating": 4.99,
+      "fiveStarPercent": 99.6,
+      "lowRatingPercent": 0,
+      "verifiedPercent": 100,
+      "ratingDistribution": [
+        {
+          "rating": 5,
+          "count": 498
+        },
+        {
+          "rating": 4,
+          "count": 0
+        },
+        {
+          "rating": 3,
+          "count": 2
+        },
+        {
+          "rating": 2,
+          "count": 0
+        },
+        {
+          "rating": 1,
+          "count": 0
+        }
+      ],
+      "issueCount": 12,
+      "topics": [
+        {
+          "name": "สีและเฉดสี",
+          "count": 376,
+          "percent": 75
+        },
+        {
+          "name": "การจัดส่งและร้านค้า",
+          "count": 85,
+          "percent": 17
+        },
+        {
+          "name": "ติดทนและกันน้ำ",
+          "count": 74,
+          "percent": 15
+        },
+        {
+          "name": "กลิ่น",
+          "count": 51,
+          "percent": 10
+        },
+        {
+          "name": "ราคาและความคุ้มค่า",
+          "count": 40,
+          "percent": 8
+        },
+        {
+          "name": "แพ็กเกจและการใช้งาน",
+          "count": 37,
+          "percent": 7
+        }
+      ]
+    },
+    {
+      "id": "1734436642184595344",
+      "name": "ลิปทินท์",
+      "sourceName": "LA GLACE FLEXTOPIA GLASSY TINT",
+      "label": "Flextopia Glassy Tint",
+      "category": "ลิป",
+      "count": 500,
+      "averageRating": 4.98,
+      "fiveStarPercent": 98,
+      "lowRatingPercent": 0,
+      "verifiedPercent": 100,
+      "ratingDistribution": [
+        {
+          "rating": 5,
+          "count": 490
+        },
+        {
+          "rating": 4,
+          "count": 10
+        },
+        {
+          "rating": 3,
+          "count": 0
+        },
+        {
+          "rating": 2,
+          "count": 0
+        },
+        {
+          "rating": 1,
+          "count": 0
+        }
+      ],
+      "issueCount": 32,
+      "topics": [
+        {
+          "name": "สีและเฉดสี",
+          "count": 385,
+          "percent": 77
+        },
+        {
+          "name": "ติดทนและกันน้ำ",
+          "count": 106,
+          "percent": 21
+        },
+        {
+          "name": "เนื้อสัมผัสและการเกลี่ย",
+          "count": 105,
+          "percent": 21
+        },
+        {
+          "name": "การจัดส่งและร้านค้า",
+          "count": 90,
+          "percent": 18
+        },
+        {
+          "name": "แพ็กเกจและการใช้งาน",
+          "count": 61,
+          "percent": 12
+        },
+        {
+          "name": "กลิ่น",
+          "count": 58,
+          "percent": 12
+        }
+      ]
+    }
+  ],
+  "topics": [
+    {
+      "name": "สีและเฉดสี",
+      "count": 4406,
+      "negative": 348,
+      "products": [
+        "บลัชดำ",
+        "ลิปไอติม",
+        "โทนเนอร์แพด",
+        "คอนซีลเลอร์",
+        "อายไลเนอร์",
+        "ดอลลี่อาย",
+        "เจลลี่เซรั่มสเปรย์",
+        "มาสคาร่าคิ้ว",
+        "คอเรคเตอร์",
+        "ลิปแมท",
+        "บลัชฝุ่นทูโทน",
+        "ลิปทินท์"
+      ],
+      "percent": 100
+    },
+    {
+      "name": "การจัดส่งและร้านค้า",
+      "count": 1890,
+      "negative": 209,
+      "products": [
+        "บลัชดำ",
+        "ลิปไอติม",
+        "โทนเนอร์แพด",
+        "คอนซีลเลอร์",
+        "อายไลเนอร์",
+        "ดอลลี่อาย",
+        "เจลลี่เซรั่มสเปรย์",
+        "มาสคาร่าคิ้ว",
+        "คอเรคเตอร์",
+        "ลิปแมท",
+        "บลัชฝุ่นทูโทน",
+        "ลิปทินท์"
+      ],
+      "percent": 43
+    },
+    {
+      "name": "ติดทนและกันน้ำ",
+      "count": 1540,
+      "negative": 276,
+      "products": [
+        "บลัชดำ",
+        "ลิปไอติม",
+        "โทนเนอร์แพด",
+        "คอนซีลเลอร์",
+        "อายไลเนอร์",
+        "ดอลลี่อาย",
+        "เจลลี่เซรั่มสเปรย์",
+        "มาสคาร่าคิ้ว",
+        "คอเรคเตอร์",
+        "ลิปแมท",
+        "บลัชฝุ่นทูโทน",
+        "ลิปทินท์"
+      ],
+      "percent": 35
+    },
+    {
+      "name": "ราคาและความคุ้มค่า",
+      "count": 1497,
+      "negative": 106,
+      "products": [
+        "บลัชดำ",
+        "ลิปไอติม",
+        "โทนเนอร์แพด",
+        "คอนซีลเลอร์",
+        "อายไลเนอร์",
+        "ดอลลี่อาย",
+        "เจลลี่เซรั่มสเปรย์",
+        "มาสคาร่าคิ้ว",
+        "คอเรคเตอร์",
+        "ลิปแมท",
+        "บลัชฝุ่นทูโทน",
+        "ลิปทินท์"
+      ],
+      "percent": 34
+    },
+    {
+      "name": "เนื้อสัมผัสและการเกลี่ย",
+      "count": 1229,
+      "negative": 105,
+      "products": [
+        "บลัชดำ",
+        "ลิปไอติม",
+        "โทนเนอร์แพด",
+        "คอนซีลเลอร์",
+        "อายไลเนอร์",
+        "ดอลลี่อาย",
+        "เจลลี่เซรั่มสเปรย์",
+        "มาสคาร่าคิ้ว",
+        "คอเรคเตอร์",
+        "ลิปแมท",
+        "บลัชฝุ่นทูโทน",
+        "ลิปทินท์"
+      ],
+      "percent": 28
+    },
+    {
+      "name": "แพ็กเกจและการใช้งาน",
+      "count": 1071,
+      "negative": 98,
+      "products": [
+        "บลัชดำ",
+        "ลิปไอติม",
+        "โทนเนอร์แพด",
+        "คอนซีลเลอร์",
+        "อายไลเนอร์",
+        "ดอลลี่อาย",
+        "เจลลี่เซรั่มสเปรย์",
+        "มาสคาร่าคิ้ว",
+        "คอเรคเตอร์",
+        "ลิปแมท",
+        "บลัชฝุ่นทูโทน",
+        "ลิปทินท์"
+      ],
+      "percent": 24
+    },
+    {
+      "name": "ผลลัพธ์การใช้งาน",
+      "count": 743,
+      "negative": 77,
+      "products": [
+        "บลัชดำ",
+        "ลิปไอติม",
+        "โทนเนอร์แพด",
+        "คอนซีลเลอร์",
+        "อายไลเนอร์",
+        "ดอลลี่อาย",
+        "เจลลี่เซรั่มสเปรย์",
+        "มาสคาร่าคิ้ว",
+        "คอเรคเตอร์",
+        "ลิปแมท",
+        "บลัชฝุ่นทูโทน",
+        "ลิปทินท์"
+      ],
+      "percent": 17
+    },
+    {
+      "name": "กลิ่น",
+      "count": 464,
+      "negative": 32,
+      "products": [
+        "บลัชดำ",
+        "ลิปไอติม",
+        "โทนเนอร์แพด",
+        "คอนซีลเลอร์",
+        "อายไลเนอร์",
+        "ดอลลี่อาย",
+        "เจลลี่เซรั่มสเปรย์",
+        "มาสคาร่าคิ้ว",
+        "คอเรคเตอร์",
+        "ลิปแมท",
+        "บลัชฝุ่นทูโทน",
+        "ลิปทินท์"
+      ],
+      "percent": 11
+    },
+    {
+      "name": "การระคายเคืองและผิวแพ้ง่าย",
+      "count": 114,
+      "negative": 68,
+      "products": [
+        "บลัชดำ",
+        "ลิปไอติม",
+        "โทนเนอร์แพด",
+        "คอนซีลเลอร์",
+        "อายไลเนอร์",
+        "ดอลลี่อาย",
+        "เจลลี่เซรั่มสเปรย์",
+        "มาสคาร่าคิ้ว",
+        "คอเรคเตอร์",
+        "ลิปแมท",
+        "บลัชฝุ่นทูโทน",
+        "ลิปทินท์"
+      ],
+      "percent": 3
+    }
+  ],
+  "evidence": [
+    {
+      "id": "7278540267299292934",
+      "productId": "1729588326432082832",
+      "productName": "LA GLACE BAEBIE VIBES CREAM BLUSH",
+      "category": "บลัช",
+      "text": "ส่วนตัวก็ชอบ package โดยรวมของเค้านะคะ แต่สินค้าที่ได้รับมานะคะมันเป็นลักษณะเนื้อผิวด้านบนมันแตก แล้วมันก็มีส่วนที่มันเกยออกมาจากหลุมที่ใส่ผลิตภัณฑ์ค่ะ เราลองใช้นิ้วแตะๆไปมันก็ใช้งานได้นะคะ แต่ได้รับมาแบบนี้ก็มารีวิวตามจริงค่ะ",
+      "rating": 3,
+      "sku": "BLACK, แถมพัฟจิ๋ว",
+      "sentiment": "neutral",
+      "topics": [
+        "เนื้อสัมผัสและการเกลี่ย",
+        "การจัดส่งและร้านค้า"
+      ],
+      "issues": [
+        "เนื้อสัมผัสและการเกลี่ย",
+        "การจัดส่งและร้านค้า"
+      ],
+      "verifiedPurchase": true,
+      "reviewCountry": null,
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1729588326432082832"
+    },
+    {
+      "id": "7548851562261628692",
+      "productId": "1729588326432082832",
+      "productName": "LA GLACE BAEBIE VIBES CREAM BLUSH",
+      "category": "บลัช",
+      "text": "สี: สวย นัว อร่อย ความครอบคลุม: มากมายมหาศาล ประโยชน์ของสินค้า: ปัดแล้วสวย สภาพผิว: ผิวมัน ฟินิสแมท บลัสฝุ่น แล้วได้มาตอน 9.9 ลดเยอะมากฉันอยากจะร้อง มันดีมาก สีมันนัว สีมันสวย งื้อออไม่รู้จะอธิบายยังไง ฉันรักลากลาสมาก ลิปก็ดี คิ้วก็เป้ะ แก้มก็สวย เหลือพาเลทตาละ หนูรออยู่ #พาเลทตาลากลาส เลยตั้งตาลอยคอรอคอยมาก งื้อออมาเถอะๆๆๆๆพาเลทตาค่ะซิส",
+      "rating": 5,
+      "sku": "บลัชฝุ่น - #05 Man..",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "ราคาและความคุ้มค่า"
+      ],
+      "issues": [],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1729588326432082832"
+    },
+    {
+      "id": "7572951940286138133",
+      "productId": "1730014506458516368",
+      "productName": "LA GLACE MELTED SUNDAE LIP CLICK",
+      "category": "ลิป",
+      "text": "สีปากเข้มนิดหน่อยไม่ค่อยเหมาะ แทบไม่เห็นสีเลย เหมือนๆกันหมด แต่ทาขำๆอยู่บ้านก็พอได้ ปากมันๆ แอบเสียดายเงิน",
+      "rating": 2,
+      "sku": "ลิปไอติม#05 Toast.., ในตะกร้าต้องมี2ชิ้น",
+      "sentiment": "negative",
+      "topics": [
+        "สีและเฉดสี"
+      ],
+      "issues": [
+        "สีและเฉดสี"
+      ],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1730014506458516368"
+    },
+    {
+      "id": "7608206219996120853",
+      "productId": "1730014506458516368",
+      "productName": "LA GLACE MELTED SUNDAE LIP CLICK",
+      "category": "ลิป",
+      "text": "สี: สวยนะดูจากภายนอกยังไม่ได้ลองใช้ เคยลองของน้องแล้ว สีสวยฉ่ำวาวดี เลยลองสั่งมาใช้เองดู ความครอบคลุม: ครอบคลุมทั่วปาก5555555555 ประโยชน์ของสินค้า: ทาเพื่อความสวยงามสดชื่นสดใสไม่ดูซีดเหมือนคนป่วย เงางามฉ่ำวาวเหมือนดื่มน้ำวันละ 9999 แก้ว สภาพผิว: ผิวปากดี สวยเด้งดึ๋งๆฉ่ำวาวเงางามเหมือนกระจกอิ่มฟูเหมือนก้อนเมฆปุกปุยถ้าใช้ดีจะสั่งเพิ่ม สวยงามพระรามแป",
+      "rating": 5,
+      "sku": "#10 Cranberry Up",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "เนื้อสัมผัสและการเกลี่ย"
+      ],
+      "issues": [],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1730014506458516368"
+    },
+    {
+      "id": "7591822764470863636",
+      "productId": "1731510000560081808",
+      "productName": "LA GLACE DAILY TONER PADS",
+      "category": "โทนเนอร์แพด",
+      "text": "ส่งช้ามาาาาาาาาาาาาก🙄😡",
+      "rating": 1,
+      "sku": "สูตรดูแลผิวเป็นสิว",
+      "sentiment": "negative",
+      "topics": [
+        "การจัดส่งและร้านค้า"
+      ],
+      "issues": [
+        "การจัดส่งและร้านค้า"
+      ],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1731510000560081808"
+    },
+    {
+      "id": "7616347821553239826",
+      "productId": "1731510000560081808",
+      "productName": "LA GLACE DAILY TONER PADS",
+      "category": "โทนเนอร์แพด",
+      "text": "ส่วนประกอบ: มีโทนเนอรร์แพดในกล่ิงงงละก้อคู่มือออรีฟิลลบบบและก้อกระปุกกกก ประโยชน์ของสินค้า: ใช้แปะบนหน้าเพื่อเะิ่มความชุ่มชื้นและเป็นสูตรสำกรับคเป็นสิววววใช้ก่อนแต่งหน้าาาสาแปะไว้ระหว่างแต่งตาก้อได้้้้ดดเด้ด้ดตอนทำผมก้ออไดดดดเเเเก่อนนอนก้ออได้้ว่างๆฟก็แปะได้้เดใช้แล้วววก่อนแต่งหน้าพอแต่ไปแล้วรู้สึกชุ่มชื้อหน้าติดทนมากกกกกกกกกกนกนก",
+      "rating": 5,
+      "sku": "Acne1กระปุก+1รีฟิล",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "ติดทนและกันน้ำ",
+        "ผลลัพธ์การใช้งาน",
+        "แพ็กเกจและการใช้งาน"
+      ],
+      "issues": [],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1731510000560081808"
+    },
+    {
+      "id": "7129391137982252805",
+      "productId": "1729432254714448784",
+      "productName": "LA GLACE AIRY SKIN CONCEALER 6 g.",
+      "category": "คอนซีลเลอร์",
+      "text": "La Glace Airy Skin concealer🎨 9/10⭐️⭐️⭐️⭐️ -เนื้อสัมผัสดีมากๆ 4/5 เนื้อแป้งๆ แนะนำให้ใช้นิ้วเกลี่ยนะคะ เกลี่ยง่ายกว่า ใช้พองน้ำแล้วรู้สึกเนื้อน้องไม่ค่อยไปกับฟองน้ำ -การปกปิด3/5 น้องปกปิดใต้ตาดำกับรอยแดงได้ดีมากๆเลยค่ะ แต่ปิดรอยสิวไม่ได้นะ ไม่ปกปิดเลย -ราคา3/5 ปริมาณน้อยไปหน่อยถ้าเทียบกับราคา",
+      "rating": 4,
+      "sku": "#01 Buttermilk Beige",
+      "sentiment": "neutral",
+      "topics": [
+        "เนื้อสัมผัสและการเกลี่ย",
+        "ผลลัพธ์การใช้งาน",
+        "แพ็กเกจและการใช้งาน",
+        "ราคาและความคุ้มค่า"
+      ],
+      "issues": [
+        "เนื้อสัมผัสและการเกลี่ย",
+        "ผลลัพธ์การใช้งาน",
+        "แพ็กเกจและการใช้งาน",
+        "ราคาและความคุ้มค่า"
+      ],
+      "verifiedPurchase": true,
+      "reviewCountry": null,
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1729432254714448784"
+    },
+    {
+      "id": "7441741501212002104",
+      "productId": "1729432254714448784",
+      "productName": "LA GLACE AIRY SKIN CONCEALER 6 g.",
+      "category": "คอนซีลเลอร์",
+      "text": "ใช้ดีมาก ซื้อตอนโปรลด 50% เหลือราคาแค่ 199 ถูกมาก แม่ ไปตุนด่วน 💓🛍️🛍️🛍️💓💓🛍️💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓",
+      "rating": 5,
+      "sku": "#01 Buttermilk Beige",
+      "sentiment": "positive",
+      "topics": [
+        "ราคาและความคุ้มค่า"
+      ],
+      "issues": [],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1729432254714448784"
+    },
+    {
+      "id": "7690851865984665352",
+      "productId": "1729605074994695056",
+      "productName": "LA GLACE 2 IN 1 EYELINER & REMOVER STICK",
+      "category": "อายไลเนอร์",
+      "text": "ส่งของเร็วมากกกกกกกกกก ตอนแรกขึ้นพรีออเดอร์เลยคิดว่าต้องรอนาน เพราะไม่ได้รีบใช้ แต่พอมาส่งจริงๆคือวันเดียวถึง จึ้งเกินอ่ะแม่😂👍🏻 ใช้ดีมากติดทนสุดๆ อยู่ได้ยาวๆทั้งวัน ไม่เป็นคราบไม่หลุดง่ายจากคนใช้จริงค่ะ ไม่ใช่หน้าม้า แต่ขอติดนิดเดียว คือตรงที่ให้เช็ดออก เวลาเช็ดแล้วมันติดเป็นคราบน้ำสีดำอ่อนๆ🥲",
+      "rating": 5,
+      "sku": "Black&Remover",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "ติดทนและกันน้ำ",
+        "การจัดส่งและร้านค้า"
+      ],
+      "issues": [
+        "สีและเฉดสี",
+        "ติดทนและกันน้ำ",
+        "การจัดส่งและร้านค้า"
+      ],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1729605074994695056"
+    },
+    {
+      "id": "7666543005957736199",
+      "productId": "1729605074994695056",
+      "productName": "LA GLACE 2 IN 1 EYELINER & REMOVER STICK",
+      "category": "อายไลเนอร์",
+      "text": "ละฉันได้มาในราคา 148.- ยอด ดีเลิศ เด็ดขาด อันดับหนึ่ง ศักดิ์สิทธิ์ มหัศจรรย์ ที่สุด สุดยอด เยี่ยม ยอดเยี่ยม ยอด เยี่ยมยอด ดีที่สุด เลิศที่สุด ชนะเลิศ เลิศเลอ ดีเด่น สุดเหวี่ยง วิเศษ ฮีโร่ บริสุทธิ์ ล้ำเลิศ ชั้นเลิศ เลิศล้ำ เด็ด หนึ่งเดียว พิเศษ ยอดไปเลย เยี่ยมไปเลย ที่หนึ่งเลย โดดเด่น ปาฏิหาริย์",
+      "rating": 5,
+      "sku": "Black&Remover",
+      "sentiment": "positive",
+      "topics": [
+        "ราคาและความคุ้มค่า"
+      ],
+      "issues": [],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1729605074994695056"
+    },
+    {
+      "id": "7511691507033147144",
+      "productId": "1729605073949133712",
+      "productName": "LA GLACE FIERY BABY-DOLLY EYE STICK",
+      "category": "ดอลลี่อาย",
+      "text": "พนักงานขนส่งบริการแย่มากพัสดุมีรอยบุบและมีรูที่เหมือนโดนเจาะจากภายนอกพัสดุภายนอกสภาพยับเยิน สินค้าภายในมีร่องรอยเสียหายตรงกล่องค่ะยับเหมือนโดนบี้ตรงกลาง แต่โชคดีที่สินค้าข้างในไม่ได้เสียหายอะไร",
+      "rating": 2,
+      "sku": "#03 BABE BEIGE",
+      "sentiment": "negative",
+      "topics": [
+        "สีและเฉดสี",
+        "การจัดส่งและร้านค้า"
+      ],
+      "issues": [
+        "สีและเฉดสี",
+        "การจัดส่งและร้านค้า"
+      ],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1729605073949133712"
+    },
+    {
+      "id": "7634034077561063188",
+      "productId": "1729605073949133712",
+      "productName": "LA GLACE FIERY BABY-DOLLY EYE STICK",
+      "category": "ดอลลี่อาย",
+      "text": "สีละมุนคุ้นดีนะคือเขียนง่ายจริงแต่เขียนไม่เป็นไงแม่คือแห้งไวมากกกกกแบบยังไม่ทันเกลี่ยเลยคุรน้ารอให้เกลี่ยก่อนได้ไหม ใครมีวิธีใช้ยังไงบอกหน่อยคุรน้า คือรู้สึกว่าส่วนตัวมีถุงใต้ตาที่ใหญ่ละตุ่ยอยู่แล้วจะให้มาเขียนคืองานยากเลยหล่ะ สายฝอกับดอลลี่อายอาจจะต้องฝึกก่อนนะคุรน้า แต่ใดๆโดยรวมคือเริ่ดนะชั้นได้มา",
+      "rating": 5,
+      "sku": "#02 FAKE NUDE",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "เนื้อสัมผัสและการเกลี่ย"
+      ],
+      "issues": [],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1729605073949133712"
+    },
+    {
+      "id": "7650463533498435329",
+      "productId": "1735378019447768976",
+      "productName": "LA GLACE FIRST SERUM IN MIST JELLY BURST",
+      "category": "สกินแคร์",
+      "text": "สภาพผิว: สภาพผิวอีฉันบอบบางใช้มาแล้วไม่มีสิวขึ้นแน่นอนเลยต้องไปตำสภาพผิวอีฉันบอบบางใช้มาแล้วไม่มีสิวขึ้นแน่นอนเลยต้องไปตำเพิ่มตัวสีดำมาอยากจะซื้อคู่กันแต่ขายแยกอยากได้คาดผมจ้ะ ส่วนประกอบ: คือเลิศมากชอบมากแต่งหน้าครั้งแรกเลยติดทนมากหน้าไบรท์ ประโยชน์ของสินค้า: ฉันรักที่สุด",
+      "rating": 5,
+      "sku": "สูตร SKIN BARRIER",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "ติดทนและกันน้ำ",
+        "ผลลัพธ์การใช้งาน",
+        "การระคายเคืองและผิวแพ้ง่าย"
+      ],
+      "issues": [
+        "สีและเฉดสี",
+        "ติดทนและกันน้ำ",
+        "ผลลัพธ์การใช้งาน",
+        "การระคายเคืองและผิวแพ้ง่าย"
+      ],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1735378019447768976"
+    },
+    {
+      "id": "7672980960019449621",
+      "productId": "1735378019447768976",
+      "productName": "LA GLACE FIRST SERUM IN MIST JELLY BURST",
+      "category": "สกินแคร์",
+      "text": "ติดตามลากลาสมานานมากก ทันสินค้าแบบทุกยุค ลิปกะบลัชฝุ่นสีบาบี้ก็ทัน คือกำลับหาสเปรย์บำรุงอันใหม่แล้วเห็นชีออกอันนี้มาพอดี บอกเลยว่าชอบโพรดักส์นี้มาก กิมมิคเจลลี่แต่พ่นออกมาเป็นสเปรย์ กะ เซรั่มได้ด้วย ชอบมาก กู้หน้าหยือได้ดี จัดอีกแน่นอนค่าา รักลากลาสสส🩷🩷🤟🏻🤟🏻",
+      "rating": 5,
+      "sku": "สูตร AOX BIOME SHIELD",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี"
+      ],
+      "issues": [],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1735378019447768976"
+    },
+    {
+      "id": "7650485049288165141",
+      "productId": "1731970787293235088",
+      "productName": "LA GLACE TRAILBLAZER BROW MASCARA",
+      "category": "คิ้ว",
+      "text": "ปัดแล้วไม่เป็นก้อนหนา ไม่ได้รู้สึกว่าคิ้วแข็ง อันนี้ลองปัดตอนเย็นที่พัสดุมาถึง หน้าเยินและอาจจะดูเข้มหน่อยเพราะเมื่อเช้าเขียนคิ้วด้วยดินสอน้ำตาลเข้ม วันต่อไปจะลองเขียนสีอ่อนบ้างแล้วค่อยปัดทับ คุณภาพรวมๆดีค่ะเริ่ด แล้วได้ตอนลดคุ้มๆๆเริ่ดๆๆๆ",
+      "rating": 5,
+      "sku": "#03 NATURAL BROWN",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "ราคาและความคุ้มค่า",
+        "การจัดส่งและร้านค้า"
+      ],
+      "issues": [
+        "สีและเฉดสี",
+        "ราคาและความคุ้มค่า",
+        "การจัดส่งและร้านค้า"
+      ],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1731970787293235088"
+    },
+    {
+      "id": "7572098434950776596",
+      "productId": "1731970787293235088",
+      "productName": "LA GLACE TRAILBLAZER BROW MASCARA",
+      "category": "คิ้ว",
+      "text": "สี: สวย ความครอบคลุม: คิ้วสวย ประโยชน์ของสินค้า: ปัดคิ้วสวย สภาพผิว: ทุกสภาพผิว เออเลิศนะน้องน่ะสีสวยมากเลยเนาะแบบว่ามันเข้ากับคิ้วอ่ะแล้วแบบผมดำเออเลิศนะน้องน่ะสีสวยมากเลยน้องแบบว่ามันเข้ากับคิ้วอ่ะแล้วฉันแบบผมดำดำแบบดำเลยอ่ะผมแบบไม่เคยผ่านการทำสีอ่ะเลิศมากน้องคือสีมันสวยคุณภาพกับราคาก็แบบอืมอาจจะได้อีกอาจยังมีแบรนด์ที่ได้อีกไม่รู้ฉันลองใช้ดูมันจะ",
+      "rating": 5,
+      "sku": "#03 NATURAL BROWN",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "แพ็กเกจและการใช้งาน",
+        "ราคาและความคุ้มค่า"
+      ],
+      "issues": [],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1731970787293235088"
+    },
+    {
+      "id": "7590788055557211922",
+      "productId": "1731525575167608720",
+      "productName": "LA GLACE CORRECTOR",
+      "category": "เมคอัพงานผิว",
+      "text": "สี: พีช สภาพผิว: เป็นสิว แพ้ง่าย ส่งเร็วมากรอไม่นาน ใช้มาเกือบทุกอย่าง อันนี้คือดีอ่ะ ลองเเล้วชอบ เนื้อดีสีดี ปกปิดดีอีก ดีทุกอย่าง ต้องลอง 10 10 10 ที่สุด ต้องเปิดใจลอง แพ็คก็ดี ทุกอย่างดี ชอบมาก",
+      "rating": 5,
+      "sku": "#01 SASSY PEACH",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "เนื้อสัมผัสและการเกลี่ย",
+        "ผลลัพธ์การใช้งาน",
+        "การระคายเคืองและผิวแพ้ง่าย",
+        "แพ็กเกจและการใช้งาน",
+        "การจัดส่งและร้านค้า"
+      ],
+      "issues": [
+        "สีและเฉดสี",
+        "เนื้อสัมผัสและการเกลี่ย",
+        "ผลลัพธ์การใช้งาน",
+        "การระคายเคืองและผิวแพ้ง่าย",
+        "แพ็กเกจและการใช้งาน",
+        "การจัดส่งและร้านค้า"
+      ],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1731525575167608720"
+    },
+    {
+      "id": "7648550288202319634",
+      "productId": "1731525575167608720",
+      "productName": "LA GLACE CORRECTOR",
+      "category": "เมคอัพงานผิว",
+      "text": "สั่งรอบนี้โคตรประทับใจวันเดียวของถึง รอบก่อนสั่งช่วงโปรเดือนงี้แหละแต่รอของประมาน4-5วัน แต่เราก็เกทว่าชีฮอต พอมารอบนี้เลยเตรียมใจในการรอ สรุปวันเดียวปึ้ป ให้เลยนะ พัฒนาโคตรๆ ปกปิดดีนะ เกาะผิวดีด้วย แต่งไปงานข้างนอกแดดฉ่ำเหงื่อฉ่ำแต่ชีไม่อ่อนแอเลย เกาะผิวเก่งกว่าชั้นเกาะแม่กินอีก",
+      "rating": 5,
+      "sku": "#02 BURNT PUMPKIN",
+      "sentiment": "positive",
+      "topics": [
+        "เนื้อสัมผัสและการเกลี่ย",
+        "ผลลัพธ์การใช้งาน",
+        "แพ็กเกจและการใช้งาน",
+        "ราคาและความคุ้มค่า"
+      ],
+      "issues": [],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1731525575167608720"
+    },
+    {
+      "id": "7676744377317918471",
+      "productId": "1731191277169969040",
+      "productName": "LA GLACE ULTIMATE BADDIE LIP MATTE",
+      "category": "ลิป",
+      "text": "สี: นัว สวย ประโยชน์ของสินค้า: ไม่ตกร่อง ทากลบสีปากจริงได้ สภาพผิว: ทาแล้วมีความนุ่มละมุนสวยไม่แห้งเกินไป รักแบรนด์ลากลาสมากๆ เป็นแบรนด์แรกที่เปิดใจกับลิปแมทช์และประทับใจจริงๆ อยากจะซื้อตุนไว้ทุกสี ชอบสี 05 มากๆ มันนัวมันละมุนไปหมด ปรุงจืดสุดๆ ไม่ตกร่อง ไม่แห้งเกินไป ทาออกมามีความนุ่มละมุนน่าจุ้บมากๆ ไม่อยากให้เลิกผลิตเลย",
+      "rating": 5,
+      "sku": "#05 N-Ultra-violence",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "เนื้อสัมผัสและการเกลี่ย",
+        "ติดทนและกันน้ำ",
+        "แพ็กเกจและการใช้งาน"
+      ],
+      "issues": [
+        "สีและเฉดสี",
+        "เนื้อสัมผัสและการเกลี่ย",
+        "ติดทนและกันน้ำ",
+        "แพ็กเกจและการใช้งาน"
+      ],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1731191277169969040"
+    },
+    {
+      "id": "7656001259022911252",
+      "productId": "1731191277169969040",
+      "productName": "LA GLACE ULTIMATE BADDIE LIP MATTE",
+      "category": "ลิป",
+      "text": "สี: สวย ความครอบคลุม: ดี ประโยชน์ของสินค้า: ทาปาก สภาพผิว: ดี รวนหมูสับ 300 กรัมกับน้ำ 3 ช้อนโต๊ะจนสุก ปิดไฟ ปรุงด้วยน้ำปลา 1½ ช้อนโต๊ะ น้ำมะนาว 2 ช้อนโต๊ะ พริกป่น 1 ช้อนโต๊ะ และข้าวคั่ว 1 ช้อนโต๊ะ คลุกให้เข้ากัน ใส่หอมแดงซอย ต้นหอม ผักชีฝรั่ง และใบสะระแหน่ คลุกเบา ๆ ชิมรสให้เปรี้ยว เค็ม เผ็ดตามชอบ เสิร์ฟพร้อมผักสดและข้าวเหนียว. อร่อยมาก สุดยาดๆๆๆ",
+      "rating": 5,
+      "sku": "#03 C -Poison",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "กลิ่น",
+        "แพ็กเกจและการใช้งาน"
+      ],
+      "issues": [],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1731191277169969040"
+    },
+    {
+      "id": "7649398732194776840",
+      "productId": "1732072766553361296",
+      "productName": "LA GLACE BRATTITUDE TWO TONE POWDER BLUSH",
+      "category": "บลัช",
+      "text": "สินค้าคุณภาพดี ส่งเร็ว พนง.ขนส่งบริการดี ได้รับครบถ้วนถูกต้องตามที่ต้องการ ไม่ชำรุดเสียหาย แนะนำร้านนี้ค่ะ สินค้าคุณภาพดี ส่งเร็ว พนง.ขนส่งบริการดี ได้รับครบถ้วนถูกต้องตามที่ต้องการ ไม่ชำรุดเสียหาย แนะนำร้านนี้ค่ะ สินค้าคุณภาพดี ส่งเร็ว พนง.ขนส่งบริการดี ได้รับครบถ้วนถูกต้องตามที่ต้องการ ดีมาก ดี",
+      "rating": 5,
+      "sku": "#04 GOD MADE",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "การจัดส่งและร้านค้า"
+      ],
+      "issues": [
+        "สีและเฉดสี",
+        "การจัดส่งและร้านค้า"
+      ],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1732072766553361296"
+    },
+    {
+      "id": "7588397066271983367",
+      "productId": "1732072766553361296",
+      "productName": "LA GLACE BRATTITUDE TWO TONE POWDER BLUSH",
+      "category": "บลัช",
+      "text": "ดีมาก ติดทนอยู่ทั้งวัน แต่งออกงานหน้าสวยผิวเป๊ะทำให้ แต่งออกงานหน้าสวยผิวเป๊ะทำให้เราดูดีขึ้นทุกวัน งานผิวดีสี่แน่นไม่เป็นฝุ่นละอองพกพาไปเที่ยวไปไหนได้สะดวกเพราะมันกระทัดรัดเหมาะกับพบไปทุกที่นี่ซื้อมาสองอันแล้วดีมากๆอยากซื้อซ้ำ งานผิวดีสี่แน่นไม่เป็นฝุ่นละอองพกพาไปเที่ยวไปไหนได้สะดวกเพราะมันเหมาะกับ",
+      "rating": 5,
+      "sku": "#02 IT'S BRITNEY",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "ติดทนและกันน้ำ",
+        "แพ็กเกจและการใช้งาน"
+      ],
+      "issues": [],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1732072766553361296"
+    },
+    {
+      "id": "7628512884479035154",
+      "productId": "1734436642184595344",
+      "productName": "LA GLACE FLEXTOPIA GLASSY TINT",
+      "category": "ลิป",
+      "text": "ของจริงสีสวยดีค่ะเราเลยลองซื้อไปเล่นน้ำแต่ก้หลุดอยุ่ดีแต่เราไม่ซีเพราะรวมๆทาแล้วสีสวยดีสเตนก็ทิ้งอยุ่ไม่ได้เว่อขนาดนั้น",
+      "rating": 4,
+      "sku": "#05 N-WILD QUEEN",
+      "sentiment": "neutral",
+      "topics": [
+        "สีและเฉดสี",
+        "ติดทนและกันน้ำ"
+      ],
+      "issues": [
+        "สีและเฉดสี",
+        "ติดทนและกันน้ำ"
+      ],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1734436642184595344"
+    },
+    {
+      "id": "7624824899983034120",
+      "productId": "1734436642184595344",
+      "productName": "LA GLACE FLEXTOPIA GLASSY TINT",
+      "category": "ลิป",
+      "text": "จะบอกว่าเนื้อลิป เริ่ดมาก เนื้อเบา แปรงเกลี่ยนใช้ง่ายสะดวกทาง่าย สีทิ้งสเเตน เม้ดสีชัด คิดว่าไม่ค่อยเหมาะกับคนปากคล้ำเท่าไหร่ แนะนำให้กลบสีปากก่อนนิดนึง แต่ถ้าทาได้มั้ยก้ได้นะ แต่ฟินิชจะออกมาอีกแบบ ด้วยความสีนี้ออกกล่ำๆ ถ้ากลบปากสีจะออกมาสวยกว่า แต่ถือว่าเริ่ดแพ็คเกจจิ้งคือดี ไว้จะมาลองตำอีกสี",
+      "rating": 5,
+      "sku": "#05 N-WILD QUEEN",
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "เนื้อสัมผัสและการเกลี่ย",
+        "แพ็กเกจและการใช้งาน"
+      ],
+      "issues": [],
+      "verifiedPurchase": true,
+      "reviewCountry": "TH",
+      "productUrl": "https://www.tiktok.com/shop/th/pdp/1734436642184595344"
+    }
+  ],
+  "methodology": {
+    "sentiment": "ใช้คะแนนรีวิวเป็นเกณฑ์ sentiment: 5 ดาว = เชิงบวก, 3–4 ดาว = เป็นกลาง, 1–2 ดาว = เชิงลบ; ปัญหาคุณภาพต้องดูจากข้อความรีวิวและ qualityIssues แยกต่างหาก",
+    "qualityTopics": "จับหัวข้อจากคำที่ปรากฏในข้อความรีวิวจริง ไม่สร้างหัวข้อจากคะแนนเพียงอย่างเดียว",
+    "limitations": [
+      "รีวิว 1,000 รายการต่อสินค้าเป็น sample ที่เรียงตาม most recent",
+      "รีวิวที่พูดถึงบริการร้านค้า/การจัดส่งถูกแยกจากคุณภาพตัวสินค้า",
+      "ข้อความสั้นหรือข้อความที่จับหัวข้อไม่ได้ควรตรวจโดยคนก่อนใช้เป็น insight"
+    ]
+  }
+}

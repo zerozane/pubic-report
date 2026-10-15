@@ -5,6 +5,7 @@ import AutoPrint from "@/components/report/AutoPrint";
 import PrintButton from "@/components/report/PrintButton";
 import { getReportBySlug, getReportSlugs } from "@/lib/reports";
 import type { Platform, Report } from "@/lib/types";
+import { getInteractionTotal } from "@/lib/engagement";
 
 const copy = {
   reportLabel: "Social Listening Report",
@@ -56,8 +57,7 @@ export default function SummaryPage({ params, searchParams }: { params: { slug: 
           <nav className="lg-report-tabs" aria-label="Report sections">
             <Link href={"/reports/" + report.slug}>{copy.overview}</Link>
             <Link href={"/reports/" + report.slug + "/quality"}>คุณภาพสินค้า</Link>
-            <Link href={"/reports/" + report.slug + "#stream"}>{copy.voices}</Link>
-            <Link href={"/reports/" + report.slug + "/evidence"}>{copy.evidence}</Link>
+            <Link href={"/reports/" + report.slug + "#stream"}>{copy.evidence}</Link>
             <Link href={"/reports/" + report.slug + "/engagement"}>Engagement</Link>
           </nav>
           <div className="lg-top-actions lg-report-actions"><Link className="lg-back-link" href={"/reports/" + report.slug}><ArrowLeft size={16} />{copy.back}</Link><PrintButton /></div>
@@ -71,7 +71,7 @@ export default function SummaryPage({ params, searchParams }: { params: { slug: 
         <section className="lg-summary-kpis">
           <Metric label={copy.totalRecords} value={formatNumber(stats.total)} caption={copy.records} />
           <Metric label={copy.classified} value={formatNumber(stats.classified)} caption={copy.positive + " " + formatNumber(stats.positive) + " ? " + copy.neutral + " " + formatNumber(stats.neutral) + " ? " + copy.negative + " " + formatNumber(stats.negative)} />
-          <Metric label="Engagement" value={formatCompact(stats.engagement)} caption="likes, replies, shares, views" />
+          <Metric label="Engagement" value={formatCompact(stats.engagement)} caption="likes, replies, shares · ไม่รวม views" />
           <Metric label="Source links" value={stats.withSource + "/" + stats.total} caption="auditable records" />
         </section>
         <section className="lg-summary-section two-col">
@@ -99,7 +99,7 @@ function buildSummaryStats(report: Report) {
   const neutral = report.evidence.filter((item) => item.sentiment === "neutral").length;
   const negative = report.evidence.filter((item) => item.sentiment === "negative").length;
   const classified = positive + neutral + negative;
-  const engagement = report.evidence.reduce((sum, item) => sum + (item.engagement || 0) + (item.metrics.likes || 0) + (item.metrics.replies || 0) + (item.metrics.shares || 0) + (item.metrics.views || 0), 0);
+  const engagement = report.evidence.reduce((sum, item) => sum + getInteractionTotal(item), 0);
   const withSource = report.evidence.filter((item) => item.sourceUrl).length;
   return { total: report.evidence.length, positive, neutral, negative, classified, engagement, withSource, positiveRate: classified ? Math.round((positive / classified) * 100) : 0 };
 }

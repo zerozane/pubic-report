@@ -1,0 +1,15 @@
+{
+  "region": "TH",
+  "product_ids": [
+    "1729588326432082832",
+    "1730014506458516368",
+    "1731510000560081808",
+    "1729432254714448784",
+    "1729605074994695056",
+    "1729605073949133712"
+  ],
+  "reviews_limit": 1000,
+  "reviews_filter": "all",
+  "reviews_sort": "most_recent",
+  "include_personal_information": false
+}

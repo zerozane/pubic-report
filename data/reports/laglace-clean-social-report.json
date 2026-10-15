@@ -8,12 +8,12 @@
     "to": "2026-10-08T23:59:59.999+07:00",
     "timezone": "Asia/Bangkok"
   },
-  "collectedAt": "2026-10-08T16:39:30.579Z",
-  "summary": "Clean social listening dataset for La Glace using verified/keyword-matched public comments. Current dataset contains 2,965 records, led by TikTok official videos and supported by Instagram, X, Facebook, and YouTube samples.",
+  "collectedAt": "2026-10-14T08:25:18.166Z",
+  "summary": "Clean social listening dataset for La Glace using verified/keyword-matched public comments. Current dataset contains 2,955 records, led by TikTok official videos and supported by Instagram, X, Facebook, and YouTube samples.",
   "methodology": {
     "source": "Bright Data TikTok official video comments, Instagram comments, Facebook comments, YouTube comments, and Apify X replies. TikTok excludes unrelated 14k mixed scrape records and keeps only @laglace_official/keyword-matched sources.",
     "selection": "Includes only records with auditable source URLs or source IDs from the collected clean files. The TikTok bulk scrape was filtered at source-video level to official La Glace videos before inclusion.",
-    "sentimentMethod": "Rule-based Thai/English text classification from the scraped text only. Positive = praise, liking, purchase intent, or good experience. Neutral = question/factual/general reaction. Negative = complaint, dissatisfaction, concern, or problem mention.",
+    "sentimentMethod": "จัด sentiment จากความหมายของข้อความเท่านั้น ไม่ใช้ likes/views/shares เป็นตัวตัดสิน: เชิงบวก = คำชม ความสนใจซื้อ หรือประสบการณ์ดี; เป็นกลาง = คำถาม ข้อมูลทั่วไป ข้อความสั้น อีโมจิ หรือข้อความที่ยังไม่มีทิศทางชัดเจน; เชิงลบ = คำร้องเรียน ความไม่พอใจ การปฏิเสธสินค้า หรือปัญหาจากการใช้งานที่ระบุชัดเจน",
     "limitations": [
       "TikTok has much larger coverage than other platforms because official TikTok source videos produced the highest available comment volume.",
       "Facebook and YouTube remain limited samples because discovered source posts/videos had low visible comment volume.",
@@ -28,14 +28,14 @@
       "title": "TikTok official videos provide the strongest clean signal",
       "description": "The clean report includes 2,237 TikTok records after filtering to official/keyword-matched videos.",
       "evidenceIds": [
+        "tiktok-7694323340928664326",
+        "tiktok-7694265668854006549",
         "x-2108139544021475600",
+        "instagram-17986927379878120",
+        "tiktok-7694121759247762184",
         "tiktok-7693864624140567314",
         "x-2107659170531172719",
-        "x-2107517766614016284",
-        "tiktok-7693522110937088769",
-        "x-2107435562701656272",
-        "x-2107407750900981762",
-        "x-2107369464266453313"
+        "x-2107517766614016284"
       ],
       "recommendation": "Use TikTok comments as the main evidence base, but label other channels as supporting samples."
     },
@@ -43,7 +43,7 @@
       "id": "purchase-intent-availability",
       "type": "opportunity",
       "title": "Purchase intent and availability questions are a clear conversion opportunity",
-      "description": "24 records mention purchase intent, price, stock, shades, or where-to-buy signals.",
+      "description": "19 records mention purchase intent, price, stock, shades, or where-to-buy signals.",
       "evidenceIds": [
         "facebook-Y29tbWVudDoxNTYyNjY3OTE1ODkwNTk5XzE2NDY3NTUzMzAxNTgyODA-",
         "x-2107150543747690573",
@@ -51,7 +51,8 @@
         "facebook-Y29tbWVudDoxNTQzMzcxMzYxMTUzNTg4XzI4MDM1NjYyMjY3MDc3NTM-",
         "x-2097014681181577666",
         "facebook-Y29tbWVudDoxNTI3NjIzNzAyNzI4MzU0XzMxNzI1MzM5NzYyODYwMDQ-",
-        "facebook-Y29tbWVudDoxNTA0NzE5MzI4MzUyMTI1XzE3MTAwNTgyNTM1ODM1MjI-"
+        "facebook-Y29tbWVudDoxNTA0NzE5MzI4MzUyMTI1XzE3MTAwNTgyNTM1ODM1MjI-",
+        "facebook-Y29tbWVudDoxNTAzNTE3ODE4NDcyMjc2XzE1OTEwNDYxMjI0MTg5NzM-"
       ],
       "recommendation": "Turn recurring shade, stock, and purchase questions into pinned FAQ, reply templates, and commerce links."
     },
@@ -59,17 +60,8 @@
       "id": "limited-cross-platform-samples",
       "type": "concern",
       "title": "Cross-platform comparison should be presented carefully",
-      "description": "Non-TikTok platforms are smaller samples: Instagram 468, X 170, Facebook 65, YouTube 25.",
-      "evidenceIds": [
-        "x-2107249341723271271",
-        "x-2107140969888145466",
-        "instagram-18336590242273448",
-        "x-2107112594687533102",
-        "x-2107065300663562264",
-        "x-2107017062921159141",
-        "x-2106980295014768844",
-        "x-2106975706936946873"
-      ],
+      "description": "Non-TikTok platforms are smaller samples: Instagram 468, X 170, Facebook 55, YouTube 25.",
+      "evidenceIds": [],
       "recommendation": "Frame the dashboard as a clean evidence explorer, not a complete market share comparison across platforms."
     }
   ],
@@ -83,7 +75,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7694323340928664326",
       "publishedAt": "2026-10-08T15:44:27.000Z",
       "text": "อยากให้ทำทุกสีค่ะ[Teary eyed][Teary eyed][อ้อน][อ้อน]",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -113,7 +105,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7691652550193466645?comment_id=7694284725834548020",
       "publishedAt": "2026-10-08T13:14:41.000Z",
       "text": "@ชันรักต้มยำ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -143,7 +135,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7694265668854006549",
       "publishedAt": "2026-10-08T12:00:40.000Z",
       "text": "ทุกสีสิแม่",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -254,7 +246,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-08T03:44:29.000Z",
       "text": "ทุกสีค่ะ😻🩵💜💚🩷💛❤️",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -279,7 +271,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7693464430205521170?comment_id=7694121759247762184",
       "publishedAt": "2026-10-08T02:42:22.000Z",
       "text": "รอสีดำค่ะ😭",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -659,7 +651,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7693585838228587272",
       "publishedAt": "2026-10-06T16:02:39.000Z",
       "text": "ทุกสีไปเลยแม่",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -1238,7 +1230,7 @@
       "sourceUrl": "https://x.com/DaReMo79/status/2107360841616294048",
       "publishedAt": "2026-10-06T06:42:32.000Z",
       "text": "@Antho_Martineau I loved having Matheson on the Penguins. His speed and his grit were a big help. He does get caught up with penalties (as seen the other day vs the Pens) but he also draws penalties with his efforts. I hope the Habs can find the right fit for him",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Positive reactions & praise"
       ],
@@ -1264,7 +1256,7 @@
       "sourceUrl": "https://www.instagram.com/p/Dd_T_92GbNl",
       "publishedAt": "2026-10-06T06:30:59.000Z",
       "text": "สีเขียวพึ่งใช้ไปครั้งเดียวเองค่ะ55555",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -1315,7 +1307,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7693414168120230677",
       "publishedAt": "2026-10-06T04:56:32.000Z",
       "text": "ทุกสี~ ปล.สายคอสแอบรอเขียว ฟ้า ม่วงค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -1504,7 +1496,7 @@
       "sourceUrl": "https://x.com/pgaxxin/status/2107312986910240925",
       "publishedAt": "2026-10-06T03:32:22.000Z",
       "text": "@sunnflowergirl เค้ามีรวบรวมไว้ 3 ตัวคั้บ ส่วนตัวแนะนำของ ODBO มากๆๆ เหมาะกับมือใหม่สุดๆงับ 🫶🏻",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "X audience reaction"
       ],
@@ -1684,7 +1676,7 @@
       "sourceUrl": "https://x.com/granby_island/status/2107285224610738661",
       "publishedAt": "2026-10-06T01:42:03.000Z",
       "text": "@Antho_Martineau This duo struggled all last season, they need to be separated",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Positive reactions & praise"
       ],
@@ -1840,7 +1832,7 @@
       "sourceUrl": "https://x.com/Lec_Seberc08/status/2107273107530567781",
       "publishedAt": "2026-10-06T00:53:54.000Z",
       "text": "@Antho_Martineau Matheson plays best with Carrier; Hutson with Reinbacher. That leaves Guhle with Dobson. I don’t see a good reason why they wouldn’t do this.",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Positive reactions & praise"
       ],
@@ -2256,7 +2248,7 @@
       "sourceUrl": "https://x.com/Hockeycrunch13/status/2107251326258196542",
       "publishedAt": "2026-10-05T23:27:21.000Z",
       "text": "@Antho_Martineau I've been writing that the team needs a strong RD that can anchor the PK for a few years now.",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Positive reactions & praise"
       ],
@@ -2282,7 +2274,7 @@
       "sourceUrl": "https://x.com/stephanebo44/status/2107249341723271271",
       "publishedAt": "2026-10-05T23:19:28.000Z",
       "text": "@DemidovHabs @Antho_Martineau Ca va faire le hater de Matheson , Tu connais absolument rien au hockey...",
-      "sentiment": "negative",
+      "sentiment": "neutral",
       "topics": [
         "X audience reaction"
       ],
@@ -2297,7 +2289,7 @@
       "authorName": "Stéphane Boileau",
       "matchedKeywords": [],
       "engagement": 60,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "x-2107247138413617503",
@@ -2594,7 +2586,7 @@
       "sourceUrl": "https://x.com/patk007/status/2107231321177149469",
       "publishedAt": "2026-10-05T22:07:52.000Z",
       "text": "@Antho_Martineau You need another RD Noah .. When Carrier got i jured Dobson was our only RD makes no sense .. He needs some help there.",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Positive reactions & praise"
       ],
@@ -3076,7 +3068,7 @@
       "sourceUrl": "https://x.com/leawtae__/status/2107142734343766176",
       "publishedAt": "2026-10-05T16:15:51.000Z",
       "text": "@sunnflowergirl ส่วนตัวเค้าใช้อันนี้คับ หัวเล็กเขียนง่าย เคยลองแบบดินสอแล้วเค้าเขียนไม่ได้ 🤣 https://t.co/XrZ1RwLa1E",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "X audience reaction"
       ],
@@ -3102,7 +3094,7 @@
       "sourceUrl": "https://x.com/SWKAWANG96/status/2107140969888145466",
       "publishedAt": "2026-10-05T16:08:50.000Z",
       "text": "แบบดินสอแนะนำของ clio เลยคับ เขียนง่าย เนื้อนู่ม ส่วนแบบปากกาแนะนำ lilybyred เลย ละทั้ง 2 แบบคือทนมาก นี่ใช้ผ่านการไปราชมังกับธันเดอร์โดมสเตเดี้ยมมาแล้ว ไม่ไหว ไม่เลอะะ ดียมากกกก 🥹🫶🏻\n\nจริง ๆ อีกอันที่จึ้งคือของ dasique แต่หาของไม่เจอแล้ว😭😭\n\n(clio ขอยืมรูปจากแบรนด์ ป๋มใช้จนหมดละยังไม่ได้ซื้อใหม่เยย ; - ; ) \n\n📍clio https://t.co/w595rcZjoE\n📍lilybyred survival penliner แท่งชมพู\nhttps://t.co/z7uRbyzrGO\n\n#shopeeaffiliate",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Purchase intent & availability"
       ],
@@ -3117,7 +3109,7 @@
       "authorName": "♡🐻♡TASTE",
       "matchedKeywords": [],
       "engagement": 933,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "x-2107140733715337394",
@@ -3128,7 +3120,7 @@
       "sourceUrl": "https://x.com/MoopingCookie/status/2107140733715337394",
       "publishedAt": "2026-10-05T16:07:54.000Z",
       "text": "@sunnflowergirl เราใช้ canmake เขียนง่าย ลื่น หัวเล็ก นิ่ม เหมาะกับมือใหม่สุดๆ มีสีให้เลือกเยอะมาก กันน้ำกันเหงื่อ แต่งคมแต่งฟุ้งได้หมดเลยค่ะ\nhttps://t.co/Hxg60BycfT https://t.co/cibDIIsR3a",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "X audience reaction"
       ],
@@ -3336,7 +3328,7 @@
       "sourceUrl": "https://x.com/nanajang1999/status/2107135321226047791",
       "publishedAt": "2026-10-05T15:46:23.000Z",
       "text": "@sunnflowergirl เราใช้ของ 4u2 เรากรีดแค่หางตา เรากรีดไม่เก่งเยย แต่อันนี้ดีจีงงงค่าบแนะนำ มีโปรด้วย 2 ชิ้น 199 สาดไปค่าบสมาชิก https://t.co/he4b13HrbR https://t.co/Vg1W2ejqVV",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "X audience reaction"
       ],
@@ -3444,7 +3436,7 @@
       "sourceUrl": "https://x.com/kinjungkj/status/2107133452835516509",
       "publishedAt": "2026-10-05T15:38:58.000Z",
       "text": "@sunnflowergirl อายไลเนอร์ กันน้ำ Mee Brightly Sharp Eyeliner หัวพู่กันเล็ก เขียนง่าย ไม่เเพนด้า  https://t.co/5BaWnezvNN https://t.co/oFNm5JHNm0",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "X audience reaction"
       ],
@@ -3470,7 +3462,7 @@
       "sourceUrl": "https://x.com/littler2124/status/2107131838372421950",
       "publishedAt": "2026-10-05T15:32:33.000Z",
       "text": "@sunnflowergirl @plengssp ของ kate เลยค่าา แบรนด์ญี่ปุ่นทำถึงทุกอย่างงง เปนแบบดินสอนะคะ เนื้อเจล เขียนง่าย control ง่าย ไม่ต้องกลัวเลอะ หรือมือไม่นิ่งเลยค่า\n\nhttps://t.co/5XLdkMUNYn",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "X audience reaction"
       ],
@@ -3548,7 +3540,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-05T15:27:36.000Z",
       "text": "🩵🩷💜💚💛 I needed it so bad",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Positive reactions & praise",
         "Concerns & issues"
@@ -3563,7 +3555,7 @@
       "user": "ichiemiaridesu",
       "matchedKeywords": [],
       "engagement": 0,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "x-2107130380751126628",
@@ -3783,7 +3775,7 @@
       "sourceUrl": "https://x.com/sunnflowergirl/status/2107112594687533102",
       "publishedAt": "2026-10-05T14:16:05.000Z",
       "text": "@maddyzbad ราคาดีมากก",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Concerns & issues"
       ],
@@ -3798,7 +3790,7 @@
       "authorName": "หมูยอisแฮพพิ้🧜🏻‍♀️",
       "matchedKeywords": [],
       "engagement": 16,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "x-2107108706529980769",
@@ -3971,7 +3963,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7693162853423514389",
       "publishedAt": "2026-10-05T12:41:12.000Z",
       "text": "ทุกสีๆ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -4156,7 +4148,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7693150869974975253",
       "publishedAt": "2026-10-05T11:54:45.000Z",
       "text": "ทุกสีค่ะแม่",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -4241,7 +4233,7 @@
       "sourceUrl": "https://x.com/borremorr/status/2107065300663562264",
       "publishedAt": "2026-10-05T11:08:09.000Z",
       "text": "@maddyzbad หน้าใสมากก",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Concerns & issues"
       ],
@@ -4256,7 +4248,7 @@
       "authorName": "บออีมอบีม 🐰 •⩊•",
       "matchedKeywords": [],
       "engagement": 40,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "x-2107058084178739520",
@@ -4525,7 +4517,7 @@
       "sourceUrl": "https://x.com/hey_itsmellow/status/2107017062921159141",
       "publishedAt": "2026-10-05T07:56:28.000Z",
       "text": "@maddyzbad หน้าเค้าขยันบ้วนรองพื้นมากก เดะไปลองง",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Concerns & issues"
       ],
@@ -4540,7 +4532,7 @@
       "authorName": "mell🍅wka ｡⋆୨୧˚",
       "matchedKeywords": [],
       "engagement": 39,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "x-2106986911835558172",
@@ -4777,7 +4769,7 @@
       "sourceUrl": "https://x.com/OnmyojiTk/status/2106980295014768844",
       "publishedAt": "2026-10-05T05:30:22.000Z",
       "text": "@maddyzbad ผิวดีมากค่ะ ต้องลองบ้างเเล้ว",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Concerns & issues"
       ],
@@ -4792,7 +4784,7 @@
       "authorName": "🐣 แนะนำร้านอร่อยlineman 🐲",
       "matchedKeywords": [],
       "engagement": 60,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "facebook-Y29tbWVudDoxNTYwNDUxMTUyNzc4OTQyXzM1Nzg1NDY2OTU2Nzc5NDM-",
@@ -4888,7 +4880,7 @@
       "sourceUrl": "https://x.com/maddyzbad/status/2106975706936946873",
       "publishedAt": "2026-10-05T05:12:08.000Z",
       "text": "ป้ายยารอบที่ n เจลลี่เซรั่ม laglace เติมของแน้วว กดด่วน!!! 🔥🔥  ช่วงไหนที่ผิวไม่ร่วมมือ 😭 แต่งหน้าไม่ติด รองพื้นเป็นคราบ ผิวหยือๆ  “ปฏิเสธเมคอัพ” 🥹 ต้องหยิบ Laglace ตัวนี้ มารับจบ!! ชีช่วยเตรียมผิวให้ดูเรียบขึ้น เมคอัพเกาะผิวดีขึ้น แต่งแล้วงานผิวดูเนียน กริบ ไม่ตกร่อง ไม่เป็นคราบ ติดนาน ติด\nทน⭐️⭐️⭐️⭐️⭐️ \n\nกดตะกร้า official ลดราคา จาก 390 เหลือ 270.- คุ้มสุด https://t.co/xRYttrj0JV\n\nเค้าใช้สูตร Aox Biome Shield\n•  มีสารสกัด Kombucha ช่วยต้านอนุมูลอิสระ ดูแลผิวจากมลภาวะ ฝุ่น PM2.5 และแสงแดด ช่วยเสริมเกราะผิว ให้ผิวแข็งแรงและชุ่มชื้น\n• ใช้ได้กับทุกสภาพผิว ทั้งแห้ง มัน และผสม",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products"
       ],
@@ -4906,7 +4898,7 @@
         "laglace"
       ],
       "engagement": 1531,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7693035789948912436",
@@ -5001,7 +4993,7 @@
       "sourceUrl": "https://x.com/hasun03531/status/2106956887979938174",
       "publishedAt": "2026-10-05T03:57:22.000Z",
       "text": "🍀 หน้าบ้วนรองพื้นอาจจะเกิดจากสกินแคร์ที่ใช้ ไม่เข้ากับเครื่องสำอาง หรือลงสกินแคร์เร็วเกินไป หรือหน้าอาจจะขาดความชุ่มชื้นก็ได้นะคะ 🌷ส่วนตัวเราเคยหน้าหยา เพราะหน้าขาดความชุ่มชื้น ทำให้แต่งหน้าไม่ค่อยติด 🍥 ก่อนนอนเราจะมาสก์หน้าไว้เพื่อให้หน้าชุ่มชื้น และก่อนแต่งหน้าเราจะใช้ Tonerpad ของ Mizumi สีฟ้าแปะก่อนแต่งหน้า 5-10 นาทีแล้วค่อยลงเป็น jellyserum laglace สีฟ้า ตัวนี้จะช่วยทำให้หน้าชุ่มชื้น ทำให้ลงเครื่องสำอางจะมีความติดทน หรือจะฉีดในระหว่างวันเพื่อแก้หน้าหยือ เป็นคราบได้เลยนะคะ ✨",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "X audience reaction"
       ],
@@ -5030,7 +5022,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-05T03:00:53.000Z",
       "text": "เอาทุกสีค่าาา จะเอาทุกสี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -5055,7 +5047,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692990924858589960",
       "publishedAt": "2026-10-05T01:34:02.000Z",
       "text": "ลงด่วนนน พร้อมตำทุกสี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -5210,7 +5202,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-04T16:15:14.000Z",
       "text": "ทุกสีเลยได้ไหม5555",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -5378,7 +5370,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692817734685950772",
       "publishedAt": "2026-10-04T14:21:53.000Z",
       "text": "ทุกสี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -5408,7 +5400,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692817668009919253",
       "publishedAt": "2026-10-04T14:21:46.000Z",
       "text": "เอามากมดพอดีหลายใจ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -5538,7 +5530,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-04T12:45:58.000Z",
       "text": "แซ่บทุกสีเลยแม่ อยากเหมา",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -5718,7 +5710,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692022184734215445?comment_id=7692753848616207156",
       "publishedAt": "2026-10-04T10:14:00.000Z",
       "text": "อยากให้มีมาสคาร่าสีจี๊ดๆแบบนี้ด้วย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -6363,7 +6355,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-04T07:17:26.000Z",
       "text": "เบอกันดีหน่อยแม่ อยากปัดไปคอนสิ้นปีนี้❤️❤️",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -6388,7 +6380,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-04T07:16:56.000Z",
       "text": "เบอกันดี้❤️❤️❤️",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -6468,7 +6460,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692706892690916114",
       "publishedAt": "2026-10-04T07:11:53.000Z",
       "text": "ทุกสีเลยได้มั้ยคะ 😭🖤 แต่รักม่วงกับเบอร์กันดีสุด",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -6733,7 +6725,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-04T06:16:36.000Z",
       "text": "ทุกสีได้ไหมคะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -7003,7 +6995,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-04T04:11:54.000Z",
       "text": "ทุกสีแบบสะใจจจจ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -7603,7 +7595,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692501088636977921",
       "publishedAt": "2026-10-03T17:53:12.000Z",
       "text": "มาเถอะทุกสีเลย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -7658,7 +7650,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T17:44:27.000Z",
       "text": "เบอกันดีมีผลต่อชีวิสสสส",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -7823,7 +7815,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T16:40:13.000Z",
       "text": "ทุกสีไปเลยแม่่่",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -8143,7 +8135,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692473625840091911",
       "publishedAt": "2026-10-03T16:06:33.000Z",
       "text": "ทุกสีเท่านั้นนนน🔥",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -8198,7 +8190,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692468664306942741",
       "publishedAt": "2026-10-03T15:47:28.000Z",
       "text": "ทุกสีงับ 😂",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -8383,7 +8375,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T15:27:25.000Z",
       "text": "เทคว๊ะะอะย์🩵\nเป็นไปได้ทุกสีจะน่าฉีดดดมาก😍",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -8408,7 +8400,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692463325078569749",
       "publishedAt": "2026-10-03T15:26:35.000Z",
       "text": "ทุกสีเลยแม่ อยากทำฮาโลวีนลุคบุ้คค[Teary eyed]",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -8463,7 +8455,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T15:23:37.000Z",
       "text": "ทุกสีได้ป่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -8513,7 +8505,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T15:13:57.000Z",
       "text": "ทุกสีเหอะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -8618,7 +8610,7 @@
       "sourceUrl": "https://x.com/melodykittymiss/status/2106399846995575096",
       "publishedAt": "2026-10-03T15:03:53.000Z",
       "text": "♡︎ 𐬾 ฝากขาย 🪽🎀\n\nส่งต่อลิปแมท #laglace แท่งละ 100.- ส่งฟรี รับหมด 250.-\n\n05,07 ลองบนมือครั้งเดียว \n09 ใหม่ \n\n🧤ทักไลน์ภาพสุดท้าย\n__\n#ส่งต่อเครื่องสำอางมือสอง #ส่งต่อเครื่องสำอาง #ส่งต่อเครื่องสำอางค์ #ส่งต่อลิปสติก #ส่งต่อลากลาส #ส่งต่อlaglace #ส่งต่อเครื่องคสอมือสอง https://t.co/3cs4HXxeiq",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "X audience reaction"
       ],
@@ -8676,7 +8668,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T14:57:58.000Z",
       "text": "ท-ท-ทุกสีค่ะ! 💓",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -8956,7 +8948,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T14:34:41.000Z",
       "text": "ทุกสีเลยแม่แ่แ่แ่แ่่แ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -9006,7 +8998,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692449459468616454",
       "publishedAt": "2026-10-03T14:32:47.000Z",
       "text": "ทุกสีเลยค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -9136,7 +9128,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T14:10:00.000Z",
       "text": "ม่วง ฟ้า เหลือง เลยอ่ะ เป็นสีที่จี๊ดมากกก แต่งออกมาแล้วเป็นยัยตัวแสบหมดแน่นอน 💜🩵💛",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -9336,7 +9328,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T13:54:20.000Z",
       "text": "Omg, I want it all🥹✨💕",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Positive reactions & praise"
       ],
@@ -9386,7 +9378,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692438173222912775",
       "publishedAt": "2026-10-03T13:49:01.000Z",
       "text": "ม่วว เบอกันดี้",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -9416,7 +9408,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T13:47:30.000Z",
       "text": "จัดไปทุกสีเลยค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -9546,7 +9538,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692435606010643220",
       "publishedAt": "2026-10-03T13:39:15.000Z",
       "text": "ทุกสีค่ะแม่ เพราะหนูอยากเป็นสีคิ้วทุกวัน",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -9651,7 +9643,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692435244047024916",
       "publishedAt": "2026-10-03T13:37:47.000Z",
       "text": "@khawww ku want yellow one",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Positive reactions & praise",
@@ -9887,7 +9879,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T13:29:08.000Z",
       "text": "ทุกสีได้ไหมแมร่😂",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -10312,7 +10304,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T13:03:48.000Z",
       "text": "ถ้าอยากให้ออกทุกสีได้ไหมคะ55",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -10367,7 +10359,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T13:00:47.000Z",
       "text": "ถ้าเลือกไม่ได้ ก็ทำทุกสีเลย ห์ส์ฮ์์",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -10442,7 +10434,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T12:56:04.000Z",
       "text": "ขอทุกสีเป็นเซ้ตเลยได้มั้ยยย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -11112,7 +11104,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692410912195527476",
       "publishedAt": "2026-10-03T12:03:12.000Z",
       "text": "ทุกสีได้ไหม",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -11247,7 +11239,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T11:58:01.000Z",
       "text": "ทุกสีเลยแม่",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -11497,7 +11489,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T11:50:01.000Z",
       "text": "💛💚🩵🩷💜❤️ จัดมาทุกสีเลยแม่ชีวิตต้องการสีสันหนูเลือกไม่ได้",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -11677,7 +11669,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T11:41:59.000Z",
       "text": "ทั้งใจมอบให้เทอควั้ยห์ฮ์🫦🩵🩵 แต่เอาจริงขอทุกสีเลยได้มะไอเลิฟลาก้าด",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -11927,7 +11919,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T11:31:14.000Z",
       "text": "ทุกสีได้มั้ย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -11977,7 +11969,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692402566499746581",
       "publishedAt": "2026-10-03T11:30:49.000Z",
       "text": "ทุกสีมาได้เลยแม่😭🥹🥺🤟🤟🤟🤟",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -12007,7 +11999,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T11:29:47.000Z",
       "text": "สีเขียวเหลือง 😍😍😍 รักสถาบัน",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -12087,7 +12079,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692401330166825749",
       "publishedAt": "2026-10-03T11:26:12.000Z",
       "text": "ทุกสีได้มั้ยยplss",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -12142,7 +12134,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T11:24:32.000Z",
       "text": "มาเลยแม่ขอทุกสี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -12217,7 +12209,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692400583454343957",
       "publishedAt": "2026-10-03T11:23:13.000Z",
       "text": "ตกใจหมดเลย ออกทุกสีให้เค้าเลยนะ 😖",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -12472,7 +12464,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T11:18:24.000Z",
       "text": "ทำทุกสี เอาาาา",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -12597,7 +12589,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692398683492975368",
       "publishedAt": "2026-10-03T11:15:47.000Z",
       "text": "ทุกสีได้มั้ยเจ้ เเต่เทอร์เคว้ะห์ก้คือที่สุดป่ะ🪷✨️🧘🏼‍♀️",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -12782,7 +12774,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T11:08:14.000Z",
       "text": "เทอร์ควอยซ์!!!!!!! ชมพู จริงๆเอามาทุกสีเลยคับพี่😭😭😭🫶🏻🫶🏻🫶🏻🫶🏻",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -13067,7 +13059,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T10:54:42.000Z",
       "text": "อยากให้มีทุกสีเลยค่ะ จากจัยเด่กคอส🥺💖",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -13217,7 +13209,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692391638853944084",
       "publishedAt": "2026-10-03T10:48:37.000Z",
       "text": "ทุกสีคร่าาาาา",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -13377,7 +13369,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T10:45:37.000Z",
       "text": "อยากได้เขียวกลับมามากตอนนั้นเสียใจมากเลยค่ะ กดไม่ทัน เสียใจสุดๆๆๆๆๆๆๆหนูอยากได้สีเขียวววพวพวพวพว",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -13477,7 +13469,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692390376205107969",
       "publishedAt": "2026-10-03T10:43:42.000Z",
       "text": "ทุกสีได้มั้ยแม่ อยากปัดไปคอน🫪",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -13557,7 +13549,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T10:40:39.000Z",
       "text": "ขอทุกสีได้มั้ยแม่",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -13582,7 +13574,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T10:39:08.000Z",
       "text": "ทุกสีมาเลยแม่",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -13607,7 +13599,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T10:38:30.000Z",
       "text": "ขอทุกสีเลยด้ายมั้ยคะ🥺🩵💚💛🩷💜❤️",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -13632,7 +13624,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692388945606853397",
       "publishedAt": "2026-10-03T10:38:03.000Z",
       "text": "ออกทุกสีเรยด้ายม้ายคะะ🥹",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -13837,7 +13829,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692387289120604936",
       "publishedAt": "2026-10-03T10:31:34.000Z",
       "text": "เจ้าแม่แฟชั่นระดับลากลาสทุกสี!",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -13997,7 +13989,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T10:27:19.000Z",
       "text": "ฟ้าไปกับเทรนดีฟว่าาาาา🩵🩵🩵",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -14022,7 +14014,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T10:25:52.000Z",
       "text": "ทุกสีเลยแม่",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -14157,7 +14149,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T10:20:35.000Z",
       "text": "ก็ต้องทุกสีมั้ยย โคตรจิ๊ดเลยย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -14367,7 +14359,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T10:13:24.000Z",
       "text": "เหมาทุกสีได้มั้ยคะแม่ ยอมแล้วค่ะะะะะะะ🔥🔥🔥🔥🙌🙌🙌",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -14467,7 +14459,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T10:11:48.000Z",
       "text": "ทุกสีได้มั้ยคะะะะะ  เหมาๆๆๆๆๆ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -14567,7 +14559,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692381130989929234",
       "publishedAt": "2026-10-03T10:07:46.000Z",
       "text": "จัดมาทุกสีแม่!",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -14627,7 +14619,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T10:06:24.000Z",
       "text": "ทุกสีไปเลยค่าาาาา",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -14652,7 +14644,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T10:05:51.000Z",
       "text": "แม่ ขอทุกสี!!!!! อยากปัดคิ้วสีนีออน!",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -15007,7 +14999,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T10:00:11.000Z",
       "text": "I NEED PURPLE!!",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Positive reactions & praise"
       ],
@@ -15207,7 +15199,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692377418086728456",
       "publishedAt": "2026-10-03T09:53:17.000Z",
       "text": "สีเขียวเริ่ดไม่ไหว",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -15226,7 +15218,7 @@
         "@laglace_official"
       ],
       "engagement": 2,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "instagram-18124417987683912",
@@ -15262,7 +15254,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692377202549768967",
       "publishedAt": "2026-10-03T09:52:30.000Z",
       "text": "ทุกสีได้มั้ยยยยยยยยยย😍",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -15367,7 +15359,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692376671454298888",
       "publishedAt": "2026-10-03T09:50:23.000Z",
       "text": "ทุกสีเถอะะะะะะะ🥺",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -15602,7 +15594,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T09:47:25.000Z",
       "text": "เบอกันดีแม่ สะใจ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -15652,7 +15644,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692375058098015508?comment_id=7692375798388409109",
       "publishedAt": "2026-10-03T09:46:58.000Z",
       "text": "ทุกสีได้ม้าย😭",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -15682,7 +15674,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T09:46:15.000Z",
       "text": "สีม่วงค่ะ ม่วงกับเบอร์กันดี แต่เชียร์ม่วงมากกว่า",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -15957,7 +15949,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T09:40:32.000Z",
       "text": "ทุกสีคะแม่",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -16157,7 +16149,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T09:39:20.000Z",
       "text": "เบอกันดี้เท่านั้นค่ะมัม ❤️‍🔥❤️‍🔥❤️‍🔥",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -16407,7 +16399,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T09:34:36.000Z",
       "text": "ทุกสีแม่ มีสีเขียวแย้วว",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -16457,7 +16449,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T09:34:29.000Z",
       "text": "ทุกสี ๆไไๆๆๆ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -16682,7 +16674,7 @@
       "sourceUrl": "https://www.instagram.com/p/DeBvb8kmXL8/",
       "publishedAt": "2026-10-03T09:31:33.000Z",
       "text": "ขอทุกสีค่า",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -16867,7 +16859,7 @@
       "sourceUrl": "https://www.instagram.com/p/Dd_T_92GbNl",
       "publishedAt": "2026-10-03T05:56:35.000Z",
       "text": "ฮืออออดีใจมาก เสียดายอะพึ่งเปลี่ยนผมกลับมาเป็นสีดำ😭",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -17042,7 +17034,7 @@
       "sourceUrl": "https://www.instagram.com/p/Dd_T_92GbNl",
       "publishedAt": "2026-10-03T04:40:23.000Z",
       "text": "💔💔💔i want it to be real⭐️",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Positive reactions & praise"
       ],
@@ -17645,7 +17637,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692022184734215445?comment_id=7692115381612675848",
       "publishedAt": "2026-10-02T16:56:30.000Z",
       "text": "@ㅁ @brokenhearte8️⃣8️⃣8️⃣ @⌗",
-      "sentiment": "negative",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Concerns & issues",
@@ -17665,7 +17657,7 @@
         "@laglace_official"
       ],
       "engagement": 1,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7692112425130885908",
@@ -17846,7 +17838,7 @@
       "sourceUrl": "https://www.instagram.com/p/Dd_T_92GbNl",
       "publishedAt": "2026-10-02T15:50:45.000Z",
       "text": "ถ้าขายจะซื้อค่ะรักเทอคว้อย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -17871,7 +17863,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692022184734215445?comment_id=7692098150547571477",
       "publishedAt": "2026-10-02T15:49:37.000Z",
       "text": "@Emily หรั่งปลอม @Nannaphat🐷•-• @ว่าไงพูดมาสิ(^^) สีนี้ฮิตนะมึง สีเทอคว้อย",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -17890,7 +17882,7 @@
         "@laglace_official"
       ],
       "engagement": 1,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7692097893352833812",
@@ -18191,7 +18183,7 @@
       "sourceUrl": "https://www.instagram.com/p/Dd_T_92GbNl",
       "publishedAt": "2026-10-02T14:41:23.000Z",
       "text": "ทำเถอะอยากซื้อ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -19105,7 +19097,7 @@
       "sourceUrl": "https://www.instagram.com/p/Dd_T_92GbNl",
       "publishedAt": "2026-10-02T12:05:35.000Z",
       "text": "นี่ว่าขายจิงลากลาสไม่จกตาแน่ๆ",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -19119,7 +19111,7 @@
       "user": "arisse_guru",
       "matchedKeywords": [],
       "engagement": 0,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "instagram-18122430889697725",
@@ -19495,7 +19487,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7692022184734215445?comment_id=7692030778762986261",
       "publishedAt": "2026-10-02T11:28:13.000Z",
       "text": "เอาดีถ้าวางขายซื้อจริงเด้อออ ไอเลิปสีเทอคว้วยแหม่",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -19630,7 +19622,7 @@
       "sourceUrl": "https://www.instagram.com/p/Dd_T_92GbNl",
       "publishedAt": "2026-10-02T11:11:27.000Z",
       "text": "โดนหลอกซ้ำซาก แต่ก็ไม่เท่าโดนเขาหลอกอยู่ดี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -19864,7 +19856,7 @@
       "sourceUrl": "https://www.instagram.com/p/Dd_T_92GbNl",
       "publishedAt": "2026-10-02T10:57:53.000Z",
       "text": "เดี๋ยวฝากลูกหลานในปี4444ซื้อแล้วเผามาให้นะคะ2271818281",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Instagram audience reaction"
       ],
@@ -20124,7 +20116,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7691652550193466645?comment_id=7692000481983742740",
       "publishedAt": "2026-10-02T09:30:38.000Z",
       "text": "ทำหมวกมาทุกสีเลยก็ได้นะคะตอบโจทย์คนคอสเพลย์ 💐",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -20603,7 +20595,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7691652550193466645?comment_id=7691693116273492742",
       "publishedAt": "2026-10-01T13:37:52.000Z",
       "text": "ค่ะยินดีให้หลอกค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -21882,7 +21874,7 @@
       "sourceUrl": "https://x.com/kdevworld/status/2104915346092384541",
       "publishedAt": "2026-09-29T12:45:00.000Z",
       "text": "2 สูตรในกล่องเดียวแบบคู่กันลงตัวสุบๆ\n\n— 590 THB / 1 BOX\n4 ห่อ / 1 กล่อง (Moist x2 | Acne x2)\n⭐️ โปรตั้งแต่วันที่ 1.10.26 - 31.10.26 หรือจนกว่าสินค้าจะหมด (ตามเวลาทำการของแต่ละสาขา)\n\nช่องทางการขาย\n* หน้าร้าน Boots เฉพาะ 69 สาขาที่ร่วมรายการทั่วประเทศ\n\n#laglace #ลากลาส #โทนเนอร์แพดลากลาส #โทนเนอร์แพดลากลาสทราเวลไซซ์ #laglacemoisturizingpads #laglaceacnepads",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "X audience reaction"
       ],
@@ -22227,7 +22219,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7690086989554762517",
       "publishedAt": "2026-09-27T05:45:17.000Z",
       "text": "เขียนง่ายย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -22412,7 +22404,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689629584112239380",
       "publishedAt": "2026-09-26T00:10:53.000Z",
       "text": "แนะนำเลย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -22437,7 +22429,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689551436611142408",
       "publishedAt": "2026-09-25T19:07:03.000Z",
       "text": "เขียนดี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -22462,7 +22454,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689528172643549959",
       "publishedAt": "2026-09-25T17:36:45.000Z",
       "text": "เขียนลื่นน",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -22487,7 +22479,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689509635955262214",
       "publishedAt": "2026-09-25T16:24:52.000Z",
       "text": "เขียนลื่น",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -22722,7 +22714,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689466772244775687",
       "publishedAt": "2026-09-25T13:38:29.000Z",
       "text": "เขียนลื่น",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -22777,7 +22769,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689463655985316628",
       "publishedAt": "2026-09-25T13:26:20.000Z",
       "text": "เขียนง่าย เขียนลื่นมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -22832,7 +22824,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689458520715838226",
       "publishedAt": "2026-09-25T13:06:28.000Z",
       "text": "เขียนง่าย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -22997,7 +22989,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689435080532132628",
       "publishedAt": "2026-09-25T11:35:32.000Z",
       "text": "ดีมากก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23022,7 +23014,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689431976960328466",
       "publishedAt": "2026-09-25T11:23:22.000Z",
       "text": "เขียนลื่น ทนมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23047,7 +23039,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689431765114929938",
       "publishedAt": "2026-09-25T11:22:36.000Z",
       "text": "เขียนลื่นนน",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23097,7 +23089,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689429729824719617",
       "publishedAt": "2026-09-25T11:15:03.000Z",
       "text": "เขียนลื่น",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23122,7 +23114,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689424132912579348",
       "publishedAt": "2026-09-25T10:53:03.000Z",
       "text": "เขียนง่ายย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23147,7 +23139,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689423119765668615",
       "publishedAt": "2026-09-25T10:49:10.000Z",
       "text": "เขียนง่ายมั่ก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23172,7 +23164,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689420669025960712",
       "publishedAt": "2026-09-25T10:39:43.000Z",
       "text": "เขียนลื่นค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23247,7 +23239,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689419428358816530",
       "publishedAt": "2026-09-25T10:34:49.000Z",
       "text": "เขียนลื่นค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23272,7 +23264,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689416025063129863",
       "publishedAt": "2026-09-25T10:21:40.000Z",
       "text": "เขียนง่ายมากค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23322,7 +23314,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689405417390375687",
       "publishedAt": "2026-09-25T09:40:22.000Z",
       "text": "เขียนง่ายมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23347,7 +23339,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689402298217382676",
       "publishedAt": "2026-09-25T09:28:24.000Z",
       "text": "เขียนลื่นน",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23372,7 +23364,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689402166754902792",
       "publishedAt": "2026-09-25T09:27:53.000Z",
       "text": "ดีมากก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23397,7 +23389,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689399222265250566",
       "publishedAt": "2026-09-25T09:16:20.000Z",
       "text": "เขียนลื่นสุดๆ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23547,7 +23539,7 @@
       "sourceUrl": "https://www.tiktok.com/@ibunniechu/video/7689384377268096274?comment_id=7689386842512720648",
       "publishedAt": "2026-09-25T08:28:20.000Z",
       "text": "เขียนลื่นมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "TikTok audience reaction"
       ],
@@ -23835,7 +23827,7 @@
       "sourceUrl": "https://x.com/xoxo_deeja/status/2097657325100150792",
       "publishedAt": "2026-09-09T12:04:13.000Z",
       "text": "@OPENLABEL_TH @myitsMY Ohhh..I thought someone must have burned down the your office, seeing how you lot have remained silent about the issue currently affecting your artists. Antis are running rampant and their posts are gaining traction in the millions yet here you are doing and saying nothing!",
-      "sentiment": "negative",
+      "sentiment": "neutral",
       "topics": [
         "Concerns & issues"
       ],
@@ -23850,7 +23842,7 @@
       "authorName": "🦖DinouChips🦖🚗",
       "matchedKeywords": [],
       "engagement": 90,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "x-2097656272728555740",
@@ -24003,7 +23995,7 @@
       "sourceUrl": "https://www.facebook.com/laglace.officialth/posts/pfbid0Gxe91e3ybEqpKcWNrHfd7hyeMgZVqVeCy3uQLEFLnrxCk6XJ1iHPvC5S6EnscVtPl?locale=en_US&comment_id=1724038598651586",
       "publishedAt": "2026-09-09T05:18:32.000Z",
       "text": "ผมนี่รอเลยอะ ในTikTokนะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products"
       ],
@@ -24617,7 +24609,7 @@
       "sourceUrl": "https://www.facebook.com/laglace.officialth/posts/pfbid0299xuFbR5ud5NLnU3QEGysYBvUrTkY37s8JFmYppYEPwTc8E2e2tFRVXzcyjegkmtl?locale=en_US&comment_id=27863540559963304",
       "publishedAt": "2026-08-17T07:30:36.000Z",
       "text": "าาอดีนฝมิอเใทอแ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products"
       ],
@@ -24646,7 +24638,7 @@
       "sourceUrl": "https://www.facebook.com/laglace.officialth/posts/pfbid02nxaLPKbAwocHUb2WTgbBKAJ7SfbFeNKZEBA9vJ4o9V1uT4zVwL229grDXA4zsyg7l?locale=en_US&comment_id=2550677425375968",
       "publishedAt": "2026-08-17T00:52:28.000Z",
       "text": "ริด้วทิแสใดีส",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products"
       ],
@@ -24880,7 +24872,7 @@
       "sourceUrl": "https://www.facebook.com/laglace.officialth/posts/pfbid0mAPc6S7SYv2Nn9k57dSpKKiL7RPYVzut8xjJz2WPeVDeG4Rq8YHtgQVC8MY9fr2el?locale=en_US&comment_id=1037281595721767",
       "publishedAt": "2026-08-06T03:53:34.000Z",
       "text": "สูตรสีฟ้าใช้ก่อนแต่งหน้าดีมากๆเลยค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products"
       ],
@@ -24968,7 +24960,7 @@
       "sourceUrl": "https://www.facebook.com/laglace.officialth/posts/pfbid0n9Q3vE5oADCHm1G8yU1o3NX3VZoStyRcHQmE73e8XpXC8rFrHrnVHb15XEP5tr8pl?locale=en_US&comment_id=1363159918588900",
       "publishedAt": "2026-08-05T12:04:11.000Z",
       "text": "￼ดอลลี่สีขาวตาป๊อปมาแล้ว\nใครรออยู่ กดด่วนนน ‼️\n\nhttps://vt.tiktok.com/ZS9h9WQSwte1V-LmKsA/\n\nhttps://th.shp.ee/8Qt5wsqB",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products"
       ],
@@ -25326,7 +25318,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7669771888054373653?comment_id=7669814329844368146",
       "publishedAt": "2026-08-03T14:37:02.000Z",
       "text": "ใช้ไปเรื่อยๆแล้วเนื้อแห้งเขียนตาไม่ค่อยติด ไม่ลื่นเหมือนซื้อแรกๆ ใช้ไม่เคยหมดแท่งต้องเปลี่ยนใหม่ตลอด แก้ยังไงดีค้าบ😭",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -25566,7 +25558,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7669771888054373653?comment_id=7669778234486391560",
       "publishedAt": "2026-08-03T12:17:01.000Z",
       "text": "ถ้าไม่บอกว่าเป็นแบรนด์ไทยคิดว่าเป็นแบรนด์ต่างประเทศใช้โคตรดีpackageก็ดี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Review & product experience",
@@ -25835,7 +25827,7 @@
       "sourceUrl": "https://www.facebook.com/laglace.officialth/posts/pfbid02CrTDeQ5MPKXsn3qeFo2j6Rwe8gGUJ7FoUmk3YsCAEiEtYF7Lzc6xg5ca7cirqvFMl?locale=en_US&comment_id=1040978328441934",
       "publishedAt": "2026-07-30T11:58:17.000Z",
       "text": "2 ชิ้น ในราคาเพียงแค่ 160.-✨\n(จากปกติ 318.-)\n\nโปรตั้งแต่ วันนี้-8/8 นี้เท่านั้น‼️‼️\nของหมดไวมาก รีบตุนด่วนนน",
-      "sentiment": "negative",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products"
       ],
@@ -25853,7 +25845,7 @@
         "laglace"
       ],
       "engagement": 0,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "facebook-Y29tbWVudDoxNDk3Mjc3NzkyNDI5NjEyXzIyMjk1OTY3ODEyMjI0NjM-",
@@ -25951,7 +25943,7 @@
       "sourceUrl": "https://www.facebook.com/laglace.officialth/posts/pfbid0p5ZG4NCLbWQNxanUPBvx1wXjGS9TPQFH9bN12JXJRNB7zKnBHkbU5DqZGsrBiXTVl?locale=en_US&comment_id=1778449500010963",
       "publishedAt": "2026-07-25T16:51:42.000Z",
       "text": "แท่งเดียวเพิ่มมิติให้ตาได้เลย \nสี 02 เบจนู้ด เพิ่มความตาป็อปแบบเป็นธรรมชาติ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products"
       ],
@@ -25980,7 +25972,7 @@
       "sourceUrl": "https://www.facebook.com/laglace.officialth/posts/pfbid02nxaLPKbAwocHUb2WTgbBKAJ7SfbFeNKZEBA9vJ4o9V1uT4zVwL229grDXA4zsyg7l?locale=en_US&comment_id=1316444170644863",
       "publishedAt": "2026-07-25T16:51:00.000Z",
       "text": "แท่งเดียวเพิ่มมิติให้ตาได้เลย \nสี 02 เบจนู้ด เพิ่มความตาป็อปแบบเป็นธรรมชาติ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products"
       ],
@@ -26125,7 +26117,7 @@
       "sourceUrl": "https://www.facebook.com/laglace.officialth/posts/pfbid026AyYtZv5NLkVXa6GQEosUTerUuXoKGGPFgi71Z4ZXSVPtmEQMmbkxUmcyz6gGJQWl?locale=en_US&comment_id=4514928098722544",
       "publishedAt": "2026-07-25T10:01:12.000Z",
       "text": "2 ชิ้น ในราคาเพียงแค่ 160.-✨\n(จากปกติ 318.-)\n\nโปรตั้งแต่ วันนี้-8/8 นี้เท่านั้น‼️‼️\nของหมดไวมาก รีบตุนด่วนนน",
-      "sentiment": "negative",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products"
       ],
@@ -26143,7 +26135,7 @@
         "laglace"
       ],
       "engagement": 0,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "facebook-Y29tbWVudDoxNDg4MTYxOTczMzQxMTk0XzE1NzU5MjIwODA1NDgyNDg-",
@@ -26154,7 +26146,7 @@
       "sourceUrl": "https://www.facebook.com/laglace.officialth/posts/pfbid0299xuFbR5ud5NLnU3QEGysYBvUrTkY37s8JFmYppYEPwTc8E2e2tFRVXzcyjegkmtl?locale=en_US&comment_id=1575922080548248",
       "publishedAt": "2026-07-20T10:35:29.000Z",
       "text": "แค่ปากฉ่ำก็เพิ่มความมั่นใจได้ ￼\n\n📍https://www.allonline.7eleven.co.th/p/La-Glace-ลิปกลอส-Melted-Sundae-Lip-Click-2-กรัม/335327/?p=4&view=0&categoryId=267018918&srsltid=AfmBOopIw8WLC8BSSYOc64Rhl8JtoDL_s-OK-iGEpPPn93D815dR9twJ",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products"
       ],
@@ -26243,7 +26235,7 @@
       "sourceUrl": "https://www.facebook.com/laglace.officialth/posts/pfbid02TdRbwy7x9DwVHCzXZFaftDBcQMw4aX7xK9h52mvhhNkrwA4B3DeUw2ijW8ifiKzsl?locale=en_US&comment_id=2220451058742127",
       "publishedAt": "2026-07-14T10:43:42.000Z",
       "text": "เข้าใจแล้วววว ว่าทำไมสีนี้ขายดีอันดับ 1\n\n📍https://www.allonline.7eleven.co.th/p/La-Glace-ลิปกลอส-Melted-Sundae-Lip-Click-2-กรัม/335327/?p=4&view=0&categoryId=267018918&srsltid=AfmBOopIw8WLC8BSSYOc64Rhl8JtoDL_s-OK-iGEpPPn93D815dR9twJ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products"
       ],
@@ -26362,7 +26354,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7624472128103992594?comment_id=7648217727610323720",
       "publishedAt": "2026-06-06T09:51:09.000Z",
       "text": "ชั้นรักลากลาส",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -26778,7 +26770,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7624472128103992594?comment_id=7636935596891620097",
       "publishedAt": "2026-05-07T00:11:16.000Z",
       "text": "โคตรรรรรักลากลาสเลย 🩷",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -28037,7 +28029,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7624472128103992594?comment_id=7624517408661422849",
       "publishedAt": "2026-04-03T13:01:44.000Z",
       "text": "หนูรักลากลาสทำคอนทัวร์ ขายทีค่ะ, กราบ🙏🏻",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -28217,7 +28209,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7624472128103992594?comment_id=7624496254873060117",
       "publishedAt": "2026-04-03T11:39:40.000Z",
       "text": "ลิปทินต์04 คู่กับครีมบรัชเบอร์ไรดีคะะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -28247,7 +28239,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7624472128103992594?comment_id=7624492127094932244",
       "publishedAt": "2026-04-03T11:23:38.000Z",
       "text": "รอลากลาสออกพาเลทตากับขนตาปลอมนะคะ อยากได้ครบเซท",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -28266,7 +28258,7 @@
         "@laglace_official"
       ],
       "engagement": 1409,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7624485128282374932",
@@ -28367,7 +28359,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7624472128103992594?comment_id=7624477768784642824",
       "publishedAt": "2026-04-03T10:27:57.000Z",
       "text": "Content ดีมากก เลือกถูกเลยแหละๆ combo💖💖",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -28544,7 +28536,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7614014464458818322",
       "publishedAt": "2026-03-06T05:44:59.000Z",
       "text": "ทำครบ365ปี ได้ลา365วัน คุ้ม🥰",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -29195,7 +29187,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7576290691325068040",
       "publishedAt": "2025-11-24T13:57:23.000Z",
       "text": "อนาคตลากลาสสนใจทำ Highlight จึ้งๆแสงพุ่งตาแตกมั้ยคะ😳",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -29214,7 +29206,7 @@
         "@laglace_official"
       ],
       "engagement": 0,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7575838070721987348",
@@ -29795,7 +29787,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7570604913232282386",
       "publishedAt": "2025-11-09T06:13:43.000Z",
       "text": "เเก~ คือมันดีมากก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -30845,7 +30837,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7554684721336075030",
       "publishedAt": "2025-09-27T08:35:22.000Z",
       "text": "Will these be available on TikTok shop ???? How to buy from eu ???",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Purchase intent & availability",
@@ -32046,7 +32038,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7549932387896328980",
       "publishedAt": "2025-09-14T13:13:42.000Z",
       "text": "ตาแตก 🔥🔥🔥",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -32065,7 +32057,7 @@
         "@laglace_official"
       ],
       "engagement": 0,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7549878663136019216",
@@ -32136,7 +32128,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7549470470598378258",
       "publishedAt": "2025-09-13T07:21:18.000Z",
       "text": "ขนลุกมากกกก สมกับทุ่มทุน ทุ่มแรง ❤️‍🔥",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -32316,7 +32308,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7548500371842007816",
       "publishedAt": "2025-09-10T16:36:48.000Z",
       "text": "เดี่ยวหนูเรียนจบก่อนนะคะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -32436,7 +32428,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7547913547876287249",
       "publishedAt": "2025-09-09T02:39:40.000Z",
       "text": "เป็นแม่บ้านก็คงฟินละ💕",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -33278,7 +33270,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7544321921648935688",
       "publishedAt": "2025-08-30T10:22:18.000Z",
       "text": "ขอให้ขายดี รวยๆนะคะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -33818,7 +33810,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7542768398443283256",
       "publishedAt": "2025-08-26T05:54:02.000Z",
       "text": "@ILoveLain",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Positive reactions & praise",
@@ -34210,7 +34202,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7542296390186959672",
       "publishedAt": "2025-08-24T23:22:17.000Z",
       "text": "twice FOR in the background????",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -34270,7 +34262,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7542239820187353912",
       "publishedAt": "2025-08-24T19:42:46.000Z",
       "text": "Como assim não é um grupo debutando?????",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -34572,7 +34564,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7542101347421537045",
       "publishedAt": "2025-08-24T10:45:20.000Z",
       "text": "I want this to be a movie so badddd 😭",
-      "sentiment": "negative",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Positive reactions & praise",
@@ -34593,7 +34585,7 @@
         "@laglace_official"
       ],
       "engagement": 1,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7542100465859068692",
@@ -34724,7 +34716,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7542058535360037639",
       "publishedAt": "2025-08-24T07:59:14.000Z",
       "text": "ESTA JOYA SOLO POR UN RIMEEEEELLL??????!!!!",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -35206,7 +35198,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7541760580449747729",
       "publishedAt": "2025-08-23T12:42:56.000Z",
       "text": "wowww",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Positive reactions & praise",
@@ -35297,7 +35289,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7541707876949082901",
       "publishedAt": "2025-08-23T09:18:29.000Z",
       "text": "จำกัดว่าต้องยื่นได้แค่ตำแหน่งเดียวไหมคะ 🥹",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -35777,7 +35769,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7541229608793211656",
       "publishedAt": "2025-08-22T02:22:31.000Z",
       "text": "โหห ลากลาส ทำถึง ทำเกิน ทำดีมากอะ!!!",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -35837,7 +35829,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7541093158538314497",
       "publishedAt": "2025-08-21T17:33:05.000Z",
       "text": "คืออยากพัฒนาตัวเองมาสายนี้มาก อยากทำแค่กะลากลาสอย่างเดียว5555🥺",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -36408,7 +36400,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7539803970472116999",
       "publishedAt": "2025-08-18T06:10:22.000Z",
       "text": "ดีงาม",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -36528,7 +36520,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7539547119063171858",
       "publishedAt": "2025-08-17T13:33:37.000Z",
       "text": "ดีงามมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -36618,7 +36610,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7539423583053005588",
       "publishedAt": "2025-08-17T05:34:17.000Z",
       "text": "ดีทุกอย่างงง",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -36888,7 +36880,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7538800196223828754",
       "publishedAt": "2025-08-15T13:15:09.000Z",
       "text": "หลงไม่ไหว☺️",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -36907,7 +36899,7 @@
         "@laglace_official"
       ],
       "engagement": 0,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7538792521205531409",
@@ -37518,7 +37510,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7537892408219353864",
       "publishedAt": "2025-08-13T02:32:32.000Z",
       "text": "สวัสดิการดีสุดๆ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -37878,7 +37870,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7537587471267103505",
       "publishedAt": "2025-08-12T06:49:13.000Z",
       "text": "ไม่อยากจะคิด พนักงานจะมีความสุขมากแค่ไหน ได้เป็นตัวเองและได้รับการซัพพอตที่ดีขนาดนี้จากบริษัท",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -37998,7 +37990,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7537543494576456456",
       "publishedAt": "2025-08-12T03:58:30.000Z",
       "text": "โหหหห ดีมาดกกกก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -38268,7 +38260,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7537348594325209874",
       "publishedAt": "2025-08-11T15:22:12.000Z",
       "text": "อยากให้ลากลาสทำคอนแท้กเลนส์นะคะรอเลย🙏🙏😭😭",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -38418,7 +38410,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7537288585172878098",
       "publishedAt": "2025-08-11T11:29:23.000Z",
       "text": "คลิปนี้ต้อง 5ล้าน วิวเท่านั้นค่ะแชร์ญาติติโกกามาดูเดี๋ยวนี้ค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -38478,7 +38470,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7537285450975036178",
       "publishedAt": "2025-08-11T11:17:12.000Z",
       "text": "เป็นบริษัทที่สวัสดิการดีมาก เข้าใจคนรุ่นใหม่มากๆ บริษัทที่ยั่งยืนคือบริษัทที่ปรับตัวไปตามโลก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -38898,7 +38890,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7537153830032179976",
       "publishedAt": "2025-08-11T02:46:27.000Z",
       "text": "รับEnvironment ไหมคะ จะพาไปรักโลกค่ะ แต่เดียวอีกสักจะจบเซฟตี้อีกใบแล้วค่ะ จะดูแลพนักงานให้ทำงานอย่างปลอดภัยค่ะ 5555555",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -39348,7 +39340,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536986161743397650",
       "publishedAt": "2025-08-10T15:55:43.000Z",
       "text": "ดูจบขนลุกจริงง",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -40068,7 +40060,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536774491947614983",
       "publishedAt": "2025-08-10T02:14:22.000Z",
       "text": "@🐈‍⬛Bobo&Barley🌾: สวัสดีค่ะมีตัวแทนประกันดูแลพนักงานหรือยังค่ะ ยินดีให้บริการนะคะ🥰",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -40128,7 +40120,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536740472296473352",
       "publishedAt": "2025-08-10T00:02:31.000Z",
       "text": "ดูหลายรอบมากๆค่ะ คริปเก๋มากๆค่ะ ทำออกมาดีมากๆเลย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -40218,7 +40210,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536657918374413076",
       "publishedAt": "2025-08-09T18:42:09.000Z",
       "text": "โคตรดี ไม่แปลกนำอีกแบรนด์ไปไกลเลย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -40758,7 +40750,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536432570881327879",
       "publishedAt": "2025-08-09T04:07:36.000Z",
       "text": "ดีจัดมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -40938,7 +40930,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536411803476247304",
       "publishedAt": "2025-08-09T02:47:01.000Z",
       "text": "คำเดียว โคตร สะใจ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -41508,7 +41500,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536262398064493319",
       "publishedAt": "2025-08-08T17:07:13.000Z",
       "text": "คลิปคิอดีมากกราบบบ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -41568,7 +41560,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536257638662456082",
       "publishedAt": "2025-08-08T16:48:47.000Z",
       "text": "ลูกค้าดูคือทับใจ รักลากลาส ขอให้ประสบความสำเร็จกว่าเดิมมมม 💕💕💕",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -41688,7 +41680,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536247097718260488",
       "publishedAt": "2025-08-08T16:07:50.000Z",
       "text": "ทุกอย่างดีหมดเลย แต่พักร้อนน้อยมากๆ ตามกฏหมายเลย จริงๆบ.ส่วนใหญ่ในกทม.เริ่มที่ 10 วันหมดแล้วอ่ะ แต่เข้าใจได้ว่าบ.ยังเล็กเลยไม่สามารถให้วันลาเยอะขนาดนั้นได้",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -41778,7 +41770,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536236375495262983",
       "publishedAt": "2025-08-08T15:26:13.000Z",
       "text": "สวัสดิการดีมากกกกกก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -41838,7 +41830,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536230197009498887",
       "publishedAt": "2025-08-08T15:02:13.000Z",
       "text": "ใครเป็นคนคิดคอนเซปโฆษณาเนี่ย ไอเดียดีมากๆๆๆๆๆๆๆ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -42168,7 +42160,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536157489755177736",
       "publishedAt": "2025-08-08T10:20:03.000Z",
       "text": "คลิปโคตรจะจึ้งงงง สมกับเป็นแบรนด์ที่ติดตามมานาน ไม่เคยทำให้ผิดหวังเลยค่ะ💗💗",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -42187,7 +42179,7 @@
         "@laglace_official"
       ],
       "engagement": 0,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7536149906052137736",
@@ -42258,7 +42250,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536144441435357970",
       "publishedAt": "2025-08-08T09:29:29.000Z",
       "text": "ค่ตจะรักลากลาซ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -42438,7 +42430,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536125113457394439",
       "publishedAt": "2025-08-08T08:14:30.000Z",
       "text": "รอหนูอีก 5 ปีนะคะ เดี๋ยวหนูไปยื่นค่ะ😭",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -42498,7 +42490,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536122177251492609",
       "publishedAt": "2025-08-08T08:03:05.000Z",
       "text": "เก่งมากโอ้ยยย 😭😭💓💓💓 รักนะคะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -42738,7 +42730,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536087368984118023",
       "publishedAt": "2025-08-08T05:48:03.000Z",
       "text": "พรีเซนต์ดี ตัดต่อดีมากค่ะ ดูเพลินๆวนไปกี่รอบไม่ได้นับเลย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -42858,7 +42850,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536075378378539794",
       "publishedAt": "2025-08-08T05:01:29.000Z",
       "text": "ดีงามมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -43008,7 +43000,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536052242223481608",
       "publishedAt": "2025-08-08T03:31:41.000Z",
       "text": "ดีอะ สวัสดิการดีมาก ละคอยอัพเดททุกปีด้วย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -43158,7 +43150,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536042752623149845",
       "publishedAt": "2025-08-08T02:54:52.000Z",
       "text": "สวัสดดิการดีมากคุณน้า",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -43458,7 +43450,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536017818341688082",
       "publishedAt": "2025-08-08T01:18:09.000Z",
       "text": "โครตจะดี ตัดต่อดีมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -43638,7 +43630,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7536008735622578951",
       "publishedAt": "2025-08-08T00:42:56.000Z",
       "text": "เว่อมากกกกกกกกแต่โค่ดดี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -43938,7 +43930,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535871140942791431",
       "publishedAt": "2025-08-07T15:48:52.000Z",
       "text": "ขนลุกมากแม่ เลิฟ Energy ทุกคน ❤️❤️🔥🔥",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -44088,7 +44080,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535835304340013832",
       "publishedAt": "2025-08-07T13:29:49.000Z",
       "text": "มาไกลมากดูตั้งแต่พี่ไอติมทำจมูกจนสร้างบริษัทที่ดีขนาดนี้ได้ประทับใจที่สุดเลย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -44568,7 +44560,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535775308303254280",
       "publishedAt": "2025-08-07T09:37:04.000Z",
       "text": "เริศสุดๆ ดูเป็นตัวเอง และมีความสุขในการทำงานมากๆ พนักงานคงรักบริษัทนี้มากเลย 😍",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -45138,7 +45130,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535738736803529479",
       "publishedAt": "2025-08-07T07:15:13.000Z",
       "text": "อยู่เมกาทำไงดีคะ😭 ทำงานระยะไกลได้มั้ย55555",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -46068,7 +46060,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535644977537303303",
       "publishedAt": "2025-08-07T01:11:21.000Z",
       "text": "สวัสดิการดีมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -46128,7 +46120,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535639204060283669",
       "publishedAt": "2025-08-07T00:48:59.000Z",
       "text": "ภูมิใจจังค่ะ โตมากับลากลาส พี่ไอติมไม่เคยทำให้ผิดหวังเลย 🥰",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -46147,7 +46139,7 @@
         "@laglace_official"
       ],
       "engagement": 1,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7535638486284763911",
@@ -46578,7 +46570,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535588259771319056",
       "publishedAt": "2025-08-06T21:31:21.000Z",
       "text": "เริศ editor ตัดคลิปดีมากดูแล้วรู้เลยว่านี่แหละลากลาซ สวัสดิการเริศ บริษัทเริศ สินค้าเริศ พนง.เริศ แฮปปี้แทน🫶🏻",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -46848,7 +46840,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535537199765324552",
       "publishedAt": "2025-08-06T18:13:01.000Z",
       "text": "เริ่ดที่สุด ไม่ไหว",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -46867,7 +46859,7 @@
         "@laglace_official"
       ],
       "engagement": 0,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7535536606808294145",
@@ -46908,7 +46900,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535534572831916808",
       "publishedAt": "2025-08-06T18:02:57.000Z",
       "text": "ระบบบริษัทดีที่สุดเท่าที่เคยเจอมาเลยค่ะ 🥰",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -47028,7 +47020,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535529168764879634",
       "publishedAt": "2025-08-06T17:41:55.000Z",
       "text": "รออีก10ปีได้มั้ยคะเดี๋ยวหนูมาสมัคร🙂",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -47328,7 +47320,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535517763278095112",
       "publishedAt": "2025-08-06T16:57:40.000Z",
       "text": "คลิป la glace จะยาวเป็นชั่วโมงก็ดูจนจบ!ดีมากตัดต่อดีคนเท้นเลิศ🥰",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -47808,7 +47800,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535492900207198984",
       "publishedAt": "2025-08-06T15:21:10.000Z",
       "text": "คือไม่อยากทำงานบริษัทไหนเลยนะ ยกเว้นบริษัทนี้ ดูสนุกอะดูเหมือนแบบเห่ยหรือนี่คือสังคมจริงๆที่เราตามหาวะอาจจะเครียดจริงจังกับงานแต่ทุกคนมีความอาร์ตความสนุกและที่สำคัญ(งานโคตรดีทุกอัน)",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -48018,7 +48010,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535487115099996935",
       "publishedAt": "2025-08-06T14:58:41.000Z",
       "text": "หนูสัญญาจะรีบตั้งใจเรียนให้จบ ฟินมากก รู้สึกอยากทำงาน",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -48198,7 +48190,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535482632893891335",
       "publishedAt": "2025-08-06T14:41:16.000Z",
       "text": "นี่ขนาดบอกสวัสดิการยังทำคลิปออกมาได้ดีและน่าสนใจมาก เสียงพากษ์พี่ๆก็โคตรจะได้ฟิว ดูด้วยละแฮปปี้กับทีมงานที่ได้เข้าไปทำงานกับลากลาสเลยค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -48738,7 +48730,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535464944830628615",
       "publishedAt": "2025-08-06T13:32:42.000Z",
       "text": "อร้ายยยย ฉันอยากทำที่ลากลาส ดีกว่าบริษัทใหญ่อีก💖",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -49878,7 +49870,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535424890297828103",
       "publishedAt": "2025-08-06T10:57:19.000Z",
       "text": "สวัสดิการดีกว่า รับราชการอีก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -50388,7 +50380,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535409214397121288",
       "publishedAt": "2025-08-06T09:56:27.000Z",
       "text": "คือเปนอะไรที่ไม่เดี่ยวกะเราเลยนะ แต่หยุดดู ตัดคลิปเฟี้ยวเกิน",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -50898,7 +50890,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535391529159279367",
       "publishedAt": "2025-08-06T08:47:45.000Z",
       "text": "ตัดคลิปดีมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -51048,7 +51040,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535390004190593810",
       "publishedAt": "2025-08-06T08:41:51.000Z",
       "text": "โคตรดี 🔥🔥🔥",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -51348,7 +51340,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535381663852266258",
       "publishedAt": "2025-08-06T08:09:29.000Z",
       "text": "บ.ที่ถูกต้องมากกก ดีกว่า ขรก อีก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -51588,7 +51580,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535379063137911570",
       "publishedAt": "2025-08-06T07:59:24.000Z",
       "text": "ไมาผิดหวังที่เป็น Customer Royal Brand 😭✨",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -51607,7 +51599,7 @@
         "@laglace_official"
       ],
       "engagement": 3,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7535378793073230610",
@@ -52218,7 +52210,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535372687297643265",
       "publishedAt": "2025-08-06T07:34:45.000Z",
       "text": "คลิปโคตรดี😭",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -52368,7 +52360,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535370313207874322",
       "publishedAt": "2025-08-06T07:25:29.000Z",
       "text": "ไม่ไหวๆๆๆเริ่ดเกินคุณแม่",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -52387,7 +52379,7 @@
         "@laglace_official"
       ],
       "engagement": 1,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7535369494476161800",
@@ -52788,7 +52780,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535363554378105618",
       "publishedAt": "2025-08-06T06:59:17.000Z",
       "text": "คลิปดีมากกกค่ะ โดยเฉพาะที่พูดภาษาต่างประเทศ 3 คน ท้ายคลิป โคตรจะเริด 👏",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -52878,7 +52870,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535361328996270856",
       "publishedAt": "2025-08-06T06:50:36.000Z",
       "text": "อมกกกก คุ้มมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -53058,7 +53050,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535356986695926536",
       "publishedAt": "2025-08-06T06:33:44.000Z",
       "text": "ขนลุกมากกก 🔥",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -53298,7 +53290,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535354043745469191",
       "publishedAt": "2025-08-06T06:22:18.000Z",
       "text": "อึ้งอะไรก่อนดี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -53778,7 +53770,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535344975967896327",
       "publishedAt": "2025-08-06T05:47:14.000Z",
       "text": "มาค่ะเดี๋ยวพาทำรัยหนุกๆ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -53868,7 +53860,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7535340903246859538?comment_id=7535344020710343445",
       "publishedAt": "2025-08-06T05:43:24.000Z",
       "text": "คำเดียว สะใจว่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -54289,7 +54281,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7532989473886700293",
       "publishedAt": "2025-07-30T21:26:38.000Z",
       "text": "es cosa mía o sonó parte de la instrumental de \"four\" de twice en el minuto 1:20??? esta re piola el comercial igual😭",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -54560,7 +54552,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7532237330100372230",
       "publishedAt": "2025-07-28T20:47:59.000Z",
       "text": "en qué momento empiezan a cantar???? está muy larga la intro",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -54620,7 +54612,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7532227009067483905",
       "publishedAt": "2025-07-28T20:08:07.000Z",
       "text": "dude... I wanted a release date for their album....",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Positive reactions & praise",
@@ -55223,7 +55215,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7531821223945929479",
       "publishedAt": "2025-07-27T17:53:10.000Z",
       "text": "PARA UNA MASCARA DE CEJAS???? 😭😭😭 es buenísimo",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -56125,7 +56117,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7531236925274014484",
       "publishedAt": "2025-07-26T04:05:50.000Z",
       "text": "คำเดียวว่า ดี๊ยยยย์",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -56215,7 +56207,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7531219349429486354",
       "publishedAt": "2025-07-26T02:57:42.000Z",
       "text": "this is an ad?????? fire🔥🔥🔥",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -57089,7 +57081,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7531050096533783301",
       "publishedAt": "2025-07-25T16:00:54.000Z",
       "text": "CPMO QUE ES UN COMERCIAL???? Yo hasta había elegido mi bias ya 😭😭",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -57420,7 +57412,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7530948031030838037",
       "publishedAt": "2025-07-25T09:24:46.000Z",
       "text": "Plzzzz I need to know who filmed this campaign 😭😭😭",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Positive reactions & praise",
@@ -57723,7 +57715,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7530824266289775367",
       "publishedAt": "2025-07-25T01:24:36.000Z",
       "text": "Thai commercial never disappoints 🙏🏻",
-      "sentiment": "negative",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -57742,7 +57734,7 @@
         "@laglace_official"
       ],
       "engagement": 7,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7530821676003951367",
@@ -58233,7 +58225,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7530739518175429384",
       "publishedAt": "2025-07-24T19:55:49.000Z",
       "text": "ESE DISEÑO DE PERSONAJES WOW ♥",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Positive reactions & praise",
@@ -58385,7 +58377,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7530622846612177682",
       "publishedAt": "2025-07-24T12:22:52.000Z",
       "text": "deserve ng 1M likes neto 🔥",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Positive reactions & praise",
@@ -58416,7 +58408,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7530617895962100485",
       "publishedAt": "2025-07-24T12:03:41.000Z",
       "text": "como assim é só um comercial de ríííímel???? 😲",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -58746,7 +58738,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7530561592477385490",
       "publishedAt": "2025-07-24T08:25:11.000Z",
       "text": "เบื้องหลังพี่ไอติมคือถ้าไม่ขนลุกไม่เอา ละชั้นคนดูตอนนี้ขนลุกงานเขาจริงค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -59046,7 +59038,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7530527378059576080",
       "publishedAt": "2025-07-24T06:12:39.000Z",
       "text": "Wow wow wow wow?",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Positive reactions & praise",
@@ -59138,7 +59130,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7530504545623524104",
       "publishedAt": "2025-07-24T04:43:46.000Z",
       "text": "i love whatever this is",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Positive reactions & praise",
@@ -59158,7 +59150,7 @@
         "@laglace_official"
       ],
       "engagement": 1,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7530500810959848200",
@@ -60132,7 +60124,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7530241903275574033",
       "publishedAt": "2025-07-23T11:44:39.000Z",
       "text": "ขนลุกมากแม่โคตรจะสุด โคตรจะเก๋",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -60222,7 +60214,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7530221441745912593",
       "publishedAt": "2025-07-23T10:25:15.000Z",
       "text": "หนุ่มนักธนูยิงโดนใจหนูเต็มๆเลยค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -60584,7 +60576,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7530043167804130066",
       "publishedAt": "2025-07-22T22:53:37.000Z",
       "text": "WAIT,THIS IS AN AD??????😭😭😭😭😭😭😭😭 this is SOOOOOO COOL MY GOD",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -60826,7 +60818,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7529961791691064082",
       "publishedAt": "2025-07-22T17:37:35.000Z",
       "text": "โครตจะดี💗🔥",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -60917,7 +60909,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7529887088327492369",
       "publishedAt": "2025-07-22T12:47:47.000Z",
       "text": "Wowww IS IT TIKTOK PREMIUM? better than famous brands OMGGG Don‘t underestimate LAGLACE This is the most creative brand in Thailand 💋",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Positive reactions & praise",
@@ -61131,7 +61123,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7529551152023749383",
       "publishedAt": "2025-07-21T15:04:06.000Z",
       "text": "พูดไปใครจะเชื่อ กูขนลุกตอนดูคลิปนี้",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -61281,7 +61273,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7529365084989784839",
       "publishedAt": "2025-07-21T03:02:08.000Z",
       "text": "เเค่ดีDeserts ก็ขนลุกแล้ววแม่ รอกดเลยยย",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -61431,7 +61423,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7529179424139707144",
       "publishedAt": "2025-07-20T15:01:37.000Z",
       "text": "จะปัดคิ้วทุกสีไปเรียนทุกวันเลยค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -61521,7 +61513,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7529158365579182866",
       "publishedAt": "2025-07-20T13:39:52.000Z",
       "text": "โคตรจะถึงโคตรจะปึ้ง รักลากลาส ขอเป็นสลิ่มลากลาสตลอดไป ♥️♥️♥️",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -61791,7 +61783,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7529051378283856648",
       "publishedAt": "2025-07-20T06:44:43.000Z",
       "text": "The rebrand from Y2K baddie to Futuristic Cyberpunk is INSANE !! But i love it !!🥺❤️❤️🔥",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Positive reactions & praise",
@@ -61812,7 +61804,7 @@
         "@laglace_official"
       ],
       "engagement": 352,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7529046397649158919",
@@ -62184,7 +62176,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528993033800647432",
       "publishedAt": "2025-07-20T02:58:24.000Z",
       "text": "ขนลุกมากกกกกก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -62754,7 +62746,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528645910664020754",
       "publishedAt": "2025-07-19T04:31:22.000Z",
       "text": "ลากลาสเหมือนวงศิลปิน วงหนึ่งอะ  ไปสุดมากกก  รักๆๆ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -62964,7 +62956,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528447088172286741",
       "publishedAt": "2025-07-18T15:39:58.000Z",
       "text": "เห็นแล้วนึกถึงยายมะเดี่ยว",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -63624,7 +63616,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528264482784166664",
       "publishedAt": "2025-07-18T03:51:12.000Z",
       "text": "เข้า LA GLACE แล้วหาทางออกไม่ได้เลยย✨💗 ทำดีทำถึงทุกชิ้นเลยยย❤️‍🔥❤️‍🔥",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -64134,7 +64126,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528197084745597714",
       "publishedAt": "2025-07-17T23:30:04.000Z",
       "text": "ขายของรึMVเพลงใหม่คะพี่เริดไม่ไหว🔥",
-      "sentiment": "negative",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -64153,7 +64145,7 @@
         "@laglace_official"
       ],
       "engagement": 8,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7528196408727749384",
@@ -64254,7 +64246,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528122783545656082",
       "publishedAt": "2025-07-17T18:41:21.000Z",
       "text": "ตีตลาดสายคอสเพลย์มาก ชาวคอสรักลากลาสสสส😭😭😭🫶🏻🫶🏻🫶🏻",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -64344,7 +64336,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528114878310040328",
       "publishedAt": "2025-07-17T18:10:38.000Z",
       "text": "ทำเกินมาก ขนลุกกก นี่สิผู้นำเทรนด์ลัทธิคิ้วสีตัวจริง !",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -64464,7 +64456,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528111238112461576",
       "publishedAt": "2025-07-17T17:56:36.000Z",
       "text": "เคยเห็นเจ้าของแบรนด์พูดว่าอยากให้ภาพแบรนด์มันชัด นี่ว่าเค้าทำได้ละ ละทำได้โครตจะดี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -64494,7 +64486,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528111207477281554",
       "publishedAt": "2025-07-17T17:56:30.000Z",
       "text": "โหหห ขนลุก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -64644,7 +64636,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528107420469199634",
       "publishedAt": "2025-07-17T17:41:46.000Z",
       "text": "รักลากลาสมาก ใส่ใจทุกอย่างสุดๆๆ 😭😭 แบรนด์ที่ควรได้กำลังซักพันล้าน",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -64734,7 +64726,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528107031543251720",
       "publishedAt": "2025-07-17T17:40:12.000Z",
       "text": "ดีมากกกก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -64914,7 +64906,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528105702982206224",
       "publishedAt": "2025-07-17T17:35:08.000Z",
       "text": "โคตรดี @Jennie•ᴥ•",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -65004,7 +64996,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528105241431687954",
       "publishedAt": "2025-07-17T17:33:18.000Z",
       "text": "คอนเซปดีมาก สนุกมากกก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -65184,7 +65176,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528103884402688786",
       "publishedAt": "2025-07-17T17:28:03.000Z",
       "text": "ความจริตลากลาส ไปได้ไกลแน่นอน รักค่ะ💖",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -65334,7 +65326,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528103424589759239",
       "publishedAt": "2025-07-17T17:26:14.000Z",
       "text": "โคตรรรรรรรรรดี!",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -65514,7 +65506,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528102064104030984",
       "publishedAt": "2025-07-17T17:20:55.000Z",
       "text": "ภูมิใจมาก ฉันจะซื้อทั้งหมดทุกสี 🔥🔥🔥🔥🔥🔥🔥",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -65874,7 +65866,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528098282552754964",
       "publishedAt": "2025-07-17T17:06:18.000Z",
       "text": "ทำดีมากๆๆๆเลยค่ะ แบบว่า ตามมาสักพักแล้วแค่คอลก่อนหน้ายังไม่มีโอกาสได้ใช้ แต่ชื่นชมเรื่องโปรโมท คอนเท้นมาเก็ตติ้งมากๆๆ น่าสนใจมาก อยากลองโปรดักนี้ แบบก้าวออกมาจากคอมฟอทโซน สีสันต่างๆแบบ ฮืออ โดนใจมากกก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -66084,7 +66076,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528096892002075399",
       "publishedAt": "2025-07-17T17:00:50.000Z",
       "text": "laglace ไม่เคยทำให้ผิดหวังจริง🥺",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -66103,7 +66095,7 @@
         "@laglace_official"
       ],
       "engagement": 1,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7528096801988985607",
@@ -66174,7 +66166,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528096514842657557",
       "publishedAt": "2025-07-17T16:59:27.000Z",
       "text": "เทสดีมากเว่อออ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -66444,7 +66436,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528093659481981716",
       "publishedAt": "2025-07-17T16:48:23.000Z",
       "text": "ขนลุกกกกก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -66474,7 +66466,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528093659222590216",
       "publishedAt": "2025-07-17T16:48:20.000Z",
       "text": "ลากลาสคือไม่เคยทำให้ผิดหวัง ดีแล้วดีขึ้นอีก Excellent!!!!!",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -66493,7 +66485,7 @@
         "@laglace_official"
       ],
       "engagement": 4,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7528093623923344135",
@@ -66834,7 +66826,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528091389072540424",
       "publishedAt": "2025-07-17T16:39:31.000Z",
       "text": "โอโห นึกว่าmv ศิลปินอินเตอร์อะ ทำดีมาก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -66864,7 +66856,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528091303105872647",
       "publishedAt": "2025-07-17T16:39:14.000Z",
       "text": "สะใจ ที่สุด!! ลุ้นทุกวินาที!! รักลากลาส สุดปอดเลยค่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -67284,7 +67276,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528088325077926673",
       "publishedAt": "2025-07-17T16:27:41.000Z",
       "text": "ไม่ผิดหวังกับแบรนด์นี้ ชอบ a glace นิยามของคำว่าแฟชั่น มันเท่ มันเก๋ ไม่ซ้ำใคร ขอให้แบรนด์นี้เจริญเติบโตไประดับโลกนะคะ🥰",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -67303,7 +67295,7 @@
         "@laglace_official"
       ],
       "engagement": 2,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7528088249732399879",
@@ -67404,7 +67396,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528087800001069831",
       "publishedAt": "2025-07-17T16:25:32.000Z",
       "text": "ฮืออ ไม่ดูถูกแบรนด์ ไม่ดูถูกผู้บริโภคเลย รักลากลาสมากๆ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -67464,7 +67456,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528087667767804693",
       "publishedAt": "2025-07-17T16:25:08.000Z",
       "text": "จะเป็นคนดีคนเด่นในบ.ปัดทุกสีให้ครบ6วัน",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -67584,7 +67576,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528086516485325585",
       "publishedAt": "2025-07-17T16:20:35.000Z",
       "text": "โอ๊ยยย ขนคิ้วลุกไปหมดถึงจะเหลือแค่ตอก็เถอะแม่🥺🥺 ดีเกิ้นน",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -68034,7 +68026,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528083790850458385",
       "publishedAt": "2025-07-17T16:10:05.000Z",
       "text": "คิ้วชมพูว้ายยย คิดถึงไอเดียนี้",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -68064,7 +68056,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528083701906326290",
       "publishedAt": "2025-07-17T16:09:41.000Z",
       "text": "ดีเว้อ unique สุดๆๆๆๆๆ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -68694,7 +68686,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528081021574169352",
       "publishedAt": "2025-07-17T15:59:16.000Z",
       "text": "ชั้นผู้ผมสีแดง ตั้งตารอสีแดงมาก!!!",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -68964,7 +68956,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528079977554166536",
       "publishedAt": "2025-07-17T15:55:16.000Z",
       "text": "คอนเซปดี ตัดต่อดี ดึงดูดให้ดูจนจบ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -69234,7 +69226,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528079276106859272",
       "publishedAt": "2025-07-17T15:52:32.000Z",
       "text": "โคตรดี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -69984,7 +69976,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528076658256691976",
       "publishedAt": "2025-07-17T15:42:19.000Z",
       "text": "ฮือออ ขนลุกกก รักลากลาสส",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -70284,7 +70276,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528075999378326290",
       "publishedAt": "2025-07-17T15:39:47.000Z",
       "text": "มีใครดูเกินสองรอบมั้ยคะ!!! มันดี🔥😳💖",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -70344,7 +70336,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528075926380135175",
       "publishedAt": "2025-07-17T15:39:30.000Z",
       "text": "หาาาาา 10 สี!!????",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -70824,7 +70816,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528074400862372616",
       "publishedAt": "2025-07-17T15:33:33.000Z",
       "text": "ตาแตกกกกก🔥",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -70843,7 +70835,7 @@
         "@laglace_official"
       ],
       "engagement": 1,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7528073919105843975",
@@ -70854,7 +70846,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528073919105843975",
       "publishedAt": "2025-07-17T15:31:42.000Z",
       "text": "💙 ดี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -71334,7 +71326,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528071790136951570",
       "publishedAt": "2025-07-17T15:23:25.000Z",
       "text": "คลิปเปิดตัวคือสุดมากๆอ่ะ ตาแตกก",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -71353,7 +71345,7 @@
         "@laglace_official"
       ],
       "engagement": 1,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7528071725029262098",
@@ -71784,7 +71776,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528069999324857095",
       "publishedAt": "2025-07-17T15:16:30.000Z",
       "text": "ขนลุกกกก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -71934,7 +71926,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528068632657888007",
       "publishedAt": "2025-07-17T15:11:11.000Z",
       "text": "ทำโคตรดี!!!!",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -72144,7 +72136,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528067211878761223",
       "publishedAt": "2025-07-17T15:05:39.000Z",
       "text": "แบบดี ลงตัวสุดๆ😭❤️",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -72354,7 +72346,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528066032315007762",
       "publishedAt": "2025-07-17T15:01:07.000Z",
       "text": "ทําถึงเกินอลังมากกกกกก รอซื้ออออออออ😍",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -72924,7 +72916,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528061067349377799",
       "publishedAt": "2025-07-17T14:41:49.000Z",
       "text": "โครตสะใจจจจจ ถูกต้องมากกกกก ดีที่สุด เลิฟฟฟ❤️❤️❤️❤️",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -73044,7 +73036,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528060172449252104",
       "publishedAt": "2025-07-17T14:38:20.000Z",
       "text": "ตาแตก !!!",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -73063,7 +73055,7 @@
         "@laglace_official"
       ],
       "engagement": 1,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7528060131859661584",
@@ -73254,7 +73246,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528058977494713096",
       "publishedAt": "2025-07-17T14:33:41.000Z",
       "text": "โคตรดี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -73404,7 +73396,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528057387418452737",
       "publishedAt": "2025-07-17T14:27:40.000Z",
       "text": "รอเลยค้าาาา ✨",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -73524,7 +73516,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528056600491328274",
       "publishedAt": "2025-07-17T14:24:32.000Z",
       "text": "สะใจมากค่ะ เข้าถึงทุกซิกเนเจอร์มากกกกก👀💗 รักลากลาสส",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -73584,7 +73576,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528056105273099015",
       "publishedAt": "2025-07-17T14:22:33.000Z",
       "text": "ขนลุกกก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -73794,7 +73786,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528054710562358023",
       "publishedAt": "2025-07-17T14:17:12.000Z",
       "text": "ดีใจมากก อยากคิ้วชมพูไปทำงานค่ะ 🥺",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -73884,7 +73876,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528053812168491783",
       "publishedAt": "2025-07-17T14:13:41.000Z",
       "text": "เป็นโฆษณาที่ทำให้ขนลุก เบื้องหลังต้องโหดมากแน่นอน",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -74425,7 +74417,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528051201612595988",
       "publishedAt": "2025-07-17T14:03:38.000Z",
       "text": "โทนเนอร์แพดเติมของทีค่าาสสสสสสสสส 💘",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -74455,7 +74447,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528050637071303441",
       "publishedAt": "2025-07-17T14:01:25.000Z",
       "text": "ไม่เคยผิดหวัง โคจรจะชอบบบบบบ💖",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -74474,7 +74466,7 @@
         "@laglace_official"
       ],
       "engagement": 1,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7528050654854808328",
@@ -74485,7 +74477,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528050654854808328",
       "publishedAt": "2025-07-17T14:01:24.000Z",
       "text": "โคตรดี จะเป็นทาสลากลาสตลอดไปปปปปป",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -75145,7 +75137,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528048393706029842",
       "publishedAt": "2025-07-17T13:52:38.000Z",
       "text": "เจอแน่ทุกสี คอนเท้น ตัวฉันกับล้านคาแรคเตอร์5555555🤣!!!!!",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -76045,7 +76037,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528044167622443793",
       "publishedAt": "2025-07-17T13:36:20.000Z",
       "text": "ดู 10 รอบขนลุกไป 11 ทำเกินสุดดดด โคตรปึ้ง",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -76285,7 +76277,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528043247420965649",
       "publishedAt": "2025-07-17T13:32:45.000Z",
       "text": "ดีจจนอยากให้เลิกขายเครื่องสำอางแล้วไปทำหนังใน Netflix",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -76315,7 +76307,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528043131523138312",
       "publishedAt": "2025-07-17T13:32:12.000Z",
       "text": "รักรักรักรักรักรักมากๆรักรักรักรักใจรักปลอบใจจะขาดรักรักรักรักรัก🫦🫦🫦🫦🫦🫦🫦🫦🫦",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -76345,7 +76337,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528043087626519314",
       "publishedAt": "2025-07-17T13:32:03.000Z",
       "text": "ขนลุกเป็นนาที ทำโครตถึงง รักลากลาส!💖",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -76555,7 +76547,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528042355623248658",
       "publishedAt": "2025-07-17T13:29:12.000Z",
       "text": "มามุงค่ะ มามุงทางนี้ดีม๊ากกกกกกกก🔥🔥🔥🔥🔥🔥🔥🔥 ฉันอึ้งมาก มันดีมากกกกกกกกกกกกกกกกกกอยากกราบสัก1ที🥹💗💗",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -76585,7 +76577,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528042294818456338",
       "publishedAt": "2025-07-17T13:28:59.000Z",
       "text": "วีดีโอโซจึงมากกกกกก 💕",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -76675,7 +76667,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528042109413802770",
       "publishedAt": "2025-07-17T13:28:18.000Z",
       "text": "โอ้ย ชั้นรักลากลาส เว่อมากกกกกกก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -76765,7 +76757,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528041937821057810",
       "publishedAt": "2025-07-17T13:27:38.000Z",
       "text": "โอ๊ยยยยยขนลุกทุกช็อต!! นี่กล้าพูดเลยแบรนด์ไทยแบรนด์แรก! ที่ทำให้อยากลุกออกมาแต่งตัวมากขึ้น แต่งตัวสนุกมากขึ้น โคตรรักลากลาส",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -76795,7 +76787,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528041856384336648",
       "publishedAt": "2025-07-17T13:27:16.000Z",
       "text": "หนูรักคอนเท้นพี่ที่สุดดดด",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -76975,7 +76967,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528040918205743890",
       "publishedAt": "2025-07-17T13:23:37.000Z",
       "text": "ขนลุกอ่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -77065,7 +77057,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528040561884316436",
       "publishedAt": "2025-07-17T13:22:24.000Z",
       "text": "ตู้มมมมแตกระเบิดดดดดดดด",
-      "sentiment": "negative",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -77084,7 +77076,7 @@
         "@laglace_official"
       ],
       "engagement": 1,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7528040311424762644",
@@ -77635,7 +77627,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528039080484307720",
       "publishedAt": "2025-07-17T13:16:29.000Z",
       "text": "แรงมากเปรี้ยวมาก สะใจเวอร รักแบรนด์นี้ตลอดไปค่ะ🫶💖",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -77695,7 +77687,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528038746059686674",
       "publishedAt": "2025-07-17T13:15:16.000Z",
       "text": "ทำถึง ดี เหมือนหนัง",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -77785,7 +77777,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528038449845928711",
       "publishedAt": "2025-07-17T13:14:09.000Z",
       "text": "เอาดีดี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -77845,7 +77837,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528038386130076436",
       "publishedAt": "2025-07-17T13:13:54.000Z",
       "text": "รักไๆๆๆๆๆ ที่สุดเลยอะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -78145,7 +78137,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528037393488888583",
       "publishedAt": "2025-07-17T13:09:57.000Z",
       "text": "เคาะทุกสีเลยค่ะะะ อะไรใหม่ๆๆ🫶🏻💖🤭",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -78295,7 +78287,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528037206905373447",
       "publishedAt": "2025-07-17T13:09:14.000Z",
       "text": "รอมาสคาร่าคิ้วนะคะจะเหมาทุกสีไปถ่ายลงไอจี😌😌",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -78985,7 +78977,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528035786932077320",
       "publishedAt": "2025-07-17T13:03:44.000Z",
       "text": "ขนลุกอ่ะ ทำเกินเวอร์🔥🔥🔥",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -79255,7 +79247,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528034608597762837",
       "publishedAt": "2025-07-17T12:59:18.000Z",
       "text": "ขนลุก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -79465,7 +79457,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528034261643903765",
       "publishedAt": "2025-07-17T12:57:52.000Z",
       "text": "โหแม่ เอาดี",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -79525,7 +79517,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528034114478981896",
       "publishedAt": "2025-07-17T12:57:14.000Z",
       "text": "ลากลาส นำก่อน 1 ก้าวเสมอ ฉันรอคิ้วสีชมพูและในที่สุด ลากลาสก็สานฝันโทนสีคิ้วแฟชั่น ที่ไม่ค่อยมีคนทำ ทาสรักลากลาสตลอดไปนะคะ เติบโตขึ้นเรื่อยๆ ดีใจที่เห็นลากลาสมีวันนี้นะคะ ซัพพอร์ตตลอดไป 🫶🏻🩷",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -79795,7 +79787,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528033717005501202",
       "publishedAt": "2025-07-17T12:55:42.000Z",
       "text": "หนูเยี่ยวแตกก",
-      "sentiment": "negative",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -79814,7 +79806,7 @@
         "@laglace_official"
       ],
       "engagement": 1,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7528033675671716616",
@@ -80035,7 +80027,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528033165174031111",
       "publishedAt": "2025-07-17T12:53:34.000Z",
       "text": "ขนลุกมากกกกกกก",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -80185,7 +80177,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7528031519081106696?comment_id=7528032826253804296",
       "publishedAt": "2025-07-17T12:52:17.000Z",
       "text": "ขนลุกสิบรอบ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -81171,7 +81163,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=-97iZbcdplY",
       "publishedAt": "2024-10-08T14:43:42.773Z",
       "text": "รีวิวคุณภาพที่1ในใจ ฮืออออพี่ลิคมาพอดีในเวลาที่ต้องการ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "YouTube audience reaction"
       ],
@@ -81223,7 +81215,7 @@
       "sourceUrl": "https://www.youtube.com/watch?v=-97iZbcdplY",
       "publishedAt": "2024-10-08T14:43:42.773Z",
       "text": "รอพี่ลิคสวอชรุ่นนี้ครบทุกสีนะคะ🥺",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "YouTube audience reaction"
       ],
@@ -81923,7 +81915,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7339911031759572225?comment_id=7340317991495828242",
       "publishedAt": "2024-02-27T16:22:49.000Z",
       "text": "เพลงดีลิปดีเริด🥰",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -82283,7 +82275,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7339911031759572225?comment_id=7340168145178624770",
       "publishedAt": "2024-02-27T06:41:33.000Z",
       "text": "@อิสระชน ลงทุนอีกดีบ่ 555",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -82313,7 +82305,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7339911031759572225?comment_id=7340148781889536786",
       "publishedAt": "2024-02-27T05:26:17.000Z",
       "text": "ฉ่ำไม่ไหว💖",
-      "sentiment": "negative",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -82332,7 +82324,7 @@
         "@laglace_official"
       ],
       "engagement": 0,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7340145223131022098",
@@ -82463,7 +82455,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7339911031759572225?comment_id=7340104728443093768",
       "publishedAt": "2024-02-27T02:35:20.000Z",
       "text": "ถ้าไม่ใส่แผ่นเสียง ก็ให้เครดิตก็ดีค่ะ เอามาประกอบการค้าแบบนี้🫠",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -82733,7 +82725,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7339911031759572225?comment_id=7339971802891944722",
       "publishedAt": "2024-02-26T17:59:28.000Z",
       "text": "ไม่ซื้อจะไหวหรอแม๊",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -83303,7 +83295,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7339911031759572225?comment_id=7339927417434358546",
       "publishedAt": "2024-02-26T15:07:14.000Z",
       "text": "ตาแตกมาก ทำถึงเกินอ่ะ",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -83322,7 +83314,7 @@
         "@laglace_official"
       ],
       "engagement": 0,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7339927217223287560",
@@ -83633,7 +83625,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7339911031759572225?comment_id=7339916811084120840",
       "publishedAt": "2024-02-26T14:26:05.000Z",
       "text": "อดใจไม่ไหวววใ😍",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -83663,7 +83655,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7339911031759572225?comment_id=7339916721395909384",
       "publishedAt": "2024-02-26T14:25:40.000Z",
       "text": "อมกกกก ขอทุกสี🔥",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -83843,7 +83835,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7339911031759572225?comment_id=7339912938202088200",
       "publishedAt": "2024-02-26T14:11:03.000Z",
       "text": "สวยตาแตก!!",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -83862,7 +83854,7 @@
         "@laglace_official"
       ],
       "engagement": 0,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7339912934682395410",
@@ -84053,7 +84045,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7306110579519900933?comment_id=7327275297657078533",
       "publishedAt": "2024-01-23T12:50:44.000Z",
       "text": "ผิวสองสีจะใช้เบอร์ไหนดีอ่ะ",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -84083,7 +84075,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7306110579519900933?comment_id=7322732398331872008",
       "publishedAt": "2024-01-11T07:01:53.000Z",
       "text": "สวยลืมสวยสะท้านโลกสวยตาแตกจอแตก 💖💖💖❤️❤️",
-      "sentiment": "negative",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -84102,7 +84094,7 @@
         "@laglace_official"
       ],
       "engagement": 0,
-      "isIssue": true
+      "isIssue": false
     },
     {
       "id": "tiktok-7322467072162939654",
@@ -84203,7 +84195,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7306110579519900933?comment_id=7307566638785299205",
       "publishedAt": "2023-12-01T10:11:04.000Z",
       "text": "ชีได้มงทุกสี😻",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -85284,7 +85276,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7306110579519900933?comment_id=7306176412653486853",
       "publishedAt": "2023-11-27T16:16:13.000Z",
       "text": "อดใจรอไม่ไหวแย้ววววว",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -85344,7 +85336,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7306110579519900933?comment_id=7306138056640545541",
       "publishedAt": "2023-11-27T13:47:19.000Z",
       "text": "รอไม่ไหวแล้ววว 💕",
-      "sentiment": "positive",
+      "sentiment": "neutral",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -85404,7 +85396,7 @@
       "sourceUrl": "https://www.tiktok.com/@laglace_official/video/7306110579519900933?comment_id=7306127383651828485",
       "publishedAt": "2023-11-27T13:06:00.000Z",
       "text": "ควรค่าทุกสี💖",
-      "sentiment": "neutral",
+      "sentiment": "positive",
       "topics": [
         "Product shades & lip products",
         "Official TikTok conversation"
@@ -85549,22 +85541,22 @@
   "dashboard": {
     "eyebrow": "Clean Social Listening Dataset",
     "headline": "LA GLACE social listening clean report",
-    "description": "Cleaned public conversation dataset with 2,965 auditable records. TikTok official comments are the core signal; other platforms provide supporting samples for channel context.",
+    "description": "Cleaned public conversation dataset with 2,955 auditable records. TikTok official comments are the core signal; other platforms provide supporting samples for channel context.",
     "brandMark": "LG",
     "brandName": "LA GLACE",
     "badge": "Jul-Oct 2026 clean cut",
     "kpis": [
       {
         "label": "Clean records",
-        "value": "2,965",
+        "value": "2,955",
         "caption": "Auditable comments after source filtering",
         "badge": "Clean",
         "tone": "pink"
       },
       {
         "label": "Positive sentiment",
-        "value": "20%",
-        "caption": "2,965 classified records",
+        "value": "26%",
+        "caption": "2,955 classified records",
         "badge": "Text-based",
         "tone": "mint"
       },
@@ -85577,7 +85569,7 @@
       },
       {
         "label": "Supporting platforms",
-        "value": "728",
+        "value": "718",
         "caption": "Instagram, Facebook, YouTube, X",
         "badge": "Context",
         "tone": "slate"
@@ -85587,7 +85579,7 @@
       "statusText": "Clean dataset prepared",
       "window": "8 Jul - 8 Oct 2026",
       "pipelineSpeed": "Manual QA + scraper exports",
-      "dataFreshness": "2026-10-08",
+      "dataFreshness": "2026-10-14",
       "monitoredKeywords": [
         "La Glace",
         "laglace",
@@ -85615,7 +85607,7 @@
           "name": "Facebook Comments",
           "type": "Page/post comments",
           "status": "Limited sample",
-          "count": "65 records",
+          "count": "55 records",
           "platform": "Facebook"
         },
         {
@@ -85637,7 +85629,7 @@
         {
           "tag": "Product shades & lip products",
           "count": 2261,
-          "percentage": 76,
+          "percentage": 77,
           "color": "#FB6F92"
         },
         {
@@ -85671,14 +85663,14 @@
           "color": "#F28C8C"
         },
         {
-          "tag": "Purchase intent & availability",
-          "count": 24,
+          "tag": "YouTube audience reaction",
+          "count": 23,
           "percentage": 1,
           "color": "#7ED6D1"
         },
         {
-          "tag": "YouTube audience reaction",
-          "count": 23,
+          "tag": "Purchase intent & availability",
+          "count": 19,
           "percentage": 1,
           "color": "#B8A1FF"
         }
@@ -85688,50 +85680,50 @@
       "labels": [
         "11-27",
         "03-11",
-        "07-26",
-        "08-14",
-        "08-31",
-        "09-16",
-        "10-04",
-        "11-16",
-        "01-22",
-        "05-02",
-        "06-30",
-        "08-06",
+        "07-25",
+        "08-13",
+        "08-29",
+        "09-14",
+        "10-01",
+        "11-13",
+        "12-31",
+        "04-09",
+        "06-06",
+        "08-07",
         "09-17",
         "10-08"
       ],
       "total": [
         15,
         1,
-        27,
-        8,
-        8,
+        50,
+        10,
         3,
-        1,
         2,
         1,
         1,
         1,
-        4,
+        1,
+        1,
+        1,
         1,
         8
       ],
       "positive": [
+        6,
+        0,
         7,
-        0,
-        3,
-        1,
-        3,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        2,
         1,
         1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        5
       ],
       "negative": [
         0,
@@ -85761,8 +85753,8 @@
     "pillars": [
       {
         "title": "Product shades & lip products",
-        "share": 76,
-        "positive": 21,
+        "share": 77,
+        "positive": 25,
         "description": "2,261 records in this topic from the clean dataset",
         "keywords": [
           "shade",
@@ -85775,7 +85767,7 @@
       {
         "title": "Official TikTok conversation",
         "share": 74,
-        "positive": 21,
+        "positive": 25,
         "description": "2,194 records in this topic from the clean dataset",
         "keywords": [
           "@laglace_official",
@@ -85787,7 +85779,7 @@
       {
         "title": "Instagram audience reaction",
         "share": 16,
-        "positive": 9,
+        "positive": 17,
         "description": "464 records in this topic from the clean dataset",
         "keywords": [
           "reaction",
@@ -85799,7 +85791,7 @@
       {
         "title": "X audience reaction",
         "share": 5,
-        "positive": 29,
+        "positive": 32,
         "description": "139 records in this topic from the clean dataset",
         "keywords": [
           "reaction",
