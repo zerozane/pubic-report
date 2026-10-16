@@ -25,7 +25,14 @@
     "apify:x:import": "node scripts/import-apify-x.mjs",
     "apify:x:collect": "node scripts/collect-apify-x.mjs",
     "apify:x:search": "node scripts/search-apify-x.mjs",
-    "apify:x:pipeline": "node scripts/search-apify-x.mjs --input work/inputs/apify-x-search.json --replies-input work/inputs/apify-x-replies-from-search.json && node scripts/collect-apify-x.mjs --input work/inputs/apify-x-replies-from-search.json"
+    "apify:x:pipeline": "node scripts/search-apify-x.mjs --input work/inputs/apify-x-search.json --replies-input work/inputs/apify-x-replies-from-search.json && node scripts/collect-apify-x.mjs --input work/inputs/apify-x-replies-from-search.json",
+    "apify:shopee": "node scripts/run-apify-shopee.mjs",
+    "apify:shopee:products:first": "node scripts/run-apify-shopee.mjs --mode product --input data/inputs/laglace-shopee-products-account-1.json --output work/raw/laglace-shopee-products-account-1.json --max-reviews 300 --content-filter \"with comments\"",
+    "apify:shopee:shop": "node scripts/run-apify-shopee.mjs --mode shop --input data/inputs/laglace-shopee-shop.json --catalog data/inputs/laglace-shopee-products.json --output work/raw/laglace-shopee-shop-reviews.json",
+    "apify:shopee:dami:blush": "node scripts/run-apify-shopee.mjs --mode shop --input data/inputs/laglace-shopee-dami-blush.json --output work/raw/laglace-shopee-dami-blush-reviews.json --max-reviews 350 --content-filter \"with comments\"",
+    "apify:shopee:dami:lip": "node scripts/run-apify-shopee.mjs --mode shop --input data/inputs/laglace-shopee-dami-lip.json --output work/raw/laglace-shopee-dami-lip-reviews.json --max-reviews 350 --content-filter \"with comments\"",
+    "quality:normalize:shopee": "node scripts/normalize-product-reviews.mjs --source shopee --input work/raw/laglace-shopee-reviews.json --catalog data/inputs/laglace-shopee-products.json --output work/reviewed/laglace-shopee-product-reviews-normalized.json --summary data/reports/laglace-shopee-product-quality.json",
+    "quality:normalize:shopee:shop": "node scripts/normalize-product-reviews.mjs --source shopee --input work/raw/laglace-shopee-shop-reviews.json --catalog data/inputs/laglace-shopee-products.json --output work/reviewed/laglace-shopee-shop-reviews-normalized.json --summary data/reports/laglace-shopee-shop-product-quality.json"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

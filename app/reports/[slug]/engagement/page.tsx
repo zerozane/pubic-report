@@ -43,7 +43,7 @@ export default function EngagementPage({ params }: { params: { slug: string } })
         </div>
       </header>
 
-      <EngagementDashboard quality={quality} />
+      <EngagementDashboard report={report} quality={quality} />
     </div>
   );
 }

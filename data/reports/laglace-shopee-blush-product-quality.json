@@ -1,0 +1,213 @@
+{
+  "version": 1,
+  "brand": "LA GLACE",
+  "source": {
+    "platform": "Shopee",
+    "region": "TH",
+    "inputFile": "laglace-shopee-blush-reviews.json",
+    "collectedAt": "2026-10-15T14:15:15.282Z"
+  },
+  "totals": {
+    "reviews": 21,
+    "averageRating": 5,
+    "fiveStarReviews": 20,
+    "lowRatingReviews": 0,
+    "verifiedPurchases": 0,
+    "thaiReviews": 21,
+    "issueReviews": 1,
+    "humanReview": 1
+  },
+  "products": [
+    {
+      "id": "21472660164",
+      "name": "บลัชดำ",
+      "sourceName": "LA GLACE BAEBIE VIBES CREAM BLUSH",
+      "label": "LA GLACE BAEBIE VIBES CREAM BLUSH",
+      "category": "บลัช",
+      "count": 21,
+      "averageRating": 5,
+      "fiveStarPercent": 100,
+      "lowRatingPercent": 0,
+      "verifiedPercent": 0,
+      "ratingDistribution": [
+        {
+          "rating": 5,
+          "count": 20
+        },
+        {
+          "rating": 4,
+          "count": 0
+        },
+        {
+          "rating": 3,
+          "count": 0
+        },
+        {
+          "rating": 2,
+          "count": 0
+        },
+        {
+          "rating": 1,
+          "count": 0
+        }
+      ],
+      "issueCount": 1,
+      "topics": [
+        {
+          "name": "สีและเฉดสี",
+          "count": 20,
+          "percent": 95
+        },
+        {
+          "name": "เนื้อสัมผัสและการเกลี่ย",
+          "count": 16,
+          "percent": 76
+        },
+        {
+          "name": "กลิ่น",
+          "count": 15,
+          "percent": 71
+        },
+        {
+          "name": "ราคาและความคุ้มค่า",
+          "count": 13,
+          "percent": 62
+        },
+        {
+          "name": "การจัดส่งและร้านค้า",
+          "count": 11,
+          "percent": 52
+        },
+        {
+          "name": "ติดทนและกันน้ำ",
+          "count": 8,
+          "percent": 38
+        }
+      ]
+    }
+  ],
+  "topics": [
+    {
+      "name": "สีและเฉดสี",
+      "count": 20,
+      "negative": 1,
+      "products": [
+        "บลัชดำ"
+      ],
+      "percent": 100
+    },
+    {
+      "name": "เนื้อสัมผัสและการเกลี่ย",
+      "count": 16,
+      "negative": 1,
+      "products": [
+        "บลัชดำ"
+      ],
+      "percent": 80
+    },
+    {
+      "name": "กลิ่น",
+      "count": 15,
+      "negative": 1,
+      "products": [
+        "บลัชดำ"
+      ],
+      "percent": 75
+    },
+    {
+      "name": "ราคาและความคุ้มค่า",
+      "count": 13,
+      "negative": 0,
+      "products": [
+        "บลัชดำ"
+      ],
+      "percent": 65
+    },
+    {
+      "name": "การจัดส่งและร้านค้า",
+      "count": 11,
+      "negative": 1,
+      "products": [
+        "บลัชดำ"
+      ],
+      "percent": 55
+    },
+    {
+      "name": "ติดทนและกันน้ำ",
+      "count": 8,
+      "negative": 1,
+      "products": [
+        "บลัชดำ"
+      ],
+      "percent": 40
+    },
+    {
+      "name": "แพ็กเกจและการใช้งาน",
+      "count": 5,
+      "negative": 0,
+      "products": [
+        "บลัชดำ"
+      ],
+      "percent": 25
+    }
+  ],
+  "evidence": [
+    {
+      "id": "30267574199",
+      "productId": "21472660164",
+      "productName": "LA GLACE BAEBIE VIBES CREAM BLUSH",
+      "category": "บลัช",
+      "text": "ประสิทธิภาพ:ดี ติดทน เนื้อสัมผัส:นุ่มๆ กลิ่น:หอมอ่อนๆ เราผิว nuetral-warm ผิวออกเข้มนิดนึง เลือกไม่ถูกเลยซื้อ 8, 9, 10, 11 ไปเลยค่า สีสวยทุกสี และสามารถใช้ได้ทุกสี ชอบเนื้อ สีชัด เกลี่ยง่ายด้วย แต่กลัวทำตกมาก เพราะตลับน่าจะแตกชัวร์",
+      "rating": 5,
+      "sku": null,
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "เนื้อสัมผัสและการเกลี่ย",
+        "ติดทนและกันน้ำ",
+        "กลิ่น",
+        "การจัดส่งและร้านค้า"
+      ],
+      "issues": [
+        "สีและเฉดสี",
+        "เนื้อสัมผัสและการเกลี่ย",
+        "ติดทนและกันน้ำ",
+        "กลิ่น",
+        "การจัดส่งและร้านค้า"
+      ],
+      "verifiedPurchase": false,
+      "reviewCountry": "TH",
+      "productUrl": "https://shopee.co.th/product-i.313357518.21472660164"
+    },
+    {
+      "id": "14407036034",
+      "productId": "21472660164",
+      "productName": "LA GLACE BAEBIE VIBES CREAM BLUSH",
+      "category": "บลัช",
+      "text": "ประสบการณ์การใช้งาน:เนื้อดีลื่นๆ ประโยชน์:ทาแก้ม ปากได้ บรรจุภัณฑ์:ขนาด3.5กรัม สีบรัชน่ารักมากกกกกกกกก ดูจากรีวิวช่องทางอื่นๆก็ได้น้องสีดีมากค่ะ เหมาะมากๆมันวันที่อยากแต่งหน้าเบาๆสบาย ทาแก้ม ทาปากคือจบ! กลิ่นเหมือนองุ่นอ่อนๆ เราได้แถมพัฟจิ๋วมาด้วย ใช้น้องทาบนผิวแล้วแนะนำให้รอแป๊บนึงค่ะ น้องจะค่อยๆเปลี่ยนสีเข้มขึ้น",
+      "rating": 5,
+      "sku": null,
+      "sentiment": "positive",
+      "topics": [
+        "สีและเฉดสี",
+        "เนื้อสัมผัสและการเกลี่ย",
+        "กลิ่น",
+        "แพ็กเกจและการใช้งาน",
+        "ราคาและความคุ้มค่า"
+      ],
+      "issues": [],
+      "verifiedPurchase": false,
+      "reviewCountry": "TH",
+      "productUrl": "https://shopee.co.th/product-i.313357518.21472660164"
+    }
+  ],
+  "methodology": {
+    "qualityTopics": "จับหัวข้อจากคำที่ปรากฏในข้อความรีวิวจริง ไม่สร้างหัวข้อจากคะแนนเพียงอย่างเดียว",
+    "sentiment": "ใช้คะแนนรีวิวเป็นเกณฑ์ sentiment: 5 ดาว = เชิงบวก, 3–4 ดาว = เป็นกลาง, 1–2 ดาว = เชิงลบ; ปัญหาคุณภาพต้องดูจากข้อความรีวิวและ qualityIssues แยกต่างหาก",
+    "limitations": [
+      "Shopee รองรับ maxReviewsPerProduct 1,000 รายการเป็นค่าเริ่มต้น และ 0 สำหรับประวัติที่เข้าถึงได้ทั้งหมด",
+      "รีวิวที่พูดถึงบริการร้านค้า/การจัดส่งถูกแยกจากคุณภาพตัวสินค้า",
+      "ข้อความสั้นหรือข้อความที่จับหัวข้อไม่ได้ควรตรวจโดยคนก่อนใช้เป็น insight"
+    ]
+  }
+}

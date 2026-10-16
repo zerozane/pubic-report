@@ -1,0 +1,7 @@
+{
+  "mode": "shop",
+  "shopUrls": [
+    "https://shopee.co.th/laglace.official"
+  ],
+  "catalog": "data/inputs/laglace-shopee-products.json"
+}

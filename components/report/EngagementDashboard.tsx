@@ -162,7 +162,7 @@ export default function EngagementDashboard({ report: sourceReport, quality }: E
         </div>
       </section>
 
-      {false && (data.filteredCount ? (
+      {data.filteredCount ? (
         <>
           <section className="lg-total-engagement">
             <Metric label="Total Interactions" value={formatCompact(data.current.total)} delta={pct(data.current.total, data.previous.total)} icon={<MousePointer2 size={18} />} active={metric === "all"} />
@@ -196,14 +196,9 @@ export default function EngagementDashboard({ report: sourceReport, quality }: E
           <h2>ไม่มีข้อมูลในตัวกรองนี้</h2>
           <p>ลองเลือกแพลตฟอร์ม sentiment หรือประเภท record อื่นเพื่อดูกราฟจากข้อมูลที่กวาดมา</p>
         </section>
-      ))}
-      </>}
-      {quality ? <ProductQualityEngagement quality={quality} /> : (
-        <section className="lg-engagement-card lg-empty-engagement">
-          <h2>ไม่พบชุดข้อมูลคุณภาพสินค้า</h2>
-          <p>หน้านี้แสดงเฉพาะสรุปคุณภาพสินค้าจากรีวิวที่เชื่อมโยงกับรายงาน</p>
-        </section>
       )}
+      </>}
+      {quality ? <ProductQualityEngagement quality={quality} /> : null}
     </main>
   );
 }
@@ -294,13 +289,13 @@ function ProductQualityEngagement({ quality }: { quality: ProductQualityReport }
 
       <article className="lg-quality-engagement-card lg-quality-topic-engagement">
         <div className="lg-quality-engagement-card-heading">
-          <div><h3>หัวข้อคุณภาพที่มีการพูดถึงมากที่สุด</h3><p>ใช้ดูว่าผู้บริโภคกำลังพูดถึงประเด็นใด และประเด็นไหนมีสัญญาณลบปะปน</p></div>
+          <div><h3>หัวข้อคุณภาพที่มีการพูดถึงมากที่สุด</h3><p>ใช้ดูปริมาณการพูดถึง และสัดส่วนข้อความที่มีสัญญาณปัญหาในแต่ละหัวข้อ</p></div>
           <span className="lg-quality-mini-legend"><i className="topic" />จำนวนรีวิวที่พบหัวข้อ</span>
         </div>
         <div className="lg-quality-topic-bars">
           {topics.map((topic) => (
             <div className="lg-quality-topic-bar" key={topic.name}>
-              <div className="lg-quality-topic-bar-label"><strong>{topic.name}</strong><span>{formatNumber(topic.count)} รีวิว · {formatPercent(topic.count, quality.totals.reviews)} ของรีวิว · ลบ {formatPercent(topic.negative, topic.count)}</span></div>
+              <div className="lg-quality-topic-bar-label"><strong>{topic.name}</strong><span>{formatNumber(topic.count)} รีวิว · {formatPercent(topic.count, quality.totals.reviews)} ของรีวิว · สัญญาณปัญหา {formatPercent(topic.negative, topic.count)}</span></div>
               <div className="lg-quality-topic-bar-track"><i style={{ width: `${(topic.count / maxTopicCount) * 100}%` }} /></div>
             </div>
           ))}
@@ -351,7 +346,7 @@ function ProductQualityChart({ products }: { products: ProductQualityProduct[] }
           </div>
         );
       })}
-      <small className="lg-quality-engagement-note">แต่ละแถวคือ 1 สินค้า แถบสีคือสัดส่วน sentiment จากรีวิวของสินค้านั้น และคะแนนดาวคือค่าเฉลี่ยของสินค้า</small>
+      <small className="lg-quality-engagement-note">แต่ละแถวคือ 1 สินค้า แถบสีคือสัดส่วน sentiment จากคะแนนดาวของสินค้านั้น และคะแนนดาวคือค่าเฉลี่ยของสินค้า</small>
     </div>
   );
 }

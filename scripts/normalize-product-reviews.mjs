@@ -5,6 +5,7 @@ const args = parseArgs(process.argv.slice(2));
 const inputPath = path.resolve(process.cwd(), String(args.input || "dataset_tiktok-reviews-scraper_2026.json"));
 const normalizedPath = path.resolve(process.cwd(), String(args.output || "work/reviewed/laglace-product-reviews-normalized.json"));
 const summaryPath = path.resolve(process.cwd(), String(args.summary || "data/reports/laglace-product-quality.json"));
+const source = String(args.source || "tiktok").toLowerCase();
 
 const productCatalog = {
   "1729588326432082832": { shortName: "บลัชดำ", category: "บลัช", label: "Baebie Vibes Cream Blush" },
@@ -20,6 +21,10 @@ const productCatalog = {
   "1732072766553361296": { shortName: "บลัชฝุ่นทูโทน", category: "บลัช", label: "Brattitude Two Tone Powder Blush" },
   "1734436642184595344": { shortName: "ลิปทินท์", category: "ลิป", label: "Flextopia Glassy Tint" },
 };
+
+const activeProductCatalog = source === "shopee"
+  ? loadShopeeCatalog(args.catalog || "data/inputs/laglace-shopee-products.json")
+  : productCatalog;
 
 const topicRules = [
   { name: "สีและเฉดสี", pattern: /สี|เฉด|โทน|เบอร์|shade|color|colour|warm|cool/i },
@@ -37,8 +42,9 @@ const issuePattern = /ไม่(?:ค่อย|ค่อยจะ)?(?:ติด�
 
 const raw = JSON.parse(fs.readFileSync(inputPath, "utf8"));
 if (!Array.isArray(raw)) throw new Error("Input must be a JSON array");
+const reviewRows = source === "shopee" ? raw.filter(isShopeeReview) : raw;
 
-const normalized = raw.map((item, index) => normalizeReview(item, index));
+const normalized = reviewRows.map((item, index) => normalizeReview(item, index));
 const summary = buildSummary(normalized);
 
 writeJson(normalizedPath, normalized);
@@ -49,12 +55,16 @@ console.log(`Wrote reviews: ${path.relative(process.cwd(), normalizedPath)}`);
 console.log(`Wrote quality summary: ${path.relative(process.cwd(), summaryPath)}`);
 
 function normalizeReview(item, index) {
-  const productId = String(item.product_id || "unknown");
-  const catalog = productCatalog[productId] || { shortName: "ไม่ระบุสินค้า", category: "ไม่ระบุประเภท", label: "ไม่ระบุรุ่น" };
-  const text = cleanText(item.review_text);
-  const qualityTopics = topicRules.filter((rule) => rule.pattern.test(text)).map((rule) => rule.name);
+  const productId = source === "shopee"
+    ? String(item.itemId || item.item_id || item.itemid || "unknown")
+    : String(item.product_id || "unknown");
+  const catalog = source === "shopee" ? getShopeeCatalog(item, productId) : activeProductCatalog[productId] || { shortName: "ไม่ระบุสินค้า", category: "ไม่ระบุประเภท", label: "ไม่ระบุรุ่น", url: null, shopId: null };
+  const text = cleanText(source === "shopee" ? item.comment || item.review_text || item.reviewText : item.review_text);
+  const templateTopics = source === "shopee" ? mapShopeeTemplateTags(item.templateTags) : [];
+  const qualityTopics = unique([...topicRules.filter((rule) => rule.pattern.test(text)).map((rule) => rule.name), ...templateTopics]);
   const experienceType = getExperienceType(text, qualityTopics);
-  const rating = Number(item.review_rating) || null;
+  const ratingValue = source === "shopee" ? item.ratingStar ?? item.rating_star ?? item.rating : item.review_rating;
+  const rating = Number(ratingValue) || null;
   const sentiment = rating === null ? "neutral" : rating === 5 ? "positive" : rating >= 3 ? "neutral" : "negative";
   const issueText = text.replace(/(?:ไม่|ไม่ได้|ยังไม่|ไม่มี)\s*(?:เสียหาย|แตก|บุบ|พัง|แพ้(?:กัน|เลย)?)/gi, "");
   const qualityIssues = issuePattern.test(issueText) && qualityTopics.length
@@ -62,21 +72,26 @@ function normalizeReview(item, index) {
     : [];
 
   return {
-    id: String(item.review_id || `${productId}-${index + 1}`),
+    id: String(source === "shopee" ? item.reviewId || item.review_id || item.cmtid || `${productId}-${index + 1}` : item.review_id || `${productId}-${index + 1}`),
     productId,
     productName: catalog.shortName,
-    sourceName: getProductTitle(item.product_name, catalog.label),
+    sourceName: getProductTitle(item.product_name || item.productName, catalog.label),
     productLabel: catalog.label,
     productCategory: catalog.category,
-    sku: item.sku_specification || null,
+    sku: source === "shopee" ? getShopeeVariations(item.variations, item.model_name) : item.sku_specification || null,
     rating,
     sentiment,
     reviewText: text,
-    reviewCountry: item.review_country || null,
-    verifiedPurchase: Boolean(item.is_verified_purchase),
-    incentivizedReview: Boolean(item.is_incentivized_review),
-    reviewTime: item.review_time ? new Date(Number(item.review_time)).toISOString() : null,
-    productUrl: item.product_url || null,
+    reviewCountry: source === "shopee" ? item.region || item.country || null : item.review_country || null,
+    verifiedPurchase: source === "shopee" ? Boolean(item.isVerifiedPurchase || item.verifiedPurchase) : Boolean(item.is_verified_purchase),
+    incentivizedReview: source === "shopee" ? false : Boolean(item.is_incentivized_review),
+    reviewTime: source === "shopee"
+      ? normalizeDateValue(item.createdAt || item.review_date || (item.ctime ? Number(item.ctime) * 1000 : null))
+      : item.review_time ? new Date(Number(item.review_time)).toISOString() : null,
+    productUrl: source === "shopee" ? item.product_url || catalog.url || buildShopeeUrl(item, catalog) : item.product_url || null,
+    detailedRating: source === "shopee" ? item.detailedRating || item.detailed_rating || null : null,
+    sellerReply: source === "shopee" ? item.shopReply || item.seller_reply || null : null,
+    media: source === "shopee" ? { images: item.images || [], imageCount: item.image_count || 0, videoCount: item.video_count || 0 } : null,
     qualityTopics,
     qualityIssues,
     experienceType,
@@ -86,7 +101,18 @@ function normalizeReview(item, index) {
 }
 
 function buildSummary(records) {
-  const products = Object.values(productCatalog).map((catalog) => {
+  const catalogs = new Map(Object.entries(activeProductCatalog));
+  for (const record of records) {
+    if (!catalogs.has(record.productId)) {
+      catalogs.set(record.productId, {
+        shortName: record.productName,
+        category: record.productCategory,
+        label: record.sourceName,
+        url: record.productUrl,
+      });
+    }
+  }
+  const products = Array.from(catalogs.values()).map((catalog) => {
     const rows = records.filter((record) => record.productName === catalog.shortName);
     return buildProductSummary(catalog, rows);
   }).filter((product) => product.count > 0);
@@ -101,7 +127,7 @@ function buildSummary(records) {
     version: 1,
     brand: "LA GLACE",
     source: {
-      platform: "TikTok Shop",
+      platform: source === "shopee" ? "Shopee" : "TikTok Shop",
       region: "TH",
       inputFile: path.basename(inputPath),
       collectedAt: new Date().toISOString(),
@@ -123,7 +149,9 @@ function buildSummary(records) {
       qualityTopics: "จับหัวข้อจากคำที่ปรากฏในข้อความรีวิวจริง ไม่สร้างหัวข้อจากคะแนนเพียงอย่างเดียว",
       sentiment: "ใช้คะแนนรีวิวเป็นเกณฑ์ sentiment: 5 ดาว = เชิงบวก, 3–4 ดาว = เป็นกลาง, 1–2 ดาว = เชิงลบ; ปัญหาคุณภาพต้องดูจากข้อความรีวิวและ qualityIssues แยกต่างหาก",
       limitations: [
-        "รีวิว 1,000 รายการต่อสินค้าเป็น sample ที่เรียงตาม most recent",
+        source === "shopee"
+          ? "Shopee Shop Reviews Actor จำกัดประมาณ 1,000 รีวิวต่อระดับดาว และประมาณ 5,000 รีวิวต่อร้าน; ผลลัพธ์เป็น snapshot ของช่วงที่เก็บ"
+          : "รีวิว 1,000 รายการต่อสินค้าเป็น sample ที่เรียงตาม most recent",
         "รีวิวที่พูดถึงบริการร้านค้า/การจัดส่งถูกแยกจากคุณภาพตัวสินค้า",
         "ข้อความสั้นหรือข้อความที่จับหัวข้อไม่ได้ควรตรวจโดยคนก่อนใช้เป็น insight",
       ],
@@ -143,7 +171,7 @@ function buildProductSummary(catalog, rows) {
   const issueRows = rows.filter((row) => row.isIssue);
 
   return {
-    id: Object.entries(productCatalog).find(([, value]) => value.shortName === catalog.shortName)?.[0] || catalog.shortName,
+    id: Object.entries(activeProductCatalog).find(([, value]) => value.shortName === catalog.shortName)?.[0] || catalog.shortName,
     name: catalog.shortName,
     sourceName: rows[0]?.sourceName || catalog.label,
     label: catalog.label,
@@ -177,8 +205,12 @@ function summarizeTopics(records) {
 
 function selectEvidence(records) {
   const selected = [];
-  for (const product of Object.values(productCatalog)) {
-    const rows = records.filter((record) => record.productName === product.shortName && record.reviewText);
+  const productNames = unique([
+    ...Object.values(activeProductCatalog).map((product) => product.shortName),
+    ...records.map((record) => record.productName),
+  ]);
+  for (const productName of productNames) {
+    const rows = records.filter((record) => record.productName === productName && record.reviewText);
     const negative = rows.filter((record) => record.isIssue).sort((left, right) => (left.rating || 5) - (right.rating || 5) || right.reviewText.length - left.reviewText.length)[0];
     const positive = rows.filter((record) => !record.isIssue && record.qualityTopics.length).sort((left, right) => right.reviewText.length - left.reviewText.length)[0];
     for (const row of [negative, positive]) {
@@ -215,6 +247,102 @@ function needsHumanReview(text, topics) {
 
 function cleanText(value) {
   return String(value || "").replace(/\s+/g, " ").trim();
+}
+
+function loadShopeeCatalog(catalogPath) {
+  const fullPath = path.resolve(process.cwd(), String(catalogPath));
+  if (!fs.existsSync(fullPath)) {
+    throw new Error(`Shopee catalog not found: ${fullPath}. Create it from data/inputs/laglace-shopee-products.example.json.`);
+  }
+  const rows = JSON.parse(fs.readFileSync(fullPath, "utf8").replace(/^\uFEFF/, ""));
+  if (!Array.isArray(rows) || !rows.length) throw new Error("Shopee catalog must be a non-empty JSON array.");
+
+  return Object.fromEntries(rows.map((row) => {
+    const match = String(row.url || "").match(/-i\.(\d+)\.(\d+)/i);
+    if (!match) throw new Error(`Invalid Shopee product URL in catalog: ${row.url || "(missing)"}`);
+    const [, shopId, itemId] = match;
+    return [itemId, {
+      shortName: cleanText(row.name || row.shortName || row.label || `สินค้า ${itemId}`),
+      category: cleanText(row.category || "ไม่ระบุประเภท"),
+      label: cleanText(row.label || row.name || `สินค้า ${itemId}`),
+      url: String(row.url),
+      shopId,
+    }];
+  }));
+}
+
+function getShopeeCatalog(item, productId) {
+  if (activeProductCatalog[productId]) return activeProductCatalog[productId];
+  const sourceName = getProductTitle(item.product_name || item.productName, `สินค้า ${productId}`);
+  return {
+    shortName: sourceName,
+    category: inferProductCategory(sourceName),
+    label: sourceName,
+    url: item.product_url || null,
+    shopId: item.shopid || item.shopId || null,
+  };
+}
+
+function inferProductCategory(name) {
+  const value = String(name).toLowerCase();
+  if (/lip|ลิป|tint|sundae|click/.test(value)) return "ลิป";
+  if (/blush|บลัช|บรัช/.test(value)) return "บลัช";
+  if (/toner|โทนเนอร์/.test(value)) return "โทนเนอร์แพด";
+  if (/concealer|คอนซีล/.test(value)) return "คอนซีลเลอร์";
+  if (/eyeliner|อายไลเนอร์/.test(value)) return "อายไลเนอร์";
+  if (/dolly|ดอลลี่/.test(value)) return "ดอลลี่อาย";
+  if (/mascara|มาสคาร่า|brow|คิ้ว/.test(value)) return "คิ้ว";
+  return "ไม่ระบุประเภท";
+}
+
+function isShopeeReview(item) {
+  if (!item || item.type === "shop" || item.type === "summary") return false;
+  return item.type === undefined || item.type === "review" || item.ratingStar !== undefined || item.rating_star !== undefined || item.cmtid !== undefined;
+}
+
+function mapShopeeTemplateTags(tags) {
+  const map = new Map([
+    ["product quality", "คุณภาพสินค้า"],
+    ["packaging", "แพ็กเกจและการใช้งาน"],
+    ["value for money", "ราคาและความคุ้มค่า"],
+    ["seller service", "การจัดส่งและร้านค้า"],
+    ["delivery", "การจัดส่งและร้านค้า"],
+    ["delivery service", "การจัดส่งและร้านค้า"],
+  ]);
+  return (Array.isArray(tags) ? tags : [])
+    .map((tag) => map.get(String(tag).trim().toLowerCase()))
+    .filter(Boolean);
+}
+
+function getShopeeVariations(variations, modelName = null) {
+  if (!Array.isArray(variations)) return cleanText(modelName) || null;
+  const value = variations
+    .map((variation) => {
+      const name = cleanText(variation?.name);
+      const options = Array.isArray(variation?.options) ? variation.options.map(cleanText).filter(Boolean).join(", ") : "";
+      return name && options ? `${name}: ${options}` : name || options;
+    })
+    .filter(Boolean)
+    .join(" · ");
+  return value || null;
+}
+
+function buildShopeeUrl(item, catalog) {
+  const shopId = item.shopId || item.shop_id || item.shopid || catalog.shopId;
+  const itemId = item.itemId || item.item_id || item.itemid;
+  if (!shopId || !itemId) return null;
+  const hostByRegion = { TH: "shopee.co.th", SG: "shopee.sg", MY: "shopee.com.my", ID: "shopee.co.id", VN: "shopee.vn", PH: "shopee.ph", BR: "shopee.com.br", TW: "shopee.tw" };
+  return `https://${hostByRegion[String(item.region || "TH").toUpperCase()] || "shopee.co.th"}/product-i.${shopId}.${itemId}`;
+}
+
+function normalizeDateValue(value) {
+  if (value === null || value === undefined || value === "") return null;
+  const parsed = new Date(typeof value === "number" ? value : String(value));
+  return Number.isNaN(parsed.getTime()) ? null : parsed.toISOString();
+}
+
+function unique(values) {
+  return Array.from(new Set(values));
 }
 
 function getProductTitle(value, fallback) {

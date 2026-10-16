@@ -1,0 +1,7 @@
+{
+  "mode": "shop",
+  "startUrls": [
+    "https://shopee.co.th/product-i.313357518.25964793989"
+  ],
+  "catalog": "data/inputs/laglace-shopee-products-account-1.json"
+}

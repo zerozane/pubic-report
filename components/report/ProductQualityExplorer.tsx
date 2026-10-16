@@ -1,9 +1,13 @@
 "use client";
 
+import { createPortal } from "react-dom";
+import { ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import type { ProductQualityReview } from "@/lib/productQuality";
+import { getProductQualitySentiment } from "@/lib/productQualitySentiment";
+import type { ProductQualityModalRequest } from "@/components/report/ProductQualityModalTrigger";
 
-type Signal = "all" | "positive" | "neutral" | "watch" | "human" | "negative";
+type Signal = "all" | "positive" | "neutral" | "negative";
 type Sort = "recent" | "low" | "high";
 
 export default function ProductQualityExplorer({ reviews }: { reviews: ProductQualityReview[] }) {
@@ -16,6 +20,8 @@ export default function ProductQualityExplorer({ reviews }: { reviews: ProductQu
   const [sort, setSort] = useState<Sort>("recent");
   const [page, setPage] = useState(1);
   const [targetReviewId, setTargetReviewId] = useState<string | null>(null);
+  const [modalRequest, setModalRequest] = useState<ProductQualityModalRequest | null>(null);
+  const [modalPage, setModalPage] = useState(1);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -24,16 +30,39 @@ export default function ProductQualityExplorer({ reviews }: { reviews: ProductQu
     const requestedTopic = params.get("topic");
     const requestedReviewId = params.get("reviewId");
 
-    if (requestedSignal && ["all", "positive", "neutral", "watch", "human", "negative"].includes(requestedSignal)) {
+    if (requestedSignal && ["all", "positive", "neutral", "negative"].includes(requestedSignal)) {
       setSignal(requestedSignal as Signal);
     }
-    if (requestedRating && ["all", "low", "5", "4", "3", "2", "1"].includes(requestedRating)) {
+    if (requestedRating && ["all", "5", "4", "3", "2", "1"].includes(requestedRating)) {
       setRating(requestedRating);
     }
     if (requestedTopic) setTopic(requestedTopic);
     if (params.get("verified") === "1") setVerifiedOnly(true);
     if (requestedReviewId) setTargetReviewId(requestedReviewId);
   }, []);
+
+  useEffect(() => {
+    const handleOpen = (event: Event) => {
+      const request = (event as CustomEvent<ProductQualityModalRequest>).detail;
+      setModalRequest(request);
+      setModalPage(1);
+    };
+    window.addEventListener("product-quality:open-reviews", handleOpen);
+    return () => window.removeEventListener("product-quality:open-reviews", handleOpen);
+  }, []);
+
+  useEffect(() => {
+    if (!modalRequest) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setModalRequest(null);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [modalRequest]);
 
   const products = useMemo(() => {
     const names = new Map(reviews.map((review) => [review.productName, review.sourceName]));
@@ -52,14 +81,10 @@ export default function ProductQualityExplorer({ reviews }: { reviews: ProductQu
         if (normalizedSearch && !searchable.includes(normalizedSearch)) return false;
         if (product !== "all" && review.productName !== product) return false;
         if (topic !== "all" && !review.qualityTopics.includes(topic)) return false;
-        if (rating === "low" && (review.rating === null || review.rating > 2)) return false;
-        if (rating !== "all" && rating !== "low" && review.rating !== Number(rating)) return false;
+        if (rating !== "all" && review.rating !== Number(rating)) return false;
         if (verifiedOnly && !review.verifiedPurchase) return false;
-        if (signal === "positive" && review.sentiment !== "positive") return false;
-        if (signal === "neutral" && review.sentiment !== "neutral") return false;
-        if (signal === "watch" && !review.isIssue) return false;
-        if (signal === "human" && !review.needsHumanReview) return false;
-        if (signal === "negative" && review.sentiment !== "negative") return false;
+        const sentiment = getProductQualitySentiment(review);
+        if (signal !== "all" && sentiment !== signal) return false;
         return true;
       })
       .sort((left, right) => {
@@ -78,6 +103,10 @@ export default function ProductQualityExplorer({ reviews }: { reviews: ProductQu
   const visibleReviews = filteredReviews.slice((currentPage - 1) * pageSize, currentPage * pageSize);
   const firstResult = filteredReviews.length ? (currentPage - 1) * pageSize + 1 : 0;
   const lastResult = Math.min(currentPage * pageSize, filteredReviews.length);
+  const modalRecords = useMemo(() => reviews.filter((review) => matchesModalFilter(review, modalRequest)), [reviews, modalRequest]);
+  const modalPageSize = 10;
+  const modalPageCount = Math.max(1, Math.ceil(modalRecords.length / modalPageSize));
+  const visibleModalRecords = modalRecords.slice((modalPage - 1) * modalPageSize, modalPage * modalPageSize);
 
   useEffect(() => {
     if (targetIndex < 0) return;
@@ -94,75 +123,88 @@ export default function ProductQualityExplorer({ reviews }: { reviews: ProductQu
   }, [targetReviewId, targetIndex, currentPage]);
 
   return (
-    <section id="quality-explorer" className="lg-quality-section lg-quality-explorer">
-      <div className="lg-quality-explorer-header">
-        <div>
-          <SectionHeading
-            eyebrow="06 / CONSUMER VOICE"
-            title="เสียงผู้บริโภค"
-            description="ค้นหาและตรวจสอบรีวิวจริง โดยดูสินค้า ประเด็นคุณภาพ คะแนน และหลักฐานจากผู้ซื้อในจุดเดียว"
-          />
-          <p className="lg-quality-explorer-count">
-            Showing {firstResult}-{lastResult} of {filteredReviews.length.toLocaleString("th-TH")} reviews · จากทั้งหมด {reviews.length.toLocaleString("th-TH")} รายการ
-          </p>
+    <>
+      <section id="quality-explorer" className="lg-quality-section lg-quality-explorer">
+        <div className="lg-quality-explorer-header">
+          <div>
+            <SectionHeading
+              eyebrow="05 / CONSUMER VOICE"
+              title="เสียงผู้บริโภค"
+              description="ค้นหาและตรวจสอบรีวิวจริง โดยดูสินค้า ประเด็นคุณภาพ คะแนน และหลักฐานจากผู้ซื้อในจุดเดียว"
+            />
+            <p className="lg-quality-explorer-count">
+              Showing {firstResult}-{lastResult} of {filteredReviews.length.toLocaleString("th-TH")} reviews · จากทั้งหมด {reviews.length.toLocaleString("th-TH")} รายการ
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className="lg-quality-explorer-filters" aria-label="ตัวกรองรีวิวสินค้า">
-        <input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="ค้นหาข้อความ สินค้า SKU หรือ keyword..." aria-label="ค้นหารีวิว" />
-        <select value={product} onChange={(event) => setProduct(event.target.value)} aria-label="กรองสินค้า">
-          <option value="all">ทุกสินค้า</option>
-          {products.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-        </select>
-        <select value={topic} onChange={(event) => setTopic(event.target.value)} aria-label="กรองประเด็นคุณภาพ">
-          <option value="all">ทุกประเด็นคุณภาพ</option>
-          {topics.map((item) => <option key={item} value={item}>{item}</option>)}
-        </select>
-        <select value={signal} onChange={(event) => setSignal(event.target.value as Signal)} aria-label="กรองสัญญาณ">
-          <option value="all">ทุกสัญญาณ</option>
-          <option value="positive">เชิงบวก (5 ดาว)</option>
-          <option value="neutral">เป็นกลาง (3–4 ดาว)</option>
-          <option value="watch">ข้อควรระวัง</option>
-          <option value="human">ต้องตรวจเพิ่มเติม</option>
-          <option value="negative">เชิงลบ (1–2 ดาว)</option>
-        </select>
-        <select value={rating} onChange={(event) => setRating(event.target.value)} aria-label="กรองคะแนน">
-          <option value="all">ทุกคะแนน</option>
-          <option value="low">1–2 ดาว</option>
-          {[5, 4, 3, 2, 1].map((value) => <option key={value} value={value}>{value} ดาว</option>)}
-        </select>
-        <select value={sort} onChange={(event) => setSort(event.target.value as Sort)} aria-label="เรียงลำดับรีวิว">
-          <option value="recent">ล่าสุด</option>
-          <option value="low">คะแนนต่ำสุด</option>
-          <option value="high">คะแนนสูงสุด</option>
-        </select>
-        <label className="lg-quality-explorer-check"><input type="checkbox" checked={verifiedOnly} onChange={(event) => setVerifiedOnly(event.target.checked)} /> เฉพาะ Verified purchase</label>
-      </div>
+        <div className="lg-quality-explorer-filters" aria-label="ตัวกรองรีวิวสินค้า">
+          <input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="ค้นหาข้อความ สินค้า SKU หรือ keyword..." aria-label="ค้นหารีวิว" />
+          <select value={product} onChange={(event) => setProduct(event.target.value)} aria-label="กรองสินค้า">
+            <option value="all">ทุกสินค้า</option>
+            {products.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+          </select>
+          <select value={topic} onChange={(event) => setTopic(event.target.value)} aria-label="กรองประเด็นคุณภาพ">
+            <option value="all">ทุกประเด็นคุณภาพ</option>
+            {topics.map((item) => <option key={item} value={item}>{item}</option>)}
+          </select>
+          <select value={signal} onChange={(event) => setSignal(event.target.value as Signal)} aria-label="กรองสัญญาณ">
+            <option value="all">ทั้งหมด</option>
+            <option value="positive">เชิงบวก</option>
+            <option value="neutral">เชิงกลาง</option>
+            <option value="negative">เชิงลบ</option>
+          </select>
+          <select value={rating} onChange={(event) => setRating(event.target.value)} aria-label="กรองคะแนน">
+            <option value="all">ทั้งหมด</option>
+            {[5, 4, 3, 2, 1].map((value) => <option key={value} value={value}>{value} ดาว</option>)}
+          </select>
+          <select value={sort} onChange={(event) => setSort(event.target.value as Sort)} aria-label="เรียงลำดับรีวิว">
+            <option value="recent">ล่าสุด</option>
+            <option value="low">คะแนนต่ำสุด</option>
+            <option value="high">คะแนนสูงสุด</option>
+          </select>
+          <label className="lg-quality-explorer-check"><input type="checkbox" checked={verifiedOnly} onChange={(event) => setVerifiedOnly(event.target.checked)} /> เฉพาะ Verified purchase</label>
+        </div>
 
-      <div className="lg-quality-explorer-results">
-        {visibleReviews.length ? visibleReviews.map((review) => <ReviewRow key={review.id} review={review} isTarget={review.id === targetReviewId} />) : (
-          <div className="lg-quality-empty"><strong>ไม่พบรีวิวตามตัวกรอง</strong><p>ลองเปลี่ยนคำค้นหาหรือเลือกตัวกรองอื่น</p></div>
-        )}
-      </div>
+        <div className="lg-quality-explorer-results">
+          {visibleReviews.length ? visibleReviews.map((review) => <ReviewRow key={review.id} review={review} isTarget={review.id === targetReviewId} />) : (
+            <div className="lg-quality-empty"><strong>ไม่พบรีวิวตามตัวกรอง</strong><p>ลองเปลี่ยนคำค้นหาหรือเลือกตัวกรองอื่น</p></div>
+          )}
+        </div>
 
-      <div className="lg-quality-pagination">
-        <button type="button" onClick={() => setPage((value) => Math.max(1, value - 1))} disabled={currentPage <= 1}>ก่อนหน้า</button>
-        <span>หน้า {currentPage} / {pageCount}</span>
-        <button type="button" onClick={() => setPage((value) => Math.min(pageCount, value + 1))} disabled={currentPage >= pageCount}>ถัดไป</button>
-      </div>
-    </section>
+        <div className="lg-quality-pagination">
+          <button type="button" onClick={() => setPage((value) => Math.max(1, value - 1))} disabled={currentPage <= 1}>ก่อนหน้า</button>
+          <span>หน้า {currentPage} / {pageCount}</span>
+          <button type="button" onClick={() => setPage((value) => Math.min(pageCount, value + 1))} disabled={currentPage >= pageCount}>ถัดไป</button>
+        </div>
+      </section>
+      {modalRequest && typeof document !== "undefined" ? createPortal(
+        <QualityReviewModal
+          request={modalRequest}
+          records={visibleModalRecords}
+          page={modalPage}
+          totalPages={modalPageCount}
+          totalRecords={modalRecords.length}
+          onClose={() => setModalRequest(null)}
+          onPrevious={() => setModalPage((current) => Math.max(1, current - 1))}
+          onNext={() => setModalPage((current) => Math.min(modalPageCount, current + 1))}
+        />,
+        document.body
+      ) : null}
+    </>
   );
 }
 
 function ReviewRow({ review, isTarget = false }: { review: ProductQualityReview; isTarget?: boolean }) {
-  const sentimentLabel = review.sentiment === "positive" ? "เชิงบวก" : review.sentiment === "neutral" ? "เป็นกลาง" : "เชิงลบ";
+  const sentiment = getProductQualitySentiment(review);
+  const sentimentLabel = sentiment === "positive" ? "เชิงบวก" : sentiment === "neutral" ? "เชิงกลาง" : "เชิงลบ";
   return (
     <article id={`quality-review-${review.id}`} className={`lg-quality-review-row${isTarget ? " is-target" : ""}`}>
       <div className="lg-quality-review-top">
         <div className="lg-quality-review-product"><strong>{review.sourceName}</strong><span>{review.productLabel} · {review.productCategory}</span></div>
         <div className="lg-quality-review-rating" aria-label={`${review.rating ?? "ไม่ระบุ"} ดาว`}>{review.rating ? `${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)}` : "ไม่ระบุคะแนน"}</div>
         <div className="lg-quality-review-signals">
-          <span className={`lg-quality-signal ${review.sentiment}`}>{sentimentLabel}</span>
+          <span className={`lg-quality-signal ${sentiment}`}>{sentimentLabel}</span>
           {review.isIssue && <span className="lg-quality-signal watch">ข้อควรระวัง</span>}
           {review.needsHumanReview && <span className="lg-quality-signal human">ต้องตรวจเพิ่มเติม</span>}
         </div>
@@ -177,6 +219,95 @@ function ReviewRow({ review, isTarget = false }: { review: ProductQualityReview;
       </div>
     </article>
   );
+}
+
+function matchesModalFilter(review: ProductQualityReview, request: ProductQualityModalRequest | null) {
+  if (!request) return false;
+  if (request.filter === "low") return review.rating !== null && review.rating <= 2;
+  if (request.filter === "watch") return review.isIssue;
+  if (request.filter === "human") return review.needsHumanReview;
+  if (request.filter === "verified") return review.verifiedPurchase;
+  if (request.filter === "five-star") return review.rating === 5;
+  return Boolean(request.topicName && review.qualityTopics.includes(request.topicName));
+}
+
+function QualityReviewModal({
+  request,
+  records,
+  page,
+  totalPages,
+  totalRecords,
+  onClose,
+  onPrevious,
+  onNext,
+}: {
+  request: ProductQualityModalRequest;
+  records: ProductQualityReview[];
+  page: number;
+  totalPages: number;
+  totalRecords: number;
+  onClose: () => void;
+  onPrevious: () => void;
+  onNext: () => void;
+}) {
+  return (
+    <div className="lg-evidence-modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
+      <section className="lg-evidence-modal" role="dialog" aria-modal="true" aria-labelledby="quality-review-modal-title">
+        <header className="lg-evidence-modal-head">
+          <div>
+            <span>ข้อความที่ตรงกับหัวข้อนี้</span>
+            <h2 id="quality-review-modal-title">{request.title}</h2>
+            <p>{totalRecords.toLocaleString("th-TH")} รายการ จากเสียงผู้บริโภค</p>
+          </div>
+          <button className="lg-evidence-modal-close" onClick={onClose} type="button" aria-label="ปิดรายการข้อความ">
+            <X size={18} />
+          </button>
+        </header>
+
+        <div className="lg-evidence-modal-list">
+          {records.length ? records.map((review) => (
+            <article className="lg-evidence-modal-item" key={review.id}>
+              <div className="lg-evidence-modal-meta">
+                <strong>{review.sourceName}</strong>
+                <span>{review.productCategory}</span>
+                <span>{review.rating ? `${review.rating} ดาว` : "ไม่ระบุคะแนน"}</span>
+                <span className={`lg-evidence-modal-sentiment ${getProductQualitySentiment(review)}`}>
+                  {getProductQualitySentiment(review) === "positive" ? "เชิงบวก" : getProductQualitySentiment(review) === "neutral" ? "เชิงกลาง" : "เชิงลบ"}
+                </span>
+                <time>{formatDate(review.reviewTime)}</time>
+              </div>
+              <p>{review.reviewText || "(ไม่มีข้อความรีวิว)"}</p>
+              <div className="lg-evidence-modal-foot">
+                <div className="lg-keyword-list">
+                  {review.qualityTopics.slice(0, 4).map((value) => <span key={value}>{value}</span>)}
+                  {review.verifiedPurchase && <span>Verified purchase</span>}
+                </div>
+                {review.productUrl && <a href={review.productUrl} target="_blank" rel="noreferrer">เปิดสินค้าต้นทาง <ExternalLink size={13} /></a>}
+              </div>
+            </article>
+          )) : <div className="lg-quality-empty"><strong>ยังไม่มีรีวิวในรายการนี้</strong><p>ไม่พบข้อความที่ตรงกับตัวกรองของหัวข้อนี้</p></div>}
+        </div>
+
+        {totalPages > 1 && <footer className="lg-evidence-modal-pagination">
+          <span>หน้า {page} จาก {totalPages}</span>
+          <div>
+            <button onClick={onPrevious} disabled={page === 1} type="button"><ChevronLeft size={15} /> ก่อนหน้า</button>
+            <button onClick={onNext} disabled={page === totalPages} type="button">ถัดไป <ChevronRight size={15} /></button>
+          </div>
+        </footer>}
+      </section>
+    </div>
+  );
+}
+
+function formatDate(value: string | null) {
+  if (!value || Number.isNaN(Date.parse(value))) return "-";
+  return new Intl.DateTimeFormat("th-TH", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "Asia/Bangkok",
+  }).format(new Date(value));
 }
 
 function SectionHeading({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {

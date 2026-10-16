@@ -169,7 +169,7 @@ export default function SocialDashboard({ report }: { report: Report }) {
           </div>
         </section>
 
-        {false && <section className="lg-section" id="channels">
+        <section className="lg-section" id="channels">
           <div className="lg-section-head lg-editorial-head">
             <div>
               <h2>ช่องทางที่พบข้อความ</h2>
@@ -182,13 +182,10 @@ export default function SocialDashboard({ report }: { report: Report }) {
                 <strong>{row.platform}</strong>
                 <div className="lg-channel-bar"><i style={{ width: `${row.percent}%` }} /></div>
                 <b>{formatNumber(row.total)}</b>
-                <span>{formatNumber(row.positive)} บวก</span>
-                <span>{row.positiveRate}% เชิงบวก</span>
-                <em>{row.role}</em>
               </div>
             ))}
           </div>
-        </section>}
+        </section>
 
         <section className="lg-section">
           <div className="lg-section-head lg-editorial-head">
@@ -203,7 +200,6 @@ export default function SocialDashboard({ report }: { report: Report }) {
                 <h3>{topic.name}</h3>
                 <p><b>{formatNumber(topic.count)}</b> รีวิว</p>
                 <div><i style={{ width: `${topic.percent}%` }} /></div>
-                <small>{formatNumber(topic.issueCount)} รายการมีสัญญาณต้องตรวจสอบ</small>
               </article>
             ))}
           </div>
