@@ -12,7 +12,6 @@ import {
   shareOf,
   type DashboardProduct,
   type QualityDashboardData,
-  type ReviewType,
   type Segment,
 } from "@/lib/qualityDashboard";
 
@@ -31,18 +30,14 @@ const TOPIC_SHORT: Record<string, string> = {
   "การจัดส่งและร้านค้า": "จัดส่ง/ร้าน",
 };
 
-const REVIEW_TYPES: Array<{ value: ReviewType; label: string }> = [
-  { value: "all", label: "ทุกรีวิว" },
-  { value: "organic", label: "รีวิวทั่วไป" },
-  { value: "incentivized", label: "ได้สิ่งตอบแทน" },
-];
-
-type SortKey = "not-positive" | "negative" | "rating";
+type SortKey = "positive-asc" | "positive-desc" | "neutral-desc" | "negative-desc" | "rating-asc";
 
 const SORTS: Array<{ value: SortKey; label: string }> = [
-  { value: "not-positive", label: "เชิงกลาง + เชิงลบ มากสุด" },
-  { value: "negative", label: "เชิงลบ มากสุด" },
-  { value: "rating", label: "คะแนนเฉลี่ย ต่ำสุด" },
+  { value: "positive-asc", label: "เชิงบวก น้อย → มาก" },
+  { value: "positive-desc", label: "เชิงบวก มาก → น้อย" },
+  { value: "neutral-desc", label: "เชิงกลาง มาก → น้อย" },
+  { value: "negative-desc", label: "เชิงลบ มาก → น้อย" },
+  { value: "rating-asc", label: "คะแนนเฉลี่ย ต่ำ → สูง" },
 ];
 
 type Mix = { positive: number | null; neutral: number | null; negative: number | null; reviews: number };
@@ -70,12 +65,9 @@ function groupMix(segments: Segment[]): Mix {
   };
 }
 
-const notPositive = (mix: Mix) => (mix.neutral === null || mix.negative === null ? null : mix.neutral + mix.negative);
-
 export default function QualityDashboard({ data, slug }: { data: QualityDashboardData; slug: string }) {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [reviewType, setReviewType] = useState<ReviewType>("all");
-  const [sort, setSort] = useState<SortKey>("not-positive");
+  const [sort, setSort] = useState<SortKey>("positive-asc");
   const [tip, setTip] = useState<Tip>(null);
 
   const categories = useMemo(() => {
@@ -92,41 +84,24 @@ export default function QualityDashboard({ data, slug }: { data: QualityDashboar
     [selectedCategories, data.products]
   );
 
-  const segments = useMemo(() => products.map((product) => product.segments[reviewType]), [products, reviewType]);
+  const segments = useMemo(() => products.map((product) => product.segments.all), [products]);
   const overall = useMemo(() => groupMix(segments), [segments]);
 
   const productRows = useMemo(() => {
     const rows = products.map((product) => {
-      const segment = product.segments[reviewType];
+      const segment = product.segments.all;
       return { product, segment, mix: segmentMix(segment), rating: averageRating(segment) };
     });
-    const value = (row: (typeof rows)[number]) =>
-      sort === "negative" ? row.mix.negative ?? -1 : sort === "rating" ? -(row.rating ?? 6) : notPositive(row.mix) ?? -1;
+    // Higher value sorts first; missing values (small samples) always go last.
+    const value = (row: (typeof rows)[number]) => {
+      if (sort === "positive-asc") return row.mix.positive === null ? -Infinity : -row.mix.positive;
+      if (sort === "positive-desc") return row.mix.positive ?? -Infinity;
+      if (sort === "neutral-desc") return row.mix.neutral ?? -Infinity;
+      if (sort === "negative-desc") return row.mix.negative ?? -Infinity;
+      return row.rating === null ? -Infinity : -row.rating;
+    };
     return rows.sort((a, b) => value(b) - value(a));
-  }, [products, reviewType, sort]);
-
-  // The category chart always lists every category; selected ones are emphasized, not removed.
-  const categoryRows = useMemo(
-    () =>
-      categories
-        .map(([name, count]) => {
-          const members = data.products.filter((product) => product.category === name).map((product) => product.segments[reviewType]);
-          return { name, count, mix: groupMix(members) };
-        })
-        .sort((a, b) => (notPositive(b.mix) ?? -1) - (notPositive(a.mix) ?? -1)),
-    [categories, data.products, reviewType]
-  );
-
-  const incentiveRows = useMemo(
-    () =>
-      products
-        .map((product) => ({ product, share: shareOf(product.segments.incentivized.reviews, product.segments.all.reviews) }))
-        .sort((a, b) => (b.share ?? -1) - (a.share ?? -1)),
-    [products]
-  );
-  const incentiveAverage = average(incentiveRows.map((row) => row.share));
-  const organicGap = notPositive(groupMix(products.map((product) => product.segments.organic)));
-  const incentivizedGap = notPositive(groupMix(products.map((product) => product.segments.incentivized)));
+  }, [products, sort]);
 
   const experience = EXPERIENCE_TYPES.map((type) => ({
     type,
@@ -134,11 +109,7 @@ export default function QualityDashboard({ data, slug }: { data: QualityDashboar
     count: segments.reduce((sum, segment) => sum + (segment.experience[type] || 0), 0),
   }));
 
-  const sentimentScale = niceCeil(
-    Math.max(...productRows.map((row) => notPositive(row.mix) ?? 0), ...categoryRows.map((row) => notPositive(row.mix) ?? 0), 1)
-  );
   const qualityHref = (params: Record<string, string>) => `/reports/${slug}/quality?${new URLSearchParams(params).toString()}#quality-explorer`;
-  const reviewTypeLabel = REVIEW_TYPES.find((item) => item.value === reviewType)?.label ?? "";
 
   const tipHandlers: TipHandlers = (value, label, detail) => ({
     onPointerMove: (event: PointerEvent<HTMLElement>) => setTip({ x: event.clientX, y: event.clientY, value, label, detail }),
@@ -191,18 +162,8 @@ export default function QualityDashboard({ data, slug }: { data: QualityDashboar
             })}
           </div>
         </div>
-        <div className="lg-dash-filter-group" role="group" aria-label="ประเภทรีวิว">
-          <span>ประเภทรีวิว</span>
-          <div className="lg-dash-segmented">
-            {REVIEW_TYPES.map((item) => (
-              <button type="button" key={item.value} className={reviewType === item.value ? "is-active" : ""} aria-pressed={reviewType === item.value} onClick={() => setReviewType(item.value)}>
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
         <p className="lg-dash-filter-summary">
-          แสดง <strong>{products.length}</strong> สินค้า · <strong>{formatNumber(overall.reviews)}</strong> รีวิว ({reviewTypeLabel}) · เลือกได้หลายหมวด
+          แสดง <strong>{products.length}</strong> สินค้า · <strong>{formatNumber(overall.reviews)}</strong> รีวิว · เลือกได้หลายหมวด
         </p>
       </div>
 
@@ -218,14 +179,13 @@ export default function QualityDashboard({ data, slug }: { data: QualityDashboar
             <div><dt><i className="neg" />เชิงลบ</dt><dd>{formatMaybe(overall.negative)}</dd></div>
           </dl>
         </article>
-        <Stat label="รีวิวที่ได้สิ่งตอบแทน" value={formatMaybe(incentiveAverage)} note="เฉลี่ยต่อสินค้า · ตัดออกได้ที่ “ประเภทรีวิว”" />
       </section>
 
       <section className="lg-dash-card" aria-labelledby="dash-ranking-title">
         <div className="lg-dash-chart-head has-control">
           <div>
             <h2 id="dash-ranking-title">ความรู้สึกรายสินค้า</h2>
-            <p>แท่งขยายเฉพาะส่วนเชิงกลางและเชิงลบ เพราะเชิงบวกสูงกว่า 90% ทุกสินค้า ตัวเลขด้านขวาครบทั้ง 3 กลุ่ม</p>
+            <p>แต่ละแถวรวมเป็น 100% = เชิงบวก + เชิงกลาง + เชิงลบ · กรองหมวดได้จากแถบด้านบน · คลิกแถวเพื่ออ่านรีวิวของสินค้านั้น</p>
           </div>
           <label className="lg-dash-sort">
             <span>เรียงตาม</span>
@@ -242,19 +202,17 @@ export default function QualityDashboard({ data, slug }: { data: QualityDashboar
               key={product.id}
               href={qualityHref({ product: product.key })}
               label={product.label}
-              sub={`${product.category} · ${formatNumber(segment.reviews)} รีวิว`}
+              sub={`${product.category} · ${formatNumber(segment.reviews)} รีวิว · ${formatRating(rating)}`}
               mix={mix}
-              scale={sentimentScale}
-              emphasis
               tip={tipHandlers(
-                formatMaybe(notPositive(mix)),
-                `${product.label} · เชิงกลาง + เชิงลบ`,
-                `${formatNumber(segment.neutral + segment.negative)} จาก ${formatNumber(segment.reviews)} รีวิว · คลาดเคลื่อน ±${formatPercent(marginOfError(notPositive(mix) ?? 0, segment.reviews))} · เฉลี่ย ${formatRating(rating)}`
+                `บวก ${formatMaybe(mix.positive)} · กลาง ${formatMaybe(mix.neutral)} · ลบ ${formatMaybe(mix.negative)}`,
+                product.label,
+                `${formatNumber(segment.reviews)} รีวิว · คลาดเคลื่อน ±${formatPercent(marginOfError(mix.positive ?? 0, segment.reviews))} · เฉลี่ย ${formatRating(rating)}`
               )}
             />
           ))}
         </div>
-        <MixAxis max={sentimentScale} />
+        <MixAxis />
         <TableView caption="ความรู้สึกรายสินค้า" head={["สินค้า", "หมวด", "รีวิว", "เชิงบวก", "เชิงกลาง", "เชิงลบ", "คลาดเคลื่อน ±", "คะแนนเฉลี่ย"]}>
           {productRows.map(({ product, segment, mix, rating }) => (
             <tr key={product.id}>
@@ -264,75 +222,11 @@ export default function QualityDashboard({ data, slug }: { data: QualityDashboar
               <td>{formatMaybe(mix.positive)}</td>
               <td>{formatMaybe(mix.neutral)}</td>
               <td>{formatMaybe(mix.negative)}</td>
-              <td>{notPositive(mix) === null ? "—" : formatPercent(marginOfError(notPositive(mix) ?? 0, segment.reviews))}</td>
+              <td>{mix.positive === null ? "—" : formatPercent(marginOfError(mix.positive, segment.reviews))}</td>
               <td>{formatRating(rating)}</td>
             </tr>
           ))}
         </TableView>
-      </section>
-
-      <section className="lg-dash-card" aria-labelledby="dash-category-title">
-        <div className="lg-dash-chart-head">
-          <h2 id="dash-category-title">เทียบตามหมวดสินค้า</h2>
-          <p>ค่าเฉลี่ยของสินค้าในหมวด (สินค้าละ 1 เสียงเท่ากัน) ใช้เกณฑ์ความรู้สึกเดียวกับด้านบน · คลิกเพื่อเลือกหรือยกเลิกหมวด</p>
-        </div>
-        <MixHeader first="หมวด" />
-        <div className="lg-dash-mix-rows">
-          {categoryRows.map((row) => (
-            <MixRow
-              key={row.name}
-              onClick={() => toggleCategory(row.name)}
-              pressed={selectedCategories.includes(row.name)}
-              label={row.name}
-              sub={`${row.count} สินค้า · ${formatNumber(row.mix.reviews)} รีวิว`}
-              mix={row.mix}
-              scale={sentimentScale}
-              emphasis={!selectedCategories.length || selectedCategories.includes(row.name)}
-              tip={tipHandlers(formatMaybe(notPositive(row.mix)), `${row.name} · เชิงกลาง + เชิงลบ`, `${row.count} สินค้า · ${formatNumber(row.mix.reviews)} รีวิว`)}
-            />
-          ))}
-        </div>
-        <MixAxis max={sentimentScale} />
-        {categoryRows.some((row) => row.count === 1) ? (
-          <p className="lg-dash-footnote">หมวดที่มีสินค้าเดียว ค่าของหมวดคือค่าของสินค้านั้น</p>
-        ) : null}
-      </section>
-
-      <section className="lg-dash-card" aria-labelledby="dash-incentive-title">
-        <div className="lg-dash-chart-head">
-          <h2 id="dash-incentive-title">รีวิวที่ได้สิ่งตอบแทน ทำให้คะแนนสูงขึ้นแค่ไหน</h2>
-          <p>TikTok Shop ติดป้ายรีวิวที่ผู้เขียนได้รับสิ่งตอบแทน เช่น คูปองหรือของแถม แท่งด้านล่างคือสัดส่วนรีวิวกลุ่มนี้ในแต่ละสินค้า</p>
-        </div>
-        <div className="lg-dash-compare">
-          <div>
-            <span>รีวิวทั่วไป เป็นเชิงกลาง/ลบ</span>
-            <strong>{formatMaybe(organicGap)}</strong>
-          </div>
-          <div>
-            <span>รีวิวที่ได้สิ่งตอบแทน เป็นเชิงกลาง/ลบ</span>
-            <strong>{formatMaybe(incentivizedGap)}</strong>
-          </div>
-          <p>
-            {organicGap !== null && incentivizedGap !== null && organicGap > incentivizedGap
-              ? `รีวิวทั่วไปให้เชิงกลาง/ลบมากกว่า ${(organicGap - incentivizedGap).toFixed(1)} จุด สินค้าที่มีรีวิวได้สิ่งตอบแทนสัดส่วนสูง (แท่งยาว) จึงอาจดูดีกว่าความจริง เลือก “รีวิวทั่วไป” ที่ตัวกรองด้านบนเพื่อเทียบแบบตัดผลนี้ออก`
-              : "รีวิวสองกลุ่มให้ผลใกล้เคียงกัน สิ่งตอบแทนไม่ได้ทำให้คะแนนต่างกันชัดเจนในสินค้าที่เลือก"}
-          </p>
-        </div>
-        <div className="lg-dash-bars">
-          {incentiveRows.map(({ product, share }) => (
-            <div
-              key={product.id}
-              tabIndex={0}
-              className="lg-dash-bar is-emphasis"
-              {...tipHandlers(formatMaybe(share), product.label, `${formatNumber(product.segments.incentivized.reviews)} จาก ${formatNumber(product.segments.all.reviews)} รีวิว`)}
-            >
-              <span className="lg-dash-bar-label"><strong>{product.label}</strong><small>{product.category}</small></span>
-              <span className="lg-dash-bar-track"><i style={{ width: `${share ?? 0}%` }} /></span>
-              <span className="lg-dash-bar-value">{formatMaybe(share, 0)}</span>
-            </div>
-          ))}
-        </div>
-        <Axis max={100} />
       </section>
 
       <section className="lg-dash-card" aria-labelledby="dash-heatmap-title">
@@ -384,7 +278,7 @@ export default function QualityDashboard({ data, slug }: { data: QualityDashboar
       <aside className="lg-dash-notes" aria-label="วิธีคำนวณ">
         <h2>เทียบตัวเลขข้ามสินค้าอย่างไรให้ยุติธรรม</h2>
         <ul>
-          <li><strong>เกณฑ์ความรู้สึก:</strong> 5 ดาว = เชิงบวก · 3–4 ดาว = เชิงกลาง · 1–2 ดาว = เชิงลบ ใช้เกณฑ์เดียวกับหน้าคุณภาพสินค้า</li>
+          <li><strong>เกณฑ์ความรู้สึก:</strong> 5 ดาว = เชิงบวก · 3–4 ดาว = เชิงกลาง · 1–2 ดาว = เชิงลบ ใช้เกณฑ์เดียวกับหน้าคุณภาพสินค้า ทั้ง 3 กลุ่มรวมกันเป็น 100%</li>
           <li><strong>ขนาดตัวอย่างไม่เท่ากัน:</strong> 6 สินค้ามี 1,000 รีวิว อีก 6 สินค้ามี 500 รีวิว ตัวเลขรายสินค้าคิดเป็น % ของรีวิวสินค้าตัวเอง จึงเทียบกันได้ ส่วนค่ารวมและค่าหมวดใช้ค่าเฉลี่ยของสินค้า (สินค้าละ 1 เสียงเท่ากัน) ไม่ให้สินค้าที่มี 1,000 รีวิวมีน้ำหนักเป็น 2 เท่า</li>
           <li><strong>ค่าคลาดเคลื่อน:</strong> สินค้าที่มี 500 รีวิวคลาดเคลื่อนได้มากกว่าสินค้าที่มี 1,000 รีวิว (ประมาณ ±1–2 จุด เทียบ ±0.5–1.5 จุด) ความต่างที่น้อยกว่านี้ไม่ควรถือว่าต่างจริง ดูค่ารายสินค้าได้ใน “ดูเป็นตาราง”</li>
           <li><strong>เป็นรีวิวล่าสุดของแต่ละสินค้า:</strong> จึงไม่แสดงแนวโน้มตามเวลาหรือจำนวนรีวิวต่อสินค้า เพราะสะท้อนวิธีเก็บข้อมูล ไม่ใช่ยอดขาย</li>
@@ -407,63 +301,37 @@ function MixHeader({ first }: { first: string }) {
   return (
     <div className="lg-dash-mix-head" aria-hidden="true">
       <span>{first}</span>
-      <span>เชิงกลาง + เชิงลบ</span>
-      <span>บวก</span>
-      <span>กลาง</span>
-      <span>ลบ</span>
+      <span>สัดส่วนความรู้สึก (รวม 100%)</span>
+      <span>เชิงบวก</span>
+      <span>เชิงกลาง</span>
+      <span>เชิงลบ</span>
     </div>
   );
 }
 
-function MixRow({
-  label,
-  sub,
-  mix,
-  scale,
-  emphasis,
-  href,
-  onClick,
-  pressed,
-  tip,
-}: {
-  label: string;
-  sub: string;
-  mix: Mix;
-  scale: number;
-  emphasis: boolean;
-  href?: string;
-  onClick?: () => void;
-  pressed?: boolean;
-  tip: object;
-}) {
-  const content = (
-    <>
+function MixRow({ label, sub, mix, href, tip }: { label: string; sub: string; mix: Mix; href: string; tip: object }) {
+  return (
+    <Link href={href} className="lg-dash-mix-row" {...tip}>
       <span className="lg-dash-bar-label"><strong>{label}</strong><small>{sub}</small></span>
-      <span className="lg-dash-mix-track">
-        <i className="neu" style={{ width: `${((mix.neutral ?? 0) / scale) * 100}%` }} />
-        <i className="neg" style={{ width: `${((mix.negative ?? 0) / scale) * 100}%` }} />
-      </span>
+      <SentimentStack mix={mix} className="lg-dash-mix-track" />
       <span className="lg-dash-mix-num">{formatMaybe(mix.positive)}</span>
       <span className="lg-dash-mix-num">{formatMaybe(mix.neutral)}</span>
       <span className="lg-dash-mix-num">{formatMaybe(mix.negative)}</span>
-    </>
+    </Link>
   );
-  const className = `lg-dash-mix-row${emphasis ? "" : " is-quiet"}`;
-  if (href) return <Link href={href} className={className} {...tip}>{content}</Link>;
-  return <button type="button" className={className} onClick={onClick} aria-pressed={pressed} {...tip}>{content}</button>;
 }
 
-function MixAxis({ max }: { max: number }) {
+function MixAxis() {
   return (
     <div className="lg-dash-axis is-mix" aria-hidden="true">
-      {[0, max / 2, max].map((tick) => <span key={tick}>{formatPercent(tick, tick % 1 ? 1 : 0)}</span>)}
+      {[0, 50, 100].map((tick) => <span key={tick}>{tick}%</span>)}
     </div>
   );
 }
 
-function SentimentStack({ mix }: { mix: Mix }) {
+function SentimentStack({ mix, className = "lg-dash-stack" }: { mix: Mix; className?: string }) {
   return (
-    <span className="lg-dash-stack" aria-hidden="true">
+    <span className={className} aria-hidden="true">
       <i className="pos" style={{ width: `${mix.positive ?? 0}%` }} />
       <i className="neu" style={{ width: `${mix.neutral ?? 0}%` }} />
       <i className="neg" style={{ width: `${mix.negative ?? 0}%` }} />
@@ -557,19 +425,6 @@ function TableView({ caption, head, children }: { caption: string; head: string[
       </div>
     </details>
   );
-}
-
-function average(values: Array<number | null>) {
-  const present = values.filter((value): value is number => value !== null);
-  return present.length ? present.reduce((sum, value) => sum + value, 0) / present.length : null;
-}
-
-function niceCeil(value: number) {
-  if (value <= 1) return 1;
-  if (value <= 2) return 2;
-  if (value <= 5) return 5;
-  if (value <= 10) return 10;
-  return Math.ceil(value / 10) * 10;
 }
 
 function formatMaybe(value: number | null, digits = 1) {

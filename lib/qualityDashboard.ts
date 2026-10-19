@@ -18,8 +18,6 @@ export const QUALITY_TOPICS = [
 
 export const EXPERIENCE_TYPES = ["ประสบการณ์ใช้สินค้า", "การจัดส่งและร้านค้า", "ข้อความสั้น/ข้อมูลไม่เพียงพอ"] as const;
 
-export type ReviewType = "all" | "organic" | "incentivized";
-
 export type Segment = {
   reviews: number;
   rated: number;
@@ -38,7 +36,7 @@ export type DashboardProduct = {
   name: string;
   label: string;
   category: string;
-  segments: Record<ReviewType, Segment>;
+  segments: { all: Segment };
 };
 
 export type QualityDashboardData = {
@@ -87,12 +85,11 @@ export function buildQualityDashboard(quality: ProductQualityReport, reviews: Pr
         name: meta?.sourceName || review.sourceName,
         label: meta?.label || review.productLabel,
         category: meta?.category || review.productCategory,
-        segments: { all: emptySegment(), organic: emptySegment(), incentivized: emptySegment() },
+        segments: { all: emptySegment() },
       };
       products.set(review.productId, product);
     }
     addReview(product.segments.all, review);
-    addReview(product.segments[review.incentivizedReview ? "incentivized" : "organic"], review);
   }
 
   return {

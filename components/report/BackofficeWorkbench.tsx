@@ -114,7 +114,6 @@ export default function BackofficeWorkbench() {
           </Link>
           <nav className="lg-report-tabs" aria-label="เมนูหลัก">
             <Link href="/reports/laglace-clean-social-report">รายงาน</Link>
-            <Link href="/reports/laglace-clean-social-report/engagement">Engagement</Link>
             <Link href="/reports/laglace-clean-social-report#stream">เสียงผู้บริโภค</Link>
             <Link href="/backoffice" className="active">Backoffice</Link>
           </nav>

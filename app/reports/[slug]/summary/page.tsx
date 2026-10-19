@@ -58,7 +58,6 @@ export default function SummaryPage({ params, searchParams }: { params: { slug: 
             <Link href={"/reports/" + report.slug}>{copy.overview}</Link>
             <Link href={"/reports/" + report.slug + "/quality"}>คุณภาพสินค้า</Link>
             <Link href={"/reports/" + report.slug + "#stream"}>{copy.evidence}</Link>
-            <Link href={"/reports/" + report.slug + "/engagement"}>Engagement</Link>
           </nav>
           <div className="lg-top-actions lg-report-actions"><Link className="lg-back-link" href={"/reports/" + report.slug}><ArrowLeft size={16} />{copy.back}</Link><PrintButton /></div>
         </div>
