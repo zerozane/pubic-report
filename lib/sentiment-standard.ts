@@ -39,5 +39,12 @@ export const sentimentContextRules = [
   { term: "ฉ่ำ", positiveWhen: ["ผิว", "ปาก", "สี", "สวย", "วาว"], negativeWhen: ["เหนียว", "เยิ้ม"] },
 ] as const;
 
+// Mirrors the --sentiment-* tokens in app/globals.css for SVG/inline chart fills.
+export const sentimentColors: Record<Sentiment, string> = {
+  positive: "#10b981",
+  neutral: "#f59e0b",
+  negative: "#f43f5e",
+};
+
 export const sentimentStandardMethod =
   "จัด sentiment จากความหมายของข้อความเท่านั้น ไม่ใช้ likes/views/shares เป็นตัวตัดสิน: เชิงบวก = คำชม ความสนใจซื้อ หรือประสบการณ์ดี; เป็นกลาง = คำถาม ข้อมูลทั่วไป ข้อความสั้น อีโมจิ หรือข้อความที่ยังไม่มีทิศทางชัดเจน; เชิงลบ = คำร้องเรียน ความไม่พอใจ การปฏิเสธสินค้า หรือปัญหาจากการใช้งานที่ระบุชัดเจน";

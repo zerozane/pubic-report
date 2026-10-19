@@ -19,7 +19,7 @@ const productImageUrls: Record<string, string> = {
   "1734436642184595344": "/products/laglace/1734436642184595344.png"
 };
 
-export default function ProductQualityComparison({ products }: { products: ProductQualityProduct[] }) {
+export default function ProductQualityComparison({ products, issueSignalsVerified }: { products: ProductQualityProduct[]; issueSignalsVerified: boolean }) {
   const [category, setCategory] = useState("all");
   const categories = useMemo(() => {
     const counts = new Map<string, number>();
@@ -39,13 +39,13 @@ export default function ProductQualityComparison({ products }: { products: Produ
       </div>
       <p className="lg-quality-filter-result">แสดง {filteredProducts.length} จาก {products.length} สินค้า</p>
       <div className="lg-quality-product-grid">
-        {filteredProducts.map((product) => <ProductCard key={product.id} product={product} />)}
+        {filteredProducts.map((product) => <ProductCard key={product.id} product={product} issueSignalsVerified={issueSignalsVerified} />)}
       </div>
     </div>
   );
 }
 
-function ProductCard({ product }: { product: ProductQualityProduct }) {
+function ProductCard({ product, issueSignalsVerified }: { product: ProductQualityProduct; issueSignalsVerified: boolean }) {
   const imageUrl = productImageUrls[product.id];
 
   return (
@@ -67,7 +67,7 @@ function ProductCard({ product }: { product: ProductQualityProduct }) {
         </div>
         <small>คะแนนเฉลี่ยจาก {formatNumber(product.count)} รีวิว</small>
       </div>
-      <small>คะแนน 1–2 ดาว {product.lowRatingPercent}% · สัญญาณต้องตรวจ {product.issueCount}</small>
+      <small>คะแนน 1–2 ดาว {product.lowRatingPercent}%{issueSignalsVerified && ` · สัญญาณต้องตรวจ ${product.issueCount}`}</small>
       <div className="lg-quality-card-topics">
         {product.topics.slice(0, 3).map((topic) => <span key={topic.name}>{topic.name} {topic.count}</span>)}
       </div>

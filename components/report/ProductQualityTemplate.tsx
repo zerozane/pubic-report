@@ -5,6 +5,7 @@ import ProductQualityComparison from "@/components/report/ProductQualityComparis
 import ProductQualityModalTrigger, { type ProductQualityModalFilter } from "@/components/report/ProductQualityModalTrigger";
 import type { Report } from "@/lib/types";
 import type { ProductQualityProduct, ProductQualityReport, ProductQualityReview } from "@/lib/productQuality";
+import { hasVerifiedIssueSignals } from "@/lib/productQualitySentiment";
 
 export default function ProductQualityTemplate({
   report,
@@ -18,6 +19,7 @@ export default function ProductQualityTemplate({
   if (!quality) return <MissingQualityData report={report} />;
 
   const { totals } = quality;
+  const issueSignalsVerified = hasVerifiedIssueSignals(quality);
   const topTopic = quality.topics[0];
   const lowRatingReview = reviews.find((review) => review.rating !== null && review.rating <= 2) ?? null;
   const issueReview = reviews.find((review) => review.isIssue) ?? null;
@@ -65,8 +67,8 @@ export default function ProductQualityTemplate({
         </section>
 
         <section className="lg-quality-section">
-          <SectionHeading eyebrow="01 / PRODUCT COMPARISON" title="เปรียบเทียบคุณภาพแยกตามสินค้า" description="ดูคะแนน ปริมาณรีวิว สัญญาณปัญหา และหัวข้อที่ผู้บริโภคพูดถึงของแต่ละผลิตภัณฑ์" />
-          <ProductQualityComparison products={quality.products} />
+          <SectionHeading eyebrow="01 / PRODUCT COMPARISON" title="เปรียบเทียบคุณภาพแยกตามสินค้า" description={issueSignalsVerified ? "ดูคะแนน ปริมาณรีวิว สัญญาณปัญหา และหัวข้อที่ผู้บริโภคพูดถึงของแต่ละผลิตภัณฑ์" : "ดูคะแนน ปริมาณรีวิว และหัวข้อที่ผู้บริโภคพูดถึงของแต่ละผลิตภัณฑ์"} />
+          <ProductQualityComparison products={quality.products} issueSignalsVerified={issueSignalsVerified} />
         </section>
 
         <section className="lg-quality-section">
@@ -86,7 +88,9 @@ export default function ProductQualityTemplate({
             <SectionHeading eyebrow="03 / WATCHLIST" title="ประเด็นที่ต้องตรวจสอบ" description="ใช้เป็นคิวสำหรับอ่านซ้ำ ไม่ใช่การสรุปว่าทุกรายการเป็นปัญหา" />
             <div className="lg-quality-list">
               <QualityListItem icon={<CircleAlert size={17} />} title="รีวิวคะแนนต่ำ 1–2 ดาว" value={totals.lowRatingReviews} detail={`${formatPercent(totals.lowRatingReviews, totals.reviews)} ของรีวิว · กรองจาก rating 1–2 ดาว`} preview={lowRatingReview} modalFilter="low" />
-              <QualityListItem icon={<CircleAlert size={17} />} title="รีวิวที่มีคำสัญญาณปัญหา" value={totals.issueReviews} detail={`${formatPercent(totals.issueReviews, totals.reviews)} ของรีวิว · พบคำหรือวลีปัญหาในข้อความจริง`} preview={issueReview} modalFilter="watch" />
+              {issueSignalsVerified
+                ? <QualityListItem icon={<CircleAlert size={17} />} title="รีวิวที่มีคำสัญญาณปัญหา" value={totals.issueReviews} detail={`${formatPercent(totals.issueReviews, totals.reviews)} ของรีวิว · พบคำหรือวลีปัญหาในข้อความจริง`} preview={issueReview} modalFilter="watch" />
+                : <PendingListItem icon={<CircleAlert size={17} />} title="รีวิวที่มีคำสัญญาณปัญหา" detail="กำลังตรวจความแม่นยำของการจับคำปัญหา ยังไม่ใช้เป็นตัวเลขสรุป" />}
               <QualityListItem icon={<CircleAlert size={17} />} title="ข้อความที่ควรให้คนตรวจ" value={totals.humanReview} detail={`${formatPercent(totals.humanReview, totals.reviews)} ของรีวิว · ข้อความสั้นหรือจับหัวข้อไม่ได้`} preview={humanReview} modalFilter="human" />
             </div>
           </article>
@@ -100,7 +104,7 @@ export default function ProductQualityTemplate({
           </article>
         </section>
 
-        <ProductQualityExplorer reviews={reviews} />
+        <ProductQualityExplorer reviews={reviews} issueSignalsVerified={issueSignalsVerified} />
 
         <section className="lg-quality-method">
           <span>ความรู้สึก: 5 ดาว = เชิงบวก · 3–4 ดาว = เป็นกลาง · 1–2 ดาว = เชิงลบ</span>
@@ -148,6 +152,10 @@ function QualityListItem({ icon, title, value, detail, preview, modalFilter, top
   const content = <><span>{icon}</span><div><div className="lg-quality-list-item-head"><strong>{title}</strong><ProductQualityModalTrigger title={title} count={value} filter={modalFilter} topicName={topicName} /></div><small>{detail}</small>{preview && <div className="lg-quality-list-preview"><strong>{preview.sourceName}</strong><span>{preview.rating ? `${preview.rating} ดาว` : "ไม่ระบุคะแนน"} · “{truncate(preview.reviewText, 120)}”</span><em>ตัวอย่างรีวิว: คลิกดูรายการทั้งหมด</em></div>}</div><b>{formatNumber(value)}</b></>;
   const className = `lg-quality-list-item${preview ? " has-preview" : ""}`;
   return <div className={className}>{content}</div>;
+}
+
+function PendingListItem({ icon, title, detail }: { icon: React.ReactNode; title: string; detail: string }) {
+  return <div className="lg-quality-list-item"><span>{icon}</span><div><div className="lg-quality-list-item-head"><strong>{title}</strong></div><small>{detail}</small></div><b className="lg-issue-pending-badge">อยู่ระหว่างตรวจสอบ</b></div>;
 }
 
 function truncate(value: string, maxLength: number) {

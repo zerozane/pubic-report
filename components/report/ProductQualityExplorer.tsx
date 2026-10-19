@@ -10,7 +10,7 @@ import type { ProductQualityModalRequest } from "@/components/report/ProductQual
 type Signal = "all" | "positive" | "neutral" | "negative";
 type Sort = "recent" | "low" | "high";
 
-export default function ProductQualityExplorer({ reviews }: { reviews: ProductQualityReview[] }) {
+export default function ProductQualityExplorer({ reviews, issueSignalsVerified }: { reviews: ProductQualityReview[]; issueSignalsVerified: boolean }) {
   const [search, setSearch] = useState("");
   const [product, setProduct] = useState("all");
   const [topic, setTopic] = useState("all");
@@ -167,7 +167,7 @@ export default function ProductQualityExplorer({ reviews }: { reviews: ProductQu
         </div>
 
         <div className="lg-quality-explorer-results">
-          {visibleReviews.length ? visibleReviews.map((review) => <ReviewRow key={review.id} review={review} isTarget={review.id === targetReviewId} />) : (
+          {visibleReviews.length ? visibleReviews.map((review) => <ReviewRow key={review.id} review={review} isTarget={review.id === targetReviewId} showIssueSignal={issueSignalsVerified} />) : (
             <div className="lg-quality-empty"><strong>ไม่พบรีวิวตามตัวกรอง</strong><p>ลองเปลี่ยนคำค้นหาหรือเลือกตัวกรองอื่น</p></div>
           )}
         </div>
@@ -195,7 +195,7 @@ export default function ProductQualityExplorer({ reviews }: { reviews: ProductQu
   );
 }
 
-function ReviewRow({ review, isTarget = false }: { review: ProductQualityReview; isTarget?: boolean }) {
+function ReviewRow({ review, isTarget = false, showIssueSignal }: { review: ProductQualityReview; isTarget?: boolean; showIssueSignal: boolean }) {
   const sentiment = getProductQualitySentiment(review);
   const sentimentLabel = sentiment === "positive" ? "เชิงบวก" : sentiment === "neutral" ? "เชิงกลาง" : "เชิงลบ";
   return (
@@ -205,7 +205,7 @@ function ReviewRow({ review, isTarget = false }: { review: ProductQualityReview;
         <div className="lg-quality-review-rating" aria-label={`${review.rating ?? "ไม่ระบุ"} ดาว`}>{review.rating ? `${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)}` : "ไม่ระบุคะแนน"}</div>
         <div className="lg-quality-review-signals">
           <span className={`lg-quality-signal ${sentiment}`}>{sentimentLabel}</span>
-          {review.isIssue && <span className="lg-quality-signal watch">ข้อควรระวัง</span>}
+          {showIssueSignal && review.isIssue && <span className="lg-quality-signal watch">ข้อควรระวัง</span>}
           {review.needsHumanReview && <span className="lg-quality-signal human">ต้องตรวจเพิ่มเติม</span>}
         </div>
       </div>

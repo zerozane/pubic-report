@@ -13,6 +13,20 @@
   --amber-bg: #fff5df;
   --white: #fff;
   --radius: 8px;
+  /* Sentiment standard (DESIGN.md): one meaning everywhere. Brand rose never encodes sentiment.
+     Mirrored for SVG charts in lib/sentiment-standard.ts (sentimentColors). */
+  --sentiment-positive: #10b981;
+  --sentiment-neutral: #f59e0b;
+  --sentiment-negative: #f43f5e;
+  --sentiment-positive-text: #047857;
+  --sentiment-positive-bg: #ecfdf5;
+  --sentiment-positive-line: #a7f3d0;
+  --sentiment-neutral-text: #b45309;
+  --sentiment-neutral-bg: #fffbeb;
+  --sentiment-neutral-line: #fde68a;
+  --sentiment-negative-text: #be123c;
+  --sentiment-negative-bg: #fff1f2;
+  --sentiment-negative-line: #fecdd3;
 }
 
 /* La Glace dashboard template */
@@ -5425,11 +5439,11 @@ textarea,
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: #fb6f92;
+  background: var(--sentiment-positive);
 }
 
-.lg-summary-bar.neu b { background: #c9a7b5; }
-.lg-summary-bar.neg b { background: #6b5060; }
+.lg-summary-bar.neu b { background: var(--sentiment-neutral); }
+.lg-summary-bar.neg b { background: var(--sentiment-negative); }
 
 .lg-summary-platforms {
   display: grid;
@@ -6160,17 +6174,17 @@ textarea,
 
 .lg-editorial-page .lg-sentiment-stack .pos,
 .lg-editorial-page .lg-sentiment-legend .pos {
-  background: #10b981;
+  background: var(--sentiment-positive);
 }
 
 .lg-editorial-page .lg-sentiment-stack .neu,
 .lg-editorial-page .lg-sentiment-legend .neu {
-  background: #f59e0b;
+  background: var(--sentiment-neutral);
 }
 
 .lg-editorial-page .lg-sentiment-stack .neg,
 .lg-editorial-page .lg-sentiment-legend .neg {
-  background: #f43f5e;
+  background: var(--sentiment-negative);
 }
 
 .lg-editorial-page .lg-sentiment-legend {
@@ -6516,15 +6530,15 @@ textarea,
 }
 
 .lg-editorial-page .lg-editorial-bars i.pos {
-  background: #10b981;
+  background: var(--sentiment-positive);
 }
 
 .lg-editorial-page .lg-editorial-bars i.neu {
-  background: #f59e0b;
+  background: var(--sentiment-neutral);
 }
 
 .lg-editorial-page .lg-editorial-bars i.neg {
-  background: #f43f5e;
+  background: var(--sentiment-negative);
 }
 
 .lg-editorial-page .lg-editorial-bars em {
@@ -6971,9 +6985,9 @@ textarea,
   font-weight: 700;
 }
 
-.lg-evidence-modal-sentiment.positive { background: #dcfce7; color: #15803d; }
-.lg-evidence-modal-sentiment.neutral { background: #fff3cd; color: #a16207; }
-.lg-evidence-modal-sentiment.negative { background: #ffe4e6; color: #be123c; }
+.lg-evidence-modal-sentiment.positive { background: var(--sentiment-positive-bg); color: var(--sentiment-positive-text); }
+.lg-evidence-modal-sentiment.neutral { background: var(--sentiment-neutral-bg); color: var(--sentiment-neutral-text); }
+.lg-evidence-modal-sentiment.negative { background: var(--sentiment-negative-bg); color: var(--sentiment-negative-text); }
 
 .lg-evidence-modal-item > p {
   margin: 9px 0 12px;
@@ -7407,9 +7421,9 @@ textarea,
 }
 
 .lg-editorial-page .lg-sentiment-positive {
-  color: #059669;
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
+  color: var(--sentiment-positive-text);
+  background: var(--sentiment-positive-bg);
+  border: 1px solid var(--sentiment-positive-line);
   border-radius: 999px;
   padding: 3px 10px;
   font-size: 11px;
@@ -7417,9 +7431,9 @@ textarea,
 }
 
 .lg-editorial-page .lg-sentiment-neutral {
-  color: #475569;
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
+  color: var(--sentiment-neutral-text);
+  background: var(--sentiment-neutral-bg);
+  border: 1px solid var(--sentiment-neutral-line);
   border-radius: 999px;
   padding: 3px 10px;
   font-size: 11px;
@@ -7427,9 +7441,9 @@ textarea,
 }
 
 .lg-editorial-page .lg-sentiment-negative {
-  color: #e11d48;
-  background: #fff1f2;
-  border: 1px solid #fecdd3;
+  color: var(--sentiment-negative-text);
+  background: var(--sentiment-negative-bg);
+  border: 1px solid var(--sentiment-negative-line);
   border-radius: 999px;
   padding: 3px 10px;
   font-size: 11px;
@@ -7920,7 +7934,7 @@ textarea,
 .lg-quality-review-product strong, .lg-quality-review-product span { display: block; }.lg-quality-review-product strong { color: #0f172a; font-size: 14px; }.lg-quality-review-product span { margin-top: 4px; color: #94a3b8; font-size: 11px; }
 .lg-quality-review-rating { color: #d97706; font-size: 14px; letter-spacing: 1px; white-space: nowrap; }
 .lg-quality-review-signals { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
-.lg-quality-signal { padding: 5px 9px; border-radius: 999px; font-size: 11px; font-weight: 800; white-space: nowrap; }.lg-quality-signal.positive { color: #047857; background: #ecfdf5; }.lg-quality-signal.neutral { color: #92400e; background: #fffbeb; }.lg-quality-signal.watch { color: #b45309; background: #fffbeb; }.lg-quality-signal.human { color: #6d28a9; background: #f5f3ff; }.lg-quality-signal.negative { color: #be123c; background: #fff1f2; }
+.lg-quality-signal { padding: 5px 9px; border-radius: 999px; font-size: 11px; font-weight: 800; white-space: nowrap; }.lg-quality-signal.positive { color: var(--sentiment-positive-text); background: var(--sentiment-positive-bg); }.lg-quality-signal.neutral { color: var(--sentiment-neutral-text); background: var(--sentiment-neutral-bg); }.lg-quality-signal.watch { color: #b45309; background: #fffbeb; }.lg-quality-signal.human { color: #6d28a9; background: #f5f3ff; }.lg-quality-signal.negative { color: var(--sentiment-negative-text); background: var(--sentiment-negative-bg); }
 .lg-quality-review-text { margin: 13px 0 10px; color: #334155; line-height: 1.7; overflow-wrap: anywhere; }
 .lg-quality-review-tags { display: flex; flex-wrap: wrap; gap: 6px; }.lg-quality-review-tag { padding: 4px 8px; border-radius: 999px; color: #9f4764; background: #fff7fa; font-size: 11px; }
 .lg-quality-review-meta { display: flex; flex-wrap: wrap; gap: 9px 15px; align-items: center; margin-top: 13px; color: #94a3b8; font-size: 11px; }.lg-quality-verified { color: #047857; font-weight: 800; }.lg-quality-source-link { margin-left: auto; color: #2563eb; font-weight: 800; text-decoration: none; }.lg-quality-source-link:hover { text-decoration: underline; }
@@ -7947,7 +7961,7 @@ textarea,
 .lg-quality-engagement-note { display: block; margin-top: 16px; color: #94a3b8; font-size: 11px; line-height: 1.5; }.lg-quality-mini-legend { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 5px; color: #64748b; font-size: 10px; white-space: nowrap; }.lg-quality-mini-legend i { width: 8px; height: 8px; border-radius: 50%; background: #e8557a; }.lg-quality-mini-legend i.topic { background: #6366f1; }
 .lg-quality-rating-mix { margin-bottom: 14px; }.lg-quality-rating-stack { display: flex; height: 20px; overflow: hidden; border-radius: 999px; background: #f1f5f9; }.lg-quality-rating-stack i { display: block; min-width: 2px; }.lg-quality-rating-legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }.lg-quality-rating-legend span { display: grid; grid-template-columns: auto 1fr auto; gap: 5px 7px; align-items: center; color: #64748b; font-size: 11px; }.lg-quality-rating-legend i { width: 8px; height: 8px; grid-row: span 2; border-radius: 50%; }.lg-quality-rating-legend b { color: #334155; }.lg-quality-rating-legend strong { color: #0f172a; text-align: right; }.lg-quality-rating-legend small { grid-column: 2 / -1; color: #94a3b8; }
 .lg-quality-visual-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 14px; margin-bottom: 14px; }.lg-quality-visual-grid .lg-engagement-card { min-width: 0; }
-.lg-product-quality-chart { display: grid; gap: 12px; }.lg-product-quality-legend { display: flex; flex-wrap: wrap; gap: 10px; color: #64748b; font-size: 11px; }.lg-product-quality-legend span { display: inline-flex; align-items: center; gap: 5px; }.lg-product-quality-legend i { width: 9px; height: 9px; border-radius: 50%; }.lg-product-quality-legend i.positive, .lg-product-quality-track i.positive { background: #10b981; }.lg-product-quality-legend i.neutral, .lg-product-quality-track i.neutral { background: #fbbf24; }.lg-product-quality-legend i.negative, .lg-product-quality-track i.negative { background: #e8557a; }
+.lg-product-quality-chart { display: grid; gap: 12px; }.lg-product-quality-legend { display: flex; flex-wrap: wrap; gap: 10px; color: #64748b; font-size: 11px; }.lg-product-quality-legend span { display: inline-flex; align-items: center; gap: 5px; }.lg-product-quality-legend i { width: 9px; height: 9px; border-radius: 50%; }.lg-product-quality-legend i.positive, .lg-product-quality-track i.positive { background: var(--sentiment-positive); }.lg-product-quality-legend i.neutral, .lg-product-quality-track i.neutral { background: var(--sentiment-neutral); }.lg-product-quality-legend i.negative, .lg-product-quality-track i.negative { background: var(--sentiment-negative); }
 .lg-product-quality-row { min-width: 0; }.lg-product-quality-row-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }.lg-product-quality-row-head strong { min-width: 0; overflow: hidden; color: #334155; font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }.lg-product-quality-rating { flex: 0 0 auto; color: #b45309; font-size: 11px; font-weight: 800; }.lg-product-quality-track { display: flex; height: 12px; margin-top: 5px; overflow: hidden; border-radius: 999px; background: #f1f5f9; }.lg-product-quality-track i { display: block; min-width: 0; }.lg-product-quality-row-meta { display: flex; gap: 10px; margin-top: 4px; color: #64748b; font-size: 10px; }.lg-product-quality-row-meta b { color: #be123c; font-weight: 800; }
 .lg-quality-topic-engagement { margin-top: 14px; }.lg-quality-topic-bar-label span { text-align: right; }.lg-quality-topic-bar-track i { min-width: 3px; }.lg-quality-product-bar-label span, .lg-quality-topic-bar-label span { white-space: nowrap; }
 @media (max-width: 900px) { .lg-quality-engagement-header, .lg-quality-engagement-grid, .lg-quality-visual-grid { grid-template-columns: 1fr; display: grid; }.lg-quality-engagement-source { min-width: 0; }.lg-quality-engagement-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -8473,3 +8487,43 @@ textarea,
     grid-template-columns: 1fr;
   }
 }
+
+/* Unverified keyword issue signals: shown as pending, never as a number (see hasVerifiedIssueSignals). */
+.lg-issue-pending {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 8px;
+  min-height: 160px;
+  padding: 20px;
+  border: 1px dashed #e2e8f0;
+  border-radius: 16px;
+  background: #f8fafc;
+}
+
+.lg-issue-pending strong {
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.lg-issue-pending p {
+  margin: 0;
+  color: #64748b;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+.lg-issue-pending-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+

@@ -90,6 +90,7 @@ export type ProductQualityReport = {
     sentiment: string;
     qualityTopics: string;
     limitations: string[];
+    issueSignalsVerified?: boolean;
   };
 };
 
