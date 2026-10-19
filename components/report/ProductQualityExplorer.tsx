@@ -37,6 +37,8 @@ export default function ProductQualityExplorer({ reviews, issueSignalsVerified }
       setRating(requestedRating);
     }
     if (requestedTopic) setTopic(requestedTopic);
+    const requestedProduct = params.get("product");
+    if (requestedProduct) setProduct(requestedProduct);
     if (params.get("verified") === "1") setVerifiedOnly(true);
     if (requestedReviewId) setTargetReviewId(requestedReviewId);
   }, []);

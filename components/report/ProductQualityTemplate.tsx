@@ -39,7 +39,7 @@ export default function ProductQualityTemplate({
           <nav className="lg-report-tabs" aria-label="Report sections">
             <Link href={`/reports/${report.slug}`}>ภาพรวม</Link>
             <Link href={`/reports/${report.slug}/quality`} className="active">คุณภาพสินค้า</Link>
-            <Link href={`/reports/${report.slug}/engagement`}>Engagement</Link>
+            <Link href={`/reports/${report.slug}/engagement`}>Dashboard</Link>
           </nav>
           <span className="lg-live"><i />TikTok Shop · TH</span>
         </div>
