@@ -8,3 +8,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Claude Code: personal settings + impeccable engine binary (re-downloaded on first run)
+.claude/settings.local.json
+.claude/skills/impeccable/scripts/bin/
