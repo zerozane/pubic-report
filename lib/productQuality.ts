@@ -115,7 +115,7 @@ export function getProductQualityReviewsBySlug(slug: string): ProductQualityRevi
   const fileName = qualityReviewFiles[slug];
   if (!fileName) return [];
 
-  const filePath = path.join(process.cwd(), "work", "reviewed", fileName);
+  const filePath = path.join(process.cwd(), "data", "reviewed", fileName);
   if (!fs.existsSync(filePath)) return [];
   return JSON.parse(fs.readFileSync(filePath, "utf8")) as ProductQualityReview[];
 }
