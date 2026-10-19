@@ -1,0 +1,571 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-19T14:17:37.373Z",
+  "title": "Design System: LA GLACE Social Listening Report",
+  "extensions": {
+    "colorMeta": {
+      "rose-primary": {
+        "role": "primary",
+        "displayName": "Glace Rose",
+        "canonical": "#e8557a",
+        "tonalRamp": [
+          "#430918",
+          "#751029",
+          "#a6163b",
+          "#d81d4c",
+          "#e74b72",
+          "#ee819d",
+          "#f5b7c7",
+          "#fce9ed"
+        ]
+      },
+      "rose-hot": {
+        "role": "primary",
+        "displayName": "Hot Rose",
+        "canonical": "#fb6f92",
+        "tonalRamp": [
+          "#4a0214",
+          "#810423",
+          "#b80532",
+          "#ee0741",
+          "#f93969",
+          "#fb7496",
+          "#fdb0c3",
+          "#fee6ec"
+        ]
+      },
+      "rose-blush": {
+        "role": "primary",
+        "displayName": "Blush Bar",
+        "canonical": "#f472b6",
+        "tonalRamp": [
+          "#470628",
+          "#7b0a45",
+          "#af0e62",
+          "#e3127f",
+          "#f0429d",
+          "#f57bba",
+          "#f9b3d8",
+          "#fde7f3"
+        ]
+      },
+      "rose-pale": {
+        "role": "primary",
+        "displayName": "Petal on Night",
+        "canonical": "#fbcfe8",
+        "tonalRamp": [
+          "#47062b",
+          "#7a0a4a",
+          "#ae0f69",
+          "#e21389",
+          "#ef43a5",
+          "#f47bc0",
+          "#f9b4db",
+          "#fde7f4"
+        ]
+      },
+      "rose-tint": {
+        "role": "primary",
+        "displayName": "Rose Tint",
+        "canonical": "#fdf2f4",
+        "tonalRamp": [
+          "#420a14",
+          "#731223",
+          "#a41932",
+          "#d42141",
+          "#e44e69",
+          "#ec8396",
+          "#f4b8c3",
+          "#fce9ec"
+        ]
+      },
+      "rose-wash": {
+        "role": "primary",
+        "displayName": "Rose Wash",
+        "canonical": "#fff8fa",
+        "tonalRamp": [
+          "#4d0016",
+          "#850026",
+          "#bd0036",
+          "#f50046",
+          "#ff336d",
+          "#ff7099",
+          "#ffadc5",
+          "#ffe5ed"
+        ]
+      },
+      "plum-night": {
+        "role": "secondary",
+        "displayName": "Plum Night",
+        "canonical": "#1e131d",
+        "tonalRamp": [
+          "#2f1e2d",
+          "#51334e",
+          "#744970",
+          "#965f91",
+          "#b082ac",
+          "#c8a8c5",
+          "#dfcdde",
+          "#f5eff5"
+        ]
+      },
+      "plum-wine": {
+        "role": "secondary",
+        "displayName": "Plum Wine",
+        "canonical": "#4f1d35",
+        "tonalRamp": [
+          "#381526",
+          "#612441",
+          "#8a335d",
+          "#b34278",
+          "#c86a97",
+          "#d997b6",
+          "#e9c3d5",
+          "#f8ecf2"
+        ]
+      },
+      "page-mist": {
+        "role": "neutral",
+        "displayName": "Page Mist",
+        "canonical": "#faf7f9",
+        "tonalRamp": [
+          "#2f1d29",
+          "#523347",
+          "#744966",
+          "#975e84",
+          "#b181a1",
+          "#c8a7bd",
+          "#e0cdd9",
+          "#f5eff3"
+        ]
+      },
+      "surface-white": {
+        "role": "neutral",
+        "displayName": "Surface White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#262626",
+          "#424242",
+          "#5e5e5e",
+          "#7a7a7a",
+          "#999999",
+          "#b8b8b8",
+          "#d6d6d6",
+          "#f2f2f2"
+        ]
+      },
+      "ink-heading": {
+        "role": "neutral",
+        "displayName": "Heading Ink",
+        "canonical": "#0f172a",
+        "tonalRamp": [
+          "#141f38",
+          "#233662",
+          "#324c8b",
+          "#4063b4",
+          "#6985c9",
+          "#96aad9",
+          "#c3ceea",
+          "#ecf0f8"
+        ]
+      },
+      "ink-body": {
+        "role": "neutral",
+        "displayName": "Body Ink",
+        "canonical": "#1e293b",
+        "tonalRamp": [
+          "#1a2333",
+          "#2d3d58",
+          "#40577d",
+          "#5371a2",
+          "#7891ba",
+          "#a0b2cf",
+          "#c9d3e3",
+          "#eef1f6"
+        ]
+      },
+      "slate-muted": {
+        "role": "neutral",
+        "displayName": "Slate Muted",
+        "canonical": "#64748b",
+        "tonalRamp": [
+          "#20252c",
+          "#37404d",
+          "#4f5c6e",
+          "#66778e",
+          "#8896aa",
+          "#acb6c3",
+          "#d0d5dd",
+          "#f0f2f4"
+        ]
+      },
+      "slate-faint": {
+        "role": "neutral",
+        "displayName": "Slate Faint",
+        "canonical": "#94a3b8",
+        "tonalRamp": [
+          "#1f252e",
+          "#354050",
+          "#4b5b71",
+          "#627693",
+          "#8496ae",
+          "#a9b5c6",
+          "#ced5de",
+          "#f0f2f5"
+        ]
+      },
+      "line-input": {
+        "role": "neutral",
+        "displayName": "Input Line",
+        "canonical": "#e2e8f0",
+        "tonalRamp": [
+          "#1a2532",
+          "#2d3f57",
+          "#405a7c",
+          "#5375a1",
+          "#7994b9",
+          "#a1b4ce",
+          "#c9d4e3",
+          "#eef2f6"
+        ]
+      },
+      "line-divider": {
+        "role": "neutral",
+        "displayName": "Divider",
+        "canonical": "#f1f5f9",
+        "tonalRamp": [
+          "#172636",
+          "#28425d",
+          "#395e84",
+          "#497aab",
+          "#7099c2",
+          "#9bb8d4",
+          "#c6d6e7",
+          "#edf2f7"
+        ]
+      },
+      "line-rose": {
+        "role": "neutral",
+        "displayName": "Rose Line",
+        "canonical": "rgba(232, 85, 122, 0.12)",
+        "tonalRamp": [
+          "#430918",
+          "#751029",
+          "#a6163b",
+          "#d81d4c",
+          "#e74b72",
+          "#ee819d",
+          "#f5b7c7",
+          "#fce9ed"
+        ]
+      },
+      "sentiment-positive": {
+        "role": "tertiary",
+        "displayName": "Positive",
+        "canonical": "#10b981",
+        "tonalRamp": [
+          "#064631",
+          "#0b7a55",
+          "#0fae79",
+          "#13e19d",
+          "#43efb6",
+          "#7cf4cc",
+          "#b4f9e2",
+          "#e8fdf6"
+        ]
+      },
+      "sentiment-neutral": {
+        "role": "tertiary",
+        "displayName": "Neutral",
+        "canonical": "#f59e0b",
+        "tonalRamp": [
+          "#492f03",
+          "#7f5205",
+          "#b57507",
+          "#eb970a",
+          "#f7b13b",
+          "#f9c876",
+          "#fce0b1",
+          "#fef5e7"
+        ]
+      },
+      "sentiment-negative": {
+        "role": "tertiary",
+        "displayName": "Negative",
+        "canonical": "#f43f5e",
+        "tonalRamp": [
+          "#480410",
+          "#7d071b",
+          "#b20a27",
+          "#e80d33",
+          "#f43e5d",
+          "#f7788e",
+          "#fbb2be",
+          "#fee7eb"
+        ]
+      },
+      "star-gold": {
+        "role": "tertiary",
+        "displayName": "Star Gold",
+        "canonical": "#f3a51b",
+        "tonalRamp": [
+          "#493004",
+          "#7e5307",
+          "#b37609",
+          "#e9990c",
+          "#f5b33d",
+          "#f8c977",
+          "#fbe0b1",
+          "#fef5e7"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline on the dark plum hero."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card and chart headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Base running text."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Section descriptions; table and mention text at 13px."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Metric labels and table headers."
+      },
+      "eyebrow": {
+        "displayName": "Eyebrow",
+        "purpose": "Uppercase rose section kickers."
+      },
+      "metric": {
+        "displayName": "Metric",
+        "purpose": "KPI card numbers, tabular."
+      },
+      "metric-hero": {
+        "displayName": "Metric Hero",
+        "purpose": "Sentiment panel score in the hero."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card-rest",
+        "value": "0 4px 20px -4px rgba(232, 85, 122, 0.05)",
+        "purpose": "Section cards, tables, panels."
+      },
+      {
+        "name": "metric-rest",
+        "value": "0 2px 12px -2px rgba(232, 85, 122, 0.04)",
+        "purpose": "KPI cards at rest."
+      },
+      {
+        "name": "metric-hover",
+        "value": "0 8px 24px -4px rgba(232, 85, 122, 0.1)",
+        "purpose": "KPI card hover, with translateY(-2px)."
+      },
+      {
+        "name": "cta",
+        "value": "0 4px 16px rgba(232, 85, 122, 0.35)",
+        "purpose": "Primary gradient button at rest."
+      },
+      {
+        "name": "cta-hover",
+        "value": "0 6px 20px rgba(232, 85, 122, 0.45)",
+        "purpose": "Primary gradient button hover."
+      },
+      {
+        "name": "chip-active",
+        "value": "0 2px 8px rgba(232, 85, 122, 0.25)",
+        "purpose": "Active filter chip."
+      },
+      {
+        "name": "hero",
+        "value": "0 20px 50px -10px rgba(35, 12, 24, 0.32), 0 1px 3px rgba(0, 0, 0, 0.2)",
+        "purpose": "Dark plum hero."
+      },
+      {
+        "name": "glass-panel",
+        "value": "inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 16px 40px rgba(0, 0, 0, 0.2)",
+        "purpose": "Sentiment panel on the hero."
+      },
+      {
+        "name": "modal",
+        "value": "0 24px 70px rgba(50, 26, 43, 0.24)",
+        "purpose": "Evidence modal over rgba(28,20,31,.46) backdrop."
+      },
+      {
+        "name": "focus-ring",
+        "value": "0 0 0 3px rgba(251, 111, 146, 0.15)",
+        "purpose": "Input focus ring."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": ".18s ease",
+        "purpose": "Buttons, tabs, card hover lift."
+      },
+      {
+        "name": "ease-quick",
+        "value": ".15s ease",
+        "purpose": "Chip and table-row hover."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "desktop-narrow",
+        "value": "1100px"
+      },
+      {
+        "name": "tablet",
+        "value": "900px"
+      },
+      {
+        "name": "tablet-portrait",
+        "value": "768px"
+      },
+      {
+        "name": "mobile-wide",
+        "value": "640px"
+      },
+      {
+        "name": "mobile",
+        "value": "560px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Single primary action in a region; rose CTA gradient pill.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">ดูหลักฐานทั้งหมด</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 11px 18px; border-radius: 999px; background: linear-gradient(135deg, #fb6f92, #e8557a); color: #fff; font-family: 'Plus Jakarta Sans', 'Noto Sans Thai', 'IBM Plex Sans Thai', Sarabun, 'Segoe UI', sans-serif; font-size: 13.5px; font-weight: 650; text-decoration: none; box-shadow: 0 4px 16px rgba(232,85,122,.35); transition: transform .18s ease, box-shadow .18s ease; } .ds-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(232,85,122,.45); } .ds-btn-primary:focus-visible { outline: 3px solid #e8557a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Top-bar and footer actions (print, export, share).",
+      "html": "<button class=\"ds-btn-secondary\" type=\"button\">พิมพ์ PDF</button>",
+      "css": ".ds-btn-secondary { min-height: 34px; padding: 0 14px; border: 1px solid rgba(232,85,122,.2); border-radius: 999px; background: #fff; color: #e8557a; font-family: Prompt, Kanit, 'LINE Seed Sans TH', 'Noto Sans Thai', 'Leelawadee UI', sans-serif; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: background .18s ease, border-color .18s ease; } .ds-btn-secondary:hover { background: rgba(251,111,146,.08); border-color: rgba(232,85,122,.35); } .ds-btn-secondary:focus-visible { outline: 3px solid #e8557a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Report Tabs",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "Page switcher in the sticky top bar.",
+      "html": "<nav class=\"ds-tabs\"><a class=\"ds-tab is-active\" href=\"#\">ภาพรวม</a><a class=\"ds-tab\" href=\"#\">Engagement</a><a class=\"ds-tab\" href=\"#\">คุณภาพสินค้า</a><a class=\"ds-tab\" href=\"#\">สรุป</a></nav>",
+      "css": ".ds-tabs { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid rgba(232,85,122,.1); border-radius: 999px; background: rgba(248,250,252,.85); font-family: 'Plus Jakarta Sans', 'Noto Sans Thai', 'IBM Plex Sans Thai', Sarabun, 'Segoe UI', sans-serif; } .ds-tab { padding: 6px 14px; border-radius: 999px; color: #64748b; font-size: 13px; font-weight: 550; text-decoration: none; transition: all .18s ease; } .ds-tab:hover { color: #e8557a; background: rgba(251,111,146,.08); } .ds-tab.is-active { color: #e8557a; background: #fff; font-weight: 650; box-shadow: 0 1px 4px rgba(0,0,0,.06), inset 0 0 0 1px rgba(232,85,122,.18); } .ds-tab:focus-visible { outline: 3px solid #e8557a; outline-offset: 2px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Platform filter in the evidence explorer; active state uses the CTA gradient.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip is-active\" type=\"button\">ทั้งหมด</button><button class=\"ds-chip\" type=\"button\">TikTok</button><button class=\"ds-chip\" type=\"button\">Shopee</button></div>",
+      "css": ".ds-chips { display: flex; gap: 8px; flex-wrap: wrap; font-family: 'Plus Jakarta Sans', 'Noto Sans Thai', 'IBM Plex Sans Thai', Sarabun, 'Segoe UI', sans-serif; } .ds-chip { padding: 6px 13px; border: 1px solid #e2e8f0; border-radius: 999px; background: #fff; color: #64748b; font: inherit; font-size: 12px; font-weight: 550; cursor: pointer; transition: all .15s ease; } .ds-chip:hover { border-color: #cbd5e1; color: #0f172a; background: #f8fafc; } .ds-chip.is-active { border-color: transparent; background: linear-gradient(135deg, #fb6f92, #e8557a); color: #fff; font-weight: 650; box-shadow: 0 2px 8px rgba(232,85,122,.25); } .ds-chip:focus-visible { outline: 3px solid #e8557a; outline-offset: 2px; }"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "Evidence search with leading icon; rose focus ring.",
+      "html": "<label class=\"ds-search\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.3-4.3\"/></svg><input type=\"search\" placeholder=\"ค้นหาคอมเมนต์หรือรีวิว\"></label>",
+      "css": ".ds-search { position: relative; display: block; max-width: 360px; color: #94a3b8; } .ds-search svg { position: absolute; left: 14px; top: 13px; } .ds-search input { width: 100%; height: 42px; padding: 0 14px 0 40px; border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; color: #1e293b; font-family: 'Plus Jakarta Sans', 'Noto Sans Thai', 'IBM Plex Sans Thai', Sarabun, 'Segoe UI', sans-serif; font-size: 13.5px; outline: none; transition: border-color .15s ease, background .15s ease, box-shadow .15s ease; } .ds-search input:focus { border-color: #fb6f92; background: #fff; box-shadow: 0 0 0 3px rgba(251,111,146,.15); }"
+    },
+    {
+      "name": "Metric Card",
+      "kind": "card",
+      "refersTo": "card-metric",
+      "description": "KPI tile: label, tabular number, link to detail.",
+      "html": "<article class=\"ds-metric\"><span>คอมเมนต์ทั้งหมด</span><strong>1,284</strong><a href=\"#\">ดูรายละเอียด →</a></article>",
+      "css": ".ds-metric { display: grid; gap: 6px; max-width: 260px; padding: 22px 20px; border: 1px solid rgba(232,85,122,.12); border-radius: 16px; background: #fff; box-shadow: 0 2px 12px -2px rgba(232,85,122,.04); font-family: 'Plus Jakarta Sans', 'Noto Sans Thai', 'IBM Plex Sans Thai', Sarabun, 'Segoe UI', sans-serif; transition: transform .18s ease, box-shadow .18s ease; } .ds-metric:hover { transform: translateY(-2px); box-shadow: 0 8px 24px -4px rgba(232,85,122,.1); } .ds-metric span { color: #64748b; font-size: 12.5px; font-weight: 550; } .ds-metric strong { color: #0f172a; font-family: Prompt, Kanit, 'LINE Seed Sans TH', 'Noto Sans Thai', 'Leelawadee UI', sans-serif; font-size: 32px; font-weight: 750; line-height: 1.15; font-variant-numeric: tabular-nums; } .ds-metric a { color: #e8557a; font-size: 12.5px; font-weight: 650; text-decoration: none; }"
+    },
+    {
+      "name": "Sentiment Badges",
+      "kind": "chip",
+      "refersTo": "sentiment-positive",
+      "description": "Sentiment labels in tables; darker hue on pale fill.",
+      "html": "<div class=\"ds-badges\"><span class=\"ds-badge pos\">บวก</span><span class=\"ds-badge neu\">กลาง</span><span class=\"ds-badge neg\">ลบ</span></div>",
+      "css": ".ds-badges { display: flex; gap: 8px; font-family: 'Plus Jakarta Sans', 'Noto Sans Thai', 'IBM Plex Sans Thai', Sarabun, 'Segoe UI', sans-serif; } .ds-badge { padding: 3px 10px; border: 1px solid; border-radius: 999px; font-size: 12px; font-weight: 650; } .ds-badge.pos { color: #059669; background: #ecfdf5; border-color: #a7f3d0; } .ds-badge.neu { color: #b45309; background: #fffbeb; border-color: #fde68a; } .ds-badge.neg { color: #e11d48; background: #fff1f2; border-color: #fecdd3; }"
+    },
+    {
+      "name": "Evidence Quote",
+      "kind": "custom",
+      "refersTo": "card-section",
+      "description": "Signature: real customer quote with rose left rule, linked to its source.",
+      "html": "<blockquote class=\"ds-quote\"><p>\"เนื้อบางเบา ติดทนทั้งวัน สีสวยมากค่ะ\"</p><a href=\"#\">TikTok · 12 ต.ค. 2026 · ดูต้นทาง</a></blockquote>",
+      "css": ".ds-quote { max-width: 420px; margin: 0; padding: 18px 20px; border: 1px solid rgba(232,85,122,.14); border-left: 4px solid #fb6f92; border-radius: 14px; background: #fff; font-family: 'Plus Jakarta Sans', 'Noto Sans Thai', 'IBM Plex Sans Thai', Sarabun, 'Segoe UI', sans-serif; } .ds-quote p { margin: 0 0 10px; color: #1e293b; font-size: 13.5px; line-height: 1.65; } .ds-quote a { color: #e8557a; font-size: 12px; font-weight: 650; text-decoration: none; } .ds-quote a:hover { text-decoration: underline; }"
+    },
+    {
+      "name": "Hero with Sentiment Panel",
+      "kind": "custom",
+      "refersTo": "hero",
+      "description": "Signature: the one dark plum moment per page with a glass sentiment panel.",
+      "html": "<section class=\"ds-hero\"><div><span class=\"ds-kicker\">Social Listening · ก.ย.–ต.ค. 2026</span><h1>ลูกค้าพูดถึงแบรนด์อย่างไร</h1></div><div class=\"ds-panel\"><strong>72%</strong><div class=\"ds-stack\"><i style=\"width:72%\"></i><i style=\"width:18%\"></i><i style=\"width:10%\"></i></div></div></section>",
+      "css": ".ds-hero { display: grid; grid-template-columns: 1.25fr .75fr; gap: 32px; align-items: center; padding: 32px; border: 1px solid rgba(255,255,255,.16); border-radius: 24px; color: #fff; background: radial-gradient(circle at 86% 18%, rgba(251,111,146,.28), transparent 28rem), radial-gradient(circle at 12% 84%, rgba(244,114,182,.14), transparent 24rem), linear-gradient(135deg, #1e131d 0%, #341825 48%, #4f1d35 100%); box-shadow: 0 20px 50px -10px rgba(35,12,24,.32), 0 1px 3px rgba(0,0,0,.2); font-family: 'Plus Jakarta Sans', 'Noto Sans Thai', 'IBM Plex Sans Thai', Sarabun, 'Segoe UI', sans-serif; } .ds-kicker { color: #fbcfe8; font-size: 12.5px; font-weight: 600; letter-spacing: .04em; } .ds-hero h1 { margin: 10px 0 0; font-family: Prompt, Kanit, 'LINE Seed Sans TH', 'Noto Sans Thai', 'Leelawadee UI', sans-serif; font-size: clamp(30px, 3.8vw, 44px); font-weight: 750; line-height: 1.28; } .ds-panel { padding: 26px 24px; border: 1px solid rgba(255,255,255,.2); border-radius: 20px; background: rgba(255,255,255,.08); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 16px 40px rgba(0,0,0,.2); } .ds-panel strong { display: block; font-family: Prompt, Kanit, 'LINE Seed Sans TH', 'Noto Sans Thai', 'Leelawadee UI', sans-serif; font-size: clamp(52px, 5.5vw, 68px); font-weight: 800; line-height: .98; font-variant-numeric: tabular-nums; } .ds-stack { display: flex; gap: 2px; height: 10px; margin-top: 16px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,.16); } .ds-stack i:nth-child(1) { background: #10b981; } .ds-stack i:nth-child(2) { background: #f59e0b; } .ds-stack i:nth-child(3) { background: #f43f5e; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Beauty Briefing",
+    "overview": "A beauty-editorial skin on an executive briefing. The report opens on a dark plum hero with a rose glow and a glass sentiment panel — the one dramatic moment — then settles into a calm, pale-mist page of white cards where numbers, charts and real customer quotes do the talking. The brand's rose carries emphasis and action; slate neutrals carry reading.\n\nDensity is moderate for desktop reading: a 1240px container, generous section spacing (44px), 16–24px card padding, and small-but-legible labels. Everything round is soft: 18px cards, pill-shaped tabs, chips and buttons. Depth comes from faint rose-tinted shadows, never from heavy borders.\n\nThe client's brand leads. Our presence shows in the rigor of the evidence (period, sample, sources, quotes), not in our own logo or colours.",
+    "keyCharacteristics": [
+      "One dark, glowing plum hero per page; everything below is light.",
+      "Rose (`rose-primary` / `rose-hot`) for action, active state and highlights only.",
+      "Slate neutrals for text and lines; white cards on a pale mist page.",
+      "Pills for every interactive control; 16–18px corners for containers.",
+      "Rose-tinted, low-opacity shadows; hover lifts by 1–2px.",
+      "Tabular numbers for every metric."
+    ],
+    "rules": [
+      {
+        "name": "The Rose Means Action Rule",
+        "body": "Rose marks what you can click, what is active, or what to look at first. Never use brand rose to encode sentiment.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Night Rule",
+        "body": "Only the hero is dark. Pale accents such as `rose-pale` are for that dark surface and nowhere else.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Numbers Rule",
+        "body": "Every count, percentage and score uses tabular figures so columns of numbers align.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tinted Shadow Rule",
+        "body": "Shadows are rose-tinted and low-opacity (≤ .1 at rest); only the hero and modal use dark shadows.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep one dark plum hero per page and build everything else on white cards over `page-mist`.",
+      "**Do** use the CTA gradient (`135deg, #fb6f92 → #e8557a`) only for the single primary action in a region and for active chips.",
+      "**Do** use pills for every interactive control and 16–18px corners for containers.",
+      "**Do** use tabular figures and `ink-heading` for every metric.",
+      "**Do** link every quote and finding back to its source evidence.",
+      "**Do** use the overview sentiment mapping (green / amber / rose) on every new chart."
+    ],
+    "donts": [
+      "**Don't** use brand rose to mean positive or negative sentiment.",
+      "**Don't** put `rose-pale` text on a light surface. It is for the dark hero only; it currently fails contrast on the light quality and backoffice heroes.",
+      "**Don't** hardcode the client name in CSS. The hero watermark is currently `content: \"LA GLACE\"` in CSS and shows on any report.",
+      "**Don't** introduce new neutrals. Use the slate set above, not plum-grey variants.",
+      "**Don't** add a new font stack. Use the display stack for headings and numbers and the body stack for text."
+    ]
+  }
+}
