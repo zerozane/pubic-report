@@ -5,7 +5,7 @@ import { classifySocialSentiment, sentimentStandardMethod } from "./sentiment-ru
 const reportsDirectory = path.resolve(process.cwd(), "data", "reports");
 const reportFiles = fs.readdirSync(reportsDirectory)
   .filter((file) => file.endsWith(".json"))
-  .filter((file) => file !== "laglace-product-quality.json");
+  .filter((file) => !file.endsWith("-product-quality.json"));
 
 const results = [];
 for (const fileName of reportFiles) {

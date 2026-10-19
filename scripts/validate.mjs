@@ -3,7 +3,7 @@ import path from "node:path";
 
 const reportsDirectory = path.join(process.cwd(), "data", "reports");
 const files = fs.existsSync(reportsDirectory)
-  ? fs.readdirSync(reportsDirectory).filter((file) => file.endsWith(".json") && file !== "laglace-product-quality.json")
+  ? fs.readdirSync(reportsDirectory).filter((file) => file.endsWith(".json") && !file.endsWith("-product-quality.json"))
   : [];
 
 let errorCount = 0;

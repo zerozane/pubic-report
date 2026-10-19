@@ -57,7 +57,8 @@ export function getReportSlugs() {
 
   return fs
     .readdirSync(reportsDirectory)
-    .filter((file) => file.endsWith(".json") && file !== "laglace-product-quality.json")
+    // Product-quality summaries (*-product-quality.json) share this folder but are not reports.
+    .filter((file) => file.endsWith(".json") && !file.endsWith("-product-quality.json"))
     .map((file) => file.replace(/\.json$/, ""));
 }
 

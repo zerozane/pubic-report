@@ -2722,7 +2722,7 @@ blockquote {
   position: absolute;
   right: -48px;
   bottom: -84px;
-  content: "LAGLACE";
+  content: attr(data-watermark);
   color: rgba(255, 255, 255, 0.055);
   font-family: Georgia, serif;
   font-size: clamp(90px, 15vw, 210px);
@@ -3520,7 +3520,7 @@ blockquote {
 }
 
 .lg-editorial-hero::after {
-  content: "LA GLACE";
+  content: attr(data-watermark);
   color: rgba(255, 230, 238, 0.08);
   font-family: "Plus Jakarta Sans", "Prompt", Tahoma, sans-serif;
   letter-spacing: -0.09em;
@@ -4769,8 +4769,10 @@ textarea,
 
 /* Stronger La Glace visual identity pass */
 :root {
-  --font-thai-ui: "Prompt", "Kanit", "LINE Seed Sans TH", "Noto Sans Thai", "IBM Plex Sans Thai", "Sarabun", "Leelawadee UI", "Segoe UI", sans-serif;
-  --font-display-soft: "Prompt", "Kanit", "LINE Seed Sans TH", "Noto Sans Thai", "Leelawadee UI", sans-serif;
+  /* --font-prompt / --font-noto-thai / --font-jakarta come from next/font in app/layout.tsx. */
+  --font-thai-ui: var(--font-prompt, "Prompt"), "Kanit", "LINE Seed Sans TH", "Noto Sans Thai", "IBM Plex Sans Thai", "Sarabun", "Leelawadee UI", "Segoe UI", sans-serif;
+  --font-display-soft: var(--font-prompt, "Prompt"), "Kanit", "LINE Seed Sans TH", "Noto Sans Thai", "Leelawadee UI", sans-serif;
+  --font-body: var(--font-jakarta, "Plus Jakarta Sans"), var(--font-noto-thai, "Noto Sans Thai"), "IBM Plex Sans Thai", "Sarabun", "Leelawadee UI", "Segoe UI", sans-serif;
 }
 
 body,
@@ -5858,7 +5860,7 @@ textarea,
     radial-gradient(circle at 50% 75%, rgba(251, 111, 146, 0.04), transparent 38rem),
     #faf7f9;
   color: #1e293b;
-  font-family: "Plus Jakarta Sans", "Noto Sans Thai", "IBM Plex Sans Thai", "Sarabun", "Segoe UI", sans-serif;
+  font-family: var(--font-body);
   letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
 }
@@ -6029,9 +6031,9 @@ textarea,
   position: absolute;
   right: -20px;
   bottom: -50px;
-  content: "LA GLACE";
+  content: attr(data-watermark);
   color: rgba(255, 255, 255, 0.035);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-jakarta, "Plus Jakarta Sans"), sans-serif;
   font-size: clamp(80px, 13vw, 170px);
   font-weight: 900;
   letter-spacing: -0.05em;
@@ -7840,7 +7842,7 @@ textarea,
   padding-top: 18px;
 }
 /* Product Quality template */
-.lg-quality-page { font-family: "Noto Sans Thai", "Leelawadee UI", "Segoe UI", Tahoma, sans-serif; }
+.lg-quality-page { font-family: var(--font-body); }
 .lg-report-tabs > :first-child { order: 1; }
 .lg-report-tabs a[href$="/evidence"] { order: 2; }
 .lg-report-tabs a[href$="/quality"] { order: 3; }
@@ -7857,7 +7859,7 @@ textarea,
 .lg-quality-kpi { min-width: 0; padding: 20px; border: 1px solid #e2e8f0; border-top: 4px solid #94a3b8; border-radius: 16px; background: #fff; }
 .lg-quality-kpi.positive { border-top-color: #10b981; }.lg-quality-kpi.negative { border-top-color: #f43f5e; }.lg-quality-kpi span, .lg-quality-kpi small { display: block; color: #64748b; }.lg-quality-kpi strong { display: block; margin: 7px 0; color: #0f172a; font-size: 28px; }.lg-quality-kpi small { line-height: 1.4; }
 .lg-quality-section { margin-top: 54px; }.lg-quality-heading { max-width: 760px; margin-bottom: 18px; }.lg-quality-heading > span { color: #e8557a; font-size: 12px; font-weight: 800; letter-spacing: .08em; }.lg-quality-heading h2 { margin: 5px 0 6px; color: #0f172a; font-size: clamp(24px, 3vw, 34px); line-height: 1.2; }.lg-quality-heading p { margin: 0; color: #64748b; line-height: 1.65; }
-.lg-quality-product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }.lg-quality-product-card { min-width: 0; padding: 22px; border: 1px solid rgba(232,85,122,.16); border-radius: 18px; background: #fff; }.lg-quality-product-card > span { color: #e8557a; font-size: 12px; font-weight: 800; }.lg-quality-product-card h3 { margin: 8px 0 10px; color: #0f172a; font-family: "Segoe UI", Tahoma, sans-serif; font-size: 16px; line-height: 1.45; overflow-wrap: anywhere; word-break: break-word; }.lg-quality-product-card strong { color: #0f172a; }.lg-quality-product-card > div { display: flex; height: 8px; gap: 2px; margin: 16px 0 8px; border-radius: 999px; overflow: hidden; background: #f1f5f9; }.lg-quality-product-card > div i:first-child { background: #10b981; }.lg-quality-product-card > div i:last-child { background: #f43f5e; }.lg-quality-product-card small { color: #64748b; }
+.lg-quality-product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }.lg-quality-product-card { min-width: 0; padding: 22px; border: 1px solid rgba(232,85,122,.16); border-radius: 18px; background: #fff; }.lg-quality-product-card > span { color: #e8557a; font-size: 12px; font-weight: 800; }.lg-quality-product-card h3 { margin: 8px 0 10px; color: #0f172a; font-family: inherit; font-size: 16px; line-height: 1.45; overflow-wrap: anywhere; word-break: break-word; }.lg-quality-product-card strong { color: #0f172a; }.lg-quality-product-card > div { display: flex; height: 8px; gap: 2px; margin: 16px 0 8px; border-radius: 999px; overflow: hidden; background: #f1f5f9; }.lg-quality-product-card > div i:first-child { background: #10b981; }.lg-quality-product-card > div i:last-child { background: #f43f5e; }.lg-quality-product-card small { color: #64748b; }
 .lg-quality-comparison { min-width: 0; }.lg-quality-category-filter { display: flex; align-items: center; gap: 22px; margin-bottom: 10px; padding: 10px; border: 1px solid #e8e1e6; border-radius: 14px; background: #fff; box-shadow: 0 8px 24px rgba(54, 36, 50, .05); }.lg-quality-category-label { flex: 0 0 136px; padding: 0 8px; color: #514653; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }.lg-quality-category-options { display: flex; flex: 1; flex-wrap: wrap; gap: 4px; }.lg-quality-category-options button { min-height: 34px; padding: 7px 12px; border: 1px solid transparent; border-radius: 9px; color: #766875; background: transparent; font: inherit; font-size: 12px; cursor: pointer; transition: background-color .18s ease, border-color .18s ease, color .18s ease, box-shadow .18s ease; }.lg-quality-category-options button:hover { border-color: #ead8df; color: #a33f62; background: #fff7fa; }.lg-quality-category-options button:focus-visible { outline: 2px solid #e8557a; outline-offset: 2px; }.lg-quality-category-options button.active { border-color: #e8557a; color: #fff; background: #e8557a; box-shadow: 0 5px 12px rgba(232, 85, 122, .2); }.lg-quality-category-options button b { margin-left: 7px; color: inherit; font-size: 10px; font-weight: 700; opacity: .72; }.lg-quality-category-options button.active b { opacity: .9; }.lg-quality-filter-result { margin: 0 0 12px; color: #8a7b86; font-size: 11px; }
 .lg-quality-topic-list { display: grid; gap: 12px; padding: 20px 22px; border: 1px solid #e2e8f0; border-radius: 18px; background: #fff; }.lg-quality-topic { display: grid; grid-template-columns: 210px minmax(0, 1fr) 130px; gap: 16px; align-items: center; min-width: 0; }.lg-quality-topic > div:first-child { display: flex; justify-content: space-between; gap: 10px; }.lg-quality-topic strong { color: #0f172a; overflow-wrap: anywhere; }.lg-quality-topic span, .lg-quality-topic small { color: #64748b; font-size: 12px; }.lg-quality-track { height: 9px; border-radius: 999px; overflow: hidden; background: #f1f5f9; }.lg-quality-track i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #f472b6, #e8557a); }
 .lg-quality-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 54px; }.lg-quality-panel { min-width: 0; padding: 26px; border: 1px solid #e2e8f0; border-radius: 18px; background: #fff; }.lg-quality-panel.issue { border-top: 4px solid #f43f5e; }.lg-quality-panel.opportunity { border-top: 4px solid #10b981; }.lg-quality-list { display: grid; gap: 10px; }.lg-quality-list-item { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 13px 0; border-top: 1px solid #f1f5f9; }.lg-quality-list-item > span { display: grid; place-items: center; color: #e8557a; }.opportunity .lg-quality-list-item > span { color: #059669; }.lg-quality-list-item strong, .lg-quality-list-item small { display: block; }.lg-quality-list-item strong { color: #0f172a; }.lg-quality-list-item small { margin-top: 3px; color: #64748b; }.lg-quality-list-item b { color: #0f172a; font-size: 20px; }
@@ -7888,7 +7890,7 @@ textarea,
 .lg-quality-quote-source-link { display: inline-block; margin: -8px 0 14px; color: #2563eb; font-size: 12px; font-weight: 800; text-decoration: none; }.lg-quality-quote-source-link:hover { text-decoration: underline; }
 .lg-quality-list-item { color: inherit; text-decoration: none; }
 .lg-quality-list-item small { line-height: 1.45; }
-.lg-quality-list-item.has-preview { align-items: start; }
+.lg-quality-list-item.has-preview { align-items: flex-start; }
 .lg-quality-list-preview { display: grid; gap: 2px; margin-top: 9px; padding: 9px 10px; border-left: 3px solid #c7f3de; border-radius: 8px; background: #f5fffa; }
 .lg-quality-list-preview strong { color: #047857; font-size: 12px; }
 .lg-quality-list-preview span { color: #475569; font-size: 12px; line-height: 1.5; }
@@ -7911,7 +7913,7 @@ textarea,
 .lg-quality-context-grid .lg-quality-list-item > span { display: none; }
 .lg-quality-context-grid .lg-quality-list-item > b { display: none; }
 .lg-quality-context-grid .lg-quality-list-item > div { min-width: 0; grid-column: 1 / -1; }
-.lg-quality-list-item-head { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
+.lg-quality-list-item-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .lg-quality-context-grid .lg-quality-list-item strong { font-size: 14px; font-weight: 650; }
 .lg-quality-context-grid .lg-quality-list-item small { margin-top: 4px; font-size: 12.5px; line-height: 1.6; }
 .lg-quality-context-grid .lg-quality-list-preview { display: none; }

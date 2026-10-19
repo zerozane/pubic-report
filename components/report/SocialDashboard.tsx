@@ -54,7 +54,7 @@ export default function SocialDashboard({ report }: { report: Report }) {
       </header>
 
       <main className="lg-container lg-main lg-report-main">
-        <section className="lg-editorial-hero" id="overview">
+        <section className="lg-editorial-hero" id="overview" data-watermark={dashboard.brandName || ""}>
           <div className="lg-hero-copy">
             <p className="lg-kicker">รายงานเสียงผู้บริโภคจากบทสนทนาสาธารณะ</p>
             <h1>คุณภาพสินค้า LA GLACE<br />ผ่านเสียงผู้บริโภค</h1>
